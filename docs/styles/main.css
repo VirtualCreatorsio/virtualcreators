@@ -495,6 +495,16 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
 }
+.section-titlev2 {
+    font-family: 'Luxurious Roman', serif;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 100px;
+    text-align: left;
+    background: linear-gradient(45deg, var(--secondary-pink), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
 .loading-spinner {
     position: absolute;
     top: 50%;
@@ -1507,6 +1517,12 @@ footer {
         text-align: center;
         margin-left: 0;
     }
+    .section-titlev2 {
+        text-align: center;
+        margin-left: 0;
+        font-size: 32px;
+    }
+
     .slide {
         flex: 0 0 40%;
     }
@@ -1617,6 +1633,17 @@ footer {
         font-weight: 400;
         margin: 40px;
     }
+    .section-titlev2 {
+        margin-left: 0;
+        font-size: 18px;
+    }
+    .contact {
+        padding: 3rem 4rem;
+    }
+    .row {
+        display: block;
+        gap: 1rem;
+    }
     .slide {
         flex: 0 0 60%;
     }
@@ -1671,9 +1698,6 @@ footer {
         max-width: 60vw;
         height: auto;
         object-fit: contain; 
-    }
-    form {
-        padding-right: 4rem;
     }
 }
 
