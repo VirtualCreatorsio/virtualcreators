@@ -1224,6 +1224,12 @@ form {
     .chat-bubble.visible {
       opacity: 1;
       transform: translateY(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .chat-bubble.closed {
+        display: none;
+        pointer-events: none;
     }
 
     .checkmarks {
@@ -1242,7 +1248,7 @@ form {
       transition: fill 0.3s ease;
     }
 
-        .close-bubble {
+    .close-bubble {
       position: absolute;
       top: 5px;
       right: 10px;

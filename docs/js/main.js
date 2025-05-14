@@ -444,14 +444,14 @@ const bubble = document.getElementById('chat-bubble');
     bubbleObserver.observe(document.getElementById('whatsapp-widget'));
 
     closeBtn.addEventListener('click', () => {
-        bubble.classList.remove('visible');
+        bubble.classList.remove('visible'); bubble.classList.add('closed')
         dismissed = true;
     });
 
     whatsappButton.addEventListener('mouseenter', () => {
         if (dismissed) {
             dismissed = false;
-            showBubble();
+            bubble.classList.remove('closed'); bubble.classList.add('visible')
         }
     });
     // Initialize cases slider when DOM is loaded
