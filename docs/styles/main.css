@@ -441,8 +441,8 @@ body {
 .text-card {
     padding: 3rem 3rem 3rem 3rem;
     justify-content: center;
-        display: flex;
-        align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .card-content {
