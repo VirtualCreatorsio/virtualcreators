@@ -1132,7 +1132,7 @@ form {
     background: none;
     border: none;
     border-radius: 5px;
-    border: 2px solid #fff;
+    border: 1px solid #757575c2;
     color: var(--white);
     padding: 0.5rem;
     font-size: 1rem;
@@ -1140,7 +1140,7 @@ form {
 
   input::placeholder,
   textarea::placeholder {
-    color: #aaa;
+    color: #8181819f;
   }
 
   textarea {
