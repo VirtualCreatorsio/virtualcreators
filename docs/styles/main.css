@@ -1140,7 +1140,7 @@ form {
 
   input::placeholder,
   textarea::placeholder {
-    color: #8181819f;
+    color: #757575dc;
   }
 
   textarea {
