@@ -149,27 +149,27 @@ window.addEventListener("scroll", () => {
     const reviews = [
         {
             rating: '★★★★★',
-            text: 'Becoachable heeft ons super goed geholpen, fijne service en persoonlijk contact. Kaj heeft ons geholpen met de lancering binnen ons bedrijf. Het werd hartelijk door onze medewerkers ontvangen!',
-            author: 'Sebastiaan Huijer',
-            position: 'Mede-eigenaar Meijer & Huijer'
+            text: 'This is a mock-up review and will be replaced shortly 1',
+            author: 'Kjell de Ruiter',
+            position: 'Founder Virtual Creators'
         },
         {
             rating: '★★★★★',
-            text: 'Bij Abovo Maxlead vinden we het belangrijk dat collega\'s de weg naar een coach weten te vinden. In dat kader hebben we Becoachable gevraagd om onze collega\'s te coachen en proactief te helpen.',
-            author: 'Petra de Waal',
-            position: 'Head of HR Above Maxlead'
+            text: 'This is a mock-up review and will be replaced shortly 2',
+            author: 'Kjell de Ruiter',
+            position: 'Founder Virtual Creators'
         },
         {
             rating: '★★★★★',
-            text: 'Zeer professionele aanpak en persoonlijke benadering. Het team heeft ons uitstekend geholpen bij het ontwikkelen van onze online presence.',
-            author: 'Tjade Voigt',
-            position: 'Mede-eigenaar Traction Movies'
+            text: 'This is a mock-up review and will be replaced shortly 3',
+            author: 'Kjell de Ruiter',
+            position: 'Founder Virtual Creators'
         },
         {
             rating: '★★★★★',
-            text: 'Becoachable heeft ons super goed geholpen, fijne service en persoonlijk contact. Kaj heeft ons geholpen met de lancering binnen ons bedrijf. Het werd hartelijk door onze medewerkers ontvangen!',
-            author: 'Sebastiaan Huijer',
-            position: 'Mede-eigenaar Meijer & Huijer'
+            text: 'This is a mock-up review and will be replaced shortly 4',
+            author: 'Kjell de Ruiter',
+            position: 'Founder Virtual Creators'
         }
     ];
 
