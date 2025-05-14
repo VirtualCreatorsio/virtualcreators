@@ -45,6 +45,20 @@
         </div>
     </nav>
 
+        <div class="whatsapp-widget" id="whatsapp-widget">
+    <div class="chat-bubble" id="chat-bubble" style="text-align: left;">
+      <button class="close-bubble" id="close-bubble" aria-label="Close message">&times;</button>
+      Hey! For quicker responses and easier meeting scheduling, click here to contact me directly on WhatsApp! 
+      <span class="checkmarks" id="checkmarks"></span>
+    </div>
+
+    <a class="whatsapp-button" href="https://wa.me/31641552375" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 32 32">
+        <path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.6 2.3 8L0 32l8.4-2.2C11.2 31.2 13.6 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.6c-2.2 0-4.3-.6-6.2-1.7l-.4-.2-5 1.3 1.3-4.8-.3-.5c-1.3-2-2-4.4-2-6.7 0-7.4 6-13.4 13.4-13.4S29.4 8.6 29.4 16 23.4 29.6 16 29.6zm7.4-10.2c-.4-.2-2.4-1.2-2.7-1.3s-.6-.2-.9.2-1 1.3-1.2 1.5-.4.3-.8.1-1.6-.6-3-1.9c-1.1-1-1.8-2.3-2-2.6s0-.6.2-.8c.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.2-.3.1-.5 0-.7s-.9-2.2-1.2-3c-.3-.7-.5-.6-.8-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.3 1.5 3.6c.2.2 2.5 3.8 6 5.2.8.4 1.5.7 2 .9.8.3 1.5.3 2.1.2.6-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9 0-.2-.4-.3-.8-.5z"/>
+      </svg>
+    </a>
+  </div>
+
     <div class="mobile-menu">
         <div class="container">
             <div class="mobile-menu-items">
@@ -69,7 +83,7 @@
             <div class="container">
                 <div class="hero-grid">
                     <!-- Video Card -->
-                    <div class="glass-effect video-card">
+                    <div class="video-card">
                         <div class="loading-spinner"></div>
                         <video 
                             autoplay loop muted playsinline class="hero-video">
@@ -78,9 +92,9 @@
                         </video>
                     </div>
                     <!-- Text Card -->
-                    <div class="glass-effect text-card">
+                    <div class="text-card">
                         <div class="card-content">
-                            <h1>From sleek UI components to full digital experiences<br></br>I help businesses grow online with custom, performance-driven & SEO-ready web solutions.<br><br>Curious, click the button below!</h1>
+                            <h1>I BUILD SLEEK UI COMPONENTS TO FULL DIGITAL EXPERIENCES</h1>
                             <a href="#cases"><button class="cta-button">My Work</button></a>
                         </div>
                     </div>
@@ -109,7 +123,7 @@
                         </video>
                               </div>
                               <div class="slide-text">
-                                <h2 class="slide-title">LifeSciGrowth<br>Custom Components, Web-Design & SEO</h2>
+                                <h2 class="slide-title">LifeSciGrowth</h2>
                                 <a href="#" class="slide-button">View project</a>
                               </div>
                             </div>
@@ -130,7 +144,7 @@
                                 </video>
                               </div>
                               <div class="slide-text">
-                                <h2 class="slide-title">TractionMovies<br>Custom Components, Web-Design & SEO</h2>
+                                <h2 class="slide-title">TractionMovies</h2>
                                 <a href="#" class="slide-button">View project</a>
                               </div>
                             </div>
@@ -151,7 +165,7 @@
                                 </video>
                               </div>
                               <div class="slide-text">
-                                <h2 class="slide-title">De Ruiter Construction<br>Custom Components, Web-Design & SEO</h2>
+                                <h2 class="slide-title">De Ruiter Construction</h2>
                                 <a href="#" class="slide-button">View project</a>
                               </div>
                             </div>
@@ -200,7 +214,7 @@
 
       <!-- Project cta static -->
       <div style="margin-top: 60px; margin-bottom: 20px; font-family: 'Luxurious Roman', serif; text-align: center;">
-        <p style="color: #ccc;">Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p></div>
+        <p>Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p></div>
       <div style="text-align: center; margin-bottom: 60px;"><a href="#contact"><button class="cta-button">Get in touch</button></a></div>
   
       <!-- More Projects -->
@@ -243,8 +257,7 @@
                 </div>                
             </div>
             <div class="review-card">
-                <p class="padding-reviews">Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p>
-                <a href="#contact"><button class="cta-button">Get in touch</button></a>
+                <p class="padding-reviews">My clients give me a 4.7 <a class="review-rating">★★★★★</a> out of <a href="#reviews" style="color: white;">12 reviews</a></p>
             </div>
         </section>
         <section id="contact" class="contact">
@@ -272,23 +285,6 @@
             <div class="message error" id="error-msg">❌ Oops! Something went wrong. Please try again.</div>
           </form>
 
-          <div class="whatsapp-widget" id="whatsapp-widget">
-            <div class="chat-bubble" id="chat-bubble">
-              Hey there! For quicker responses and easier meeting scheduling, contact me directly on WhatsApp instead of submitting a form 😄 <br><br>That being said, I look forward to hearing from you!<br>Kind regards, Kjell 🤝 
-              <span class="checkmarks" id="checkmarks">
-                <!-- checkmarks will appear here -->
-              </span>
-            </div>
-        
-            <a class="whatsapp-button" href="https://wa.me/31641552375?text=Hi%20Kjell," target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 32 32">
-                <path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.6 2.3 8L0 32l8.4-2.2C11.2 31.2 13.6 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.6c-2.2 0-4.3-.6-6.2-1.7l-.4-.2-5 1.3 1.3-4.8-.3-.5c-1.3-2-2-4.4-2-6.7 0-7.4 6-13.4 13.4-13.4S29.4 8.6 29.4 16 23.4 29.6 16 29.6zm7.4-10.2c-.4-.2-2.4-1.2-2.7-1.3s-.6-.2-.9.2-1 1.3-1.2 1.5-.4.3-.8.1-1.6-.6-3-1.9c-1.1-1-1.8-2.3-2-2.6s0-.6.2-.8c.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.2-.3.1-.5 0-.7s-.9-2.2-1.2-3c-.3-.7-.5-.6-.8-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.3 1.5 3.6c.2.2 2.5 3.8 6 5.2.8.4 1.5.7 2 .9.8.3 1.5.3 2.1.2.6-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9 0-.2-.4-.3-.8-.5z"/>
-              </svg>
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-
         </section>
         <section>        
             <div class="footer-top">
@@ -310,7 +306,7 @@
                     <h3>Operating worldwide</h3>
                     <p>Based in the Netherlands</p>
                     <p>kjell@virtualcreators.io</p>
-                    <p>Phone +31 641552375</p>
+                    <p style="color: white;">Phone +31 641552375</p>
                 </div>
                 <div class="footer-links">
                     <h3>Quick links</h3>

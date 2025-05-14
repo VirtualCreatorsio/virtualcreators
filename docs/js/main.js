@@ -406,40 +406,54 @@ window.addEventListener("scroll", () => {
         startAnimation();
     }
     // WhatsApp Chat Bubble Checkmarks Animation
-    const bubble = document.getElementById('chat-bubble');
+const bubble = document.getElementById('chat-bubble');
     const checkmarks = document.getElementById('checkmarks');
+    const closeBtn = document.getElementById('close-bubble');
+    const whatsappButton = document.querySelector('.whatsapp-button');
 
-    const createCheck = (color = '#999') => `
-      <svg viewBox="0 0 512 512">
-        <path fill="${color}" d="M165.9 251.7c-7.4-7.4-19.3-7.4-26.6 0l-16.5 16.5c-7.4 7.4-7.4 19.3 0 26.6l89.6 89.6c7.4 7.4 19.3 7.4 26.6 0l204.1-204.1c7.4-7.4 7.4-19.3 0-26.6l-16.5-16.5c-7.4-7.4-19.3-7.4-26.6 0L230.2 341.4l-64.3-64.3z"/>
-      </svg>
-    `;
+    let dismissed = false;
 
-    const chatObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
+    const createCheck = (color = '#999') =>
+        `<svg viewBox="0 0 512 512" width="16" height="16">
+            <path fill="${color}" d="M165.9 251.7c-7.4-7.4-19.3-7.4-26.6 0l-16.5 16.5c-7.4 7.4-7.4 19.3 0 26.6l89.6 89.6c7.4 7.4 19.3 7.4 26.6 0l204.1-204.1c7.4-7.4 7.4-19.3 0-26.6l-16.5-16.5c-7.4-7.4-19.3-7.4-26.6 0L230.2 341.4l-64.3-64.3z"/>
+        </svg>`;
+
+    const showBubble = () => {
+        if (!bubble.classList.contains('visible')) {
             bubble.classList.add('visible');
 
-            // Step 1: Single grey check
             checkmarks.innerHTML = createCheck('#999');
 
-            // Step 2: Double grey
             setTimeout(() => {
-              checkmarks.innerHTML = createCheck('#999') + createCheck('#999');
-
-              // Step 3: Double blue
-              setTimeout(() => {
-                checkmarks.innerHTML = createCheck('#34b7f1') + createCheck('#34b7f1');
-              }, 500);
-
+                checkmarks.innerHTML = createCheck('#999') + createCheck('#999');
+                setTimeout(() => {
+                    checkmarks.innerHTML = createCheck('#34b7f1') + createCheck('#34b7f1');
+                }, 500);
             }, 500);
-          }, 800);
         }
-      });
+    };
+
+    const bubbleObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !dismissed) {
+                setTimeout(showBubble, 9000);
+            }
+        });
     });
 
-    chatObserver.observe(document.getElementById('whatsapp-widget'));
+    bubbleObserver.observe(document.getElementById('whatsapp-widget'));
+
+    closeBtn.addEventListener('click', () => {
+        bubble.classList.remove('visible');
+        dismissed = true;
+    });
+
+    whatsappButton.addEventListener('mouseenter', () => {
+        if (dismissed) {
+            dismissed = false;
+            showBubble();
+        }
+    });
     // Initialize cases slider when DOM is loaded
     initCasesSlider();
 }); 
