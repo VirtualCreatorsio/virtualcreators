@@ -1542,7 +1542,6 @@ footer {
         display: inline-block;
       }
     form {
-        width: 100%;
         padding-left: 0;
     }
       .whatsapp-widget {
@@ -1692,6 +1691,9 @@ footer {
         max-width: 60vw;
         height: auto;
         object-fit: contain; 
+    }
+    form {
+        width: 100%;
     }
 }
 
