@@ -451,7 +451,7 @@ const bubble = document.getElementById('chat-bubble');
     whatsappButton.addEventListener('mouseenter', () => {
         if (dismissed) {
             dismissed = false;
-            showBubble();bubble.classList.remove('closed'); bubble.classList.add('visible');
+            showBubblebubble.classList.remove('closed'); bubble.classList.add('visible');
         }
     });
     // Initialize cases slider when DOM is loaded
@@ -475,6 +475,7 @@ document.addEventListener('click', (e) => {
     if (titleElement) {
       modalTitle.innerHTML = titleElement.innerHTML;
       modal.style.display = 'flex';
+      document.body.classList.add("modal-open");
 
       // Pause slider
       isPaused = true;
@@ -485,6 +486,7 @@ document.addEventListener('click', (e) => {
   // Close if click outside modal content
   if (e.target === modal) {
     modal.style.display = 'none';
+    document.body.classList.remove("modal-open");
     resumeSlider();
   }
 });
@@ -492,6 +494,7 @@ document.addEventListener('click', (e) => {
 // Close modal on "X"
 modalClose.addEventListener('click', () => {
   modal.style.display = 'none';
+  document.body.classList.remove("modal-open");
   resumeSlider();
 });
 const modalVideo = document.getElementById('modalVideo');
