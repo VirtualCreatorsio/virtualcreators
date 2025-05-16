@@ -451,7 +451,9 @@ const bubble = document.getElementById('chat-bubble');
     whatsappButton.addEventListener('mouseenter', () => {
         if (dismissed) {
             dismissed = false;
-            showBubblebubble.classList.remove('closed'); bubble.classList.add('visible');
+            showBubble(); 
+            bubble.classList.remove('closed'); 
+            bubble.classList.add('visible');
         }
     });
     // Initialize cases slider when DOM is loaded
