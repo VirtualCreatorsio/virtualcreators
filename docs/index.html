@@ -223,13 +223,13 @@
                   <p>Interested in working together? <br>Send me a message and i'll get back to you.<br>(I usually respond in 1-2 workingdays)</p>
                 </div>
                 <div class="form-and-widget">    
-          <form id="contact-form">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="text" name="email" placeholder="Your@email.com" required />
-            <input type="tel" name="phone" placeholder="Phone" />
-            <input type="text" name="Company" placeholder="Company name (optional)" />
+          <form id="contact-form" action="https://formspree.io/f/xdkgreqr" method="POST">
+            <label>Name:</label><input type="text" name="name" placeholder="Your name" required />
+            <label>Email:</label><input type="text" name="email" placeholder="Your@email.com" required />
+            <label>Phone Number:</label><input type="tel" name="phone" placeholder="+31 6 11111111" />
+            <label>Company:</label><input type="text" name="Company" placeholder="Company name (optional)" />
 
-            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+            <label>Message:</label><textarea name="message" placeholder="Tell me about your project..." required></textarea>
             <button class="cta-button" type="submit">Submit form</button>
             <div class="message success" id="success-msg">✅ Message sent successfully!</div>
             <div class="message error" id="error-msg">❌ Oops! Something went wrong. Please try again.</div>
