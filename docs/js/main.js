@@ -649,34 +649,35 @@ function resumeSlider() {
 }
 
 // form functionality
-    const form = document.getElementById("contact-form");
-    const successMsg = document.getElementById("success-msg");
-    const errorMsg = document.getElementById("error-msg");
+const form = document.getElementById("contact-form");
+const successMsg = document.getElementById("success-msg");
+const errorMsg = document.getElementById("error-msg");
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      successMsg.style.display = "none";
-      errorMsg.style.display = "none";
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // prevent regular submission
 
-      const formData = new FormData(form);
+  successMsg.style.display = "none";
+  errorMsg.style.display = "none";
 
-      try {
-        const response = await fetch("https://formspree.io/f/xdkgreqr", {
-          method: "POST",
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
+  const formData = new FormData(form);
 
-        if (response.ok) {
-          form.reset();
-          successMsg.style.display = "block";
-        } else {
-          throw new Error("Network error");
-        }
-      } catch (err) {
-        errorMsg.style.display = "block";
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
     });
+
+    if (response.ok) {
+      form.reset();
+      successMsg.style.display = "block";
+    } else {
+      errorMsg.style.display = "block";
+    }
+  } catch (error) {
+    errorMsg.style.display = "block";
+  }
+});
 
