@@ -1930,6 +1930,7 @@ footer {
     
     .services-mobile-carousel {
         display: flex;
+        padding-top: 1rem;
     }
         .services {
         padding: 4rem 4rem;
