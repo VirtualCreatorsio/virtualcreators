@@ -3,375 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/vc-logo-32x32.png" type="assets/vc-logo32x32/png" />
-    <title>Virtual Creators | Custom Web Development | Web Design & eCommerce Solutions</title>
-    <meta name="Description" content="Virtual Creators specializes in custom web development, digital experience UI & UX design, and eCommerce solutions tailored to your brand.">
-    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <title>VirtualCreators - Digital Agency Portfolio</title>
+    <meta name="description" content="We craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="preloader">
-        <div class="loader">
-            <div class="animated-rectangle"></div>
-            <div class="loader-text">Virtual Creators</div>
-        </div>
-    </div>
+    <!-- Cursor Follower -->
+    <div class="cursor-follower"></div>
 
     <!-- Navigation -->
-    <nav class="navbar content">
-        <div class="nav-content">
-            <a href="#hero" class="logo">Virtual Creators</a>
-            <div class="desktop-menu">
-                <div class="menu-items">
-                    <a href="#services">Services</a>
-                    <a href="#cases">Cases</a>
-                    <a href="#about">About me</a>
-                    <a href="#reviews">Reviews</a>
-                    <a href="#contact">Contact</a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links desktop-nav">
+                    <a href="#work" class="nav-link">Work</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button class="btn btn-ghost" onclick="openBookingModal()">Let's Talk</button>
                 </div>
-                <div class="desktop-menu-right">
-                    <a href="#contact"><button class="cta-button">Schedule a Free Consultation</button></a>
-                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
             </div>
-            <button class="mobile-menu-button" aria-label="Toggle menu">
-                <svg class="menu-icon" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
-            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
+                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services</a>
+                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
+                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+                <button class="btn btn-primary mobile-cta" onclick="openBookingModal(); closeMobileMenu()">Let's Talk</button>
+            </div>
         </div>
     </nav>
 
-    <div class="whatsapp-widget" id="whatsapp-widget">
-        <div class="chat-bubble" id="chat-bubble" style="text-align: left;">
-            <button class="close-bubble" id="close-bubble" aria-label="Close message">&times;</button>
-            Hey! For quicker responses and easier meeting scheduling, click here to contact me directly on WhatsApp! 
-            <span class="checkmarks" id="checkmarks"></span>
-        </div>
-
-        <a class="whatsapp-button" href="https://wa.me/31641552375?text=Hi%20Kjell," target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-            <svg viewBox="0 0 32 32">
-                <path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.8 5.6 2.3 8L0 32l8.4-2.2C11.2 31.2 13.6 32 16 32c8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.6c-2.2 0-4.3-.6-6.2-1.7l-.4-.2-5 1.3 1.3-4.8-.3-.5c-1.3-2-2-4.4-2-6.7 0-7.4 6-13.4 13.4-13.4S29.4 8.6 29.4 16 23.4 29.6 16 29.6zm7.4-10.2c-.4-.2-2.4-1.2-2.7-1.3s-.6-.2-.9.2-1 1.3-1.2 1.5-.4.3-.8.1-1.6-.6-3-1.9c-1.1-1-1.8-2.3-2-2.6s0-.6.2-.8c.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.2-.3.1-.5 0-.7s-.9-2.2-1.2-3c-.3-.7-.5-.6-.8-.6h-.7c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.3 3.3 1.5 3.6c.2.2 2.5 3.8 6 5.2.8.4 1.5.7 2 .9.8.3 1.5.3 2.1.2.6-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9 0-.2-.4-.3-.8-.5z"/>
-            </svg>
-        </a>
-    </div>
-
-    <div class="mobile-menu">
+    <!-- Hero Section -->
+    <section class="hero fade-in-section" id="hero">
+        <div class="hero-bg"></div>
         <div class="container">
-            <div class="mobile-menu-items">
-                <a href="#services">Services</a>
-                <a href="#cases">Cases</a>
-                <a href="#about">About me</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#contact">Contact</a>
-                <div class="mobile-menu-cta"><a href="#contact"><button class="cta-button">Schedule a Free Consultation</button></a></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        I craft<br>
+                        <span class="hero-title-italic">digital experiences</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Thoughtful design and development for brands that want to make a meaningful impact.
+                    </p>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="scrollToWork()">
+                        View My Work
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-ghost btn-large" onclick="openBookingModal()">
+                        Start a Project
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero content" id="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <!-- Video Card -->
-                    <div class="video-card">
-                        <div class="loading-spinner"></div>
-                        <video 
-                            autoplay loop muted playsinline class="hero-video">
-                            <source src="assets/Portfolio-coming-soon.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+    <!-- Services Section -->
+    <section class="services fade-in-section" id="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="services-intro">
+                    <div class="section-header">
+                        <div class="section-badge">
+                            <div class="brand-dot-small"></div>
+                            <span class="section-label">What I Do</span>
+                        </div>
+                        <h2 class="section-title">
+                            Services that drive<br>
+                            <span class="title-italic">meaningful growth</span>
+                        </h2>
                     </div>
-                    <!-- Text Card -->
-                    <div class="text-card">
-                        <div class="card-content">
-                            <h1>I BUILD SLEEK UI COMPONENTS TO FULL DIGITAL EXPERIENCES</h1>
-                            <a href="#cases"><button class="cta-button">My Work</button></a>
+                    <p class="section-description">
+                        I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.
+                    </p>
+                </div>
+
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-content">
+                            <span class="service-number">01</span>
+                            <div class="service-text">
+                                <h3 class="service-title">Digital Strategy</h3>
+                                <p class="service-description">Thoughtful planning that transforms vision into measurable results</p>
+                            </div>
+                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-content">
+                            <span class="service-number">02</span>
+                            <div class="service-text">
+                                <h3 class="service-title">Brand Identity</h3>
+                                <p class="service-description">Distinctive visual systems that communicate your unique story</p>
+                            </div>
+                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-content">
+                            <span class="service-number">03</span>
+                            <div class="service-text">
+                                <h3 class="service-title">Web Development</h3>
+                                <p class="service-description">Clean, performant websites built with modern technologies</p>
+                            </div>
+                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-content">
+                            <span class="service-number">04</span>
+                            <div class="service-text">
+                                <h3 class="service-title">User Experience</h3>
+                                <p class="service-description">Intuitive interfaces that users love and businesses trust</p>
+                            </div>
+                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services anchor-offset">
-            <div class="container">
-                <h2 class="section-title">Services</h2>
-                
-                <!-- Mobile Navigation -->
-                <div class="services-mobile-nav">
-                    <button class="services-nav-arrow" id="services-prev-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m15 18-6-6 6-6"/>
-                        </svg>
-                    </button>
-
-                    <div class="services-dots-container" id="services-dots-container">
-                        <!-- Dots will be generated by JavaScript -->
-                    </div>
-
-                    <button class="services-nav-arrow" id="services-next-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </button>
+    <!-- Portfolio Section -->
+    <section class="portfolio fade-in-section" id="work">
+        <div class="container">
+            <div class="portfolio-header">
+                <div class="section-badge-mid">
+                    <div class="brand-dot-small"></div>
+                    <span class="section-label">Selected Work</span>
                 </div>
-
-                <!-- Services Container -->
-                <div class="services-wrapper">
-                    <!-- Mobile: Horizontal Scroll -->
-                    <div class="services-mobile-carousel" id="services-mobile-carousel">
-                        <!-- Service cards will be generated by JavaScript -->
-                    </div>
-
-                    <!-- Desktop: Grid -->
-                    <div class="services-desktop-grid" id="services-desktop-grid">
-                        <!-- Service cards will be generated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Services CTA -->
-                <div>
-                    <p class="padding-reviews">Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p>
-                    
-                    <div class="padding-cta"><a href="#contact"><button class="cta-button padding-cta">Schedule a Free Consultation</button></a></div>
-                </div>
+                <h2 class="section-title">
+                    Projects I am<br>
+                    <span class="title-italic">proud of</span>
+                </h2>
             </div>
-        </section>
 
-        <!-- Cases Section -->
-        <section id="cases" class="cases anchor-offset">
-            <div class="container">
-                <h2 class="section-title">Cases</h2>
-                <div class="slider-container">
-                    <div class="slider">
-                      <!-- Slide 1 -->
-                      <div class="slide">
-                          <div class="slide-content">
-                            <div class="loading-spinner"></div>
-                              <div class="slide-logo">
-                                <img src="assets/lifescigrowth_transparent.png" alt="LifeSciGrowth-logo" />
-                              </div>
-                              <div class="slide-video">
-                                <video 
-                            autoplay loop muted playsinline class="hero-video">
-                            <source src="assets/Portfolio-coming-soon.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                              </div>
-                              <div class="slide-text">
-                                <h2 class="slide-title">LifeSciGrowth</h2>
-                                <a href="#" class="slide-button">View project</a>
-                              </div>
+            <div class="projects-list">
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Online Shop</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
                             </div>
-                      </div>
-              
-                      <!-- Slide 2 -->
-                      <div class="slide">
-                          <div class="slide-content">
-                            <div class="loading-spinner"></div>
-                              <div class="slide-logo">
-                                <img src="assets/lifescigrowth_transparent.png" alt="Logo 1" />
-                              </div>
-                              <div class="slide-video">
-                                <video 
-                            autoplay loop muted playsinline class="hero-video">
-                            <source src="assets/Portfolio-coming-soon.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                                </video>
-                              </div>
-                              <div class="slide-text">
-                                <h2 class="slide-title">TractionMovies</h2>
-                                <a href="#" class="slide-button">View project</a>
-                              </div>
-                            </div>
-                      </div>
-              
-                      <!-- Slide 3 -->
-                      <div class="slide">
-                          <div class="slide-content">
-                            <div class="loading-spinner"></div>
-                              <div class="slide-logo">
-                                <img src="assets/lifescigrowth_transparent.png" alt="Logo 1" />
-                              </div>
-                              <div class="slide-video">
-                                <video 
-                            autoplay loop muted playsinline class="hero-video">
-                            <source src="assets/Portfolio-coming-soon.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                                </video>
-                              </div>
-                              <div class="slide-text">
-                                <h2 class="slide-title">De Ruiter Construction</h2>
-                                <a href="#" class="slide-button">View project</a>
-                              </div>
-                            </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dots"></div>
-                <div class="about-card">
-                    <p class="padding-cases">Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p>
-                    <a href="#contact"><button class="cta-button">Schedule a Free Consultation</button></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about anchor-offset">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-card">
-                        <h2>About me</h2>
-                        <p id=animated-text> Hey, I am Kjell – founder of Virtual Creators. I started this company out of a passion for combining sleek, functional design with clean, scalable code. After years of working in the eCommerce space, I realized businesses need custom, high-performing web solutions tailored to their goals – so I decided to build them.
-                            <br><br>With a strong foundation in web development and digital strategy, plus hands-on experience for several years in the eCommerce space, I've gained deep insight into how users interact with online platforms and what makes eCommerce tick. From optimizing conversion funnels to creating custom components for various CMS platforms, I understand what drives growth.
-                            <br><br>What sets me apart? I blend design thinking with technical expertise. I don't just build websites – I craft digital experiences that perform. Whether you're launching a new brand or scaling your online store, I bring the skills, strategy and creativity to help you succeed.</p>
-                    </div>
-                    <div class="image-card">
-                        <img src="assets/virtual-creators.jpg" alt="About me">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reviews Section -->
-        <section id="reviews" class="reviews anchor-offset">
-            <div class="container">
-                <h2 class="section-title">Reviews</h2>
-                <div class="reviews-slider">
-                    <div class="review-track"></div>
-                    <div class="reviews-navigation">
-                        <button class="prev-review" aria-label="Previous testimonials">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button class="next-review" aria-label="Next testimonials">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <h3 class="project-title">Lumenix-Beamers</h3>
+                        </div>
+                        <p class="project-description">A complete rebranding of their online precense through custom web-solutions</p>
+                        <button class="project-link" onclick="openProjectModal(0)">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
                             </svg>
                         </button>
                     </div>
-                </div>                
-            </div>
-             <div class="dots"></div>
-            <div>
-                <p class="padding-reviews">My clients give me a 4.7 <a class="review-rating">★★★★★</a> out of <a href="#reviews" style="color: white;">12 reviews</a></p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact anchor-offset">
-            <div class="container">
-                <div class="section-titlev2">
-                  <h1>Schedule a free call</h1>
-                  <p>Interested in working together? <br>Send me a message and i'll get back to you.<br>(I usually respond in 1-2 workingdays)</p>
+                    <div class="project-image" onclick="openProjectModal(0)">
+                        <img src="assets/coming-soon.jpg" alt="Lumenix-Beamers Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
                 </div>
-                <div class="form-and-widget">    
-                    <form id="contact-form" action="https://formspree.io/f/xdkgreqr" method="POST">
-                        <label>Name:<br><input type="text" name="name" placeholder="Your name" required /></label>
-                        <label>Email:<br><input type="email" name="email" placeholder="Your@email.com" required /></label>
-                        <label>Phone Number:<br><input type="tel" name="phone" placeholder="+31 6 11111111" /></label>
-                        <label>Company:<br><input type="text" name="Company" placeholder="Company name (optional)" /></label>
-                        <label>Message:<br><textarea name="message" placeholder="Tell me about your project..." required></textarea></label>
-                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-                        <button class="cta-button" type="submit">Submit form</button>
-                        <div class="message success" id="success-msg">✅ Message sent successfully!</div>
-                        <div class="message error" id="error-msg">❌ Oops! Something went wrong. Please try again.</div>
+
+                <!-- Project 2 -->
+                <div class="project-item project-reverse">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Creative Agency</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title">TractionMovies</h3>
+                        </div>
+                        <p class="project-description">Bringing custom web-solutions to their current site to elevate their online presence</p>
+                        <button class="project-link" onclick="openProjectModal(1)">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-image" onclick="openProjectModal(1)">
+                        <img src="assets/coming-soon.jpg" alt="TractionMovies Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Coaching & Community</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title">LifeSciGrowth</h3>
+                        </div>
+                        <p class="project-description">A simplistic solution for a membership community site that offers flexibility and guidance</p>
+                        <button class="project-link" onclick="openProjectModal(2)">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-image" onclick="openProjectModal(2)">
+                        <img src="assets/coming-soon.jpg" alt="LifeSciGrowth Project" class="project-img">
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-header">
+                        <div class="section-badge">
+                            <div class="brand-dot-small"></div>
+                            <span class="section-label">About Me</span>
+                        </div>
+                        <h2 class="section-title">
+                            I believe in the power<br>
+                            of <span class="title-italic">thoughtful design</span>
+                        </h2>
+                    </div>
+                    <div class="about-text">
+                        <p>Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.</p>
+                        <p>I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in-section" id="contact">
+        <div class="container">
+            <div class="contact-header">
+                <div class="section-badge-mid">
+                    <div class="brand-dot-small"></div>
+                    <span class="section-label">Get In Touch</span>
+                </div>
+                <h2 class="section-title">
+                    Let's create something<br>
+                    <span class="title-italic">beautiful together</span>
+                </h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-input" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Project</label>
+                            <input type="text" class="form-input" placeholder="Tell me about your project" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Share your vision with me..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-contact">
+                            Send Message
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
                     </form>
                 </div>
-            </div>
-        </section>
 
-        <section>        
-            <div class="footer-top">
-                <a href="#top" class="back-to-top">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-                    </svg>
-                    Back to top
-                </a>
-            </div>
-        </section>
-    </main>
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-intro">
+                        <h3 class="contact-title">Start a conversation</h3>
+                        <p class="contact-description">I'd love to hear about your project and explore how I can help bring your vision to life.</p>
+                    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Operating worldwide</h3>
-                    <p>Based in the Netherlands</p>
-                    <p>kjell@virtualcreators.io</p>
-                    <p style="color: white; text-decoration: none;">Phone +31 641552375</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick links</h3>
-                    <nav style="padding-bottom: 0.5rem;">
-                        <a href="#services">Services</a>
-                        <a href="#cases">Cases</a>
-                        <a href="#about">About me</a>
-                        <a href="#reviews">Reviews</a>
-                        <a href="#contact">Contact</a>
-                        <a href="privacy-cookie-policy.html" target="_blank">Privacy & Cookie Policy</a>
-                        <a href="terms-conditions.html" target="_blank">Terms & Conditions</a>
-                    </nav>
-                </div>
-                <div class="footer-links">
-                    <h3>Follow my journey</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value">kjell@virtualcreators.io</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value">+316 41552375</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label">Location</div>
+                                <div class="contact-value">Based in the Netherlands</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/kjell-de-ruiter-870227151" target="_blank" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/virtualcreators.io/" target="_blank" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M170.663 256.157c-.083-47.121 38.055-85.4 85.167-85.483 47.121-.092 85.407 38.03 85.499 85.16.091 47.129-38.047 85.4-85.176 85.492-47.112.09-85.399-38.039-85.49-85.169zm-46.108.091c.141 72.602 59.106 131.327 131.69 131.186 72.592-.141 131.35-59.09 131.209-131.692-.141-72.577-59.114-131.335-131.715-131.194-72.585.141-131.325 59.115-131.184 131.7zm237.104-137.091c.033 16.953 13.817 30.681 30.772 30.648 16.961-.033 30.689-13.811 30.664-30.764-.033-16.954-13.818-30.69-30.78-30.657-16.962.033-30.689 13.818-30.656 30.773zm-208.696 345.4c-24.958-1.087-38.511-5.234-47.543-8.709-11.961-4.629-20.496-10.178-29.479-19.094-8.966-8.95-14.532-17.46-19.202-29.397-3.508-9.032-7.73-22.569-8.9-47.527-1.269-26.982-1.559-35.077-1.683-103.432-.133-68.339.116-76.434 1.294-103.441 1.069-24.942 5.242-38.512 8.709-47.536 4.628-11.977 10.161-20.496 19.094-29.479 8.949-8.982 17.459-14.532 29.403-19.202 9.025-3.525 22.561-7.714 47.511-8.9 26.998-1.277 35.085-1.551 103.423-1.684 68.353-.132 76.448.108 103.456 1.295 24.94 1.086 38.51 5.217 47.527 8.709 11.968 4.628 20.503 10.144 29.478 19.094 8.974 8.95 14.54 17.443 19.21 29.412 3.524 9 7.714 22.553 8.892 47.494 1.285 26.999 1.576 35.095 1.7 103.433.132 68.355-.117 76.451-1.302 103.441-1.087 24.958-5.226 38.52-8.709 47.561-4.629 11.952-10.161 20.487-19.103 29.471-8.941 8.949-17.451 14.531-29.403 19.201-9.009 3.517-22.561 7.714-47.494 8.9-26.998 1.269-35.086 1.559-103.448 1.684-68.338.132-76.424-.125-103.431-1.294zM149.977 1.773c-27.239 1.285-45.843 5.648-62.101 12.018-16.829 6.561-31.095 15.354-45.286 29.604C28.381 57.653 19.655 71.944 13.144 88.79c-6.303 16.299-10.575 34.912-11.778 62.168C.172 178.264-.102 186.973.031 256.489c.133 69.508.439 78.234 1.741 105.547 1.302 27.231 5.649 45.828 12.019 62.093 6.569 16.83 15.353 31.088 29.611 45.288 14.25 14.201 28.55 22.918 45.404 29.438 16.282 6.295 34.902 10.583 62.15 11.778 27.305 1.203 36.022 1.468 105.521 1.335 69.532-.132 78.25-.439 105.555-1.733 27.239-1.303 45.826-5.665 62.1-12.019 16.829-6.586 31.095-15.353 45.288-29.611 14.191-14.251 22.917-28.55 29.428-45.405 6.304-16.282 10.592-34.903 11.777-62.134 1.195-27.322 1.478-36.048 1.344-105.556-.133-69.516-.447-78.225-1.741-105.523-1.294-27.255-5.657-45.844-12.019-62.118-6.577-16.829-15.352-31.079-29.602-45.287-14.25-14.192-28.55-22.935-45.404-29.429-16.29-6.305-34.903-10.601-62.15-11.779C333.747.164 325.03-.102 255.506.031c-69.507.133-78.224.431-105.529 1.742z"/>
-                            </svg>
-                        </a>
+                        <div class="social-label">Follow me</div>
+                        <div class="social-list">
+                            <a href="https://www.linkedin.com/in/kjell-de-ruiter-870227151" class="social-link">linkedin</a>
+                            <a href="https://www.instagram.com/virtualcreators.io/" class="social-link">Instagram</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© Virtual Creators 2025</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy-policy.html" class="footer-link">Privacy & Cookie Policy</a>
+                    <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+                </div>
+                <div class="footer-copyright">© 2025 VirtualCreators. Crafted with care.</div>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Structure -->
-    <div id="projectModal" class="modal-overlay">
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="modal-hero">
-                <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+            <div class="modal-header">
+                <div class="modal-title-section">
+                    <h3 class="modal-title" id="modalTitle">Project Title</h3>
+                    <p class="modal-subtitle" id="modalSubtitle">Category • Year</p>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
             </div>
-            <div class="modal-features" id="modalFeatures">
-                <p>Highlighting the tags that are relevant to the work I did.</p>
+
+            <div class="modal-body" id="modalBody">
+                <!-- Video and content will be populated by JavaScript -->
+                <!-- Example structure that will be generated:
+                <div class="project-video-container">
+                    <video id="modalVideo" class="project-video" autoplay muted loop playsinline>
+                        <source src="/assets/project-video.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="sound-toggle" onclick="toggleVideoSound()">
+                            <svg class="sound-off-icon">...</svg>
+                            <svg class="sound-on-icon">...</svg>
+                        </button>
+                        <button class="play-pause-toggle" onclick="toggleVideoPlayback()">
+                            <svg class="pause-icon">...</svg>
+                            <svg class="play-icon">...</svg>
+                        </button>
+                    </div>
+                </div>
+                -->
             </div>
-            <h2 id="modalTitle" style="margin-top: 60px; font-family: 'Luxurious Roman', serif;">Project Title</h2>
-            <div id="modalDescription">
-                <p>This is a professional breakdown of the project. Explain key features, technologies used, results, and client feedback here.</p>
+
+            <div class="modal-footer">
+                <div class="modal-cta">
+                    <button class="btn btn-primary" onclick="window.open('https://calendly.com/kjell-virtualcreators/30min', '_blank')">
+                        Start Your Project
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-navigation">
+                    <button class="nav-btn" onclick="navigateProject('prev')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="15,18 9,12 15,6"/>
+                        </svg>
+                    </button>
+                    <span class="nav-indicator" id="navIndicator">1 of 3</span>
+                    <button class="nav-btn" onclick="navigateProject('next')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9,18 15,12 9,6"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="modal-image">
-                <img id="modalImage" src="/placeholder.svg" alt="" style="width: 100%; height: 50%;">
-            </div>
-            <div id="modalInfo">
-                <p>This is a professional breakdown of the project. Explain key features, technologies used, results, and client feedback here.</p>
-            </div>
-            <div style="margin-top: 60px; margin-bottom: 20px; font-family: 'Luxurious Roman', serif; text-align: center; font-size: 1.1rem; padding-left: 5px; padding-right: 5px; margin-left: auto;margin-right: auto;width: 90%;">
-                <p>Interested in working together, contact me for a free consultation to see what I can offer you and your business today!</p>
-            </div>
-            <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
-                <a href="#contact"><button class="cta-button">Schedule a Free Consultation</button></a>
-            </div>
-            <h2 style="font-family: 'Luxurious Roman', serif; text-align: center;">Next case</h2>
-            <div id="relatedProjects"></div>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
