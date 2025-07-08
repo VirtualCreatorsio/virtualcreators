@@ -1899,6 +1899,7 @@ html.modal-open {
 
 .language-flag {
   font-size: 1rem;
+  display: none;
 }
 
 .language-text {
