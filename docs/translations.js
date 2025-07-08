@@ -222,6 +222,11 @@ const translations = {
     contactMeItem2: "Phone: +316 41552375",
     contactMeItem3: "Based: The Netherlands, Amsterdam",
 
+    // Privacy Policy Language Precedence
+    privacyLanguagePrecedence: "10. Language Precedence",
+    privacyLanguagePrecedenceText:
+      "This Privacy Policy is available in multiple languages. In case of any discrepancy or misalignment between different language versions, the English version shall prevail and take precedence.",
+
     // Terms & Conditions
     termsConditionsTitle: "Terms & Conditions",
     acceptanceOfTerms: "1. Acceptance of Terms",
@@ -301,6 +306,11 @@ const translations = {
     contactInformationItem1: "Email: kjell@virtualcreators.io",
     contactInformationItem2: "Phone: +316 41552375",
     contactInformationItem3: "Based: The Netherlands, Amsterdam",
+
+    // Terms & Conditions Language Precedence
+    languagePrecedence: "13. Language Precedence",
+    languagePrecedenceText:
+      "These Terms & Conditions are available in multiple languages. In case of any discrepancy or misalignment between different language versions, the English version shall prevail and take precedence.",
   },
 
   nl: {
@@ -526,6 +536,11 @@ const translations = {
     contactMeItem2: "Telefoon: +316 41552375",
     contactMeItem3: "Gevestigd: Nederland, Amsterdam",
 
+    // Privacy Policy Language Precedence
+    privacyLanguagePrecedence: "10. Taalvoorkeur",
+    privacyLanguagePrecedenceText:
+      "Dit Privacybeleid is beschikbaar in meerdere talen. In geval van discrepantie of onjuistheden tussen verschillende taalversies, prevaleert de Engelse versie en heeft deze voorrang.",
+
     // Terms & Conditions
     termsConditionsTitle: "Algemene Voorwaarden",
     acceptanceOfTerms: "1. Acceptatie van voorwaarden",
@@ -606,6 +621,11 @@ const translations = {
     contactInformationItem1: "E-mail: kjell@virtualcreators.io",
     contactInformationItem2: "Telefoon: +316 41552375",
     contactInformationItem3: "Gevestigd: Nederland, Amsterdam",
+
+    // Terms & Conditions Language Precedence
+    languagePrecedence: "13. Taalvoorkeur",
+    languagePrecedenceText:
+      "Deze Algemene Voorwaarden zijn beschikbaar in meerdere talen. In geval van discrepantie of onjuistheden tussen verschillende taalversies, prevaleert de Engelse versie en heeft deze voorrang.",
   },
 }
 
