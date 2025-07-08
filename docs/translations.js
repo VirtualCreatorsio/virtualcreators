@@ -345,8 +345,8 @@ const translations = {
 
     // Services Section
     whatIDo: "Wat Ik Doe",
-    servicesTitle1: "Diensten die zorgen voor",
-    servicesTitle2: "betekenisvolle groei",
+    servicesTitle1: "Werk dat leidt tot",
+    servicesTitle2: "impactvolle groei",
     servicesDescription:
       "Ik geloof in de kracht van eenvoud. Elk project begint met het begrijpen van jouw doelen en het creëren van oplossingen die zowel mooi als doelgericht zijn.",
 
