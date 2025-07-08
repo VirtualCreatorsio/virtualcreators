@@ -2017,7 +2017,8 @@ html.modal-open {
 
 /* Hide language switcher on mobile for desktop nav */
 @media (max-width: 1023px) {
-  .language-switcher, .nav-right {
+  .language-switcher,
+  .nav-right {
     display: none;
   }
 }

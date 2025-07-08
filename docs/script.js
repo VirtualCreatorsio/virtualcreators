@@ -2,6 +2,7 @@
 let currentProject = 0
 const mousePosition = { x: 0, y: 0 }
 let isMobileDevice = false
+const Calendly = null // Declare Calendly variable
 
 // Project Data
 const projects = [
@@ -9,8 +10,8 @@ const projects = [
     title: "Lumenix-beamers",
     category: "Online Shop",
     year: "2025",
-    image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4",
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -26,8 +27,8 @@ const projects = [
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
-    image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4",
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -42,8 +43,8 @@ const projects = [
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
-    image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4",
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -76,6 +77,19 @@ function initializeApp() {
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
 }
+
+// Ensure Calendly is loaded
+function ensureCalendlyLoaded() {
+  if (typeof window.Calendly === "undefined") {
+    console.log("Calendly not loaded, retrying...")
+    setTimeout(ensureCalendlyLoaded, 500)
+  } else {
+    console.log("Calendly loaded successfully")
+  }
+}
+
+// Call this when the page loads
+window.addEventListener("load", ensureCalendlyLoaded)
 
 // Detect mobile device
 function detectMobileDevice() {
@@ -250,6 +264,263 @@ function scrollToWork() {
   const workSection = document.getElementById("work")
   if (workSection) {
     workSection.scrollIntoView({ behavior: "smooth" })
+  }
+}
+
+// Subtle Calendly Integration Function
+function openCalendlyPopup() {
+  // Create a subtle modal overlay
+  const modalOverlay = document.createElement("div")
+  modalOverlay.id = "calendly-modal-overlay"
+  modalOverlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  `
+
+  // Create the Calendly container - elegant window size
+  const calendlyContainer = document.createElement("div")
+  calendlyContainer.id = "calendly-inline-widget"
+  calendlyContainer.style.cssText = `
+    width: 100%;
+    max-width: 680px;
+    height: 85vh;
+    max-height: 700px;
+    min-height: 600px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: scale(0.95) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  `
+
+  // Create elegant header with calm purple accent
+  const headerBar = document.createElement("div")
+  headerBar.style.cssText = `
+  height: 4px;
+  background: linear-gradient(135deg, #ec4899, #7c3aed);
+  width: 100%;
+`
+
+  // Create close button with modal-style design
+  const closeButton = document.createElement("button")
+  closeButton.innerHTML = `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+`
+  closeButton.style.cssText = `
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  transition: background-color 0.3s ease;
+  color: #6b7280;
+`
+  closeButton.onmouseover = () => {
+    closeButton.style.backgroundColor = "#e5e7eb"
+  }
+  closeButton.onmouseout = () => {
+    closeButton.style.backgroundColor = "#f3f4f6"
+  }
+
+  // Create content container
+  const contentContainer = document.createElement("div")
+  contentContainer.style.cssText = `
+    height: calc(100% - 4px);
+    padding: 0;
+    position: relative;
+  `
+
+  // Close function with smooth animation
+  const closeCalendly = () => {
+    modalOverlay.style.opacity = "0"
+    calendlyContainer.style.transform = "scale(0.95) translateY(20px)"
+    setTimeout(() => {
+      if (document.body.contains(modalOverlay)) {
+        document.body.removeChild(modalOverlay)
+      }
+      document.body.style.overflow = "unset"
+    }, 300)
+  }
+
+  closeButton.onclick = closeCalendly
+
+  // Close on overlay click
+  modalOverlay.onclick = (e) => {
+    if (e.target === modalOverlay) {
+      closeCalendly()
+    }
+  }
+
+  // Close on escape key
+  const handleEscape = (e) => {
+    if (e.key === "Escape") {
+      closeCalendly()
+      document.removeEventListener("keydown", handleEscape)
+    }
+  }
+  document.addEventListener("keydown", handleEscape)
+
+  // Assemble the modal
+  calendlyContainer.appendChild(headerBar)
+  calendlyContainer.appendChild(contentContainer)
+  calendlyContainer.appendChild(closeButton)
+  modalOverlay.appendChild(calendlyContainer)
+  document.body.appendChild(modalOverlay)
+  document.body.style.overflow = "hidden"
+
+  // Smooth entrance animation
+  setTimeout(() => {
+    modalOverlay.style.opacity = "1"
+    calendlyContainer.style.transform = "scale(1) translateY(0)"
+  }, 10)
+
+  // Initialize Calendly inline widget
+  if (typeof window.Calendly !== "undefined" && window.Calendly.initInlineWidget) {
+    window.Calendly.initInlineWidget({
+      url: "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6&hide_gdpr_banner=1",
+      parentElement: contentContainer,
+      prefill: {},
+      utm: {},
+    })
+
+    // Add subtle custom styling
+    setTimeout(() => {
+      addSubtleCalendlyStyles()
+    }, 1000)
+  } else {
+    // Fallback if Calendly hasn't loaded yet
+    console.log("Calendly not loaded, opening in new tab")
+    closeCalendly()
+    window.open("https://calendly.com/kjell-virtualcreators/30min", "_blank")
+  }
+
+  return false
+}
+
+// Function to add subtle custom styles to Calendly widget
+function addSubtleCalendlyStyles() {
+  const calendlyFrame = document.querySelector("#calendly-inline-widget iframe")
+  if (calendlyFrame) {
+    try {
+      calendlyFrame.onload = () => {
+        try {
+          const frameDoc = calendlyFrame.contentDocument || calendlyFrame.contentWindow.document
+
+          const customStyles = document.createElement("style")
+          customStyles.textContent = `
+            /* Calm purple styling for primary buttons */
+            button[data-testid="confirm-button"],
+            button[type="submit"],
+            .calendly-btn-primary {
+              background: #8b5cf6 !important;
+              border: none !important;
+              transition: all 0.2s ease !important;
+              border-radius: 8px !important;
+            }
+            
+            button[data-testid="confirm-button"]:hover,
+            button[type="submit"]:hover,
+            .calendly-btn-primary:hover {
+              background: #7c3aed !important;
+              transform: translateY(-1px) !important;
+              box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+            }
+            
+            /* Subtle hover effects for time slots with calm purple */
+            [data-testid="time-button"]:hover,
+            .calendly-time-button:hover {
+              background: rgba(139, 92, 246, 0.08) !important;
+              border-color: rgba(139, 92, 246, 0.3) !important;
+              transition: all 0.2s ease !important;
+            }
+            
+            /* Selected time slot with calm purple */
+            [data-testid="time-button"][aria-pressed="true"],
+            .calendly-time-button.selected {
+              background: #8b5cf6 !important;
+              color: white !important;
+              border-color: #8b5cf6 !important;
+            }
+            
+            /* Calm purple focus states */
+            input:focus,
+            select:focus,
+            textarea:focus {
+              border-color: #8b5cf6 !important;
+              box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+              outline: none !important;
+            }
+            
+            /* Clean up any excessive padding */
+            .calendly-popup-content {
+              padding: 20px !important;
+            }
+            
+            /* Style the calendar navigation with calm purple */
+            button[data-testid="calendar-nav-button"]:hover {
+              background: rgba(139, 92, 246, 0.1) !important;
+            }
+            
+            /* Calendar date selection */
+            [data-testid="calendar-date-button"]:hover {
+              background: rgba(139, 92, 246, 0.1) !important;
+            }
+            
+            [data-testid="calendar-date-button"][aria-pressed="true"] {
+              background: #8b5cf6 !important;
+              color: white !important;
+            }
+            
+            /* Progress indicators and active states */
+            .calendly-progress-bar,
+            .calendly-step-indicator.active {
+              background: #8b5cf6 !important;
+            }
+            
+            /* Links and interactive text */
+            a, .calendly-link {
+              color: #8b5cf6 !important;
+            }
+            
+            a:hover, .calendly-link:hover {
+              color: #7c3aed !important;
+            }
+          `
+
+          frameDoc.head.appendChild(customStyles)
+        } catch (e) {
+          console.log("Could not access iframe content for styling:", e)
+        }
+      }
+    } catch (e) {
+      console.log("Could not style Calendly iframe:", e)
+    }
   }
 }
 
@@ -660,11 +931,6 @@ function handleFullscreenChange() {
   if (fullscreenBtn) {
     updateFullscreenButton(fullscreenBtn, !!isInFullscreen)
   }
-}
-
-// Booking Modal Functions
-function openBookingModal() {
-  window.open("https://calendly.com/kjell-virtualcreators/30min", "_blank")
 }
 
 // Form Handlers
