@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/vc-logo-32x32.png" type="assets/vc-logo32x32/png" />
+    <link rel="icon" href="assets/vc-logo-32x32.png" type="assets/favicon-16x16/png" />
     <title>Privacy & Cookie Policy - VirtualCreators</title>
+    <meta name="description" content="Privacy and cookie policy for VirtualCreators digital agency services." id="metaDescription">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://virtualcreators.io/privacy-policy.html?lang=en" />
+    <link rel="alternate" hreflang="nl" href="https://virtualcreators.io/privacy-policy.html?lang=nl" />
+    <link rel="alternate" hreflang="x-default" href="https://virtualcreators.io/privacy-policy.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Privacy & Cookie Policy - VirtualCreators" id="ogTitle">
+    <meta property="og:description" content="Privacy and cookie policy for VirtualCreators digital agency services." id="ogDescription">
+    <meta property="og:url" content="https://virtualcreators.io/privacy-policy.html" id="ogUrl">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US" id="ogLocale">
+    <meta property="og:locale:alternate" content="nl_NL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy & Cookie Policy - VirtualCreators" id="twitterTitle">
+    <meta name="twitter:description" content="Privacy and cookie policy for VirtualCreators digital agency services." id="twitterDescription">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +39,64 @@
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
                 </a>
-                <div class="nav-links desktop-nav">
-                    <a href="index.html" class="nav-link">← Back to Home</a>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link" data-translate="backToHome">← Back to Home</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn">
+                            <span class="language-flag" id="currentFlag">🇬🇧</span>
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <button class="language-option" onclick="switchLanguage('en')">
+                                <span class="language-flag">🇬🇧</span>
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')">
+                                <span class="language-flag">🇳🇱</span>
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="index.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="backToHome">← Back to Home</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header" data-translate="language">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span class="language-flag">🇬🇧</span>
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span class="language-flag">🇳🇱</span>
+                            <span>NL</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,87 +106,87 @@
     <section class="legal-page">
         <div class="container">
             <div class="legal-content">
-                <h1 class="legal-title">Privacy & Cookie Policy</h1>
-                <p class="legal-updated">Last updated: July 2025</p>
+                <h1 class="legal-title" data-translate="privacyPolicyTitle">Privacy & Cookie Policy</h1>
+                <p class="legal-updated" data-translate="lastUpdated">Last updated: July 2025</p>
 
                 <div class="legal-section">
-                    <h2>1. Information I Collect</h2>
-                    <p>I collect information you provide directly to me, such as when you:</p>
+                    <h2 data-translate="informationICollect">1. Information I Collect</h2>
+                    <p data-translate="informationICollectText">I collect information you provide directly to me, such as when you:</p>
                     <ul>
-                        <li>Fill out my contact form or request a consultation</li>
-                        <li>Subscribe to my newsletter or updates</li>
-                        <li>Communicate with me via email or phone</li>
-                        <li>Use my website and services</li>
+                        <li data-translate="informationICollectItem1">Fill out my contact form or request a consultation</li>
+                        <li data-translate="informationICollectItem2">Subscribe to my newsletter or updates</li>
+                        <li data-translate="informationICollectItem3">Communicate with me via email or phone</li>
+                        <li data-translate="informationICollectItem4">Use my website and services</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>2. How I Use Your Information</h2>
-                    <p>I use the information I collect to:</p>
+                    <h2 data-translate="howIUseInfo">2. How I Use Your Information</h2>
+                    <p data-translate="howIUseInfoText">I use the information I collect to:</p>
                     <ul>
-                        <li>Provide, maintain, and improve my services</li>
-                        <li>Process and complete transactions</li>
-                        <li>Send you technical notices and support messages</li>
-                        <li>Communicate with you about products, services, and events</li>
-                        <li>Monitor and analyze trends and usage</li>
+                        <li data-translate="howIUseInfoItem1">Provide, maintain, and improve my services</li>
+                        <li data-translate="howIUseInfoItem2">Process and complete transactions</li>
+                        <li data-translate="howIUseInfoItem3">Send you technical notices and support messages</li>
+                        <li data-translate="howIUseInfoItem4">Communicate with you about products, services, and events</li>
+                        <li data-translate="howIUseInfoItem5">Monitor and analyze trends and usage</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>3. Information Sharing</h2>
-                    <p>I do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. I may share your information:</p>
+                    <h2 data-translate="informationSharing">3. Information Sharing</h2>
+                    <p data-translate="informationSharingText">I do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. I may share your information:</p>
                     <ul>
-                        <li>With service providers who assist us in operating my website</li>
-                        <li>To comply with legal obligations</li>
-                        <li>To protect our rights and safety</li>
+                        <li data-translate="informationSharingItem1">With service providers who assist us in operating my website</li>
+                        <li data-translate="informationSharingItem2">To comply with legal obligations</li>
+                        <li data-translate="informationSharingItem3">To protect our rights and safety</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>4. Cookies and Tracking</h2>
-                    <p>I use cookies and similar tracking technologies to:</p>
+                    <h2 data-translate="cookiesTracking">4. Cookies and Tracking</h2>
+                    <p data-translate="cookiesTrackingText">I use cookies and similar tracking technologies to:</p>
                     <ul>
-                        <li>Remember your preferences and settings</li>
-                        <li>Analyze website traffic and usage patterns</li>
-                        <li>Improve user experience</li>
-                        <li>Provide personalized content</li>
+                        <li data-translate="cookiesTrackingItem1">Remember your preferences and settings</li>
+                        <li data-translate="cookiesTrackingItem2">Analyze website traffic and usage patterns</li>
+                        <li data-translate="cookiesTrackingItem3">Improve user experience</li>
+                        <li data-translate="cookiesTrackingItem4">Provide personalized content</li>
                     </ul>
-                    <p>You can control cookies through your browser settings, but disabling cookies may affect website functionality.</p>
+                    <p data-translate="cookiesTrackingText2">You can control cookies through your browser settings, but disabling cookies may affect website functionality.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>5. Data Security</h2>
-                    <p>I implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.</p>
+                    <h2 data-translate="dataSecurity">5. Data Security</h2>
+                    <p data-translate="dataSecurityText">I implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>6. Your Rights</h2>
-                    <p>You have the right to:</p>
+                    <h2 data-translate="yourRights">6. Your Rights</h2>
+                    <p data-translate="yourRightsText">You have the right to:</p>
                     <ul>
-                        <li>Access and update your personal information</li>
-                        <li>Request deletion of your personal information</li>
-                        <li>Opt-out of marketing communications</li>
-                        <li>Request a copy of your data</li>
+                        <li data-translate="yourRightsItem1">Access and update your personal information</li>
+                        <li data-translate="yourRightsItem2">Request deletion of your personal information</li>
+                        <li data-translate="yourRightsItem3">Opt-out of marketing communications</li>
+                        <li data-translate="yourRightsItem4">Request a copy of your data</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>7. Third-Party Services</h2>
-                    <p>My website may contain links to third-party websites or services. I am not responsible for the privacy practices of these third parties. I encourage you to review their privacy policies.</p>
+                    <h2 data-translate="thirdPartyServices">7. Third-Party Services</h2>
+                    <p data-translate="thirdPartyServicesText">My website may contain links to third-party websites or services. I am not responsible for the privacy practices of these third parties. I encourage you to review their privacy policies.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>8. Changes to This Policy</h2>
-                    <p>I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
+                    <h2 data-translate="changesToPolicy">8. Changes to This Policy</h2>
+                    <p data-translate="changesToPolicyText">I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>9. Contact me</h2>
-                    <p>If you have any questions about this Privacy Policy, please contact me:</p>
+                    <h2 data-translate="contactMe">9. Contact me</h2>
+                    <p data-translate="contactMeText">If you have any questions about this Privacy Policy, please contact me:</p>
                     <ul>
-                        <li>Email: kjell@virtualcreators.io</li>
-                        <li>Phone: +316 41552375</li>
-                        <li>Based: The Netherlands, Amsterdam</li>
+                        <li data-translate="contactMeItem1">Email: kjell@virtualcreators.io</li>
+                        <li data-translate="contactMeItem2">Phone: +316 41552375</li>
+                        <li data-translate="contactMeItem3">Based: The Netherlands, Amsterdam</li>
                     </ul>
                 </div>
             </div>
@@ -126,12 +202,65 @@
                     <div class="brand-dot"></div>
                 </div>
                 <div class="footer-links">
-                    <a href="privacy-policy.html" class="footer-link">Privacy & Cookie Policy</a>
-                    <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+                    <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
+                    <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
                 </div>
-                <div class="footer-copyright">© 2025 VirtualCreators. Crafted with care.</div>
+                <div class="footer-copyright" data-translate="copyright">© 2025 VirtualCreators. Crafted with care.</div>
             </div>
         </div>
     </footer>
+
+    <script src="translations.js"></script>
+    <script>
+        // Mobile menu functions for legal pages
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+
+            if (!mobileNav || !hamburger) return
+
+            const isActive = mobileNav.classList.contains("active")
+
+            if (isActive) {
+                mobileNav.classList.remove("active")
+                hamburger.classList.remove("active")
+                document.body.style.overflow = "unset"
+            } else {
+                mobileNav.classList.add("active")
+                hamburger.classList.add("active")
+                document.body.style.overflow = "hidden"
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+
+            if (mobileNav && hamburger) {
+                mobileNav.classList.remove("active")
+                hamburger.classList.remove("active")
+                document.body.style.overflow = "unset"
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (e) => {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+            const isClickInsideNav = mobileNav && mobileNav.contains(e.target)
+            const isClickOnHamburger = hamburger && hamburger.contains(e.target)
+
+            if (mobileNav && mobileNav.classList.contains("active") && !isClickInsideNav && !isClickOnHamburger) {
+                closeMobileMenu()
+            }
+        })
+
+        // Close mobile menu on window resize if it gets too large
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 900) {
+                closeMobileMenu()
+            }
+        })
+    </script>
 </body>
 </html>

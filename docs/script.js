@@ -1,6 +1,7 @@
 // Global Variables
 let currentProject = 0
 const mousePosition = { x: 0, y: 0 }
+let isMobileDevice = false
 
 // Project Data
 const projects = [
@@ -9,10 +10,9 @@ const projects = [
     category: "Online Shop",
     year: "2025",
     image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4", // Add video URL
-    description: "A complete rebranding of their online precense through custom web-solutions",
-    fullDescription:
-      "Lumenix needed a complete digital transformation to compete in the modern online landscape. I redesigned their entire website from the ground up, focusing on user experience and convenience. The result was a 300% increase in user engagement and a 150% boost in conversion rates.",
+    video: "assets/Portfolio-coming-soon.mp4",
+    description: "lumenixDescription",
+    fullDescription: "lumenixFullDescription",
     services: [
       { icon: "code", label: "Web Development" },
       { icon: "palette", label: "UI/UX Design" },
@@ -20,44 +20,32 @@ const projects = [
       { icon: "bar-chart", label: "Brand Identity" },
       { icon: "zap", label: "Performance Optimization" },
     ],
-    results: [
-      "300% increase in user engagement",
-      "150% boost in conversion rates",
-      "40% reduction in bounce rate",
-      "95% improvement in page load speed",
-    ],
+    results: ["lumenixResult1", "lumenixResult2", "lumenixResult3", "lumenixResult4"],
   },
   {
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
     image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4", // Add video URL
-    description: "Bringing custom web-solutions to their current site to elevate their online presence",
-    fullDescription:
-      "TractionMovies approached me to create a more dynamic website for them through the use of custom-components and interactive design.",
+    video: "assets/Portfolio-coming-soon.mp4",
+    description: "tractionMoviesDescription",
+    fullDescription: "tractionMoviesFullDescription",
     services: [
       { icon: "smartphone", label: "Mobile First Approach" },
       { icon: "palette", label: "UI/UX Design" },
       { icon: "code", label: "Backend Development" },
       { icon: "zap", label: "Performance Optimization" },
     ],
-    results: [
-      "80% increase in user engagement",
-      "25% boost in conversion rates",
-      "40% reduction in bounce rate",
-      "20% improvement in page load speed",
-    ],
+    results: ["tractionMoviesResult1", "tractionMoviesResult2", "tractionMoviesResult3", "tractionMoviesResult4"],
   },
   {
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
     image: "assets/coming-soon.jpg",
-    video: "assets/Portfolio-coming-soon.mp4", // Add video URL
-    description: "A simplistic solution for a membership community site that offers flexibility and guidance",
-    fullDescription:
-      "Mock-up text, will be replaced shortly.",
+    video: "assets/Portfolio-coming-soon.mp4",
+    description: "lifeSciGrowthDescription",
+    fullDescription: "lifeSciGrowthFullDescription",
     services: [
       { icon: "palette", label: "UI/UX Design" },
       { icon: "code", label: "Web Development" },
@@ -65,12 +53,7 @@ const projects = [
       { icon: "search", label: "SEO Strategy" },
       { icon: "bar-chart", label: "Brand Identity" },
     ],
-    results: [
-      "###% increase in website traffic",
-      "###% more project inquiries",
-      "##% improvement in brand recognition",
-      "Featured in # design publications",
-    ],
+    results: ["lifeSciGrowthResult1", "lifeSciGrowthResult2", "lifeSciGrowthResult3", "lifeSciGrowthResult4"],
   },
 ]
 
@@ -81,13 +64,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Initialize Application
 function initializeApp() {
+  detectMobileDevice()
   setupEventListeners()
   setupScrollAnimations()
   setupCursorFollower()
   setupMouseEffect()
   setupMobileMenuClickOutside()
   setupMobileMenuResize()
-  setupProjectTileVideos() // Add this line
+  setupProjectTileVideos()
+
+  // Make updateModalTranslations available globally
+  window.updateModalTranslations = updateModalTranslations
+}
+
+// Detect mobile device
+function detectMobileDevice() {
+  isMobileDevice =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.innerWidth <= 768
+
+  // Update on resize
+  window.addEventListener("resize", () => {
+    isMobileDevice =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+      window.innerWidth <= 768
+  })
 }
 
 // Event Listeners
@@ -188,7 +189,7 @@ function setupScrollAnimations() {
   })
 }
 
-// Navigation Functions - Improved mobile menu handling
+// Navigation Functions
 function toggleMobileMenu() {
   const mobileNav = document.getElementById("mobileNav")
   const hamburger = document.querySelector(".mobile-menu-btn")
@@ -264,7 +265,8 @@ function openProjectModal(index) {
 
   // Update modal content
   document.getElementById("modalTitle").textContent = project.title
-  document.getElementById("modalSubtitle").textContent = `${project.category} • ${project.year}`
+  document.getElementById("modalSubtitle").textContent =
+    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
   document.getElementById("navIndicator").textContent = `${index + 1} of ${projects.length}`
 
   // Generate modal body content
@@ -273,6 +275,9 @@ function openProjectModal(index) {
 
   // Show modal
   modal.classList.add("active")
+
+  // Scroll modal to top
+  scrollModalToTop()
 }
 
 function closeProjectModal() {
@@ -284,8 +289,8 @@ function closeProjectModal() {
   document.documentElement.style.overflow = "unset"
 
   // Exit fullscreen if active
-  if (document.fullscreenElement) {
-    document.exitFullscreen()
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
+    exitFullscreen()
   }
 }
 
@@ -299,7 +304,30 @@ function navigateProject(direction) {
     newIndex = currentProject === 0 ? totalProjects - 1 : currentProject - 1
   }
 
-  openProjectModal(newIndex)
+  // Update current project index
+  currentProject = newIndex
+  const project = projects[newIndex]
+
+  // Update modal content
+  document.getElementById("modalTitle").textContent = project.title
+  document.getElementById("modalSubtitle").textContent =
+    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+  document.getElementById("navIndicator").textContent = `${newIndex + 1} of ${projects.length}`
+
+  // Generate new modal body content
+  const modalBody = document.getElementById("modalBody")
+  modalBody.innerHTML = generateProjectModalContent(project)
+
+  // Scroll modal to top for clear navigation
+  scrollModalToTop()
+}
+
+// Function to scroll modal body to top
+function scrollModalToTop() {
+  const modalBody = document.getElementById("modalBody")
+  if (modalBody) {
+    modalBody.scrollTop = 0
+  }
 }
 
 function generateProjectModalContent(project) {
@@ -310,7 +338,7 @@ function generateProjectModalContent(project) {
             <div class="service-badge-icon">
                 ${getIconSVG(service.icon)}
             </div>
-            <span class="service-badge-label">${service.label}</span>
+            <span class="service-badge-label">${window.t(service.label.toLowerCase().replace(/\s+/g, "").replace("/", "").replace("-", ""))}</span>
         </div>
     `,
     )
@@ -321,7 +349,7 @@ function generateProjectModalContent(project) {
       (result) => `
         <div class="result-item">
             <div class="result-dot"></div>
-            <span class="result-text">${result}</span>
+            <span class="result-text">${window.t(result)}</span>
         </div>
     `,
     )
@@ -337,12 +365,16 @@ function generateProjectModalContent(project) {
                 loop 
                 playsinline
                 poster="${project.image}"
+                ${isMobileDevice ? "controls" : ""}
             >
                 <source src="${project.video}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            ${
+              !isMobileDevice
+                ? `
             <div class="video-controls">
-                <button class="sound-toggle" onclick="toggleVideoSound()" id="soundToggle" aria-label="Unmute video">
+                <button class="sound-toggle" onclick="toggleVideoSound()" id="soundToggle" aria-label="${window.t("unmuteVideo")}">
                     <svg class="sound-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/>
                         <line x1="23" y1="9" x2="17" y2="15"/>
@@ -353,7 +385,7 @@ function generateProjectModalContent(project) {
                         <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
                     </svg>
                 </button>
-                <button class="play-pause-toggle" onclick="toggleVideoPlayback()" id="playPauseToggle" aria-label="Pause video">
+                <button class="play-pause-toggle" onclick="toggleVideoPlayback()" id="playPauseToggle" aria-label="${window.t("pauseVideo")}">
                     <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
                         <rect x="6" y="4" width="4" height="16"/>
                         <rect x="14" y="4" width="4" height="16"/>
@@ -362,28 +394,39 @@ function generateProjectModalContent(project) {
                         <polygon points="5,3 19,12 5,21"/>
                     </svg>
                 </button>
-                <button class="fullscreen-toggle" onclick="toggleFullscreen()" id="fullscreenToggle" aria-label="Enter fullscreen">
+                <button class="fullscreen-toggle" onclick="toggleFullscreen()" id="fullscreenToggle" aria-label="${window.t("enterFullscreen")}">
                     <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
                     </svg>
                 </button>
             </div>
+            `
+                : `
+            <div class="video-controls mobile-video-controls">
+                <button class="fullscreen-toggle mobile-fullscreen-btn" onclick="toggleFullscreen()" id="fullscreenToggle" aria-label="${window.t("enterFullscreen")}">
+                    <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
+                    </svg>
+                </button>
+            </div>
+            `
+            }
         </div>
         
         <div class="project-overview">
-            <h4>Project Overview</h4>
-            <p>${project.fullDescription}</p>
+            <h4>${window.t("projectOverview")}</h4>
+            <p>${window.t(project.fullDescription)}</p>
         </div>
         
         <div class="services-provided">
-            <h4>Services Provided</h4>
+            <h4>${window.t("servicesProvided")}</h4>
             <div class="services-grid-modal">
                 ${servicesHTML}
             </div>
         </div>
         
         <div class="results-section">
-            <h4>Results & Impact</h4>
+            <h4>${window.t("resultsImpact")}</h4>
             <div class="results-grid">
                 ${resultsHTML}
             </div>
@@ -395,6 +438,9 @@ function generateProjectModalContent(project) {
 function toggleVideoSound() {
   const video = document.getElementById("modalVideo")
   const soundToggle = document.getElementById("soundToggle")
+
+  if (!video || !soundToggle) return
+
   const soundOffIcon = soundToggle.querySelector(".sound-off-icon")
   const soundOnIcon = soundToggle.querySelector(".sound-on-icon")
 
@@ -402,18 +448,21 @@ function toggleVideoSound() {
     video.muted = false
     soundOffIcon.style.display = "none"
     soundOnIcon.style.display = "block"
-    soundToggle.setAttribute("aria-label", "Mute video")
+    soundToggle.setAttribute("aria-label", window.t("muteVideo"))
   } else {
     video.muted = true
     soundOffIcon.style.display = "block"
     soundOnIcon.style.display = "none"
-    soundToggle.setAttribute("aria-label", "Unmute video")
+    soundToggle.setAttribute("aria-label", window.t("unmuteVideo"))
   }
 }
 
 function toggleVideoPlayback() {
   const video = document.getElementById("modalVideo")
   const playPauseToggle = document.getElementById("playPauseToggle")
+
+  if (!video || !playPauseToggle) return
+
   const pauseIcon = playPauseToggle.querySelector(".pause-icon")
   const playIcon = playPauseToggle.querySelector(".play-icon")
 
@@ -421,18 +470,200 @@ function toggleVideoPlayback() {
     video.play()
     pauseIcon.style.display = "block"
     playIcon.style.display = "none"
-    playPauseToggle.setAttribute("aria-label", "Pause video")
+    playPauseToggle.setAttribute("aria-label", window.t("pauseVideo"))
   } else {
     video.pause()
     pauseIcon.style.display = "none"
     playIcon.style.display = "block"
-    playPauseToggle.setAttribute("aria-label", "Play video")
+    playPauseToggle.setAttribute("aria-label", window.t("playVideo"))
+  }
+}
+
+// Enhanced fullscreen functionality with mobile support
+function toggleFullscreen() {
+  const video = document.getElementById("modalVideo")
+  const fullscreenBtn = document.getElementById("fullscreenToggle")
+
+  if (!video || !fullscreenBtn) return
+
+  // Check if already in fullscreen
+  const isInFullscreen =
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+
+  if (!isInFullscreen) {
+    enterFullscreen(video, fullscreenBtn)
+  } else {
+    exitFullscreen(fullscreenBtn)
+  }
+}
+
+function enterFullscreen(video, fullscreenBtn) {
+  try {
+    // For mobile devices, especially iOS
+    if (isMobileDevice) {
+      // iOS Safari specific fullscreen
+      if (video.webkitEnterFullscreen && typeof video.webkitEnterFullscreen === "function") {
+        video.webkitEnterFullscreen()
+        updateFullscreenButton(fullscreenBtn, true)
+        return
+      }
+
+      // For other mobile browsers that support requestFullscreen on video
+      if (video.requestFullscreen) {
+        video
+          .requestFullscreen()
+          .then(() => {
+            updateFullscreenButton(fullscreenBtn, true)
+          })
+          .catch(handleFullscreenError)
+        return
+      }
+
+      // Fallback for mobile: try container fullscreen
+      const container = video.closest(".project-video-container")
+      if (container && container.requestFullscreen) {
+        container
+          .requestFullscreen()
+          .then(() => {
+            updateFullscreenButton(fullscreenBtn, true)
+          })
+          .catch(handleFullscreenError)
+        return
+      }
+
+      // Last resort: show message
+      showFullscreenMessage()
+      return
+    }
+
+    // Desktop fullscreen
+    if (video.requestFullscreen) {
+      video
+        .requestFullscreen()
+        .then(() => {
+          updateFullscreenButton(fullscreenBtn, true)
+        })
+        .catch(handleFullscreenError)
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen()
+      updateFullscreenButton(fullscreenBtn, true)
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen()
+      updateFullscreenButton(fullscreenBtn, true)
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen()
+      updateFullscreenButton(fullscreenBtn, true)
+    } else {
+      showFullscreenMessage()
+    }
+  } catch (error) {
+    console.log("Fullscreen error:", error)
+    handleFullscreenError(error)
+  }
+}
+
+function exitFullscreen(fullscreenBtn) {
+  try {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().then(() => {
+        updateFullscreenButton(fullscreenBtn, false)
+      })
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen()
+      updateFullscreenButton(fullscreenBtn, false)
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen()
+      updateFullscreenButton(fullscreenBtn, false)
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen()
+      updateFullscreenButton(fullscreenBtn, false)
+    }
+  } catch (error) {
+    console.log("Exit fullscreen error:", error)
+  }
+}
+
+function updateFullscreenButton(fullscreenBtn, isFullscreen) {
+  if (!fullscreenBtn) return
+
+  if (isFullscreen) {
+    fullscreenBtn.innerHTML = `
+      <svg class="fullscreen-exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21h3a2 2 0 0 1 2-2v-3"/>
+      </svg>
+    `
+    fullscreenBtn.setAttribute("aria-label", window.t("exitFullscreen"))
+  } else {
+    fullscreenBtn.innerHTML = `
+      <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
+      </svg>
+    `
+    fullscreenBtn.setAttribute("aria-label", window.t("enterFullscreen"))
+  }
+}
+
+function handleFullscreenError(error) {
+  console.log("Fullscreen failed:", error)
+  showFullscreenMessage()
+}
+
+function showFullscreenMessage() {
+  // Create a temporary message for users
+  const message = document.createElement("div")
+  message.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    text-align: center;
+    max-width: 300px;
+    font-size: 14px;
+  `
+  message.innerHTML = `
+    <p>${window.t("fullscreenNotSupported")}</p>
+    <p>${window.t("rotateDevice")}</p>
+    <button onclick="this.parentElement.remove()" style="margin-top: 10px; padding: 8px 16px; background: #8b5cf6; color: white; border: none; border-radius: 4px; cursor: pointer;">${window.t("ok")}</button>
+  `
+  document.body.appendChild(message)
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (message.parentElement) {
+      message.remove()
+    }
+  }, 5000)
+}
+
+// Add fullscreen event listeners
+document.addEventListener("fullscreenchange", handleFullscreenChange)
+document.addEventListener("webkitfullscreenchange", handleFullscreenChange)
+document.addEventListener("mozfullscreenchange", handleFullscreenChange)
+document.addEventListener("MSFullscreenChange", handleFullscreenChange)
+
+function handleFullscreenChange() {
+  const fullscreenBtn = document.getElementById("fullscreenToggle")
+  const isInFullscreen =
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+
+  if (fullscreenBtn) {
+    updateFullscreenButton(fullscreenBtn, !!isInFullscreen)
   }
 }
 
 // Booking Modal Functions
 function openBookingModal() {
-  // Open Calendly directly instead of showing modal
   window.open("https://calendly.com/kjell-virtualcreators/30min", "_blank")
 }
 
@@ -440,18 +671,27 @@ function openBookingModal() {
 function handleContactSubmit(event) {
   event.preventDefault()
 
-  // Get form data
   const formData = new FormData(event.target)
   const data = Object.fromEntries(formData)
 
-  // Here you would typically send the data to your backend
   console.log("Contact form submitted:", data)
+  alert(window.t("thankYouMessage"))
 
-  // Show success message
-  alert("Thank you for your message! We'll get back to you soon.")
-
-  // Reset form
   event.target.reset()
+}
+
+// Update modal content when language changes
+function updateModalTranslations() {
+  const modal = document.getElementById("projectModal")
+  if (modal && modal.classList.contains("active")) {
+    // Re-generate modal content with new translations
+    const project = projects[currentProject]
+    document.getElementById("modalSubtitle").textContent =
+      `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+
+    const modalBody = document.getElementById("modalBody")
+    modalBody.innerHTML = generateProjectModalContent(project)
+  }
 }
 
 // Utility Functions
@@ -484,7 +724,6 @@ function setupProjectTileVideos() {
   const projectImages = document.querySelectorAll(".project-image")
 
   projectImages.forEach((imageContainer, index) => {
-    // Create video element for hover
     const video = document.createElement("video")
     video.className = "project-hover-video"
     video.muted = true
@@ -492,16 +731,13 @@ function setupProjectTileVideos() {
     video.playsInline = true
     video.preload = "metadata"
 
-    // Add video source
     const source = document.createElement("source")
     source.src = projects[index].video
     source.type = "video/mp4"
     video.appendChild(source)
 
-    // Insert video before the image
     imageContainer.insertBefore(video, imageContainer.firstChild)
 
-    // Add hover event listeners
     imageContainer.addEventListener("mouseenter", () => {
       video.currentTime = 0
       video.play().catch((e) => console.log("Video play failed:", e))
@@ -518,55 +754,7 @@ function setupProjectTileVideos() {
   })
 }
 
-// Add fullscreen functionality
-function toggleFullscreen() {
-  const video = document.getElementById("modalVideo")
-  const fullscreenBtn = document.getElementById("fullscreenToggle")
-
-  if (!document.fullscreenElement) {
-    video
-      .requestFullscreen()
-      .then(() => {
-        fullscreenBtn.innerHTML = `
-        <svg class="fullscreen-exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21h3a2 2 0 0 1 2-2v-3"/>
-        </svg>
-      `
-        fullscreenBtn.setAttribute("aria-label", "Exit fullscreen")
-      })
-      .catch((err) => {
-        console.log("Fullscreen failed:", err)
-      })
-  } else {
-    document.exitFullscreen().then(() => {
-      fullscreenBtn.innerHTML = `
-        <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
-        </svg>
-      `
-      fullscreenBtn.setAttribute("aria-label", "Enter fullscreen")
-    })
-  }
-}
-
-// Add fullscreen event listeners
-document.addEventListener("fullscreenchange", () => {
-  const fullscreenBtn = document.getElementById("fullscreenToggle")
-  if (fullscreenBtn) {
-    if (document.fullscreenElement) {
-      fullscreenBtn.innerHTML = `
-        <svg class="fullscreen-exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21h3a2 2 0 0 1 2-2v-3"/>
-        </svg>
-      `
-      fullscreenBtn.setAttribute("aria-label", "Exit fullscreen")
-    } else {
-      fullscreenBtn.innerHTML = `
-        <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
-        </svg>
-      `
-      fullscreenBtn.setAttribute("aria-label", "Enter fullscreen")
-    }
-  }
-})
+// Make variables globally available for translations
+window.projects = projects
+window.currentProject = currentProject
+window.generateProjectModalContent = generateProjectModalContent

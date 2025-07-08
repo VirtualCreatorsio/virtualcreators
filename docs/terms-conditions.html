@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/vc-logo-32x32.png" type="assets/vc-logo32x32/png" />
+    <link rel="icon" href="assets/vc-logo-32x32.png" type="assets/favicon-16x16/png" />
     <title>Terms & Conditions - VirtualCreators</title>
+    <meta name="description" content="Terms and conditions for VirtualCreators digital agency services." id="metaDescription">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://virtualcreators.io/terms-conditions.html?lang=en" />
+    <link rel="alternate" hreflang="nl" href="https://virtualcreators.io/terms-conditions.html?lang=nl" />
+    <link rel="alternate" hreflang="x-default" href="https://virtualcreators.io/terms-conditions.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Terms & Conditions - VirtualCreators" id="ogTitle">
+    <meta property="og:description" content="Terms and conditions for VirtualCreators digital agency services." id="ogDescription">
+    <meta property="og:url" content="https://virtualcreators.io/terms-conditions.html" id="ogUrl">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US" id="ogLocale">
+    <meta property="og:locale:alternate" content="nl_NL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms & Conditions - VirtualCreators" id="twitterTitle">
+    <meta name="twitter:description" content="Terms and conditions for VirtualCreators digital agency services." id="twitterDescription">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +39,64 @@
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
                 </a>
-                <div class="nav-links desktop-nav">
-                    <a href="index.html" class="nav-link">← Back to Home</a>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link" data-translate="backToHome">← Back to Home</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn">
+                            <span class="language-flag" id="currentFlag">🇬🇧</span>
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <button class="language-option" onclick="switchLanguage('en')">
+                                <span class="language-flag">🇬🇧</span>
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')">
+                                <span class="language-flag">🇳🇱</span>
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="index.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="backToHome">← Back to Home</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header" data-translate="language">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span class="language-flag">🇬🇧</span>
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span class="language-flag">🇳🇱</span>
+                            <span>NL</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,121 +106,121 @@
     <section class="legal-page">
         <div class="container">
             <div class="legal-content">
-                <h1 class="legal-title">Terms & Conditions</h1>
-                <p class="legal-updated">Last updated: July 2025</p>
+                <h1 class="legal-title" data-translate="termsConditionsTitle">Terms & Conditions</h1>
+                <p class="legal-updated" data-translate="lastUpdated">Last updated: July 2025</p>
 
                 <div class="legal-section">
-                    <h2>1. Acceptance of Terms</h2>
-                    <p>By accessing and using VirtualCreators' website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                    <h2 data-translate="acceptanceOfTerms">1. Acceptance of Terms</h2>
+                    <p data-translate="acceptanceOfTermsText">By accessing and using VirtualCreators' website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>2. Services</h2>
-                    <p>VirtualCreators provides digital design and development services including but not limited to:</p>
+                    <h2 data-translate="servicesSection">2. Services</h2>
+                    <p data-translate="servicesSectionText">VirtualCreators provides digital design and development services including but not limited to:</p>
                     <ul>
-                        <li>Web design and development</li>
-                        <li>Brand identity design</li>
-                        <li>User experience (UX) design</li>
-                        <li>User interface (UI) design</li>
-                        <li>Digital strategy consulting</li>
+                        <li data-translate="servicesSectionItem1">Web design and development</li>
+                        <li data-translate="servicesSectionItem2">Brand identity design</li>
+                        <li data-translate="servicesSectionItem3">User experience (UX) design</li>
+                        <li data-translate="servicesSectionItem4">User interface (UI) design</li>
+                        <li data-translate="servicesSectionItem5">Digital strategy consulting</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>3. Project Terms</h2>
-                    <p>All projects are subject to a separate project agreement that will outline:</p>
+                    <h2 data-translate="projectTerms">3. Project Terms</h2>
+                    <p data-translate="projectTermsText">All projects are subject to a separate project agreement that will outline:</p>
                     <ul>
-                        <li>Scope of work and deliverables</li>
-                        <li>Timeline and milestones</li>
-                        <li>Payment terms and schedule</li>
-                        <li>Revision and approval process</li>
-                        <li>Intellectual property rights</li>
+                        <li data-translate="projectTermsItem1">Scope of work and deliverables</li>
+                        <li data-translate="projectTermsItem2">Timeline and milestones</li>
+                        <li data-translate="projectTermsItem3">Payment terms and schedule</li>
+                        <li data-translate="projectTermsItem4">Revision and approval process</li>
+                        <li data-translate="projectTermsItem5">Intellectual property rights</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>4. Payment Terms</h2>
-                    <p>Unless otherwise specified in a project agreement:</p>
+                    <h2 data-translate="paymentTerms">4. Payment Terms</h2>
+                    <p data-translate="paymentTermsText">Unless otherwise specified in a project agreement:</p>
                     <ul>
-                        <li>A 50% deposit is required before work begins</li>
-                        <li>Final payment is due upon project completion</li>
-                        <li>Late payments may incur additional fees</li>
-                        <li>All prices are in EUR unless otherwise stated</li>
+                        <li data-translate="paymentTermsItem1">A 50% deposit is required before work begins</li>
+                        <li data-translate="paymentTermsItem2">Final payment is due upon project completion</li>
+                        <li data-translate="paymentTermsItem3">Late payments may incur additional fees</li>
+                        <li data-translate="paymentTermsItem4">All prices are in EUR unless otherwise stated</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>5. Intellectual Property</h2>
-                    <p>Upon full payment:</p>
+                    <h2 data-translate="intellectualProperty">5. Intellectual Property</h2>
+                    <p data-translate="intellectualPropertyText">Upon full payment:</p>
                     <ul>
-                        <li>Client owns the final deliverables and custom code</li>
-                        <li>VirtualCreators retains rights to general methodologies and techniques</li>
-                        <li>Third-party assets remain property of their respective owners</li>
-                        <li>VirtualCreators may showcase completed work in portfolios</li>
+                        <li data-translate="intellectualPropertyItem1">Client owns the final deliverables and custom code</li>
+                        <li data-translate="intellectualPropertyItem2">VirtualCreators retains rights to general methodologies and techniques</li>
+                        <li data-translate="intellectualPropertyItem3">Third-party assets remain property of their respective owners</li>
+                        <li data-translate="intellectualPropertyItem4">VirtualCreators may showcase completed work in portfolios</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>6. Client Responsibilities</h2>
-                    <p>Clients are responsible for:</p>
+                    <h2 data-translate="clientResponsibilities">6. Client Responsibilities</h2>
+                    <p data-translate="clientResponsibilitiesText">Clients are responsible for:</p>
                     <ul>
-                        <li>Providing necessary content, materials, and access</li>
-                        <li>Timely feedback and approvals</li>
-                        <li>Ensuring content accuracy and legal compliance</li>
-                        <li>Maintaining backups of their data</li>
+                        <li data-translate="clientResponsibilitiesItem1">Providing necessary content, materials, and access</li>
+                        <li data-translate="clientResponsibilitiesItem2">Timely feedback and approvals</li>
+                        <li data-translate="clientResponsibilitiesItem3">Ensuring content accuracy and legal compliance</li>
+                        <li data-translate="clientResponsibilitiesItem4">Maintaining backups of their data</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>7. Warranties and Disclaimers</h2>
-                    <p>VirtualCreators provides services "as is" and makes no warranties regarding:</p>
+                    <h2 data-translate="warrantiesDisclaimers">7. Warranties and Disclaimers</h2>
+                    <p data-translate="warrantiesDisclaimersText">VirtualCreators provides services "as is" and makes no warranties regarding:</p>
                     <ul>
-                        <li>Uninterrupted or error-free operation</li>
-                        <li>Specific performance metrics or results</li>
-                        <li>Compatibility with all systems or browsers</li>
-                        <li>Third-party service availability</li>
+                        <li data-translate="warrantiesDisclaimersItem1">Uninterrupted or error-free operation</li>
+                        <li data-translate="warrantiesDisclaimersItem2">Specific performance metrics or results</li>
+                        <li data-translate="warrantiesDisclaimersItem3">Compatibility with all systems or browsers</li>
+                        <li data-translate="warrantiesDisclaimersItem4">Third-party service availability</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>8. Limitation of Liability</h2>
-                    <p>VirtualCreators' liability is limited to the amount paid for services. We are not liable for:</p>
+                    <h2 data-translate="limitationLiability">8. Limitation of Liability</h2>
+                    <p data-translate="limitationLiabilityText">VirtualCreators' liability is limited to the amount paid for services. We are not liable for:</p>
                     <ul>
-                        <li>Indirect, incidental, or consequential damages</li>
-                        <li>Loss of profits, data, or business opportunities</li>
-                        <li>Third-party actions or service interruptions</li>
-                        <li>Force majeure events</li>
+                        <li data-translate="limitationLiabilityItem1">Indirect, incidental, or consequential damages</li>
+                        <li data-translate="limitationLiabilityItem2">Loss of profits, data, or business opportunities</li>
+                        <li data-translate="limitationLiabilityItem3">Third-party actions or service interruptions</li>
+                        <li data-translate="limitationLiabilityItem4">Force majeure events</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>9. Termination</h2>
-                    <p>Either party may terminate services with written notice. Upon termination:</p>
+                    <h2 data-translate="termination">9. Termination</h2>
+                    <p data-translate="terminationText">Either party may terminate services with written notice. Upon termination:</p>
                     <ul>
-                        <li>Client pays for work completed to date</li>
-                        <li>VirtualCreators delivers completed work</li>
-                        <li>Both parties return confidential information</li>
-                        <li>Surviving clauses remain in effect</li>
+                        <li data-translate="terminationItem1">Client pays for work completed to date</li>
+                        <li data-translate="terminationItem2">VirtualCreators delivers completed work</li>
+                        <li data-translate="terminationItem3">Both parties return confidential information</li>
+                        <li data-translate="terminationItem4">Surviving clauses remain in effect</li>
                     </ul>
                 </div>
 
                 <div class="legal-section">
-                    <h2>10. Governing Law</h2>
-                    <p>These terms are governed by the laws of The Netherlands. Any disputes shall be submitted to the exclusive jurisdiction of the competent court in Amsterdam, the Netherlands.</p>
+                    <h2 data-translate="governingLaw">10. Governing Law</h2>
+                    <p data-translate="governingLawText">These terms are governed by the laws of The Netherlands. Any disputes shall be submitted to the exclusive jurisdiction of the competent court in Amsterdam, the Netherlands.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>11. Changes to Terms</h2>
-                    <p>I reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of modified terms.</p>
+                    <h2 data-translate="changesToTerms">11. Changes to Terms</h2>
+                    <p data-translate="changesToTermsText">I reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of modified terms.</p>
                 </div>
 
                 <div class="legal-section">
-                    <h2>12. Contact Information</h2>
-                    <p>For questions about these Terms & Conditions, contact me:</p>
+                    <h2 data-translate="contactInformation">12. Contact Information</h2>
+                    <p data-translate="contactInformationText">For questions about these Terms & Conditions, contact me:</p>
                     <ul>
-                        <li>Email: kjell@virtualcreators.io</li>
-                        <li>Phone: +316 41552375</li>
-                        <li>Based: The Netherlands, Amsterdam</li>
+                        <li data-translate="contactInformationItem1">Email: kjell@virtualcreators.io</li>
+                        <li data-translate="contactInformationItem2">Phone: +316 41552375</li>
+                        <li data-translate="contactInformationItem3">Based: The Netherlands, Amsterdam</li>
                     </ul>
                 </div>
             </div>
@@ -160,12 +236,65 @@
                     <div class="brand-dot"></div>
                 </div>
                 <div class="footer-links">
-                    <a href="privacy-policy.html" class="footer-link">Privacy & Cookie Policy</a>
-                    <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+                    <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
+                    <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
                 </div>
-                <div class="footer-copyright">© 2025 VirtualCreators. Crafted with care.</div>
+                <div class="footer-copyright" data-translate="copyright">© 2025 VirtualCreators. Crafted with care.</div>
             </div>
         </div>
     </footer>
+
+    <script src="translations.js"></script>
+    <script>
+        // Mobile menu functions for legal pages
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+
+            if (!mobileNav || !hamburger) return
+
+            const isActive = mobileNav.classList.contains("active")
+
+            if (isActive) {
+                mobileNav.classList.remove("active")
+                hamburger.classList.remove("active")
+                document.body.style.overflow = "unset"
+            } else {
+                mobileNav.classList.add("active")
+                hamburger.classList.add("active")
+                document.body.style.overflow = "hidden"
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+
+            if (mobileNav && hamburger) {
+                mobileNav.classList.remove("active")
+                hamburger.classList.remove("active")
+                document.body.style.overflow = "unset"
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (e) => {
+            const mobileNav = document.getElementById("mobileNav")
+            const hamburger = document.querySelector(".mobile-menu-btn")
+            const isClickInsideNav = mobileNav && mobileNav.contains(e.target)
+            const isClickOnHamburger = hamburger && hamburger.contains(e.target)
+
+            if (mobileNav && mobileNav.classList.contains("active") && !isClickInsideNav && !isClickOnHamburger) {
+                closeMobileMenu()
+            }
+        })
+
+        // Close mobile menu on window resize if it gets too large
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 900) {
+                closeMobileMenu()
+            }
+        })
+    </script>
 </body>
 </html>

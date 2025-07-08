@@ -119,16 +119,16 @@ body {
   display: none;
   align-items: center;
   gap: 3rem;
+  margin-right: -60px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .desktop-nav {
     display: flex;
   }
-    .service-grid-modal {
+  .service-grid-modal {
     gap: 0.5rem !important;
   }
-
 }
 
 .nav-links {
@@ -172,7 +172,7 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .mobile-menu-btn {
     display: none;
   }
@@ -253,8 +253,8 @@ body {
 }
 
 .mobile-cta {
-  margin-top: 1rem;
-  width: 100%;
+  width: fit-content;
+  padding: 15px !important;
 }
 
 /* Desktop Navigation - Hide on mobile/tablet */
@@ -264,7 +264,7 @@ body {
   gap: 3rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .desktop-nav {
     display: flex;
   }
@@ -308,13 +308,12 @@ body {
   .mobile-menu-btn {
     padding: 10px;
   }
-    .hero-title-italic {
+  .hero-title-italic {
     font-style: normal !important;
   }
   .title-italic {
     font-style: normal !important;
   }
-
 }
 
 /* Tablet specific adjustments */
@@ -1870,4 +1869,161 @@ html.modal-open {
   color: #6b7280;
   font-size: 0.875rem;
   text-align: center;
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.language-btn:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.language-flag {
+  font-size: 1rem;
+}
+
+.language-text {
+  font-weight: 500;
+  min-width: 1.5rem;
+}
+
+.language-arrow {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+  transition: transform 0.3s ease;
+}
+
+.language-btn.active .language-arrow {
+  transform: rotate(180deg);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  min-width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.language-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.language-option:hover {
+  background-color: #f3f4f6;
+}
+
+.language-option:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.language-option:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+  padding: 1rem 0;
+  border-top: 1px solid #f3f4f6;
+  margin-top: 1rem;
+}
+
+.mobile-language-header {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mobile-language-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.mobile-language-option:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.mobile-language-option.active {
+  background: linear-gradient(to right, #ec4899, #8b5cf6);
+  color: white;
+  border-color: transparent;
+}
+
+/* Hide language switcher on mobile for desktop nav */
+@media (max-width: 1023px) {
+  .language-switcher, .nav-right {
+    display: none;
+  }
+}
+
+/* Hide mobile language switcher on desktop */
+@media (min-width: 1024px) {
+  .mobile-language-switcher {
+    display: none;
+  }
 }

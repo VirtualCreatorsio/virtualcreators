@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VirtualCreators | Custom Web Development | Web Design & eCommerce Solutions</title>
-    <meta name="description" content="I craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.">
+    <title>VirtualCreators - Digital Agency Portfolio</title>
+    <meta name="description" content="We craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact." id="metaDescription">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://virtualcreators.io/?lang=en" />
+    <link rel="alternate" hreflang="nl" href="https://virtualcreators.io/?lang=nl" />
+    <link rel="alternate" hreflang="x-default" href="https://virtualcreators.io/" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="VirtualCreators - Digital Agency Portfolio" id="ogTitle">
+    <meta property="og:description" content="We craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact." id="ogDescription">
+    <meta property="og:url" content="https://virtualcreators.io" id="ogUrl">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US" id="ogLocale">
+    <meta property="og:locale:alternate" content="nl_NL">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VirtualCreators - Digital Agency Portfolio" id="twitterTitle">
+    <meta name="twitter:description" content="We craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact." id="twitterDescription">
+     
+    <!-- Favicon Support -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/vc-logo-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,12 +49,38 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="nav-links desktop-nav">
-                    <a href="#work" class="nav-link">Work</a>
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                    <button class="btn btn-ghost" onclick="openBookingModal()">Let's Talk</button>
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="#work" class="nav-link" data-translate="work">Work</a>
+                        <a href="#services" class="nav-link" data-translate="services">Services</a>
+                        <a href="#about" class="nav-link" data-translate="about">About</a>
+                        <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn">
+                            <span class="language-flag" id="currentFlag">🇬🇧</span>
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <button class="language-option" onclick="switchLanguage('en')">
+                                <span class="language-flag">🇬🇧</span>
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')">
+                                <span class="language-flag">🇳🇱</span>
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost" onclick="openBookingModal()" data-translate="letsalk">Let's Talk</button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -44,11 +95,25 @@
         <!-- Mobile Navigation -->
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
-                <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
-                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services</a>
-                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
-                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
-                <button class="btn btn-primary mobile-cta" onclick="openBookingModal(); closeMobileMenu()">Let's Talk</button>
+                <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Work</a>
+                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Services</a>
+                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
+                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header" data-translate="language">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span class="language-flag">🇬🇧</span>
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span class="language-flag">🇳🇱</span>
+                            <span>NL</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mobile-cta" onclick="openBookingModal(); closeMobileMenu()" data-translate="letsalk">Let's Talk</button>
             </div>
         </div>
     </nav>
@@ -60,21 +125,21 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        I craft<br>
-                        <span class="hero-title-italic">digital experiences</span>
+                        <span data-translate="heroTitle1">I craft</span><br>
+                        <span class="hero-title-italic" data-translate="heroTitle2">digital experiences</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle" data-translate="heroSubtitle">
                         Thoughtful design and development for brands that want to make a meaningful impact.
                     </p>
                 </div>
                 <div class="hero-buttons">
                     <button class="btn btn-primary btn-large" onclick="scrollToWork()">
-                        View My Work
+                        <span data-translate="viewMyWork">View My Work</span>
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </button>
-                    <button class="btn btn-ghost btn-large" onclick="openBookingModal()">
+                    <button class="btn btn-ghost btn-large" onclick="openBookingModal()" data-translate="startProject">
                         Start a Project
                     </button>
                 </div>
@@ -93,14 +158,14 @@
                     <div class="section-header">
                         <div class="section-badge">
                             <div class="brand-dot-small"></div>
-                            <span class="section-label">What I Do</span>
+                            <span class="section-label" data-translate="whatIDo">What I Do</span>
                         </div>
                         <h2 class="section-title">
-                            Services that drive<br>
-                            <span class="title-italic">meaningful growth</span>
+                            <span data-translate="servicesTitle1">Services that drive</span><br>
+                            <span class="title-italic" data-translate="servicesTitle2">meaningful growth</span>
                         </h2>
                     </div>
-                    <p class="section-description">
+                    <p class="section-description" data-translate="servicesDescription">
                         I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.
                     </p>
                 </div>
@@ -110,8 +175,8 @@
                         <div class="service-content">
                             <span class="service-number">01</span>
                             <div class="service-text">
-                                <h3 class="service-title">Digital Strategy</h3>
-                                <p class="service-description">Thoughtful planning that transforms vision into measurable results</p>
+                                <h3 class="service-title" data-translate="digitalStrategy">Digital Strategy</h3>
+                                <p class="service-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
                             </div>
                             <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -122,8 +187,8 @@
                         <div class="service-content">
                             <span class="service-number">02</span>
                             <div class="service-text">
-                                <h3 class="service-title">Brand Identity</h3>
-                                <p class="service-description">Distinctive visual systems that communicate your unique story</p>
+                                <h3 class="service-title" data-translate="brandIdentity">Brand Identity</h3>
+                                <p class="service-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
                             </div>
                             <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -134,8 +199,8 @@
                         <div class="service-content">
                             <span class="service-number">03</span>
                             <div class="service-text">
-                                <h3 class="service-title">Web Development</h3>
-                                <p class="service-description">Clean, performant websites built with modern technologies</p>
+                                <h3 class="service-title" data-translate="webDevelopment">Web Development</h3>
+                                <p class="service-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
                             </div>
                             <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -146,8 +211,8 @@
                         <div class="service-content">
                             <span class="service-number">04</span>
                             <div class="service-text">
-                                <h3 class="service-title">User Experience</h3>
-                                <p class="service-description">Intuitive interfaces that users love and businesses trust</p>
+                                <h3 class="service-title" data-translate="userExperience">User Experience</h3>
+                                <p class="service-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
                             </div>
                             <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -165,11 +230,11 @@
             <div class="portfolio-header">
                 <div class="section-badge-mid">
                     <div class="brand-dot-small"></div>
-                    <span class="section-label">Selected Work</span>
+                    <span class="section-label" data-translate="selectedWork">Selected Work</span>
                 </div>
                 <h2 class="section-title">
-                    Projects I am<br>
-                    <span class="title-italic">proud of</span>
+                    <span data-translate="projectsIAm">Projects I am</span><br>
+                    <span class="title-italic" data-translate="proudOf">proud of</span>
                 </h2>
             </div>
 
@@ -179,14 +244,14 @@
                     <div class="project-content">
                         <div class="project-info">
                             <div class="project-meta">
-                                <span>Online Shop</span>
+                                <span data-translate="onlineShop">Online Shop</span>
                                 <div class="meta-dot"></div>
                                 <span>2025</span>
                             </div>
                             <h3 class="project-title">Lumenix-Beamers</h3>
                         </div>
-                        <p class="project-description">A complete rebranding of their online precense through custom web-solutions</p>
-                        <button class="project-link" onclick="openProjectModal(0)">
+                        <p class="project-description" data-translate="lumenixDescription">A complete rebranding of their online precense through custom web-solutions</p>
+                        <button class="project-link" onclick="openProjectModal(0)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -211,14 +276,14 @@
                     <div class="project-content">
                         <div class="project-info">
                             <div class="project-meta">
-                                <span>Creative Agency</span>
+                                <span data-translate="creativeAgency">Creative Agency</span>
                                 <div class="meta-dot"></div>
                                 <span>2025</span>
                             </div>
                             <h3 class="project-title">TractionMovies</h3>
                         </div>
-                        <p class="project-description">Bringing custom web-solutions to their current site to elevate their online presence</p>
-                        <button class="project-link" onclick="openProjectModal(1)">
+                        <p class="project-description" data-translate="tractionMoviesDescription">Bringing custom web-solutions to their current site to elevate their online presence</p>
+                        <button class="project-link" onclick="openProjectModal(1)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -243,14 +308,14 @@
                     <div class="project-content">
                         <div class="project-info">
                             <div class="project-meta">
-                                <span>Coaching & Community</span>
+                                <span data-translate="coachingCommunity">Coaching & Community</span>
                                 <div class="meta-dot"></div>
                                 <span>2025</span>
                             </div>
                             <h3 class="project-title">LifeSciGrowth</h3>
                         </div>
-                        <p class="project-description">A simplistic solution for a membership community site that offers flexibility and guidance</p>
-                        <button class="project-link" onclick="openProjectModal(2)">
+                        <p class="project-description" data-translate="lifeSciGrowthDescription">A simplistic solution for a membership community site that offers flexibility and guidance</p>
+                        <button class="project-link" onclick="openProjectModal(2)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -281,35 +346,35 @@
                     <div class="section-header">
                         <div class="section-badge">
                             <div class="brand-dot-small"></div>
-                            <span class="section-label">About Me</span>
+                            <span class="section-label" data-translate="aboutMe">About Me</span>
                         </div>
                         <h2 class="section-title">
-                            I believe in the power<br>
-                            of <span class="title-italic">thoughtful design</span>
+                            <span data-translate="iBelieveIn">I believe in the power</span><br>
+                            <span class="title-italic" data-translate="thoughtfulDesign">of thoughtful design</span>
                         </h2>
                     </div>
                     <div class="about-text">
-                        <p>Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.</p>
-                        <p>I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.</p>
+                        <p data-translate="aboutText1">Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.</p>
+                        <p data-translate="aboutText2">I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.</p>
                     </div>
                 </div>
 
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number">4+</div>
-                        <div class="stat-label">Projects Completed</div>
+                        <div class="stat-label" data-translate="projectsCompleted">Projects Completed</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
+                        <div class="stat-label" data-translate="yearsExperience">Years Experience</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
+                        <div class="stat-label" data-translate="clientSatisfaction">Client Satisfaction</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">9:00-17:30</div>
-                        <div class="stat-label">Support Available</div>
+                        <div class="stat-number">9:00-17:00</div>
+                        <div class="stat-label" data-translate="supportAvailable">Support Available</div>
                     </div>
                 </div>
             </div>
@@ -322,11 +387,11 @@
             <div class="contact-header">
                 <div class="section-badge-mid">
                     <div class="brand-dot-small"></div>
-                    <span class="section-label">Get In Touch</span>
+                    <span class="section-label" data-translate="getInTouch">Get In Touch</span>
                 </div>
                 <h2 class="section-title">
-                    Let's create something<br>
-                    <span class="title-italic">beautiful together</span>
+                    <span data-translate="letsCreate">Let's create something</span><br>
+                    <span class="title-italic" data-translate="beautifulTogether">beautiful together</span>
                 </h2>
             </div>
 
@@ -336,23 +401,23 @@
                     <form class="contact-form" onsubmit="handleContactSubmit(event)">
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-input" placeholder="Your name" required>
+                                <label class="form-label" data-translate="name">Name</label>
+                                <input type="text" class="form-input" data-translate="yourName" placeholder="Your name" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-input" placeholder="your@email.com" required>
+                                <label class="form-label" data-translate="email">Email</label>
+                                <input type="email" class="form-input" data-translate="yourEmail" placeholder="your@email.com" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Project</label>
-                            <input type="text" class="form-input" placeholder="Tell me about your project" required>
+                            <label class="form-label" data-translate="project">Project</label>
+                            <input type="text" class="form-input" data-translate="tellProject" placeholder="Tell me about your project" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-textarea" placeholder="Share your vision with me..." required></textarea>
+                            <label class="form-label" data-translate="message">Message</label>
+                            <textarea class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-contact">
+                        <button type="submit" class="btn btn-primary btn-contact" data-translate="sendMessage">
                             Send Message
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -364,8 +429,8 @@
                 <!-- Contact Info -->
                 <div class="contact-info">
                     <div class="contact-intro">
-                        <h3 class="contact-title">Start a conversation</h3>
-                        <p class="contact-description">I'd love to hear about your project and explore how I can help bring your vision to life.</p>
+                        <h3 class="contact-title" data-translate="startConversation">Start a conversation</h3>
+                        <p class="contact-description" data-translate="contactDescription">I'd love to hear about your project and explore how I can help bring your vision to life.</p>
                     </div>
 
                     <div class="contact-details">
@@ -377,7 +442,7 @@
                                 </svg>
                             </div>
                             <div class="contact-text">
-                                <div class="contact-label">Email</div>
+                                <div class="contact-label" data-translate="email">Email</div>
                                 <div class="contact-value">kjell@virtualcreators.io</div>
                             </div>
                         </div>
@@ -388,7 +453,7 @@
                                 </svg>
                             </div>
                             <div class="contact-text">
-                                <div class="contact-label">Phone</div>
+                                <div class="contact-label" data-translate="phone">Phone</div>
                                 <div class="contact-value">+316 41552375</div>
                             </div>
                         </div>
@@ -400,14 +465,14 @@
                                 </svg>
                             </div>
                             <div class="contact-text">
-                                <div class="contact-label">Location</div>
-                                <div class="contact-value">Based in the Netherlands</div>
+                                <div class="contact-label" data-translate="location">Location</div>
+                                <div class="contact-value" data-translate="basedInNetherlands">Based in the Netherlands</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="social-links">
-                        <div class="social-label">Follow me</div>
+                        <div class="social-label" data-translate="followMe">Follow me</div>
                         <div class="social-list">
                             <a href="https://www.linkedin.com/in/kjell-de-ruiter-870227151" class="social-link">linkedin</a>
                             <a href="https://www.instagram.com/virtualcreators.io/" class="social-link">Instagram</a>
@@ -427,10 +492,10 @@
                     <div class="brand-dot"></div>
                 </div>
                 <div class="footer-links">
-                    <a href="privacy-policy.html" class="footer-link">Privacy & Cookie Policy</a>
-                    <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+                    <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
+                    <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
                 </div>
-                <div class="footer-copyright">© 2025 VirtualCreators. Crafted with care.</div>
+                <div class="footer-copyright" data-translate="copyright">© 2025 VirtualCreators. Crafted with care.</div>
             </div>
         </div>
     </footer>
@@ -453,28 +518,11 @@
 
             <div class="modal-body" id="modalBody">
                 <!-- Video and content will be populated by JavaScript -->
-                <!-- Example structure that will be generated:
-                <div class="project-video-container">
-                    <video id="modalVideo" class="project-video" autoplay muted loop playsinline>
-                        <source src="/assets/project-video.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-controls">
-                        <button class="sound-toggle" onclick="toggleVideoSound()">
-                            <svg class="sound-off-icon">...</svg>
-                            <svg class="sound-on-icon">...</svg>
-                        </button>
-                        <button class="play-pause-toggle" onclick="toggleVideoPlayback()">
-                            <svg class="pause-icon">...</svg>
-                            <svg class="play-icon">...</svg>
-                        </button>
-                    </div>
-                </div>
-                -->
             </div>
 
             <div class="modal-footer">
                 <div class="modal-cta">
-                    <button class="btn btn-primary" onclick="window.open('https://calendly.com/kjell-virtualcreators/30min', '_blank')">
+                    <button class="btn btn-primary" onclick="window.open('https://calendly.com/kjell-virtualcreators/30min', '_blank')" data-translate="startYourProject">
                         Start Your Project
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -498,6 +546,7 @@
         </div>
     </div>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
