@@ -10,8 +10,8 @@ const projects = [
     title: "Lumenix-beamers",
     category: "Online Shop",
     year: "2025",
-    image: "assets/lumenix-project.jpg", // Update with your actual image path
-    video: "assets/lumenix-video.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -27,8 +27,8 @@ const projects = [
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
-    image: "assets/traction-project.jpg", // Update with your actual image path
-    video: "assets/traction-video.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -43,8 +43,8 @@ const projects = [
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
-    image: "assets/lifesci-project.jpg", // Update with your actual image path
-    video: "assets/lifesci-video.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Update with your actual image path
+    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
