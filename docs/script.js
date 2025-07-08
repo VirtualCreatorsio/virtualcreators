@@ -11,7 +11,7 @@ const projects = [
     category: "Online Shop",
     year: "2025",
     image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
+    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -28,7 +28,7 @@ const projects = [
     category: "Creative Agency",
     year: "2025",
     image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
+    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -44,7 +44,7 @@ const projects = [
     category: "Coaching & Community",
     year: "2025",
     image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/portfolio-coming-soon.mp4", // Update with your actual video path
+    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
