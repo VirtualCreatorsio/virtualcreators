@@ -12,7 +12,7 @@ const projects = [
     category: "Online Shop",
     year: "2025",
     image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -35,7 +35,7 @@ const projects = [
     category: "Creative Agency",
     year: "2025",
     image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -57,7 +57,7 @@ const projects = [
     category: "Coaching & Community",
     year: "2025",
     image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -957,8 +957,6 @@ function generateProjectModalContent(project) {
                 onloadeddata="console.log('Video loaded:', this.src)"
             >
                 <source src="${project.video}" type="video/mp4" onerror="console.error('Video source error:', this.src)">
-                <source src="${project.video.replace(".mp4", ".webm")}" type="video/webm">
-                <source src="${project.video.replace(".mp4", ".ogv")}" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
             ${
