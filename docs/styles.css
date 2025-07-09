@@ -35,11 +35,11 @@ body {
   position: fixed;
   width: 16px;
   height: 16px;
-  background-color: #111827;
+  background: linear-gradient(to bottom, #ec4899, #8b5cf6); /* Match brand-dot */
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
+  opacity: 0.5; /* Slightly transparent */
   transition: transform 0.15s ease-out;
   transform: translate(-50%, -50%);
   display: none;
