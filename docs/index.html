@@ -400,29 +400,36 @@
             </div>
 
             <div class="contact-grid">
-                <!-- Contact Form -->
+                <!-- Contact Form with Formspree Integration -->
                 <div class="contact-form-card">
-                    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                    <form class="contact-form" action="https://formspree.io/f/xdkgreqr" method="POST" onsubmit="handleContactSubmit(event)">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label" data-translate="name">Name</label>
-                                <input type="text" class="form-input" data-translate="yourName" placeholder="Your name" required>
+                                <input type="text" name="name" class="form-input" data-translate="yourName" placeholder="Your name" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" data-translate="email">Email</label>
-                                <input type="email" class="form-input" data-translate="yourEmail" placeholder="your@email.com" required>
+                                <input type="email" name="email" class="form-input" data-translate="yourEmail" placeholder="your@email.com" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" data-translate="project">Project</label>
-                            <input type="text" class="form-input" data-translate="tellProject" placeholder="Tell me about your project" required>
+                            <input type="text" name="project" class="form-input" data-translate="tellProject" placeholder="Tell me about your project" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" data-translate="message">Message</label>
-                            <textarea class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
+                            <textarea name="message" class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
                         </div>
+                        
+                        <!-- Hidden fields for additional context -->
+                        <input type="hidden" name="_subject" value="New contact form submission from VirtualCreators">
+                        <input type="hidden" name="_next" value="https://virtualcreators.io/thank-you">
+                        <input type="hidden" name="_language" id="formLanguage" value="en">
+                        
                         <button type="submit" class="btn btn-primary btn-contact" data-translate="sendMessage">
-                            Send Message
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>

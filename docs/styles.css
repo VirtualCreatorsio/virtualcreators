@@ -342,6 +342,7 @@ body {
   transition: all 0.3s ease;
   white-space: nowrap;
   font-family: inherit;
+  position: relative;
 }
 
 .btn-primary {
@@ -395,6 +396,17 @@ body {
   width: 1rem;
   height: 1rem;
   stroke-width: 2;
+}
+
+/* Button loading state */
+.btn-loading {
+  display: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
 }
 
 /* Hero Section */
@@ -1122,6 +1134,27 @@ html.modal-open {
 
 .form-select {
   cursor: pointer;
+}
+
+/* Form Message Styles */
+.form-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.form-message-success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.form-message-error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
 }
 
 .contact-info {

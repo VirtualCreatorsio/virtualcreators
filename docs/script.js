@@ -3,15 +3,16 @@ let currentProject = 0
 const mousePosition = { x: 0, y: 0 }
 let isMobileDevice = false
 let calendlyLoaded = false
+// Removed: const currentLanguage = "en" // Declare currentLanguage variable
 
-// Project Data
+// Project Data with enhanced video debugging
 const projects = [
   {
     title: "Lumenix-beamers",
     category: "Online Shop",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
+    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -27,8 +28,8 @@ const projects = [
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
+    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -43,8 +44,8 @@ const projects = [
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Update with your actual image path
-    video: "assets/Portfolio-coming-soon.mp4", // Update with your actual video path
+    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
+    video: "assets/portfolio-coming-soon.mp4", // Make sure this matches your actual file
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -77,8 +78,48 @@ function initializeApp() {
   // Initialize Calendly with better error handling
   initializeCalendly()
 
+  // Debug video files on production
+  debugVideoFiles()
+
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
+}
+
+// Debug function to check video file availability
+function debugVideoFiles() {
+  console.log("🎬 Debugging video files...")
+
+  projects.forEach((project, index) => {
+    console.log(`Checking ${project.title}:`)
+    console.log(`  Image: ${project.image}`)
+    console.log(`  Video: ${project.video}`)
+
+    // Test if video file exists
+    fetch(project.video, { method: "HEAD" })
+      .then((response) => {
+        if (response.ok) {
+          console.log(`✅ ${project.title} video found (${response.status})`)
+        } else {
+          console.error(`❌ ${project.title} video NOT found (${response.status})`)
+        }
+      })
+      .catch((error) => {
+        console.error(`❌ ${project.title} video error:`, error)
+      })
+
+    // Test if image file exists
+    fetch(project.image, { method: "HEAD" })
+      .then((response) => {
+        if (response.ok) {
+          console.log(`✅ ${project.title} image found (${response.status})`)
+        } else {
+          console.error(`❌ ${project.title} image NOT found (${response.status})`)
+        }
+      })
+      .catch((error) => {
+        console.error(`❌ ${project.title} image error:`, error)
+      })
+  })
 }
 
 // Enhanced Calendly initialization with multiple fallbacks
@@ -206,6 +247,16 @@ function setupEventListeners() {
       }
     }
   })
+
+  // Setup Calendly button event listeners
+  document.querySelectorAll('[onclick*="openCalendlyPopup"]').forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault()
+      openCalendlyPopup()
+    })
+  })
+
+  console.log("✅ Event listeners attached")
 }
 
 // Cursor Follower
@@ -852,8 +903,14 @@ function generateProjectModalContent(project) {
                 playsinline
                 poster="${project.image}"
                 ${isMobileDevice ? "controls" : ""}
+                onerror="handleVideoError(this)"
+                onloadstart="console.log('Video loading started:', this.src)"
+                oncanplay="console.log('Video can play:', this.src)"
+                onloadeddata="console.log('Video loaded:', this.src)"
             >
-                <source src="${project.video}" type="video/mp4">
+                <source src="${project.video}" type="video/mp4" onerror="console.error('Video source error:', this.src)">
+                <source src="${project.video.replace(".mp4", ".webm")}" type="video/webm">
+                <source src="${project.video.replace(".mp4", ".ogv")}" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
             ${
@@ -918,6 +975,36 @@ function generateProjectModalContent(project) {
             </div>
         </div>
     `
+}
+
+// Enhanced video error handling
+function handleVideoError(videoElement) {
+  console.error("Video failed to load:", videoElement.src)
+  console.error("Video error code:", videoElement.error?.code)
+  console.error("Video error message:", videoElement.error?.message)
+
+  // Show fallback image
+  const container = videoElement.closest(".project-video-container")
+  if (container) {
+    videoElement.style.display = "none"
+
+    // Create fallback message
+    const fallback = document.createElement("div")
+    fallback.style.cssText = `
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    `
+    fallback.innerHTML = `
+      <p>Video temporarily unavailable</p>
+      <p style="font-size: 12px; margin-top: 8px;">Please check back later</p>
+    `
+    container.appendChild(fallback)
+  }
 }
 
 // Video control functions
@@ -1148,17 +1235,109 @@ function handleFullscreenChange() {
   }
 }
 
-// Form Handlers
+// Enhanced Form Handlers with Formspree Integration
 function handleContactSubmit(event) {
   event.preventDefault()
 
-  const formData = new FormData(event.target)
-  const data = Object.fromEntries(formData)
+  const form = event.target
+  const submitButton = form.querySelector('button[type="submit"]')
+  const buttonText = submitButton.querySelector(".btn-text")
+  const buttonLoading = submitButton.querySelector(".btn-loading")
 
-  console.log("Contact form submitted:", data)
-  alert(window.t("thankYouMessage"))
+  // Update language field with current language
+  const languageField = document.getElementById("formLanguage")
+  if (languageField) {
+    languageField.value = window.currentLanguage || "en"
+  }
 
-  event.target.reset()
+  // Show loading state
+  if (buttonText && buttonLoading) {
+    buttonText.style.display = "none"
+    buttonLoading.style.display = "inline"
+  }
+  submitButton.disabled = true
+
+  // Create FormData object
+  const formData = new FormData(form)
+
+  // Submit to Formspree
+  fetch(form.action, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Success
+        showFormMessage(window.t("thankYouMessage"), "success")
+        form.reset()
+      } else {
+        // Error from Formspree
+        response.json().then((data) => {
+          if (data.errors) {
+            showFormMessage("There was an error with your submission. Please try again.", "error")
+          } else {
+            showFormMessage(window.t("thankYouMessage"), "success")
+            form.reset()
+          }
+        })
+      }
+    })
+    .catch((error) => {
+      console.error("Form submission error:", error)
+      showFormMessage("There was an error sending your message. Please try again.", "error")
+    })
+    .finally(() => {
+      // Reset button state
+      if (buttonText && buttonLoading) {
+        buttonText.style.display = "inline"
+        buttonLoading.style.display = "none"
+      }
+      submitButton.disabled = false
+    })
+}
+
+// Show form submission message
+function showFormMessage(message, type) {
+  // Remove any existing message
+  const existingMessage = document.querySelector(".form-message")
+  if (existingMessage) {
+    existingMessage.remove()
+  }
+
+  // Create new message
+  const messageDiv = document.createElement("div")
+  messageDiv.className = `form-message form-message-${type}`
+  messageDiv.style.cssText = `
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    ${
+      type === "success"
+        ? "background-color: #f0fdf4; color: #166534; border: 1px solid #bbf7d0;"
+        : "background-color: #fef2f2; color: #dc2626; border: 1px solid #fecaca;"
+    }
+  `
+  messageDiv.textContent = message
+
+  // Add message after the form
+  const form = document.querySelector(".contact-form")
+  if (form) {
+    form.appendChild(messageDiv)
+
+    // Auto-remove success messages after 5 seconds
+    if (type === "success") {
+      setTimeout(() => {
+        if (messageDiv.parentElement) {
+          messageDiv.remove()
+        }
+      }, 5000)
+    }
+  }
 }
 
 // Update modal content when language changes
@@ -1200,7 +1379,7 @@ if (!("scrollBehavior" in document.documentElement.style)) {
   document.head.appendChild(script)
 }
 
-// Add video hover functionality for project tiles
+// Enhanced video hover functionality for project tiles with error handling
 function setupProjectTileVideos() {
   const projectImages = document.querySelectorAll(".project-image")
 
@@ -1217,20 +1396,37 @@ function setupProjectTileVideos() {
     source.type = "video/mp4"
     video.appendChild(source)
 
+    // Add error handling for hover videos
+    video.onerror = () => {
+      console.error(`Hover video failed to load: ${projects[index].video}`)
+      video.style.display = "none"
+    }
+
+    video.onloadstart = () => {
+      console.log(`Hover video loading: ${projects[index].video}`)
+    }
+
     imageContainer.insertBefore(video, imageContainer.firstChild)
 
     imageContainer.addEventListener("mouseenter", () => {
-      video.currentTime = 0
-      video.play().catch((e) => console.log("Video play failed:", e))
-      video.style.opacity = "1"
-      imageContainer.querySelector(".project-img").style.opacity = "0"
+      if (video.style.display !== "none") {
+        video.currentTime = 0
+        video.play().catch((e) => {
+          console.log("Hover video play failed:", e)
+          video.style.display = "none"
+        })
+        video.style.opacity = "1"
+        imageContainer.querySelector(".project-img").style.opacity = "0"
+      }
     })
 
     imageContainer.addEventListener("mouseleave", () => {
-      video.pause()
-      video.currentTime = 0
-      video.style.opacity = "0"
-      imageContainer.querySelector(".project-img").style.opacity = "1"
+      if (video.style.display !== "none") {
+        video.pause()
+        video.currentTime = 0
+        video.style.opacity = "0"
+        imageContainer.querySelector(".project-img").style.opacity = "1"
+      }
     })
   })
 }
@@ -1239,3 +1435,20 @@ function setupProjectTileVideos() {
 window.projects = projects
 window.currentProject = currentProject
 window.generateProjectModalContent = generateProjectModalContent
+
+// Make functions globally available - CRITICAL for HTML onclick handlers
+window.openCalendlyPopup = openCalendlyPopup
+window.toggleMobileMenu = toggleMobileMenu
+window.closeMobileMenu = closeMobileMenu
+window.scrollToWork = scrollToWork
+window.openProjectModal = openProjectModal
+window.closeProjectModal = closeProjectModal
+window.navigateProject = navigateProject
+window.toggleVideoSound = toggleVideoSound
+window.toggleVideoPlayback = toggleVideoPlayback
+window.toggleFullscreen = toggleFullscreen
+window.handleContactSubmit = handleContactSubmit
+window.handleVideoError = handleVideoError
+
+console.log("✅ All functions attached to window object")
+console.log("openCalendlyPopup available:", typeof window.openCalendlyPopup)
