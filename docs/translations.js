@@ -86,6 +86,18 @@ const translations = {
     lifeSciGrowthResult3: "##% improvement in brand recognition",
     lifeSciGrowthResult4: "Featured in # design publications",
 
+    // Project Reviews
+    lumenixReviewText: "An absolute star! Kjell de Ruiter created a beautiful website for us – sleek design, fast, and meticulously crafted. The service was fantastic: quick communication, proactive thinking, and everything worked out in detail. From the first idea to the last pixel: Kjell just takes care of it.\n\nIf you're looking for someone who delivers quality and is great to work with, Kjell is the one to go to. 💻🔥",
+    lumenixReviewAuthor: "Michael",
+    lumenixReviewCompany: "Lumenix-Beamers",
+    tractionMoviesReviewText: "Great collaboration and creative solutions. Our online presence is now truly next-level.",
+    tractionMoviesReviewAuthor: "Tjade",
+    tractionMoviesReviewCompany: "TractionMovies",
+    lifeSciGrowthReviewText: "The membership platform is simple and effective. Our community loves the new experience!",
+    lifeSciGrowthReviewAuthor: "Birgit",
+    lifeSciGrowthReviewCompany: "LifeSciGrowth",
+    clientReview: "Client Review",
+
     // About Section
     aboutMe: "About Me",
     iBelieveIn: "I believe in the power",
@@ -400,6 +412,18 @@ const translations = {
     lifeSciGrowthResult3: "##% verbetering in merkherkenning",
     lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
 
+    // Project Reviews
+    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt – strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon.\n\nAls je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader. 💻🔥",
+    lumenixReviewAuthor: "Michael",
+    lumenixReviewCompany: "Lumenix-Beamers",
+    tractionMoviesReviewText: "Fijne samenwerking en creatieve oplossingen. Onze online aanwezigheid is nu echt next-level.",
+    tractionMoviesReviewAuthor: "Tjade",
+    tractionMoviesReviewCompany: "TractionMovies",
+    lifeSciGrowthReviewText: "Het ledenplatform is simpel en effectief. Onze community is erg blij met de nieuwe ervaring!",
+    lifeSciGrowthReviewAuthor: "Birgit",
+    lifeSciGrowthReviewCompany: "LifeSciGrowth",
+    clientReview: "Klantbeoordeling",
+
     // About Section
     aboutMe: "Over Mij",
     iBelieveIn: "Ik geloof in de kracht",
@@ -563,7 +587,7 @@ const translations = {
     projectTermsItem2: "Tijdlijn en mijlpalen",
     projectTermsItem3: "Betalingsvoorwaarden en schema",
     projectTermsItem4: "Revisie- en goedkeuringsproces",
-    projectTermsItem5: "Intellectuele eigendomsrechten",
+    projectTermsItem5: "Intellectueel eigendomsrechten",
 
     paymentTerms: "4. Betalingsvoorwaarden",
     paymentTermsText: "Tenzij anders gespecificeerd in een projectovereenkomst:",

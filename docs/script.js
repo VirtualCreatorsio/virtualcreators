@@ -23,6 +23,12 @@ const projects = [
       { icon: "zap", label: "Performance Optimization" },
     ],
     results: ["lumenixResult1", "lumenixResult2", "lumenixResult3", "lumenixResult4"],
+    review: {
+      rating: 5,
+      text: "lumenixReviewText",
+      author: "lumenixReviewAuthor",
+      company: "lumenixReviewCompany"
+    }
   },
   {
     title: "TractionMovies",
@@ -39,6 +45,12 @@ const projects = [
       { icon: "zap", label: "Performance Optimization" },
     ],
     results: ["tractionMoviesResult1", "tractionMoviesResult2", "tractionMoviesResult3", "tractionMoviesResult4"],
+    review: {
+      rating: 5,
+      text: "tractionMoviesReviewText",
+      author: "tractionMoviesReviewAuthor",
+      company: "tractionMoviesReviewCompany"
+    }
   },
   {
     title: "LifeSciGrowth",
@@ -56,6 +68,12 @@ const projects = [
       { icon: "bar-chart", label: "Brand Identity" },
     ],
     results: ["lifeSciGrowthResult1", "lifeSciGrowthResult2", "lifeSciGrowthResult3", "lifeSciGrowthResult4"],
+    review: {
+      rating: 5,
+      text: "lifeSciGrowthReviewText",
+      author: "lifeSciGrowthReviewAuthor",
+      company: "lifeSciGrowthReviewCompany"
+    }
   },
 ]
 
@@ -74,6 +92,7 @@ function initializeApp() {
   setupMobileMenuClickOutside()
   setupMobileMenuResize()
   setupProjectTileVideos()
+  setupProjectCardModalLinks()
 
   // Initialize Calendly with better error handling
   initializeCalendly()
@@ -83,6 +102,13 @@ function initializeApp() {
 
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
+
+  // Add stacked scroll effect for cases
+  stackedScrollCasesEffect()
+
+  // Set min-height for perfect last card centering
+  setStackedCasesMinHeight()
+  window.addEventListener('resize', setStackedCasesMinHeight)
 }
 
 // Debug function to check video file availability
@@ -249,12 +275,12 @@ function setupEventListeners() {
   })
 
   // Setup Calendly button event listeners
-  document.querySelectorAll('[onclick*="openCalendlyPopup"]').forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault()
-      openCalendlyPopup()
-    })
-  })
+  // document.querySelectorAll('[onclick*="openCalendlyPopup"]').forEach((button) => {
+  //   button.addEventListener("click", (e) => {
+  //     e.preventDefault()
+  //     openCalendlyPopup()
+  //   })
+  // })
 
   console.log("✅ Event listeners attached")
 }
@@ -892,6 +918,28 @@ function generateProjectModalContent(project) {
     )
     .join("")
 
+  // Review Section
+  let reviewHTML = ""
+  if (project.review) {
+    const stars = Array.from({ length: 5 }, (_, i) =>
+      i < project.review.rating
+        ? '<span class="star filled">&#9733;</span>'
+        : '<span class="star">&#9734;</span>'
+    ).join("")
+    reviewHTML = `
+      <div class="client-review-section">
+        <h4>${window.t("clientReview")}</h4>
+        <div class="review-section">
+          <div class="review-stars">${stars}</div>
+          <div class="review-text">"${window.t(project.review.text)}"</div>
+          <div class="review-author">
+            <span class="review-author-name">${window.t(project.review.author)}</span>, <span class="review-author-company">${getCompanyLink(project)}</span>
+          </div>
+        </div>
+      </div>
+    `
+  }
+
   return `
         <div class="project-video-container">
             <video 
@@ -974,6 +1022,7 @@ function generateProjectModalContent(project) {
                 ${resultsHTML}
             </div>
         </div>
+        ${reviewHTML}
     `
 }
 
@@ -1372,6 +1421,25 @@ function getIconSVG(iconName) {
   return icons[iconName] || icons["code"]
 }
 
+// Helper function to get the company website link for each project
+function getCompanyLink(project) {
+  let url = "#";
+  switch (project.title) {
+    case "Lumenix-beamers":
+      url = "https://lumenix-beamers.nl";
+      break;
+    case "TractionMovies":
+      url = "https://tractionmovies.com";
+      break;
+    case "LifeSciGrowth":
+      url = "https://lifescigrowth.com";
+      break;
+    default:
+      url = "#";
+  }
+  return `<a href="${url}" target="_blank" rel="noopener">${window.t(project.review.company)}</a>`;
+}
+
 // Smooth scroll polyfill for older browsers
 if (!("scrollBehavior" in document.documentElement.style)) {
   const script = document.createElement("script")
@@ -1429,6 +1497,123 @@ function setupProjectTileVideos() {
       }
     })
   })
+}
+
+function setupProjectCardModalLinks() {
+  const projectList = document.querySelector('.projects-list.stacked-scroll');
+  if (!projectList) return;
+  const items = Array.from(projectList.querySelectorAll('.project-item'));
+  items.forEach((item, index) => {
+    // Project Title
+    const title = item.querySelector('.project-title');
+    if (title) {
+      title.style.cursor = 'pointer';
+      title.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openProjectModal(index);
+      });
+    }
+    // Project Image
+    const image = item.querySelector('.project-image');
+    if (image) {
+      image.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openProjectModal(index);
+      });
+    }
+    // View Project Button
+    const btn = item.querySelector('.project-link');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openProjectModal(index);
+      });
+    }
+  });
+}
+
+// Add stacked scroll effect for cases section
+function stackedScrollCasesEffect() {
+  const list = document.querySelector('.projects-list.stacked-scroll')
+  if (!list) return
+  const items = Array.from(list.querySelectorAll('.stacked-scroll-item'))
+  if (items.length < 2) return
+
+  function animate() {
+    const viewportHeight = window.innerHeight
+    const isMobile = window.innerWidth <= 1023
+    // On mobile, sticky top is 5.5rem, so leave that space at the top
+    const stickyOffset = isMobile ? 5.5 * 16 : 0 // 5.5rem in px
+    const listRect = list.getBoundingClientRect()
+    const listTop = listRect.top + window.scrollY
+    const cardHeight = items[0].offsetHeight
+    const scrollY = window.scrollY
+    // On mobile, center is lower to leave space for navbar
+    const centerY = isMobile
+      ? scrollY + stickyOffset + cardHeight / 2
+      : scrollY + viewportHeight / 2
+
+    // Z-index logic (different for mobile)
+    if (isMobile) {
+      // On mobile, always stack later cards above earlier ones
+      items.forEach((item, i) => {
+        item.style.zIndex = 100 + i;
+      });
+    } else {
+      // Desktop/tablet: closest to center gets highest z-index
+      const indexed = items.map((item, i) => {
+        const cardTop = listTop + i * cardHeight
+        const cardCenter = cardTop + cardHeight / 2
+        const distToCenter = Math.abs(cardCenter - centerY)
+        return { item, i, distToCenter }
+      })
+      indexed.sort((a, b) => a.distToCenter - b.distToCenter)
+      indexed.forEach((entry, idx) => {
+        entry.item.style.zIndex = 100 - idx
+      })
+    }
+
+    // Transform/opacity logic
+    items.forEach((item, i) => {
+      const cardTop = listTop + i * cardHeight
+      const cardCenter = cardTop + cardHeight / 2
+      const distToCenter = cardCenter - centerY
+      let isActive = Math.abs(distToCenter) < cardHeight / 2
+      let isLast = i === items.length - 1
+      let isFirst = i === 0
+      if (isLast && distToCenter <= 0) {
+        item.style.transform = 'translateY(-50%) scale(1)';
+        item.style.opacity = 1;
+      } else if (isFirst && distToCenter >= 0) {
+        item.style.transform = 'translateY(-50%) scale(1)';
+        item.style.opacity = 1;
+      } else if (isActive) {
+        item.style.transform = 'translateY(-50%) scale(1)';
+        item.style.opacity = 1;
+      } else if (distToCenter < 0) {
+        item.style.transform = `translateY(-60%) scale(0.96)`;
+        item.style.opacity = 1;
+      } else {
+        item.style.transform = `translateY(0%) scale(0.96)`;
+        item.style.opacity = 1;
+      }
+    })
+  }
+  window.addEventListener('scroll', animate, { passive: true })
+  window.addEventListener('resize', animate)
+  animate()
+}
+
+// Dynamically set min-height for stacked cases section
+function setStackedCasesMinHeight() {
+  const list = document.querySelector('.projects-list.stacked-3d')
+  if (!list) return
+  const items = list.querySelectorAll('.stacked-scroll-item')
+  if (items.length === 0) return
+  const cardHeight = items[0].offsetHeight
+  // Subtract half a card height to reduce blank space after last card
+  const minHeight = (items.length - 1) * cardHeight + window.innerHeight - 0.5 * cardHeight
+  list.style.minHeight = minHeight + 'px'
 }
 
 // Make variables globally available for translations
