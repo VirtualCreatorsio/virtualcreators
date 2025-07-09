@@ -2256,3 +2256,16 @@ html.modal-open {
     gap: 2rem;
   }
 }
+
+.project-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+  opacity: 1; /* Always visible */
+  transition: all 0.3s ease;
+  stroke-width: 2;
+}
+.project-link:hover .project-arrow {
+  color: #8b5cf6;
+  transform: translate(0.25rem, -0.25rem);
+}

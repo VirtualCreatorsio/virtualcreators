@@ -2,9 +2,9 @@
 const translations = {
   en: {
     // SEO Meta Content
-    metaTitle: "VirtualCreators - Digital Agency Portfolio",
+    metaTitle: "VirtualCreators | Custom Web Development | Web Design & eCommerce Solutions",
     metaDescription:
-      "We craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.",
+      "I craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.",
 
     // Legal Pages SEO
     privacyMetaTitle: "Privacy & Cookie Policy - VirtualCreators",
@@ -87,8 +87,8 @@ const translations = {
     lifeSciGrowthResult4: "Featured in # design publications",
 
     // Project Reviews
-    lumenixReviewText: "An absolute star! Kjell de Ruiter created a beautiful website for us – sleek design, fast, and meticulously crafted. The service was fantastic: quick communication, proactive thinking, and everything worked out in detail. From the first idea to the last pixel: Kjell just takes care of it.\n\nIf you're looking for someone who delivers quality and is great to work with, Kjell is the one to go to. 💻🔥",
-    lumenixReviewAuthor: "Michael",
+    lumenixReviewText: "An absolute star! Kjell de Ruiter created a beautiful website for us! Sleek design, fast, and meticulously crafted. The service was fantastic: quick communication, proactive thinking, and everything worked out in detail. From the first idea to the last pixel: Kjell just takes care of it.\n\nIf you're looking for someone who delivers quality and is great to work with, Kjell is the one to go to.",
+    lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
     tractionMoviesReviewText: "Great collaboration and creative solutions. Our online presence is now truly next-level.",
     tractionMoviesReviewAuthor: "Tjade",
@@ -327,9 +327,9 @@ const translations = {
 
   nl: {
     // SEO Meta Content
-    metaTitle: "VirtualCreators - Digitaal Bureau Portfolio",
+    metaTitle: "VirtualCreators | Custom Web Development | Web Design & eCommerce Oplossingen",
     metaDescription:
-      "Wij creëren digitale ervaringen. Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.",
+      "Ik creëer digitale ervaringen. Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.",
 
     // Legal Pages SEO
     privacyMetaTitle: "Privacy & Cookie Beleid - VirtualCreators",
@@ -413,8 +413,8 @@ const translations = {
     lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
 
     // Project Reviews
-    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt – strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon.\n\nAls je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader. 💻🔥",
-    lumenixReviewAuthor: "Michael",
+    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon.\n\nAls je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
+    lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
     tractionMoviesReviewText: "Fijne samenwerking en creatieve oplossingen. Onze online aanwezigheid is nu echt next-level.",
     tractionMoviesReviewAuthor: "Tjade",
@@ -837,12 +837,7 @@ function updateProjectData() {
     if (viewProjectBtn) {
       const btnKey = viewProjectBtn.getAttribute("data-translate")
       if (btnKey) {
-        const textNode = Array.from(viewProjectBtn.childNodes).find((node) => node.nodeType === Node.TEXT_NODE)
-        if (textNode) {
-          textNode.textContent = window.t(btnKey) + " "
-        } else {
-          viewProjectBtn.insertBefore(document.createTextNode(window.t(btnKey) + " "), viewProjectBtn.firstChild)
-        }
+        viewProjectBtn.innerHTML = window.t(btnKey) + `\n          <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">\n            <path d="M7 17L17 7M17 7H7M17 7V17"/>\n          </svg>\n        `;
       }
     }
   })
