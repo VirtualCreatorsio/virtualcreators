@@ -1,0 +1,11 @@
+Copyright © 2025 Virtualcreators. All rights reserved.
+
+This repository and all of its contents are the proprietary intellectual property of Virtualcreators.
+
+No part of this codebase, design, or content may be used, copied, reproduced, modified, published, uploaded, posted, transmitted, or distributed in any form or by any means, including electronic, mechanical, photocopying, recording, or otherwise, without the prior written permission of Virtualcreators.
+
+This software is provided for viewing purposes only.
+
+Any unauthorized use of this software or its contents is strictly prohibited and may result in civil and/or criminal penalties.
+
+For licensing inquiries or permissions, please contact: legal@virtualcreators.io
