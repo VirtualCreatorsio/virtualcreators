@@ -93,6 +93,7 @@ function initializeApp() {
   setupMobileMenuResize()
   setupProjectTileVideos()
   setupProjectCardModalLinks()
+  setupScrollSpy()
 
   // Initialize Calendly with better error handling
   initializeCalendly()
@@ -406,6 +407,109 @@ function scrollToWork() {
   if (workSection) {
     workSection.scrollIntoView({ behavior: "smooth" })
   }
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
+
+function setupScrollSpy() {
+  // Get all sections and navigation links
+  const sections = document.querySelectorAll('section[id]')
+  const navLinks = document.querySelectorAll('.nav-link')
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
+  const backToTopBtn = document.querySelector('.back-to-top-btn')
+  
+  // Function to update active navigation item
+  function updateActiveNavItem(activeId) {
+    // Remove active class from all navigation items
+    navLinks.forEach(link => link.classList.remove('active'))
+    mobileNavLinks.forEach(link => link.classList.remove('active'))
+    
+    // Add active class to current section's navigation items
+    if (activeId) {
+      const activeNavLink = document.querySelector(`.nav-link[href="#${activeId}"]`)
+      const activeMobileNavLink = document.querySelector(`.mobile-nav-link[href="#${activeId}"]`)
+      
+      if (activeNavLink) {
+        activeNavLink.classList.add('active')
+      }
+      if (activeMobileNavLink) {
+        activeMobileNavLink.classList.add('active')
+      }
+    }
+  }
+  
+  // Function to handle scroll events
+  function handleScroll() {
+    const scrollPosition = window.scrollY + 100 // Add offset for better UX
+    
+    let currentSection = null
+    
+    // Find which section is currently in view
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop
+      const sectionHeight = section.offsetHeight
+      const sectionId = section.getAttribute('id')
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSection = sectionId
+      }
+    })
+    
+    // Special handling for hero section (when at top of page)
+    if (window.scrollY < 100) {
+      currentSection = null // No section highlighted when at top
+    }
+    
+    // Update active navigation item
+    updateActiveNavItem(currentSection)
+    
+    // Show/hide back to top button
+    if (backToTopBtn) {
+      if (isMobileDevice) {
+        // On mobile, only show when contact section is in view
+        const contactSection = document.getElementById('contact')
+        if (contactSection) {
+          const contactTop = contactSection.offsetTop
+          const contactHeight = contactSection.offsetHeight
+          const viewportHeight = window.innerHeight
+          
+          // Show button when contact section starts to come into view
+          if (window.scrollY + viewportHeight >= contactTop) {
+            backToTopBtn.classList.add('visible')
+          } else {
+            backToTopBtn.classList.remove('visible')
+          }
+        }
+      } else {
+        // On desktop, show after scrolling 400px
+        if (window.scrollY > 400) {
+          backToTopBtn.classList.add('visible')
+        } else {
+          backToTopBtn.classList.remove('visible')
+        }
+      }
+    }
+  }
+  
+  // Add scroll event listener with throttling for performance
+  let isScrolling = false
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        handleScroll()
+        isScrolling = false
+      })
+      isScrolling = true
+    }
+  })
+  
+  // Run once on page load
+  handleScroll()
 }
 
 // Enhanced Calendly Integration Function with multiple fallbacks

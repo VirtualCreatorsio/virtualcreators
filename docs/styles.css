@@ -150,6 +150,11 @@ body {
   color: #111827;
 }
 
+.nav-link.active {
+  color: #8b5cf6;
+  font-weight: 500;
+}
+
 /* Mobile Menu Button - Make it more visible and properly positioned */
 .mobile-menu-btn {
   display: flex;
@@ -250,6 +255,11 @@ body {
 .mobile-nav-link:hover,
 .mobile-nav-link:active {
   color: #111827;
+}
+
+.mobile-nav-link.active {
+  color: #8b5cf6;
+  font-weight: 500;
 }
 
 .mobile-cta {
@@ -2268,4 +2278,110 @@ html.modal-open {
 .project-link:hover .project-arrow {
   color: #8b5cf6;
   transform: translate(0.25rem, -0.25rem);
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+.back-to-top-arrow {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-arrow {
+  color: #8b5cf6;
+  transform: translateY(-1px);
+}
+
+.back-to-top-text {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(17, 24, 39, 0.9);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  margin-right: 0.75rem;
+  pointer-events: none;
+}
+
+.back-to-top-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid rgba(17, 24, 39, 0.9);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.back-to-top-btn:hover .back-to-top-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .back-to-top-arrow {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .back-to-top-text {
+    display: none;
+  }
 }

@@ -86,7 +86,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-content">
-                <a href="#" class="logo">
+                <a href="#" class="logo" onclick="scrollToTop(); return false;">
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
                 </a>
@@ -532,6 +532,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top-btn" onclick="scrollToTop()">
+        <svg class="back-to-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 19V5M5 12L12 5L19 12"/>
+        </svg>
+        <span class="back-to-top-text" data-translate="backToTop">Back to Top</span>
+    </button>
 
     <!-- Footer -->
     <footer class="footer">

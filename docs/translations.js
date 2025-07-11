@@ -141,6 +141,7 @@ const translations = {
     privacyCookiePolicy: "Privacy & Cookie Policy",
     termsConditions: "Terms & Conditions",
     copyright: "© 2025 VirtualCreators. Crafted with care.",
+    backToTop: "Back to Top",
 
     // Modal
     startYourProject: "Start Your Project",
@@ -467,6 +468,7 @@ const translations = {
     privacyCookiePolicy: "Privacy & Cookie Beleid",
     termsConditions: "Algemene Voorwaarden",
     copyright: "© 2025 VirtualCreators. Met zorg gemaakt.",
+    backToTop: "Terug naar Boven",
 
     // Modal
     startYourProject: "Start Jouw Project",
