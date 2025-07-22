@@ -1,0 +1,18 @@
+# robots.txt for https://www.virtualcreators.io/
+# This file tells search engines (like Google, Bing, etc.) how to crawl and index your site.
+# It allows all bots to access all pages and provides the location of your sitemap for better indexing.
+
+# Block common unwanted bots
+User-agent: EmailCollector
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: sqlmap
+Disallow: /
+
+# Allow all other bots
+User-agent: *
+Allow: /
+Sitemap: https://www.virtualcreators.io/sitemap.xml 
