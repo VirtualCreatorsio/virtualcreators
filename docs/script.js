@@ -8,7 +8,7 @@ let calendlyLoaded = false
 // Project Data with enhanced video debugging
 const projects = [
   {
-    title: "Lumenix-beamers",
+    title: "Lumenix",
     category: "Online Shop",
     year: "2025",
     image: "assets/coming-soon.jpg", // Make sure this matches your actual file
@@ -307,13 +307,13 @@ function setupCursorFollower() {
   })
 }
 
-// Mouse Effect for Hero Background
+// Mouse Effect for Hero Background and Blog Headers
 function setupMouseEffect() {
+  // Hero section mouse effect
   const heroSection = document.querySelector(".hero")
   const heroBg = document.querySelector(".hero-bg")
 
-  if (!heroSection || !heroBg) return
-
+  if (heroSection && heroBg) {
   heroSection.addEventListener("mousemove", (e) => {
     const rect = heroSection.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width) * 100
@@ -322,6 +322,37 @@ function setupMouseEffect() {
     heroBg.style.setProperty("--mouse-x", `${x}%`)
     heroBg.style.setProperty("--mouse-y", `${y}%`)
   })
+  }
+
+  // Blog header mouse effect
+  const blogHeader = document.querySelector(".blog-header")
+  const blogHeaderBg = document.querySelector(".blog-header-bg")
+
+  if (blogHeader && blogHeaderBg) {
+    blogHeader.addEventListener("mousemove", (e) => {
+      const rect = blogHeader.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / rect.width) * 100
+      const y = ((e.clientY - rect.top) / rect.height) * 100
+
+      blogHeaderBg.style.setProperty("--mouse-x", `${x}%`)
+      blogHeaderBg.style.setProperty("--mouse-y", `${y}%`)
+    })
+  }
+
+  // Blog post header mouse effect
+  const blogPostHeader = document.querySelector(".blog-post-header")
+  const blogPostHeaderBg = document.querySelector(".blog-post-header-bg")
+
+  if (blogPostHeader && blogPostHeaderBg) {
+    blogPostHeader.addEventListener("mousemove", (e) => {
+      const rect = blogPostHeader.getBoundingClientRect()
+      const x = ((e.clientX - rect.left) / rect.width) * 100
+      const y = ((e.clientY - rect.top) / rect.height) * 100
+
+      blogPostHeaderBg.style.setProperty("--mouse-x", `${x}%`)
+      blogPostHeaderBg.style.setProperty("--mouse-y", `${y}%`)
+    })
+  }
 }
 
 // Scroll Animations
@@ -425,9 +456,19 @@ function setupScrollSpy() {
   
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
-    // Remove active class from all navigation items
-    navLinks.forEach(link => link.classList.remove('active'))
-    mobileNavLinks.forEach(link => link.classList.remove('active'))
+    // Remove active class from all navigation items except blog links
+    navLinks.forEach(link => {
+      const isBlogLink = link.getAttribute('data-translate') === 'blog' || link.textContent.trim() === 'Blog'
+      if (!isBlogLink) {
+        link.classList.remove('active')
+      }
+    })
+    mobileNavLinks.forEach(link => {
+      const isBlogLink = link.getAttribute('data-translate') === 'blog' || link.textContent.trim() === 'Blog'
+      if (!isBlogLink) {
+        link.classList.remove('active')
+      }
+    })
     
     // Add active class to current section's navigation items
     if (activeId) {
@@ -471,7 +512,12 @@ function setupScrollSpy() {
     // Show/hide back to top button
     if (backToTopBtn) {
       if (isMobileDevice) {
-        // On mobile, only show when contact section is in view
+        // Check if we're on the homepage (has hero section)
+        const heroSection = document.getElementById('hero')
+        const isHomepage = !!heroSection
+        
+        if (isHomepage) {
+          // On homepage mobile, only show when contact section is in view (original logic)
         const contactSection = document.getElementById('contact')
         if (contactSection) {
           const contactTop = contactSection.offsetTop
@@ -480,6 +526,19 @@ function setupScrollSpy() {
           
           // Show button when contact section starts to come into view
           if (window.scrollY + viewportHeight >= contactTop) {
+              backToTopBtn.classList.add('visible')
+            } else {
+              backToTopBtn.classList.remove('visible')
+            }
+          }
+        } else {
+          // On non-homepage mobile, show after scrolling 80% of page height
+          const documentHeight = document.documentElement.scrollHeight
+          const viewportHeight = window.innerHeight
+          const scrollableHeight = documentHeight - viewportHeight
+          const scrollPercentage = (window.scrollY / scrollableHeight) * 100
+          
+          if (scrollPercentage >= 80) {
             backToTopBtn.classList.add('visible')
           } else {
             backToTopBtn.classList.remove('visible')
@@ -1386,6 +1445,9 @@ function handleFullscreenChange() {
   }
 }
 
+// Track form load time for anti-spam protection
+let formLoadTime = Date.now()
+
 // Enhanced Form Handlers with Formspree Integration
 function handleContactSubmit(event) {
   event.preventDefault()
@@ -1394,6 +1456,41 @@ function handleContactSubmit(event) {
   const submitButton = form.querySelector('button[type="submit"]')
   const buttonText = submitButton.querySelector(".btn-text")
   const buttonLoading = submitButton.querySelector(".btn-loading")
+
+  // Check honeypot fields for spam protection
+  const honeypotField = form.querySelector('input[name="website"]')
+  const formspreeHoneypot = form.querySelector('input[name="_gotcha"]')
+  
+  if ((honeypotField && honeypotField.value.trim() !== '') || 
+      (formspreeHoneypot && formspreeHoneypot.value.trim() !== '')) {
+    // Spam detected - silently reject the submission
+    console.log('🛡️ Spam submission blocked by honeypot field')
+    
+    // Show fake success message to confuse bots
+    showFormMessage(window.t("thankYouMessage"), "success")
+    form.reset()
+    return false
+  }
+
+  // Check if form was submitted too quickly (likely a bot)
+  const timeSinceLoad = Date.now() - formLoadTime
+  if (timeSinceLoad < 3000) { // Less than 3 seconds
+    console.log('🛡️ Spam submission blocked - too fast submission')
+    
+    // Show fake success message to confuse bots
+    showFormMessage(window.t("thankYouMessage"), "success")
+    form.reset()
+    return false
+  }
+
+  // Rate limiting - prevent multiple submissions within 60 seconds
+  const lastSubmissionTime = localStorage.getItem('lastFormSubmission')
+  const currentTime = Date.now()
+  if (lastSubmissionTime && (currentTime - parseInt(lastSubmissionTime)) < 60000) {
+    console.log('🛡️ Rate limit exceeded - too many submissions')
+    showFormMessage(window.t("rateLimitMessage"), "error")
+    return false
+  }
 
   // Update language field with current language
   const languageField = document.getElementById("formLanguage")
@@ -1421,7 +1518,8 @@ function handleContactSubmit(event) {
   })
     .then((response) => {
       if (response.ok) {
-        // Success
+        // Success - record submission time for rate limiting
+        localStorage.setItem('lastFormSubmission', currentTime.toString())
         showFormMessage(window.t("thankYouMessage"), "success")
         form.reset()
       } else {
@@ -1430,6 +1528,8 @@ function handleContactSubmit(event) {
           if (data.errors) {
             showFormMessage("There was an error with your submission. Please try again.", "error")
           } else {
+            // Even on Formspree errors, we treat as success for UX
+            localStorage.setItem('lastFormSubmission', currentTime.toString())
             showFormMessage(window.t("thankYouMessage"), "success")
             form.reset()
           }
@@ -1527,8 +1627,8 @@ function getIconSVG(iconName) {
 function getCompanyLink(project) {
   let url = "#";
   switch (project.title) {
-    case "Lumenix-beamers":
-      url = "https://lumenix-beamers.nl";
+    case "Lumenix":
+      url = "https://www.lumenix-beamers.nl";
       break;
     case "TractionMovies":
       url = "https://tractionmovies.com";
@@ -1644,8 +1744,20 @@ function stackedScrollCasesEffect() {
   function animate() {
     const viewportHeight = window.innerHeight
     const isMobile = window.innerWidth <= 1023
-    // On mobile, sticky top is 5.5rem, so leave that space at the top
-    const stickyOffset = isMobile ? 5.5 * 16 : 0 // 5.5rem in px
+    const isSmallMobile = window.innerWidth <= 640
+    const isVerySmallMobile = window.innerWidth <= 414 && window.innerHeight >= 800
+    
+    // Dynamic sticky offset based on screen size for better visibility
+    let stickyOffset = 0
+    if (isMobile) {
+      if (isVerySmallMobile) {
+        stickyOffset = 6 * 16 // 6rem for iPhone XR and similar
+      } else if (isSmallMobile) {
+        stickyOffset = 6.5 * 16 // 6.5rem for small mobile devices
+      } else {
+        stickyOffset = 7 * 16 // 7rem for regular mobile/tablet
+      }
+    }
     const listRect = list.getBoundingClientRect()
     const listTop = listRect.top + window.scrollY
     const cardHeight = items[0].offsetHeight
