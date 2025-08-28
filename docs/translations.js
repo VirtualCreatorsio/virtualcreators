@@ -1241,19 +1241,25 @@ function switchLanguage(lang) {
         // From root to Dutch
         newUrl = `/nl${currentPath}`
       }
-          } else {
-        // Switch to English
-        if (currentPath.includes('/en/')) {
-          // Already in English, no change needed
-          newUrl = currentPath
-        } else if (currentPath.includes('/nl/')) {
-          // Switch from Dutch to English - remove /nl/ and go to root
-          newUrl = currentPath.replace('/nl/', '/')
+    } else {
+      // Switch to English
+      if (currentPath.includes('/en/')) {
+        // Already in English, no change needed
+        newUrl = currentPath
+      } else if (currentPath.includes('/nl/')) {
+        // Switch from Dutch to English - remove /nl/ and go to root
+        const pathWithoutNl = currentPath.replace('/nl/', '/')
+        // Special handling for homepage - ensure clean URL
+        if (pathWithoutNl === '/index.html' || pathWithoutNl === '/') {
+          newUrl = '/'
         } else {
-          // From root to English (stay in root)
-          newUrl = currentPath
+          newUrl = pathWithoutNl
         }
+      } else {
+        // From root to English (stay in root)
+        newUrl = currentPath
       }
+    }
   }
   
   console.log("Navigating to:", newUrl)
