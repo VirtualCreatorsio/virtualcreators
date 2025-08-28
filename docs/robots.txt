@@ -15,4 +15,10 @@ Disallow: /
 # Allow all other bots
 User-agent: *
 Allow: /
+
+# Block search parameters and unwanted query strings
+Disallow: /?s=
+Disallow: /*?s=*
+Disallow: /*?lang=*
+
 Sitemap: https://www.virtualcreators.io/sitemap.xml 
