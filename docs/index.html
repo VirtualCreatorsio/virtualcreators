@@ -628,6 +628,93 @@
         </div>
     </section>
 
+    <!-- PDF Portfolio Section - Contact Form -->
+    <section class="pdf-portfolio-contact fade-in-section" id="pdf-portfolio-contact">
+        <div class="container">
+            <div class="pdf-portfolio-contact-content">
+                <div class="pdf-contact-header">
+                    <h3 class="pdf-contact-title" data-translate="interestedInWorking">Interested in working together?</h3>
+                    <p class="pdf-contact-description" data-translate="downloadPortfolioContact">
+                        Download my service & pricing guide to see my offerings and get a better understanding of what I can do for you.
+                    </p>
+                </div>
+                
+                <div class="pdf-contact-card">
+                    <div class="pdf-contact-preview">
+                        <div class="pdf-contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                        </div>
+                        <div class="pdf-contact-info">
+                            <h4 class="pdf-contact-filename" data-translate="portfolioTitle">Service & Pricing Guide</h4>
+                            <p class="pdf-contact-meta">
+                                <span data-translate="pdfFormat">PDF</span>
+                                <span class="pdf-separator">•</span>
+                                <span data-translate="fileSize">2.4 MB</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pdf-contact-actions">
+                        <button class="btn btn-primary" onclick="downloadPDF()" data-translate="downloadPDF">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Download Guide
+                        </button>
+                        <button class="btn btn-ghost" onclick="togglePDFPreview()" data-translate="previewPDF">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Preview Modal -->
+    <div class="pdf-preview-modal" id="pdfPreviewModal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title-section">
+                    <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Pricing Guide</h3>
+                    <p class="pdf-modal-subtitle">Indicative • Updated September 2025</p>
+                </div>
+                <button class="pdf-modal-close" onclick="closePDFPreview()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe src="assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                        class="pdf-iframe" 
+                        title="Service & Pricing Guide Preview">
+                </iframe>
+            </div>
+            <div class="pdf-modal-footer">
+                <button class="btn btn-primary" onclick="downloadPDF(); closePDFPreview();" data-translate="downloadPDF">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7,10 12,15 17,10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Download Guide
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Back to Top Button -->
     <button class="back-to-top-btn" onclick="scrollToTop()">
         <svg class="back-to-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">

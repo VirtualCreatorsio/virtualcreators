@@ -5,14 +5,115 @@ let isMobileDevice = false
 let calendlyLoaded = false
 // Removed: const currentLanguage = "en" // Declare currentLanguage variable
 
+// Detect if we're in Dutch locale and set asset path prefix
+const isDutchLocale = window.location.pathname.includes('/nl/')
+const assetPathPrefix = isDutchLocale ? '../' : ''
+
+// PDF Portfolio Functions
+function downloadPDF() {
+  // Create a temporary link element to trigger download
+  const link = document.createElement('a')
+  link.href = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf`
+  link.download = 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+  link.target = '_blank'
+  
+  // Append to body, click, and remove
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  
+}
+
+// Set correct PDF iframe source based on current locale
+function setPDFIframeSource() {
+  const iframe = document.querySelector('.pdf-iframe')
+  if (iframe) {
+    const pdfPath = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0`
+    
+    // Ensure iframe is visible and properly sized
+    iframe.style.display = 'block'
+    iframe.style.visibility = 'visible'
+    iframe.style.opacity = '1'
+    
+    iframe.src = pdfPath
+    
+    // Add error handling for iframe loading
+    iframe.onload = function() {
+      console.log('PDF iframe loaded successfully:', pdfPath)
+    }
+    
+    iframe.onerror = function() {
+      console.error('PDF iframe failed to load:', pdfPath)
+    }
+    
+    console.log('Setting PDF iframe source to:', pdfPath)
+  } else {
+    console.error('PDF iframe not found')
+  }
+}
+
+function togglePDFPreview() {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal) {
+    modal.classList.toggle('active')
+    
+    // Prevent body scroll when modal is open
+    if (modal.classList.contains('active')) {
+      document.body.style.overflow = 'hidden'
+      // Set correct PDF iframe source when opening modal
+      setPDFIframeSource()
+      
+      // Force iframe reload to ensure it displays properly
+      const iframe = modal.querySelector('.pdf-iframe')
+      if (iframe) {
+        setTimeout(() => {
+          const currentSrc = iframe.src
+          iframe.src = ''
+          setTimeout(() => {
+            iframe.src = currentSrc
+          }, 10)
+        }, 100)
+      }
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+}
+
+function closePDFPreview() {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal) {
+    modal.classList.remove('active')
+    document.body.style.overflow = ''
+  }
+}
+
+// Close PDF modal when clicking outside
+document.addEventListener('click', function(event) {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal && modal.classList.contains('active')) {
+    if (event.target === modal) {
+      closePDFPreview()
+    }
+  }
+})
+
+// Close PDF modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePDFPreview()
+  }
+})
+
 // Project Data with enhanced video debugging
 const projects = [
   {
     title: "Lumenix",
     category: "Online Shop",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Mobile video (using same file temporarily)
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -34,8 +135,8 @@ const projects = [
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -56,8 +157,8 @@ const projects = [
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
-    image: "assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -98,8 +199,6 @@ function initializeApp() {
   // Initialize Calendly with better error handling
   initializeCalendly()
 
-  // Debug video files on production
-  debugVideoFiles()
 
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
@@ -110,59 +209,22 @@ function initializeApp() {
   // Set min-height for perfect last card centering
   setStackedCasesMinHeight()
   window.addEventListener('resize', setStackedCasesMinHeight)
+  
+  // Set correct PDF iframe source on page load
+  setPDFIframeSource()
 }
 
-// Debug function to check video file availability
-function debugVideoFiles() {
-  console.log("🎬 Debugging video files...")
-
-  projects.forEach((project, index) => {
-    console.log(`Checking ${project.title}:`)
-    console.log(`  Image: ${project.image}`)
-    console.log(`  Video: ${project.video}`)
-
-    // Test if video file exists
-    fetch(project.video, { method: "HEAD" })
-      .then((response) => {
-        if (response.ok) {
-          console.log(`✅ ${project.title} video found (${response.status})`)
-        } else {
-          console.error(`❌ ${project.title} video NOT found (${response.status})`)
-        }
-      })
-      .catch((error) => {
-        console.error(`❌ ${project.title} video error:`, error)
-      })
-
-    // Test if image file exists
-    fetch(project.image, { method: "HEAD" })
-      .then((response) => {
-        if (response.ok) {
-          console.log(`✅ ${project.title} image found (${response.status})`)
-        } else {
-          console.error(`❌ ${project.title} image NOT found (${response.status})`)
-        }
-      })
-      .catch((error) => {
-        console.error(`❌ ${project.title} image error:`, error)
-      })
-  })
-}
 
 // Enhanced Calendly initialization with multiple fallbacks
 function initializeCalendly() {
-  console.log("Initializing Calendly...")
-
   // Check if Calendly script is already loaded
   if (typeof window.Calendly !== "undefined") {
-    console.log("Calendly already loaded")
     calendlyLoaded = true
     return
   }
 
   // Method 1: Check if script tag exists and load if needed
   if (!document.querySelector('script[src*="calendly.com"]')) {
-    console.log("Calendly script not found, loading dynamically...")
     loadCalendlyScript()
   }
 
@@ -172,10 +234,8 @@ function initializeCalendly() {
 
   const checkCalendly = () => {
     attempts++
-    console.log(`Checking Calendly availability... Attempt ${attempts}`)
 
     if (typeof window.Calendly !== "undefined") {
-      console.log("✅ Calendly loaded successfully!")
       calendlyLoaded = true
       return
     }
@@ -183,7 +243,6 @@ function initializeCalendly() {
     if (attempts < maxAttempts) {
       setTimeout(checkCalendly, 200)
     } else {
-      console.warn("❌ Calendly failed to load after maximum attempts")
       calendlyLoaded = false
     }
   }
@@ -208,13 +267,11 @@ function loadCalendlyScript() {
     script.async = true
 
     script.onload = () => {
-      console.log("✅ Calendly script loaded dynamically")
       calendlyLoaded = true
       resolve()
     }
 
     script.onerror = () => {
-      console.error("❌ Failed to load Calendly script")
       calendlyLoaded = false
       reject(new Error("Failed to load Calendly script"))
     }
@@ -283,7 +340,6 @@ function setupEventListeners() {
   //   })
   // })
 
-  console.log("✅ Event listeners attached")
 }
 
 // Cursor Follower
@@ -382,7 +438,6 @@ function toggleMobileMenu() {
   const hamburger = document.querySelector(".mobile-menu-btn")
 
   if (!mobileNav || !hamburger) {
-    console.log("Mobile menu elements not found")
     return
   }
 
@@ -573,19 +628,13 @@ function setupScrollSpy() {
 
 // Enhanced Calendly Integration Function with multiple fallbacks
 function openCalendlyPopup() {
-  console.log("🚀 Opening Calendly popup...")
-  console.log("Calendly loaded:", calendlyLoaded)
-  console.log("Window.Calendly:", typeof window.Calendly)
-
   // Method 1: Try standard Calendly integration
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initInlineWidget) {
-    console.log("✅ Using Calendly inline widget")
     return openCalendlyInlineWidget()
   }
 
   // Method 2: Try Calendly popup widget
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initPopupWidget) {
-    console.log("✅ Using Calendly popup widget")
     return window.Calendly.initPopupWidget({
       url: "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6",
     })
@@ -593,20 +642,17 @@ function openCalendlyPopup() {
 
   // Method 3: Try to load Calendly and retry
   if (!calendlyLoaded) {
-    console.log("⏳ Calendly not loaded, attempting to load...")
     loadCalendlyScript()
       .then(() => {
         setTimeout(() => openCalendlyPopup(), 500)
       })
       .catch(() => {
-        console.log("❌ Failed to load Calendly, using fallback")
         openCalendlyFallback()
       })
     return
   }
 
   // Method 4: Fallback - open in new tab
-  console.log("🔄 Using fallback method")
   openCalendlyFallback()
 }
 
@@ -773,7 +819,6 @@ function openCalendlyInlineWidget() {
       }
     }, 1000)
   } catch (error) {
-    console.error("Error initializing Calendly:", error)
     closeCalendly()
     openCalendlyFallback()
   }
@@ -783,7 +828,6 @@ function openCalendlyInlineWidget() {
 
 // Fallback function for when Calendly fails to load
 function openCalendlyFallback() {
-  console.log("🔄 Opening Calendly fallback (new tab)")
 
   // Show a brief message to user
   const message = document.createElement("div")
@@ -970,11 +1014,11 @@ function addSubtleCalendlyStyles() {
             })
           }, 500)
         } catch (e) {
-          console.log("Could not access iframe content for styling:", e)
+          // Could not access iframe content for styling
         }
       }
     } catch (e) {
-      console.log("Could not style Calendly iframe:", e)
+      // Could not style Calendly iframe
     }
   }
 }
@@ -1115,11 +1159,8 @@ function generateProjectModalContent(project) {
                 poster="${project.image}"
                 ${isMobileDevice ? "controls" : ""}
                 onerror="handleVideoError(this)"
-                onloadstart="console.log('Video loading started:', this.src)"
-                oncanplay="console.log('Video can play:', this.src)"
-                onloadeddata="console.log('Video loaded:', this.src)"
             >
-                <source src="${project.video}" type="video/mp4" onerror="console.error('Video source error:', this.src)">
+                <source src="${isMobileDevice && project.mobileVideo ? project.mobileVideo : project.video}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             ${
@@ -1189,9 +1230,6 @@ function generateProjectModalContent(project) {
 
 // Enhanced video error handling
 function handleVideoError(videoElement) {
-  console.error("Video failed to load:", videoElement.src)
-  console.error("Video error code:", videoElement.error?.code)
-  console.error("Video error message:", videoElement.error?.message)
 
   // Show fallback image
   const container = videoElement.closest(".project-video-container")
@@ -1343,7 +1381,6 @@ function enterFullscreen(video, fullscreenBtn) {
       showFullscreenMessage()
     }
   } catch (error) {
-    console.log("Fullscreen error:", error)
     handleFullscreenError(error)
   }
 }
@@ -1365,7 +1402,7 @@ function exitFullscreen(fullscreenBtn) {
       updateFullscreenButton(fullscreenBtn, false)
     }
   } catch (error) {
-    console.log("Exit fullscreen error:", error)
+    // Exit fullscreen error handled silently
   }
 }
 
@@ -1390,7 +1427,6 @@ function updateFullscreenButton(fullscreenBtn, isFullscreen) {
 }
 
 function handleFullscreenError(error) {
-  console.log("Fullscreen failed:", error)
   showFullscreenMessage()
 }
 
@@ -1662,18 +1698,13 @@ function setupProjectTileVideos() {
     video.preload = "metadata"
 
     const source = document.createElement("source")
-    source.src = projects[index].video
+    source.src = isMobileDevice && projects[index].mobileVideo ? projects[index].mobileVideo : projects[index].video
     source.type = "video/mp4"
     video.appendChild(source)
 
     // Add error handling for hover videos
     video.onerror = () => {
-      console.error(`Hover video failed to load: ${projects[index].video}`)
       video.style.display = "none"
-    }
-
-    video.onloadstart = () => {
-      console.log(`Hover video loading: ${projects[index].video}`)
     }
 
     imageContainer.insertBefore(video, imageContainer.firstChild)
@@ -1682,7 +1713,6 @@ function setupProjectTileVideos() {
       if (video.style.display !== "none") {
         video.currentTime = 0
         video.play().catch((e) => {
-          console.log("Hover video play failed:", e)
           video.style.display = "none"
         })
         video.style.opacity = "1"
@@ -1849,5 +1879,3 @@ window.toggleFullscreen = toggleFullscreen
 window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
 
-console.log("✅ All functions attached to window object")
-console.log("openCalendlyPopup available:", typeof window.openCalendlyPopup)
