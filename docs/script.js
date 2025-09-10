@@ -28,7 +28,10 @@ function downloadPDF() {
 function setPDFIframeSource() {
   const iframe = document.querySelector('.pdf-iframe')
   if (iframe) {
-    const pdfPath = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0`
+    // Add mobile-specific parameters for better scaling
+    const isMobile = window.innerWidth <= 768
+    const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
+    const pdfPath = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
     
     // Ensure iframe is visible and properly sized
     iframe.style.display = 'block'
@@ -158,7 +161,8 @@ const projects = [
     category: "Coaching & Community",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
-    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Mobile video
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
