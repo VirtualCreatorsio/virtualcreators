@@ -1,0 +1,61 @@
+# GitHub Pages headers file for performance optimization
+# This works with GitHub Pages and Cloudflare
+
+# Cache static assets with longer lifetimes
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache CSS and JS files with longer lifetimes
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache images with longer lifetimes
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache fonts with maximum lifetime
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.otf
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache videos with longer lifetime
+/*.mp4
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache PDFs with longer lifetime
+/*.pdf
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML files - shorter cache for dynamic content
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Security headers for all files
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
