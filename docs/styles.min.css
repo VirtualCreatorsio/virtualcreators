@@ -749,8 +749,6 @@ background-color: #f3f4f6;
 cursor: pointer;
 height: 24rem;
 transition: transform 0.3s ease;
-aspect-ratio: 4/3;
-min-height: 24rem;
 }
 .project-image:hover {
 transform: translateY(-1rem);
@@ -762,7 +760,6 @@ object-fit: fill;
 transition: all 0.7s ease;
 position: relative;
 z-index: 2;
-aspect-ratio: 4/3;
 }
 .project-image:hover .project-img {
 transform: scale(1.05);

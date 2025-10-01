@@ -1,9 +1,7 @@
 // Service Worker for Virtualcreators website
-const CACHE_NAME = 'virtualcreators-v1.1.0';
-const STATIC_CACHE = 'static-v1.1.0';
-const DYNAMIC_CACHE = 'dynamic-v1.1.0';
-const IMAGE_CACHE = 'images-v1.1.0';
-const FONT_CACHE = 'fonts-v1.1.0';
+const CACHE_NAME = 'virtualcreators-v1.0.0';
+const STATIC_CACHE = 'static-v1.0.0';
+const DYNAMIC_CACHE = 'dynamic-v1.0.0';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -21,13 +19,13 @@ const STATIC_FILES = [
 // Install event - cache static files
 self.addEventListener('install', event => {
   event.waitUntil(
-    Promise.all([
-      caches.open(STATIC_CACHE).then(cache => cache.addAll(STATIC_FILES)),
-      caches.open(IMAGE_CACHE),
-      caches.open(FONT_CACHE)
-    ]).then(() => {
-      return self.skipWaiting();
-    })
+    caches.open(STATIC_CACHE)
+      .then(cache => {
+        return cache.addAll(STATIC_FILES);
+      })
+      .then(() => {
+        return self.skipWaiting();
+      })
   );
 });
 
@@ -38,12 +36,7 @@ self.addEventListener('activate', event => {
       .then(cacheNames => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => 
-              cacheName !== STATIC_CACHE && 
-              cacheName !== DYNAMIC_CACHE && 
-              cacheName !== IMAGE_CACHE && 
-              cacheName !== FONT_CACHE
-            )
+            .filter(cacheName => cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE)
             .map(cacheName => caches.delete(cacheName))
         );
       })
@@ -63,37 +56,9 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Handle external requests (fonts, etc.)
+  // Skip external requests
   if (url.origin !== location.origin) {
-    // Cache external fonts
-    if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
-      event.respondWith(
-        caches.open(FONT_CACHE)
-          .then(cache => cache.match(request))
-          .then(response => {
-            if (response) {
-              return response;
-            }
-            return fetch(request)
-              .then(fetchResponse => {
-                if (fetchResponse && fetchResponse.status === 200) {
-                  const responseToCache = fetchResponse.clone();
-                  caches.open(FONT_CACHE).then(cache => cache.put(request, responseToCache));
-                }
-                return fetchResponse;
-              });
-          })
-      );
-    }
     return;
-  }
-
-  // Determine cache strategy based on request type
-  let cacheStrategy = DYNAMIC_CACHE;
-  if (request.destination === 'image') {
-    cacheStrategy = IMAGE_CACHE;
-  } else if (request.destination === 'font') {
-    cacheStrategy = FONT_CACHE;
   }
 
   event.respondWith(
@@ -113,8 +78,8 @@ self.addEventListener('fetch', event => {
             // Clone the response
             const responseToCache = fetchResponse.clone();
 
-            // Cache with appropriate strategy
-            caches.open(cacheStrategy)
+            // Cache dynamic content
+            caches.open(DYNAMIC_CACHE)
               .then(cache => {
                 cache.put(request, responseToCache);
               });
