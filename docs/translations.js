@@ -81,10 +81,10 @@ const translations = {
     tractionMoviesResult2: "25% boost in conversion rates",
     tractionMoviesResult3: "40% reduction in bounce rate",
     tractionMoviesResult4: "20% improvement in page load speed",
-    lifeSciGrowthResult1: "###% increase in website traffic",
-    lifeSciGrowthResult2: "###% more project inquiries",
-    lifeSciGrowthResult3: "##% improvement in brand recognition",
-    lifeSciGrowthResult4: "Featured in # design publications",
+    lifeSciGrowthResult1: "% increase in user engagement",
+    lifeSciGrowthResult2: "% boost in conversion rates",
+    lifeSciGrowthResult3: "% reduction in bounce rate",
+    lifeSciGrowthResult4: "% improvement in page load speed",
 
     // Project Reviews
     lumenixReviewText: "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended.",
@@ -593,13 +593,13 @@ const translations = {
     tractionMoviesResult2: "25% boost in conversiepercentages",
     tractionMoviesResult3: "40% vermindering van bounce rate",
     tractionMoviesResult4: "20% verbetering in pagina laadsnelheid",
-    lifeSciGrowthResult1: "% toename in gebruikersbetrokkenheid",
-    lifeSciGrowthResult2: "% boost in conversiepercentages",
-    lifeSciGrowthResult3: "% vermindering van bounce rate",
-    lifeSciGrowthResult4: "% verbetering in pagina laadsnelheid",
+    lifeSciGrowthResult1: "###% toename in websiteverkeer",
+    lifeSciGrowthResult2: "###% meer projectaanvragen",
+    lifeSciGrowthResult3: "##% verbetering in merkherkenning",
+    lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
 
     // Project Reviews
-    lumenixReviewText: "Kjell de Ruiter heeft een fantastische website voor ons gemaakt met een schoon, modern ontwerp, uitstekende prestaties en veel aandacht voor detail. Gedurende het hele proces was de communicatie snel en duidelijk, en Kjell droeg consequent waardevolle ideeën bij terwijl hij ervoor zorgde dat alles werd geleverd volgens de hoogste standaard. Van concept tot finale levering werd elke stap aangepakt met professionaliteit en zorg. Als je op zoek bent naar iemand die kwaliteit combineert met een soepele samenwerking, wordt Kjell ten zeerste aanbevolen.",
+    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon. Als je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
     tractionMoviesReviewText: "Samenwerken met Kjell de Ruiter aan onze TractionMovies website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website.",
