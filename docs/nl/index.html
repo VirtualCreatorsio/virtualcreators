@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtualcreators - Digitaal Bureau Portfolio | virtualcreators.io</title>
-    <meta name="description" content="Transformeer je digitale aanwezigheid met Virtualcreators. Expert webdesign & ontwikkeling die groei stimuleert. Krijg moderne, responsieve websites die bezoekers omzetten in klanten van Virtualcreators." id="metaDescription">
+    <title>Virtualcreators - Digital Agency Portfolio | virtualcreators.io</title>
+    <meta name="description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="metaDescription">
     
     <!-- Brand-specific SEO -->
     <meta name="keywords" content="Virtualcreators, virtualcreators.io, virtual creators, digital agency, web design, web development">
@@ -17,30 +17,31 @@
     <link rel="alternate" hreflang="x-default" href="https://www.virtualcreators.io/" />
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Virtualcreators - Digitaal Bureau Portfolio | virtualcreators.io" id="ogTitle">
-    <meta property="og:description" content="Transformeer je digitale aanwezigheid met Virtualcreators. Expert webdesign & ontwikkeling die groei stimuleert. Krijg moderne, responsieve websites die bezoekers omzetten in klanten van Virtualcreators." id="ogDescription">
-    <meta property="og:url" content="https://www.virtualcreators.io/nl/" id="ogUrl">
+    <meta property="og:title" content="Virtualcreators - Digital Agency Portfolio | virtualcreators.io" id="ogTitle">
+    <meta property="og:description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="ogDescription">
+    <meta property="og:url" content="https://www.virtualcreators.io" id="ogUrl">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="nl_NL" id="ogLocale">
-    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale" content="en_US" id="ogLocale">
+    <meta property="og:locale:alternate" content="nl_NL">
     
     <!-- Open Graph Image -->
     <meta property="og:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
     <meta property="og:image:width" content="32">
     <meta property="og:image:height" content="32">
     <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Virtualcreators Logo">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Virtualcreators - Digitaal Bureau Portfolio | virtualcreators.io" id="twitterTitle">
-    <meta name="twitter:description" content="Transformeer je digitale aanwezigheid met Virtualcreators. Expert webdesign & ontwikkeling die groei stimuleert. Krijg moderne, responsieve websites die bezoekers omzetten in klanten van Virtualcreators." id="twitterDescription">
+    <meta name="twitter:title" content="Virtualcreators - Digital Agency Portfolio | virtualcreators.io" id="twitterTitle">
+    <meta name="twitter:description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="twitterDescription">
     <meta name="twitter:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
      
     <!-- Favicon Support -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/vc-logo-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/vc-logo-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,17 +49,37 @@
     <link rel="preconnect" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     
-    <!-- Font Preload -->
+    <!-- Preload critical images with proper sizing -->
+    <link rel="preload" href="assets/lumenix-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" href="assets/tractionmovies-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" href="assets/lifescigrowth-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    
+    <!-- Preload mobile-optimized images -->
+    <link rel="preload" href="assets/lumenix-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    <link rel="preload" href="assets/tractionmovies-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    <link rel="preload" href="assets/lifescigrowth-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//formspree.io">
+    
+    <!-- Font Preload with display=swap for better performance -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"></noscript>
+    
+    <!-- Preload critical font files -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Calendly Integration -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+    <!-- Calendly Integration - Load asynchronously -->
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
-      /* Critical CSS for initial render */
+      /* Critical CSS for initial render - optimized */
       *{margin:0;padding:0;box-sizing:border-box}
       html{scroll-behavior:smooth}
       body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto",sans-serif;line-height:1.6;color:#111827;background-color:#ffffff;overflow-x:hidden}
@@ -68,25 +89,35 @@
       .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:5rem}
       .hero-content{text-align:center;position:relative;z-index:1}
       .hero-title{font-size:3.75rem;font-weight:300;line-height:1;letter-spacing:-0.025em;margin-bottom:1.5rem}
-      @media (min-width:768px){.hero-title{font-size:5rem}}
+      .hero-subtitle{font-size:1.25rem;color:#6b7280;max-width:32rem;margin:0 auto;font-weight:300;line-height:1.6}
+      .hero-buttons{display:flex;flex-direction:column;gap:1rem;align-items:center;padding-top:2rem}
+      .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.5rem;border:none;border-radius:9999px;font-size:0.875rem;font-weight:300;text-decoration:none;cursor:pointer;transition:all 0.3s ease;white-space:nowrap;font-family:inherit;position:relative}
+      .btn-primary{background-color:#111827;color:white}
+      .btn-ghost{background:linear-gradient(to right,#ec4899,#8b5cf6);color:white}
+      .btn-large{padding:1rem 2rem;font-size:1.125rem}
+      @media (min-width:768px){.hero-title{font-size:5rem}.hero-subtitle{font-size:1.5rem}.hero-buttons{flex-direction:row;justify-content:center}}
       @media (min-width:1024px){.hero-title{font-size:6rem}}
     </style>
     
     <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="preload" href="../styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../styles.css"></noscript>
-    <link rel="preload" href="../cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../cookie-banner.css"></noscript>
-    <link rel="canonical" href="https://www.virtualcreators.io/nl/" />
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
+    <link rel="preload" href="cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="cookie-banner.css"></noscript>
+    
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="script.min.js" as="script">
+    <link rel="preload" href="translations.min.js" as="script">
+    <link rel="canonical" href="https://www.virtualcreators.io/" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Virtualcreators",
       "alternateName": ["VirtualCreators", "Virtual Creators"],
-      "url": "https://www.virtualcreators.io/nl/",
+      "url": "https://www.virtualcreators.io/",
       "logo": "https://www.virtualcreators.io/assets/vc-logo-32x32.png",
-      "description": "Virtualcreators is een digitaal bureau gespecialiseerd in webdesign en ontwikkeling. We creëren moderne, responsieve websites die bezoekers omzetten in klanten.",
+      "description": "Virtualcreators is a digital agency specializing in web design and development. We create modern, responsive websites that convert visitors into customers.",
       "foundingDate": "2024",
       "slogan": "Crafting digital experiences that drive meaningful growth",
       "sameAs": [
@@ -117,8 +148,8 @@
       "@type": "WebSite",
       "name": "Virtualcreators",
       "alternateName": "virtualcreators.io",
-      "url": "https://www.virtualcreators.io/nl/",
-      "description": "Virtualcreators - Digitaal bureau portfolio dat expert webdesign en ontwikkelingsdiensten toont",
+      "url": "https://www.virtualcreators.io/",
+      "description": "Virtualcreators - Digital agency portfolio showcasing expert web design and development services",
       "inLanguage": ["en", "nl"],
       "publisher": {
         "@type": "Organization",
@@ -126,7 +157,7 @@
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://www.virtualcreators.io/nl/?s={search_term_string}",
+        "target": "https://www.virtualcreators.io/?s={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -139,8 +170,8 @@
       "@type": "ProfessionalService",
       "name": "Virtualcreators",
       "alternateName": ["VirtualCreators", "Virtual Creators"],
-      "description": "Virtualcreators is gespecialiseerd in het creëren van digitale ervaringen door middel van expert webdesign en ontwikkelingsdiensten.",
-      "url": "https://www.virtualcreators.io/nl/",
+      "description": "Virtualcreators specializes in creating digital experiences through expert web design and development services.",
+      "url": "https://www.virtualcreators.io/",
       "telephone": "+31641552375",
       "email": "kjell@virtualcreators.io",
       "serviceType": ["Web Design", "Web Development", "Digital Strategy", "Brand Identity"],
@@ -401,7 +432,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(0)">
-                        <img src="../assets/lumenix-project.webp" alt="Lumenix-Beamers Project" class="project-img" loading="lazy" decoding="async">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/lumenix-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/lumenix-project.webp" type="image/webp">
+                            <img src="assets/lumenix-project.webp" alt="Lumenix-Beamers Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -433,7 +468,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(1)">
-                        <img src="../assets/tractionmovies-project.webp" alt="TractionMovies Project" class="project-img" loading="lazy" decoding="async">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/tractionmovies-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/tractionmovies-project.webp" type="image/webp">
+                            <img src="assets/tractionmovies-project.webp" alt="TractionMovies Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -465,7 +504,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(2)">
-                        <img src="../assets/lifescigrowth-project.webp" alt="LifeSciGrowth Project" class="project-img" loading="lazy" decoding="async">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/lifescigrowth-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/lifescigrowth-project.webp" type="image/webp">
+                            <img src="assets/lifescigrowth-project.webp" alt="LifeSciGrowth Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -659,9 +702,9 @@
         <div class="container">
             <div class="pdf-portfolio-contact-content">
                 <div class="pdf-contact-header">
-                    <h3 class="pdf-contact-title" data-translate="interestedInWorking">Geïnteresseerd in samenwerken?</h3>
+                    <h3 class="pdf-contact-title" data-translate="interestedInWorking">Interested in working together?</h3>
                     <p class="pdf-contact-description" data-translate="downloadPortfolioContact">
-                        Download mijn service & prijslijst om mijn aanbod te bekijken en meer inzicht te krijgen in wat ik voor je kan betekenen.
+                        Download my service & pricing guide to see my offerings and get a better understanding of what I can do for you.
                     </p>
                 </div>
                 
@@ -677,7 +720,7 @@
                             </svg>
                         </div>
                         <div class="pdf-contact-info">
-                            <h4 class="pdf-contact-filename" data-translate="portfolioTitle">Service & Prijslijst</h4>
+                            <h4 class="pdf-contact-filename" data-translate="portfolioTitle">Service & Pricing Guide</h4>
                             <p class="pdf-contact-meta">
                                 <span data-translate="pdfFormat">PDF</span>
                                 <span class="pdf-separator">•</span>
@@ -692,7 +735,7 @@
                                 <polyline points="7,10 12,15 17,10"/>
                                 <line x1="12" y1="15" x2="12" y2="3"/>
                             </svg>
-                            Download Prijslijst
+                            Download Guide
                         </button>
                         <button class="btn btn-ghost" onclick="togglePDFPreview()" data-translate="previewPDF">
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -712,8 +755,8 @@
         <div class="pdf-modal-content">
             <div class="pdf-modal-header">
                 <div class="pdf-modal-title-section">
-                    <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Prijslijst</h3>
-                    <p class="pdf-modal-subtitle">Indicatief • Bijgewerkt september 2025</p>
+                    <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Pricing Guide</h3>
+                    <p class="pdf-modal-subtitle">Indicative • Updated September 2025</p>
                 </div>
                 <button class="pdf-modal-close" onclick="closePDFPreview()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -723,9 +766,9 @@
                 </button>
             </div>
             <div class="pdf-modal-body">
-                <iframe src="../assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                <iframe src="assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0" 
                         class="pdf-iframe" 
-                        title="Service & Prijslijst Preview">
+                        title="Service & Pricing Guide Preview">
                 </iframe>
             </div>
             <div class="pdf-modal-footer">
@@ -735,7 +778,7 @@
                         <polyline points="7,10 12,15 17,10"/>
                         <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    Download Prijslijst
+                    Download Guide
                 </button>
             </div>
         </div>
@@ -813,12 +856,71 @@
         </div>
     </div>
 
-    <!-- JavaScript loaded asynchronously -->
-    <script src="../translations.js" defer></script>
-    <script src="../script.js" defer></script>
-    <script src="../cookie-banner.js"></script>
+    <script>
+    // Language redirect logic for root index.html
+    (function() {
+        // Check if we're on the root page and not already redirected
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html' || window.location.pathname.endsWith('index.html')) {
+            // Check for stored language preference
+            const storedLang = localStorage.getItem('preferred-language')
+            
+            // Only redirect if there's a clear stored preference for Dutch
+            if (storedLang === 'nl') {
+                // Handle local development vs production
+                if (window.location.protocol === 'file:') {
+                    const basePath = window.location.pathname.split('/').slice(0, -1).join('/')
+                    window.location.href = `${basePath}/nl/index.html`
+                } else {
+                    window.location.href = '/nl/'
+                }
+                return
+            }
+            
+            // For now, disable automatic browser language detection to prevent unwanted redirects
+            // Only redirect if user has explicitly chosen Dutch
+            
+            // Default to English (stay on root) if no preference
+            if (!storedLang) {
+                localStorage.setItem('preferred-language', 'en')
+            }
+        }
+    })()
+    </script>
     
-    <!-- Calendly Script -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+    <!-- JavaScript loaded asynchronously with proper loading strategy -->
+    <script src="translations.min.js" defer></script>
+    <script src="script.min.js" defer></script>
+    <script src="cookie-banner.min.js" defer></script>
+    
+    <!-- Load non-critical scripts after page load -->
+    <script>
+      window.addEventListener('load', function() {
+        // Load any additional non-critical scripts here
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Lazy load non-critical resources
+        setTimeout(function() {
+          // Load any additional resources that aren't immediately needed
+          const lazyImages = document.querySelectorAll('img[data-src]');
+          if (lazyImages.length > 0) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              });
+            });
+            lazyImages.forEach(img => imageObserver.observe(img));
+          }
+        }, 1000);
+      });
+    </script>
+    
 </body>
 </html>
