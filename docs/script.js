@@ -46,7 +46,7 @@ function downloadPDF() {
   
   // Create a temporary link element to trigger download
   const link = document.createElement('a')
-  link.href = `${assetPathPrefix}assets/${pdfFileName}`
+  link.href = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}`
   link.download = pdfFileName
   link.target = '_blank'
   
@@ -71,7 +71,7 @@ function setPDFIframeSource() {
       ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
       : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
     
-    const pdfPath = `${assetPathPrefix}assets/${pdfFileName}#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
+    const pdfPath = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
     
     // Ensure iframe is visible and properly sized
     iframe.style.display = 'block'
