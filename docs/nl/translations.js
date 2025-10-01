@@ -61,16 +61,16 @@ const translations = {
     creativeagency: "Creative Agency",
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "A complete rebranding of their online presence through custom web-solutions",
-    tractionMoviesDescription: "Bringing custom web-solutions to their current site to elevate their online presence",
+    tractionMoviesDescription: "Bringing custom web-solutions to their site to elevate their online presence",
     lifeSciGrowthDescription:
       "A simplistic solution for a membership community site that offers flexibility and guidance",
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix needed a complete digital transformation to compete in the modern online landscape. I redesigned their entire website from the ground up, focusing on user experience and convenience. The result was a 300% increase in user engagement and a 150% boost in conversion rates.",
+      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nI redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales.",
     tractionMoviesFullDescription:
-      "TractionMovies approached me to create a more dynamic website for them through the use of custom-components and interactive design.",
-    lifeSciGrowthFullDescription: "Mock-up text, will be replaced shortly.",
+      "TractionMovies needed a more dynamic and engaging website to better showcase their work and attract visitors. Their previous site relied on a CMS platform that had been discontinued, which made updates difficult and limited flexibility, while also lacking interactive elements to stand out in a competitive market.\n\nI developed a fully custom website using bespoke components and interactive design elements tailored to their brand. The project involved designing a clean, modern layout, implementing smooth animations, and building a platform that is easy to update and maintain without relying on unsupported software. Every aspect of the user experience was considered, from navigation to content presentation.\n\nThe final website delivers a polished, professional look while providing a more engaging experience for visitors. It highlights TractionMovies' portfolio effectively, makes content easy to explore, and reflects their brand identity consistently. The site now stands out as a dynamic, user-friendly platform that is fully future-proofed and keeps users engaged.",
+    lifeSciGrowthFullDescription: "LifesciGrowth needed a professional membership website that not only reflected their brand but also provided a seamless experience for members. They wanted to sell memberships online while ensuring member features, content access, and community engagement were managed efficiently.\n\nI built the website from the ground up, creating a full brand identity—including colors, typography, and visual elements—and designing a cohesive, user-friendly customer journey. The website was integrated with Huddle, a community platform I set up to manage memberships, content, and member interactions. Custom components and interactive design elements were implemented to make the experience engaging and intuitive from signup to active participation.\n\nThe project delivered a polished, professional platform that drives membership sign-ups, strengthens brand identity, and fosters an active, engaged community. By combining thoughtful design, seamless UX, and functional integration with Huddle, LifesciGrowth now has a complete, results-driven membership ecosystem.",
 
     // Project Results
     lumenixResult1: "300% increase in user engagement",
@@ -87,13 +87,13 @@ const translations = {
     lifeSciGrowthResult4: "Featured in # design publications",
 
     // Project Reviews
-    lumenixReviewText: "An absolute star! Kjell de Ruiter created a beautiful website for us! Sleek design, fast, and meticulously crafted. The service was fantastic: quick communication, proactive thinking, and everything worked out in detail. From the first idea to the last pixel: Kjell just takes care of it.\n\nIf you're looking for someone who delivers quality and is great to work with, Kjell is the one to go to.",
+    lumenixReviewText: "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
-    tractionMoviesReviewText: "Great collaboration and creative solutions. Our online presence is now truly next-level.",
+    tractionMoviesReviewText: "Working with Kjell de Ruiter on our TractionMovies website was a fantastic experience. He really took the time to understand our vision and brought it to life with a clean, dynamic design that perfectly showcases our work. Kjell handled everything professionally, from the design to the interactive features, and made the process easy for us to follow even though we're not very technical. We're very happy with the result and would gladly recommend Kjell to anyone looking for a professional, well-built website.",
     tractionMoviesReviewAuthor: "Tjade",
     tractionMoviesReviewCompany: "TractionMovies",
-    lifeSciGrowthReviewText: "The membership platform is simple and effective. Our community loves the new experience!",
+    lifeSciGrowthReviewText: "Kjell de Ruiter helped us build our LifesciGrowth membership website from scratch. He made the whole process easy to understand and handled everything for us, from the design to setting up the membership features within Huddle. The website is simple to use, looks great, and our members can easily access everything they need. We're very happy with Kjell's service and would gladly recommend him to anyone looking for a good-looking, professional website.",
     lifeSciGrowthReviewAuthor: "Birgit",
     lifeSciGrowthReviewCompany: "LifeSciGrowth",
     clientReview: "Client Review",
@@ -573,16 +573,16 @@ const translations = {
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
     tractionMoviesDescription:
-      "Aangepaste weboplossingen naar hun huidige site brengen om hun online aanwezigheid te verbeteren",
+      "Aangepaste weboplossingen naar hun site brengen om hun online aanwezigheid te verbeteren",
     lifeSciGrowthDescription:
       "Een eenvoudige oplossing voor een lidmaatschapscommunitysite die flexibiliteit en begeleiding biedt",
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix had een complete digitale transformatie nodig om te kunnen concurreren in het moderne online landschap. Ik heb hun hele website vanaf de grond opnieuw ontworpen, met focus op gebruikerservaring en gemak. Het resultaat was een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages.",
+      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nIk heb de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert.",
     tractionMoviesFullDescription:
-      "TractionMovies benaderde mij om een meer dynamische website voor hen te creëren door het gebruik van aangepaste componenten en interactief ontwerp.",
-    lifeSciGrowthFullDescription: "Mock-up tekst, wordt binnenkort vervangen.",
+      "TractionMovies had een meer dynamische en boeiende website nodig om hun werk beter te tonen en bezoekers aan te trekken. Hun vorige site was afhankelijk van een CMS-platform dat was stopgezet, waardoor updates moeilijk werden en de flexibiliteit beperkt was, terwijl het ook interactieve elementen miste om op te vallen in een concurrerende markt.\n\nIk heb een volledig aangepaste website ontwikkeld met op maat gemaakte componenten en interactieve ontwerpelementen die zijn afgestemd op hun merk. Het project omvatte het ontwerpen van een schone, moderne lay-out, het implementeren van vloeiende animaties en het bouwen van een platform dat gemakkelijk bij te werken en te onderhouden is zonder afhankelijk te zijn van niet-ondersteunde software. Elk aspect van de gebruikerservaring werd overwogen, van navigatie tot contentpresentatie.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling terwijl het een meer boeiende ervaring voor bezoekers biedt. Het toont het portfolio van TractionMovies effectief, maakt content gemakkelijk te verkennen en weerspiegelt hun merkidentiteit consequent. De site valt nu op als een dynamisch, gebruiksvriendelijk platform dat volledig toekomstbestendig is en gebruikers betrokken houdt.",
+    lifeSciGrowthFullDescription: "LifesciGrowth had een professionele lidmaatschapswebsite nodig die niet alleen hun merk weerspiegelde, maar ook een naadloze ervaring voor leden bood. Ze wilden lidmaatschappen online verkopen terwijl ze ervoor zorgden dat ledenfuncties, toegang tot content en community-engagement efficiënt werden beheerd.\n\nIk heb de website vanaf de grond opgebouwd, waarbij ik een volledige merkidentiteit creëerde—inclusief kleuren, typografie en visuele elementen—en een samenhangende, gebruiksvriendelijke klantreis ontwierp. De website werd geïntegreerd met Huddle, een community-platform dat ik opzette om lidmaatschappen, content en ledeninteracties te beheren. Aangepaste componenten en interactieve ontwerpelementen werden geïmplementeerd om de ervaring boeiend en intuïtief te maken van aanmelding tot actieve deelname.\n\nHet project leverde een gepolijst, professioneel platform op dat lidmaatschapsaanmeldingen stimuleert, de merkidentiteit versterkt en een actieve, betrokken community bevordert. Door doordacht ontwerp, naadloze UX en functionele integratie met Huddle te combineren, heeft LifesciGrowth nu een complete, resultaatgerichte lidmaatschapsecosystem.",
 
     // Project Results
     lumenixResult1: "300% toename in gebruikersbetrokkenheid",
@@ -593,19 +593,19 @@ const translations = {
     tractionMoviesResult2: "25% boost in conversiepercentages",
     tractionMoviesResult3: "40% vermindering van bounce rate",
     tractionMoviesResult4: "20% verbetering in pagina laadsnelheid",
-    lifeSciGrowthResult1: "###% toename in websiteverkeer",
-    lifeSciGrowthResult2: "###% meer projectaanvragen",
-    lifeSciGrowthResult3: "##% verbetering in merkherkenning",
-    lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
+    lifeSciGrowthResult1: "% toename in gebruikersbetrokkenheid",
+    lifeSciGrowthResult2: "% boost in conversiepercentages",
+    lifeSciGrowthResult3: "% vermindering van bounce rate",
+    lifeSciGrowthResult4: "% verbetering in pagina laadsnelheid",
 
     // Project Reviews
-    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon.\n\nAls je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
+    lumenixReviewText: "Kjell de Ruiter heeft een fantastische website voor ons gemaakt met een schoon, modern ontwerp, uitstekende prestaties en veel aandacht voor detail. Gedurende het hele proces was de communicatie snel en duidelijk, en Kjell droeg consequent waardevolle ideeën bij terwijl hij ervoor zorgde dat alles werd geleverd volgens de hoogste standaard. Van concept tot finale levering werd elke stap aangepakt met professionaliteit en zorg. Als je op zoek bent naar iemand die kwaliteit combineert met een soepele samenwerking, wordt Kjell ten zeerste aanbevolen.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
-    tractionMoviesReviewText: "Fijne samenwerking en creatieve oplossingen. Onze online aanwezigheid is nu echt next-level.",
+    tractionMoviesReviewText: "Samenwerken met Kjell de Ruiter aan onze TractionMovies website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website.",
     tractionMoviesReviewAuthor: "Tjade",
     tractionMoviesReviewCompany: "TractionMovies",
-    lifeSciGrowthReviewText: "Het ledenplatform is simpel en effectief. Onze community is erg blij met de nieuwe ervaring!",
+    lifeSciGrowthReviewText: "Kjell de Ruiter hielp ons onze LifesciGrowth lidmaatschapswebsite vanaf nul te bouwen. Hij maakte het hele proces gemakkelijk te begrijpen en regelde alles voor ons, van het ontwerp tot het opzetten van de lidmaatschapsfuncties binnen Huddle. De website is eenvoudig te gebruiken, ziet er geweldig uit en onze leden kunnen gemakkelijk toegang krijgen tot alles wat ze nodig hebben. We zijn erg blij met Kjell's service en zouden hem graag aanbevelen aan iedereen die op zoek is naar een mooie, professionele website.",
     lifeSciGrowthReviewAuthor: "Birgit",
     lifeSciGrowthReviewCompany: "LifeSciGrowth",
     clientReview: "Klantbeoordeling",
