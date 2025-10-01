@@ -1722,16 +1722,6 @@ html.modal-open {
   line-height: 1.6;
 }
 
-.project-description-content p {
-  color: #6b7280;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.project-description-content p:last-child {
-  margin-bottom: 0;
-}
-
 .services-provided {
   margin-bottom: 2rem;
 }
