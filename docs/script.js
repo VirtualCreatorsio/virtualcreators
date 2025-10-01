@@ -9,12 +9,45 @@ let calendlyLoaded = false
 const isDutchLocale = window.location.pathname.includes('/nl/')
 const assetPathPrefix = isDutchLocale ? '../' : ''
 
+// Performance optimization: Debounce function for scroll events
+function debounce(func, wait) {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
+
+// Performance optimization: Throttle function for resize events
+function throttle(func, limit) {
+  let inThrottle
+  return function() {
+    const args = arguments
+    const context = this
+    if (!inThrottle) {
+      func.apply(context, args)
+      inThrottle = true
+      setTimeout(() => inThrottle = false, limit)
+    }
+  }
+}
+
 // PDF Portfolio Functions
 function downloadPDF() {
+  // Determine which PDF to use based on current language
+  const currentLanguage = localStorage.getItem("preferred-language") || "en"
+  const pdfFileName = currentLanguage === 'nl' 
+    ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
+    : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+  
   // Create a temporary link element to trigger download
   const link = document.createElement('a')
-  link.href = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf`
-  link.download = 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+  link.href = `${assetPathPrefix}assets/${pdfFileName}`
+  link.download = pdfFileName
   link.target = '_blank'
   
   // Append to body, click, and remove
@@ -31,7 +64,14 @@ function setPDFIframeSource() {
     // Add mobile-specific parameters for better scaling
     const isMobile = window.innerWidth <= 768
     const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
-    const pdfPath = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
+    
+    // Determine which PDF to use based on current language
+    const currentLanguage = localStorage.getItem("preferred-language") || "en"
+    const pdfFileName = currentLanguage === 'nl' 
+      ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
+      : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+    
+    const pdfPath = `${assetPathPrefix}assets/${pdfFileName}#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
     
     // Ensure iframe is visible and properly sized
     iframe.style.display = 'block'
@@ -145,7 +185,7 @@ const projects = [
     services: [
       { icon: "smartphone", label: "Mobile First Approach" },
       { icon: "palette", label: "UI/UX Design" },
-      { icon: "code", label: "Backend Development" },
+      { icon: "code", label: "Web Development" },
       { icon: "zap", label: "Performance Optimization" },
     ],
     results: ["tractionMoviesResult1", "tractionMoviesResult2", "tractionMoviesResult3", "tractionMoviesResult4"],
@@ -290,12 +330,12 @@ function detectMobileDevice() {
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
 
-  // Update on resize
-  window.addEventListener("resize", () => {
+  // Update on resize (throttled for performance)
+  window.addEventListener("resize", throttle(() => {
     isMobileDevice =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
       window.innerWidth <= 768
-  })
+  }, 250))
 }
 
 // Event Listeners
@@ -359,12 +399,12 @@ function setupCursorFollower() {
     cursor.style.top = e.clientY + "px"
   })
 
-  // Scale cursor on scroll
-  window.addEventListener("scroll", () => {
+  // Scale cursor on scroll (throttled for performance)
+  window.addEventListener("scroll", throttle(() => {
     const scrollY = window.scrollY
     const scale = scrollY > 100 ? 0.5 : 1
     cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
-  })
+  }, 16))
 }
 
 // Mouse Effect for Hero Background and Blog Headers
@@ -1212,7 +1252,7 @@ function generateProjectModalContent(project) {
         
         <div class="project-overview">
             <h4>${window.t("projectOverview")}</h4>
-            <p>${window.t(project.fullDescription)}</p>
+            <div class="project-description-content">${window.t(project.fullDescription).replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')}</div>
         </div>
         
         <div class="services-provided">
@@ -1699,7 +1739,7 @@ function setupProjectTileVideos() {
     video.muted = true
     video.loop = true
     video.playsInline = true
-    video.preload = "metadata"
+    video.preload = "none"
 
     const source = document.createElement("source")
     source.src = isMobileDevice && projects[index].mobileVideo ? projects[index].mobileVideo : projects[index].video
@@ -1715,6 +1755,11 @@ function setupProjectTileVideos() {
 
     imageContainer.addEventListener("mouseenter", () => {
       if (video.style.display !== "none") {
+        // Load video only when needed
+        if (video.preload === "none") {
+          video.preload = "metadata"
+          video.load()
+        }
         video.currentTime = 0
         video.play().catch((e) => {
           video.style.display = "none"
@@ -1847,8 +1892,8 @@ function stackedScrollCasesEffect() {
       }
     })
   }
-  window.addEventListener('scroll', animate, { passive: true })
-  window.addEventListener('resize', animate)
+  window.addEventListener('scroll', throttle(animate, 16), { passive: true })
+  window.addEventListener('resize', throttle(animate, 250))
   animate()
 }
 
