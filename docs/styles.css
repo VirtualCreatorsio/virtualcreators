@@ -904,6 +904,8 @@ body {
   cursor: pointer;
   height: 24rem;
   transition: transform 0.3s ease;
+  aspect-ratio: 4/3;
+  min-height: 24rem;
 }
 
 
@@ -919,6 +921,7 @@ body {
   transition: all 0.7s ease;
   position: relative;
   z-index: 2;
+  aspect-ratio: 4/3;
 }
 
 
@@ -2479,6 +2482,7 @@ html.modal-open {
   }
   .project-image {
     height: 16rem;
+    min-height: 16rem;
   }
   .project-img {
     height: 16rem;
@@ -2506,6 +2510,7 @@ html.modal-open {
   }
   .project-image {
     height: 14rem;
+    min-height: 14rem;
   }
   .project-img {
     height: 14rem;
@@ -3196,6 +3201,16 @@ html.modal-open {
   
   .image-overlap-caption p {
     font-size: 0.85rem;
+  }
+  
+  /* Fix layout shifts on mobile */
+  .project-image {
+    height: 20rem;
+    min-height: 20rem;
+  }
+  
+  .project-img {
+    height: 20rem;
   }
 }
 

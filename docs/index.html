@@ -49,10 +49,15 @@
     <link rel="preconnect" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     
-    <!-- Preload critical images -->
-    <link rel="preload" href="assets/lumenix-project.webp" as="image" type="image/webp">
-    <link rel="preload" href="assets/tractionmovies-project.webp" as="image" type="image/webp">
-    <link rel="preload" href="assets/lifescigrowth-project.webp" as="image" type="image/webp">
+    <!-- Preload critical images with proper sizing -->
+    <link rel="preload" href="assets/lumenix-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" href="assets/tractionmovies-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    <link rel="preload" href="assets/lifescigrowth-project.webp" as="image" type="image/webp" media="(min-width: 768px)">
+    
+    <!-- Preload mobile-optimized images -->
+    <link rel="preload" href="assets/lumenix-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    <link rel="preload" href="assets/tractionmovies-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
+    <link rel="preload" href="assets/lifescigrowth-project-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)">
     
     <!-- Resource hints for better performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -62,6 +67,10 @@
     <!-- Font Preload with display=swap for better performance -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"></noscript>
+    
+    <!-- Preload critical font files -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Calendly Integration - Load asynchronously -->
     <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -70,7 +79,7 @@
 
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
-      /* Critical CSS for initial render */
+      /* Critical CSS for initial render - optimized */
       *{margin:0;padding:0;box-sizing:border-box}
       html{scroll-behavior:smooth}
       body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto",sans-serif;line-height:1.6;color:#111827;background-color:#ffffff;overflow-x:hidden}
@@ -80,7 +89,13 @@
       .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:5rem}
       .hero-content{text-align:center;position:relative;z-index:1}
       .hero-title{font-size:3.75rem;font-weight:300;line-height:1;letter-spacing:-0.025em;margin-bottom:1.5rem}
-      @media (min-width:768px){.hero-title{font-size:5rem}}
+      .hero-subtitle{font-size:1.25rem;color:#6b7280;max-width:32rem;margin:0 auto;font-weight:300;line-height:1.6}
+      .hero-buttons{display:flex;flex-direction:column;gap:1rem;align-items:center;padding-top:2rem}
+      .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.5rem;border:none;border-radius:9999px;font-size:0.875rem;font-weight:300;text-decoration:none;cursor:pointer;transition:all 0.3s ease;white-space:nowrap;font-family:inherit;position:relative}
+      .btn-primary{background-color:#111827;color:white}
+      .btn-ghost{background:linear-gradient(to right,#ec4899,#8b5cf6);color:white}
+      .btn-large{padding:1rem 2rem;font-size:1.125rem}
+      @media (min-width:768px){.hero-title{font-size:5rem}.hero-subtitle{font-size:1.5rem}.hero-buttons{flex-direction:row;justify-content:center}}
       @media (min-width:1024px){.hero-title{font-size:6rem}}
     </style>
     
@@ -89,6 +104,10 @@
     <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
     <link rel="preload" href="cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="cookie-banner.css"></noscript>
+    
+    <!-- Preload critical JavaScript -->
+    <link rel="preload" href="script.min.js" as="script">
+    <link rel="preload" href="translations.min.js" as="script">
     <link rel="canonical" href="https://www.virtualcreators.io/" />
     <script type="application/ld+json">
     {
@@ -413,7 +432,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(0)">
-                        <img src="assets/lumenix-project.webp" alt="Lumenix-Beamers Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/lumenix-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/lumenix-project.webp" type="image/webp">
+                            <img src="assets/lumenix-project.webp" alt="Lumenix-Beamers Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -445,7 +468,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(1)">
-                        <img src="assets/tractionmovies-project.webp" alt="TractionMovies Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/tractionmovies-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/tractionmovies-project.webp" type="image/webp">
+                            <img src="assets/tractionmovies-project.webp" alt="TractionMovies Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -477,7 +504,11 @@
                         </button>
                     </div>
                     <div class="project-image" onclick="openProjectModal(2)">
-                        <img src="assets/lifescigrowth-project.webp" alt="LifeSciGrowth Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        <picture>
+                            <source media="(max-width: 767px)" srcset="assets/lifescigrowth-project-mobile.webp" type="image/webp">
+                            <source media="(min-width: 768px)" srcset="assets/lifescigrowth-project.webp" type="image/webp">
+                            <img src="assets/lifescigrowth-project.webp" alt="LifeSciGrowth Project" class="project-img" loading="lazy" decoding="async" width="800" height="600">
+                        </picture>
                         <div class="project-overlay">
                             <div class="play-button">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -857,24 +888,39 @@
     </script>
     
 
-    <!-- JavaScript loaded asynchronously -->
+    <!-- JavaScript loaded asynchronously with proper loading strategy -->
     <script src="translations.min.js" defer></script>
     <script src="script.min.js" defer></script>
     <script src="cookie-banner.min.js" defer></script>
     
-    <!-- Service Worker Registration -->
+    <!-- Load non-critical scripts after page load -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-              console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-              console.log('SW registration failed: ', registrationError);
+      window.addEventListener('load', function() {
+        // Load any additional non-critical scripts here
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Lazy load non-critical resources
+        setTimeout(function() {
+          // Load any additional resources that aren't immediately needed
+          const lazyImages = document.querySelectorAll('img[data-src]');
+          if (lazyImages.length > 0) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const img = entry.target;
+                  img.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              });
             });
-        });
-      }
+            lazyImages.forEach(img => imageObserver.observe(img));
+          }
+        }, 1000);
+      });
     </script>
+    
 </body>
 </html>
