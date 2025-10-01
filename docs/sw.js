@@ -9,7 +9,7 @@ const STATIC_FILES = [
   '/index.html',
   '/styles.min.css',
   '/script.min.js',
-  '/translations.min.js',
+  '/translations.js',
   '/cookie-banner.min.js',
   '/assets/vc-logo-32x32.png',
   '/assets/favicon-16x16.png',
