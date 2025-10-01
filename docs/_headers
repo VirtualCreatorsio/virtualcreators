@@ -1,57 +1,57 @@
 # GitHub Pages headers file for performance optimization
 # This works with GitHub Pages and Cloudflare
 
-# Cache static assets
+# Cache static assets with longer lifetimes
 /assets/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-# Cache CSS and JS files
+# Cache CSS and JS files with longer lifetimes
 /*.css
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.js
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-# Cache images
+# Cache images with longer lifetimes
 /*.webp
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.png
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.jpg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.jpeg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.svg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-# Cache fonts
+# Cache fonts with maximum lifetime
 /*.woff
-  Cache-Control: public, max-age=31536000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.woff2
-  Cache-Control: public, max-age=31536000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.ttf
-  Cache-Control: public, max-age=31536000
+  Cache-Control: public, max-age=31536000, immutable
 
 /*.otf
-  Cache-Control: public, max-age=31536000
+  Cache-Control: public, max-age=31536000, immutable
 
-# Cache videos
+# Cache videos with longer lifetime
 /*.mp4
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-# Cache PDFs
+# Cache PDFs with longer lifetime
 /*.pdf
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
-# HTML files - shorter cache
+# HTML files - shorter cache for dynamic content
 /*.html
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=3600, must-revalidate
 
 # Security headers for all files
 /*
