@@ -1337,7 +1337,7 @@ function updateModalTranslations() {
     const project = window.projects[window.currentProject]
     if (project) {
       document.getElementById("modalSubtitle").textContent =
-        `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+        `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} &bull; ${project.year}`
 
       const modalBody = document.getElementById("modalBody")
       if (modalBody && window.generateProjectModalContent) {
