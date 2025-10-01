@@ -48,13 +48,19 @@
     <link rel="preconnect" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     
+    <!-- Resource hints for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//formspree.io">
+    
     <!-- Font Preload -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"></noscript>
 
-    <!-- Calendly Integration -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+    <!-- Calendly Integration - Load asynchronously -->
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
@@ -73,8 +79,8 @@
     </style>
     
     <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="preload" href="../styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../styles.css"></noscript>
+    <link rel="preload" href="../styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../styles.min.css"></noscript>
     <link rel="preload" href="../cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../cookie-banner.css"></noscript>
     <link rel="canonical" href="https://www.virtualcreators.io/nl/" />
@@ -723,7 +729,7 @@
                 </button>
             </div>
             <div class="pdf-modal-body">
-                <iframe src="../assets/VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+                <iframe src="../assets/VIRTUAL%20CREATORS%20Service%20%26%20Pricing%20Guide%20Dutch.pdf#toolbar=0&navpanes=0&scrollbar=0" 
                         class="pdf-iframe" 
                         title="Service & Prijslijst Preview">
                 </iframe>
@@ -814,11 +820,23 @@
     </div>
 
     <!-- JavaScript loaded asynchronously -->
-    <script src="../translations.js" defer></script>
-    <script src="../script.js" defer></script>
-    <script src="../cookie-banner.js"></script>
+    <script src="../translations.min.js" defer></script>
+    <script src="../script.min.js" defer></script>
+    <script src="../cookie-banner.min.js" defer></script>
     
-    <!-- Calendly Script -->
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
 </body>
 </html>
