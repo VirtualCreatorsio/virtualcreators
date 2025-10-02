@@ -182,9 +182,12 @@ const projects = [
   },
 ]
 
-// Initialize when DOM is loaded
+// Initialize when DOM is loaded with performance optimization
 document.addEventListener("DOMContentLoaded", () => {
-  initializeApp()
+  // Use requestAnimationFrame to defer initialization and avoid blocking the main thread
+  requestAnimationFrame(() => {
+    initializeApp()
+  })
 })
 
 // Initialize Application
@@ -284,17 +287,28 @@ function loadCalendlyScript() {
   })
 }
 
-// Detect mobile device
+// Detect mobile device with performance optimization
 function detectMobileDevice() {
-  isMobileDevice =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    window.innerWidth <= 768
+  // Cache initial detection
+  const userAgent = navigator.userAgent
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+  
+  // Use cached viewport width to avoid forced reflow
+  const cachedWidth = window.innerWidth
+  isMobileDevice = isMobileUA || cachedWidth <= 768
 
-  // Update on resize
+  // Throttled resize handler to prevent excessive reflows
+  let resizeTimeout
   window.addEventListener("resize", () => {
-    isMobileDevice =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-      window.innerWidth <= 768
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout)
+    }
+    resizeTimeout = setTimeout(() => {
+      // Use requestAnimationFrame to batch DOM reads
+      requestAnimationFrame(() => {
+        isMobileDevice = isMobileUA || window.innerWidth <= 768
+      })
+    }, 16) // ~60fps throttling
   })
 }
 
@@ -346,25 +360,41 @@ function setupEventListeners() {
 
 }
 
-// Cursor Follower
+// Cursor Follower with smooth performance optimization
 function setupCursorFollower() {
   const cursor = document.querySelector(".cursor-follower")
   if (!cursor) return
 
+  // Use requestAnimationFrame for smooth cursor movement without throttling
+  let animationFrameId
   document.addEventListener("mousemove", (e) => {
     mousePosition.x = e.clientX
     mousePosition.y = e.clientY
 
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
+    // Cancel previous animation frame to prevent queuing
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId)
+    }
+    
+    // Use requestAnimationFrame for smooth updates without throttling
+    animationFrameId = requestAnimationFrame(() => {
+      cursor.style.left = mousePosition.x + "px"
+      cursor.style.top = mousePosition.y + "px"
+    })
   })
 
-  // Scale cursor on scroll
+  // Scale cursor on scroll with minimal throttling
+  let scrollTimeout
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY
-    const scale = scrollY > 100 ? 0.5 : 1
-    cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
-  })
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout)
+    }
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY
+      const scale = scrollY > 100 ? 0.5 : 1
+      cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
+    }, 8) // Minimal throttling for scroll events only
+  }, { passive: true })
 }
 
 // Mouse Effect for Hero Background and Blog Headers
@@ -513,6 +543,23 @@ function setupScrollSpy() {
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
   const backToTopBtn = document.querySelector('.back-to-top-btn')
   
+  // Cache section positions to avoid repeated DOM queries
+  let sectionPositions = []
+  let lastUpdateTime = 0
+  const UPDATE_INTERVAL = 100 // Update positions every 100ms max
+  
+  function updateSectionPositions() {
+    const now = Date.now()
+    if (now - lastUpdateTime < UPDATE_INTERVAL) return
+    
+    sectionPositions = Array.from(sections).map(section => ({
+      id: section.getAttribute('id'),
+      top: section.offsetTop,
+      height: section.offsetHeight
+    }))
+    lastUpdateTime = now
+  }
+  
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
     // Remove active class from all navigation items except blog links
@@ -543,20 +590,19 @@ function setupScrollSpy() {
     }
   }
   
-  // Function to handle scroll events
+  // Function to handle scroll events with optimized DOM access
   function handleScroll() {
     const scrollPosition = window.scrollY + 100 // Add offset for better UX
     
+    // Update section positions if needed
+    updateSectionPositions()
+    
     let currentSection = null
     
-    // Find which section is currently in view
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.offsetHeight
-      const sectionId = section.getAttribute('id')
-      
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        currentSection = sectionId
+    // Find which section is currently in view using cached positions
+    sectionPositions.forEach(({ id, top, height }) => {
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        currentSection = id
       }
     })
     
@@ -568,7 +614,7 @@ function setupScrollSpy() {
     // Update active navigation item
     updateActiveNavItem(currentSection)
     
-    // Show/hide back to top button
+    // Show/hide back to top button with cached values
     if (backToTopBtn) {
       if (isMobileDevice) {
         // Check if we're on the homepage (has hero section)
@@ -577,14 +623,15 @@ function setupScrollSpy() {
         
         if (isHomepage) {
           // On homepage mobile, only show when contact section is in view (original logic)
-        const contactSection = document.getElementById('contact')
-        if (contactSection) {
-          const contactTop = contactSection.offsetTop
-          const contactHeight = contactSection.offsetHeight
-          const viewportHeight = window.innerHeight
-          
-          // Show button when contact section starts to come into view
-          if (window.scrollY + viewportHeight >= contactTop) {
+          const contactSection = document.getElementById('contact')
+          if (contactSection) {
+            // Cache these values to avoid repeated DOM queries
+            const contactTop = contactSection.offsetTop
+            const contactHeight = contactSection.offsetHeight
+            const viewportHeight = window.innerHeight
+            
+            // Show button when contact section starts to come into view
+            if (window.scrollY + viewportHeight >= contactTop) {
               backToTopBtn.classList.add('visible')
             } else {
               backToTopBtn.classList.remove('visible')
@@ -614,7 +661,7 @@ function setupScrollSpy() {
     }
   }
   
-  // Add scroll event listener with throttling for performance
+  // Add scroll event listener with improved throttling for performance
   let isScrolling = false
   window.addEventListener('scroll', () => {
     if (!isScrolling) {
@@ -624,7 +671,7 @@ function setupScrollSpy() {
       })
       isScrolling = true
     }
-  })
+  }, { passive: true })
   
   // Run once on page load
   handleScroll()
@@ -1768,18 +1815,39 @@ function setupProjectCardModalLinks() {
   });
 }
 
-// Add stacked scroll effect for cases section
+// Add stacked scroll effect for cases section with performance optimization
 function stackedScrollCasesEffect() {
   const list = document.querySelector('.projects-list.stacked-scroll')
   if (!list) return
   const items = Array.from(list.querySelectorAll('.stacked-scroll-item'))
   if (items.length < 2) return
 
+  // Cache frequently accessed values
+  let cachedViewportHeight = window.innerHeight
+  let cachedViewportWidth = window.innerWidth
+  let cachedCardHeight = items[0].offsetHeight
+  let cachedListTop = 0
+  let lastUpdateTime = 0
+  const UPDATE_INTERVAL = 16 // ~60fps
+
+  function updateCachedValues() {
+    const now = Date.now()
+    if (now - lastUpdateTime < UPDATE_INTERVAL) return
+    
+    cachedViewportHeight = window.innerHeight
+    cachedViewportWidth = window.innerWidth
+    cachedCardHeight = items[0].offsetHeight
+    cachedListTop = list.getBoundingClientRect().top + window.scrollY
+    lastUpdateTime = now
+  }
+
   function animate() {
-    const viewportHeight = window.innerHeight
-    const isMobile = window.innerWidth <= 1023
-    const isSmallMobile = window.innerWidth <= 640
-    const isVerySmallMobile = window.innerWidth <= 414 && window.innerHeight >= 800
+    // Update cached values if needed
+    updateCachedValues()
+    
+    const isMobile = cachedViewportWidth <= 1023
+    const isSmallMobile = cachedViewportWidth <= 640
+    const isVerySmallMobile = cachedViewportWidth <= 414 && cachedViewportHeight >= 800
     
     // Dynamic sticky offset based on screen size for better visibility
     let stickyOffset = 0
@@ -1792,14 +1860,12 @@ function stackedScrollCasesEffect() {
         stickyOffset = 7 * 16 // 7rem for regular mobile/tablet
       }
     }
-    const listRect = list.getBoundingClientRect()
-    const listTop = listRect.top + window.scrollY
-    const cardHeight = items[0].offsetHeight
+    
     const scrollY = window.scrollY
     // On mobile, center is lower to leave space for navbar
     const centerY = isMobile
-      ? scrollY + stickyOffset + cardHeight / 2
-      : scrollY + viewportHeight / 2
+      ? scrollY + stickyOffset + cachedCardHeight / 2
+      : scrollY + cachedViewportHeight / 2
 
     // Z-index logic (different for mobile)
     if (isMobile) {
@@ -1810,8 +1876,8 @@ function stackedScrollCasesEffect() {
     } else {
       // Desktop/tablet: closest to center gets highest z-index
       const indexed = items.map((item, i) => {
-        const cardTop = listTop + i * cardHeight
-        const cardCenter = cardTop + cardHeight / 2
+        const cardTop = cachedListTop + i * cachedCardHeight
+        const cardCenter = cardTop + cachedCardHeight / 2
         const distToCenter = Math.abs(cardCenter - centerY)
         return { item, i, distToCenter }
       })
@@ -1821,12 +1887,12 @@ function stackedScrollCasesEffect() {
       })
     }
 
-    // Transform/opacity logic
+    // Transform/opacity logic using cached values
     items.forEach((item, i) => {
-      const cardTop = listTop + i * cardHeight
-      const cardCenter = cardTop + cardHeight / 2
+      const cardTop = cachedListTop + i * cachedCardHeight
+      const cardCenter = cardTop + cachedCardHeight / 2
       const distToCenter = cardCenter - centerY
-      let isActive = Math.abs(distToCenter) < cardHeight / 2
+      let isActive = Math.abs(distToCenter) < cachedCardHeight / 2
       let isLast = i === items.length - 1
       let isFirst = i === 0
       if (isLast && distToCenter <= 0) {
@@ -1847,8 +1913,35 @@ function stackedScrollCasesEffect() {
       }
     })
   }
-  window.addEventListener('scroll', animate, { passive: true })
-  window.addEventListener('resize', animate)
+  
+  // Throttled scroll handler
+  let isScrolling = false
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      requestAnimationFrame(() => {
+        animate()
+        isScrolling = false
+      })
+      isScrolling = true
+    }
+  }, { passive: true })
+  
+  // Throttled resize handler
+  let resizeTimeout
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout)
+    }
+    resizeTimeout = setTimeout(() => {
+      requestAnimationFrame(() => {
+        // Force update cached values on resize
+        lastUpdateTime = 0
+        updateCachedValues()
+        animate()
+      })
+    }, 16)
+  })
+  
   animate()
 }
 
