@@ -202,6 +202,7 @@ function initializeApp() {
   setupProjectTileVideos()
   setupProjectCardModalLinks()
   setupScrollSpy()
+  setupImageOptimization()
 
   // Initialize Calendly with better error handling
   initializeCalendly()
@@ -1961,6 +1962,48 @@ function setStackedCasesMinHeight() {
 window.projects = projects
 window.currentProject = currentProject
 window.generateProjectModalContent = generateProjectModalContent
+
+// Image Optimization Setup
+function setupImageOptimization() {
+  // Handle lazy loading images
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]')
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target
+          img.classList.add('loaded')
+          observer.unobserve(img)
+        }
+      })
+    }, {
+      rootMargin: '50px 0px', // Start loading 50px before image comes into view
+      threshold: 0.01
+    })
+
+    lazyImages.forEach(img => {
+      imageObserver.observe(img)
+    })
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    lazyImages.forEach(img => {
+      img.classList.add('loaded')
+    })
+  }
+
+  // Optimize picture elements for better performance
+  const pictures = document.querySelectorAll('picture')
+  pictures.forEach(picture => {
+    const img = picture.querySelector('img')
+    if (img) {
+      // Add loading optimization
+      img.addEventListener('load', () => {
+        img.classList.add('loaded')
+      })
+    }
+  })
+}
 
 // Make functions globally available - CRITICAL for HTML onclick handlers
 window.openCalendlyPopup = openCalendlyPopup

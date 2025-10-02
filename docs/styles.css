@@ -5,6 +5,24 @@
   box-sizing: border-box;
 }
 
+/* Image optimization defaults */
+img {
+  max-width: 100%;
+  height: auto;
+  /* Prevent layout shift during loading */
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Lazy loading optimization */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -915,10 +933,29 @@ body {
 .project-img {
   width: 100%;
   height: 24rem;
-  object-fit: fill;
+  object-fit: cover;
   transition: all 0.7s ease;
   position: relative;
   z-index: 2;
+  /* Performance optimizations */
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Responsive image optimization */
+.project-image picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.project-image picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Prevent layout shift */
+  aspect-ratio: 16/10;
 }
 
 
