@@ -553,7 +553,7 @@ const translations = {
     digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
     brandIdentity: "Merkidentiteit",
     brandIdentityDescription: "Onderscheidende visuele systemen die jouw unieke verhaal communiceren",
-    webDevelopment: "Web-Dev",
+    webDevelopment: "Webontwikkeling",
     webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
     userExperience: "Gebruikerservaring",
     userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
