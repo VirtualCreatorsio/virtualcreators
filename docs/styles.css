@@ -1783,10 +1783,7 @@ html.modal-open {
   border-color: #d1d5db;
   background-color: #f9fafb;
 }
-.language-flag {
-  font-size: 1rem;
-  display: none;
-}
+/* Language flag styles removed - no longer using flag emojis */
 .language-text {
   font-weight: 500;
   min-width: 1.5rem;
