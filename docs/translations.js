@@ -5,13 +5,11 @@ const translations = {
     metaTitle: "VirtualCreators | Custom Web Development | Web Design & eCommerce Solutions",
     metaDescription:
       "I craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.",
-
     // Legal Pages SEO
     privacyMetaTitle: "Privacy & Cookie Policy - VirtualCreators",
     privacyMetaDescription: "Privacy and cookie policy for VirtualCreators digital agency services.",
     termsMetaTitle: "Terms & Conditions - VirtualCreators",
     termsMetaDescription: "Terms and conditions for VirtualCreators digital agency services.",
-
     // Navigation
     work: "Work",
     services: "Services",
@@ -22,21 +20,18 @@ const translations = {
     english: "English",
     dutch: "Nederlands",
     backToHome: "← Back to Home",
-
     // Hero Section
     heroTitle1: "I craft",
     heroTitle2: "digital experiences",
     heroSubtitle: "Thoughtful design and development for brands that want to make a meaningful impact.",
     viewMyWork: "View My Work",
     startProject: "Book Free Call",
-
     // Services Section
     whatIDo: "What I Do",
     servicesTitle1: "Services that drive",
     servicesTitle2: "meaningful growth",
     servicesDescription:
       "I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.",
-
     // Service Items
     digitalStrategy: "Digital Strategy",
     digitalStrategyDescription: "Thoughtful planning that transforms vision into measurable results",
@@ -46,13 +41,11 @@ const translations = {
     webDevelopmentDescription: "Clean, performant websites built with modern technologies",
     userExperience: "User Experience",
     userExperienceDescription: "Intuitive interfaces that users love and businesses trust",
-
     // Portfolio Section
     selectedWork: "Selected Work",
     projectsIAm: "Projects I am",
     proudOf: "proud of",
     viewProject: "View Project",
-
     // Project Data
     onlineShop: "Online Shop",
     creativeAgency: "Creative Agency",
@@ -61,17 +54,15 @@ const translations = {
     creativeagency: "Creative Agency",
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "A complete rebranding of their online presence through custom web-solutions",
-    tractionMoviesDescription: "Bringing custom web-solutions to their current site to elevate their online presence",
+    tractionMoviesDescription: "Bringing custom web-solutions to their site to elevate their online presence",
     lifeSciGrowthDescription:
       "A simplistic solution for a membership community site that offers flexibility and guidance",
-
     // Project Full Descriptions
     lumenixFullDescription:
-      "<p>Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.</p><br><p>I redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.</p><br><p>The redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales.</p>",
+      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nI redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales.",
     tractionMoviesFullDescription:
-      "<p>TractionMovies needed a more dynamic and engaging website to better showcase their work and attract visitors. Their previous site relied on a CMS platform that had been discontinued, which made updates difficult and limited flexibility, while also lacking interactive elements to stand out in a competitive market.</p><br><p>I developed a fully custom website using bespoke components and interactive design elements tailored to their brand. The project involved designing a clean, modern layout, implementing smooth animations, and building a platform that is easy to update and maintain without relying on unsupported software. Every aspect of the user experience was considered, from navigation to content presentation.</p><br><p>The final website delivers a polished, professional look while providing a more engaging experience for visitors. It highlights TractionMovies' portfolio effectively, makes content easy to explore, and reflects their brand identity consistently. The site now stands out as a dynamic, user-friendly platform that is fully future-proofed and keeps users engaged.</p>",
-    lifeSciGrowthFullDescription: "<p>LifesciGrowth needed a professional membership website that not only reflected their brand but also provided a seamless experience for members. They wanted to sell memberships online while ensuring member features, content access, and community engagement were managed efficiently.</p><br><p>I built the website from the ground up, creating a full brand identity—including colors, typography, and visual elements—and designing a cohesive, user-friendly customer journey. The website was integrated with Huddle, a community platform I set up to manage memberships, content, and member interactions. Custom components and interactive design elements were implemented to make the experience engaging and intuitive from signup to active participation.</p><br><p>The project delivered a polished, professional platform that drives membership sign-ups, strengthens brand identity, and fosters an active, engaged community. By combining thoughtful design, seamless UX, and functional integration with Huddle, LifesciGrowth now has a complete, results-driven membership ecosystem.</p>",
-
+      "TractionMovies needed a more dynamic and engaging website to better showcase their work and attract visitors. Their previous site relied on a CMS platform that had been discontinued, which made updates difficult and limited flexibility, while also lacking interactive elements to stand out in a competitive market.\n\nI developed a fully custom website using bespoke components and interactive design elements tailored to their brand. The project involved designing a clean, modern layout, implementing smooth animations, and building a platform that is easy to update and maintain without relying on unsupported software. Every aspect of the user experience was considered, from navigation to content presentation.\n\nThe final website delivers a polished, professional look while providing a more engaging experience for visitors. It highlights TractionMovies' portfolio effectively, makes content easy to explore, and reflects their brand identity consistently. The site now stands out as a dynamic, user-friendly platform that is fully future-proofed and keeps users engaged.",
+    lifeSciGrowthFullDescription: "LifesciGrowth needed a professional membership website that not only reflected their brand but also provided a seamless experience for members. They wanted to sell memberships online while ensuring member features, content access, and community engagement were managed efficiently.\n\nI built the website from the ground up, creating a full brand identity—including colors, typography, and visual elements—and designing a cohesive, user-friendly customer journey. The website was integrated with Huddle, a community platform I set up to manage memberships, content, and member interactions. Custom components and interactive design elements were implemented to make the experience engaging and intuitive from signup to active participation.\n\nThe project delivered a polished, professional platform that drives membership sign-ups, strengthens brand identity, and fosters an active, engaged community. By combining thoughtful design, seamless UX, and functional integration with Huddle, LifesciGrowth now has a complete, results-driven membership ecosystem.",
     // Project Results
     lumenixResult1: "300% increase in user engagement",
     lumenixResult2: "150% boost in conversion rates",
@@ -85,7 +76,6 @@ const translations = {
     lifeSciGrowthResult2: "% boost in conversion rates",
     lifeSciGrowthResult3: "% reduction in bounce rate",
     lifeSciGrowthResult4: "% improvement in page load speed",
-
     // Project Reviews
     lumenixReviewText: "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
@@ -97,7 +87,6 @@ const translations = {
     lifeSciGrowthReviewAuthor: "Birgit",
     lifeSciGrowthReviewCompany: "LifeSciGrowth",
     clientReview: "Client Review",
-
     // About Section
     aboutMe: "About Me",
     iBelieveIn: "I believe in the power",
@@ -106,20 +95,17 @@ const translations = {
       "Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.",
     aboutText2:
       "I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.",
-
     // Stats
     projectsCompleted: "Projects Completed",
     yearsExperience: "Years Experience",
     clientSatisfaction: "Client Satisfaction",
     supportAvailable: "Support Available",
-
     // Contact Section
     getInTouch: "Get In Touch",
     letsCreate: "Let's create something",
     beautifulTogether: "beautiful together",
     startConversation: "Start a conversation",
     contactDescription: "I'd love to hear about your project and explore how I can help bring your vision to life.",
-
     // Contact Form
     name: "Name",
     email: "Email",
@@ -132,19 +118,16 @@ const translations = {
     sendMessage: "Send Message",
     orText: "or",
     bookConsultation: "Book Free Consultation",
-
     // Contact Info
     phone: "Phone",
     location: "Location",
     basedInNetherlands: "Based in the Netherlands",
     followMe: "Follow me",
-
     // Footer
     privacyCookiePolicy: "Privacy & Cookie Policy",
     termsConditions: "Terms & Conditions",
     aboutVirtualcreators: "About Virtualcreators",
     copyright: "© 2025 Virtualcreators. Crafted with care.",
-
         // About Virtualcreators Page - New Design
     aboutBadge: "Behind the Brand",
     aboutHeroTitle1: "The story of",
@@ -152,14 +135,12 @@ const translations = {
     aboutHeroSubtitle: "Where digital vision meets purposeful design. Discover the journey, philosophy, and passion that drives every pixel I create.",
             readMyStory: "Read My Story",
     workWithMe: "Work With Me",
-    
     // Story Section
             myVision: "My Vision",
     storyTitle1: "The Vision Behind",
     storyTitle2: "Virtualcreators",
     storyText: "In a world saturated with digital noise, I believe in the power of purposeful design. Virtualcreators was born from the conviction that every brand deserves a digital presence that not only looks exceptional but drives meaningful results. I craft experiences that resonate, connect, and transform businesses into digital leaders.",
     storyText2: "My approach is simple yet profound: understand deeply, design thoughtfully, and develop meticulously. Every project is an opportunity to push boundaries, challenge conventions, and create something truly remarkable.",
-    
     // Philosophy Section
             myPhilosophy: "My Philosophy",
     philosophyTitle1: "Design Principles",
@@ -171,7 +152,6 @@ const translations = {
     philosophyDesc2: "I design for real people with real needs. User experience is at the heart of everything I create.",
     philosophyItemTitle3: "Timeless Elegance",
     philosophyDesc3: "Trends fade, but good design endures. I create solutions that remain relevant and impactful for years to come.",
-    
     // Process Section
             myProcess: "My Process",
     processTitle1: "How I Transform",
@@ -183,7 +163,6 @@ const translations = {
     processDesc2: "Creative exploration and design development that brings your vision to life with stunning visual storytelling.",
     processStepTitle3: "Develop & Launch",
     processDesc3: "Meticulous development and seamless launch that ensures your digital experience performs flawlessly across all devices.",
-    
     // Founder Section
     meetFounder: "Meet the Founder",
     founderTitle: "Kjell de Ruiter",
@@ -193,7 +172,6 @@ const translations = {
     founderEmail: "Email:",
     founderPhone: "Phone:",
     founderWebsite: "Website:",
-    
     // CTA Section
     ctaTitle1: "Ready to Create",
     ctaTitle2: "Something",
@@ -202,17 +180,14 @@ const translations = {
     startProject: "Start Your Project",
             viewMyWork: "View My Work",
     backToTop: "Back to Top",
-
     // Reading Time
     readTime3Min: "3 min read",
     readTime4Min: "4 min read", 
     readTime5Min: "5 min read",
-
     // Author Information
     authorName: "Kjell de Ruiter",
     authorRole: "Creator at",
     authorCompany: "VirtualCreators",
-
     // Blog
     blog: "Blog",
     blogTitle1: "Insights & Stories",
@@ -222,7 +197,6 @@ const translations = {
     firstPostExcerpt: "Starting a new journey in sharing insights, tips, and stories from my experience building digital solutions for forward-thinking companies.",
     readMore: "Read More",
     backToBlog: "Back to Blog",
-
     // Blog Post Content
     firstPostPara1: "Hello! I'm excited to launch this blog as a space to share insights, experiences, and lessons learned from my journey as a <a href=\"../../index.html#services\">web developer and designer</a>. Since founding VirtualCreators in 2025, I've had the privilege of working with amazing clients and tackling exciting challenges that have shaped my approach to <a href=\"../../index.html#work\">digital solutions</a>.",
     firstPostHeading1: "Why Start a Blog?",
@@ -242,10 +216,8 @@ const translations = {
     firstPostPara6: "In upcoming posts, I'll be diving deeper into specific projects, sharing code examples, and exploring the latest developments in web technology. I'm particularly excited to write about the evolving landscape of web performance, the rise of modern CSS features, and <a href=\"ai-changing-design-development.html\">how AI is changing the way we approach development</a>.",
     firstPostPara7: "Thank you for being here from the beginning of this journey. I look forward to sharing more insights and hearing your thoughts. Feel free to reach out if there are specific topics you'd like me to cover or if you have questions about any of the content I share.",
     firstPostPara8: "Here's to building better digital experiences together!",
-    
     // Image Captions
     imageOverlapCaption: "From concept to execution - every project starts with thoughtful planning and attention to detail.",
-
     // Design Trends Article
     designCategory: "Design",
     designTrendsTitle: "2025 Web Design Trends: What's Shaping the Digital Future",
@@ -271,7 +243,6 @@ const translations = {
     designTrendsHeading7: "Looking Forward",
     designTrendsPara8: "The trends shaping 2025 all point toward one common goal: creating more human-centered digital experiences. Whether through AI personalization, sustainable practices, or intuitive interactions, the focus is on serving users better while being mindful of our broader impact.",
     designTrendsPara9: "As designers and developers, our challenge is to embrace these trends thoughtfully—not as fleeting fashions, but as evolution toward more effective, accessible, and responsible digital experiences. The future of web design isn't just about what looks good; it's about what works well for people and the planet. Ready to implement these trends in your next project? <a href=\"../../index.html#contact\">Get your free consultation</a>.",
-
     // AI Impact Article
     technologyCategory: "Technology",
     aiImpactTitle: "How AI is Revolutionizing Design and Web Development",
@@ -298,18 +269,15 @@ const translations = {
     aiImpactHeading7: "Looking Ahead",
     aiImpactPara8: "As we progress through 2025, I expect AI's role in design and development to become even more sophisticated. We're likely to see AI that can understand brand personality, cultural nuances, and complex user journeys. The challenge for our industry will be embracing these capabilities while preserving the uniquely human aspects of great design.",
     aiImpactPara9: "The future belongs to designers and developers who can thoughtfully integrate AI into their creative process—not as a crutch, but as a powerful tool that enables us to create more meaningful, accessible, and effective digital experiences. The question isn't whether AI will change our industry; it's how we'll evolve alongside it to create better solutions for the people we serve. Interested in leveraging AI for your next project? <a href=\"../../index.html#contact\">Book your free strategy call</a>.",
-
     // Blog Filter Labels
     filterAll: "All Posts",
     filterTechnology: "Technology",
     filterDesign: "Design",
     filterWebDev: "Web Development",
-
     // Modal
     startYourProject: "Book Free Call",
     projectOverview: "Project Overview",
     servicesProvided: "Services Provided",
-
     // Cookie Banner
     cookieBannerTitle: "I use cookies to enhance your experience",
     cookieBannerDescription: "This website uses cookies to improve your browsing experience and analyze site traffic. By continuing to use my site, you consent to my use of cookies.",
@@ -323,7 +291,6 @@ const translations = {
     cookieRejectBtn: "Reject Non-Essential",
     cookieSaveBtn: "Save Preferences",
     resultsImpact: "Results & Impact",
-
     // Service Labels for Modal
     webdevelopment: "Web Development",
     uiuxdesign: "UI/UX Design",
@@ -334,7 +301,6 @@ const translations = {
     backenddevelopment: "Backend Development",
     interactivedesign: "Interactive Design",
     seostrategy: "SEO Strategy",
-
     // Video Controls
     muteVideo: "Mute video",
     unmuteVideo: "Unmute video",
@@ -342,17 +308,14 @@ const translations = {
     pauseVideo: "Pause video",
     enterFullscreen: "Enter fullscreen",
     exitFullscreen: "Exit fullscreen",
-
     // Form Messages
     thankYouMessage: "Thank you for your message! We'll get back to you soon.",
     sending: "Sending...",
     rateLimitMessage: "Please wait a moment before submitting again.",
-
     // Fullscreen Messages
     fullscreenNotSupported: "Fullscreen not supported on this device.",
     rotateDevice: "Please rotate your device to landscape mode for better viewing.",
     ok: "OK",
-
     // 404 Error Page
     pageNotFoundTitle: "Page Not Found",
     pageNotFoundDescription: "Oops! It seems like you've wandered into uncharted digital territory. The page you're looking for might have been moved, deleted, or simply doesn't exist.",
@@ -360,7 +323,6 @@ const translations = {
     backToHome: "Back to Home",
     exploreBlog: "Explore Blog",
     popularPages: "Popular Pages",
-
     // Privacy Policy
     privacyPolicyTitle: "Privacy & Cookie Policy",
     lastUpdated: "Last updated: July 2025",
@@ -370,7 +332,6 @@ const translations = {
     informationICollectItem2: "Subscribe to my newsletter or updates",
     informationICollectItem3: "Communicate with me via email or phone",
     informationICollectItem4: "Use my website and services",
-
     howIUseInfo: "2. How I Use Your Information",
     howIUseInfoText: "I use the information I collect to:",
     howIUseInfoItem1: "Provide, maintain, and improve my services",
@@ -378,14 +339,12 @@ const translations = {
     howIUseInfoItem3: "Send you technical notices and support messages",
     howIUseInfoItem4: "Communicate with you about products, services, and events",
     howIUseInfoItem5: "Monitor and analyze trends and usage",
-
     informationSharing: "3. Information Sharing",
     informationSharingText:
       "I do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. I may share your information:",
     informationSharingItem1: "With service providers who assist us in operating my website",
     informationSharingItem2: "To comply with legal obligations",
     informationSharingItem3: "To protect our rights and safety",
-
     cookiesTracking: "4. Cookies and Tracking",
     cookiesTrackingText: "I use cookies and similar tracking technologies to:",
     cookiesTrackingItem1: "Remember your preferences and settings",
@@ -394,43 +353,35 @@ const translations = {
     cookiesTrackingItem4: "Provide personalized content",
     cookiesTrackingText2:
       "You can control cookies through your browser settings, but disabling cookies may affect website functionality.",
-
     dataSecurity: "5. Data Security",
     dataSecurityText:
       "I implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.",
-
     yourRights: "6. Your Rights",
     yourRightsText: "You have the right to:",
     yourRightsItem1: "Access and update your personal information",
     yourRightsItem2: "Request deletion of your personal information",
     yourRightsItem3: "Opt-out of marketing communications",
     yourRightsItem4: "Request a copy of your data",
-
     thirdPartyServices: "7. Third-Party Services",
     thirdPartyServicesText:
       "My website may contain links to third-party websites or services. I am not responsible for the privacy practices of these third parties. I encourage you to review their privacy policies.",
-
     changesToPolicy: "8. Changes to This Policy",
     changesToPolicyText:
       'I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.',
-
     contactMe: "9. Contact me",
     contactMeText: "If you have any questions about this Privacy Policy, please contact me:",
     contactMeItem1: "Email: kjell@virtualcreators.io",
     contactMeItem2: "Phone: +316 41552375",
     contactMeItem3: "Based: The Netherlands, Amsterdam",
-
     // Privacy Policy Language Precedence
     privacyLanguagePrecedence: "10. Language Precedence",
     privacyLanguagePrecedenceText:
       "This Privacy Policy is available in multiple languages. In case of any discrepancy or misalignment between different language versions, the English version shall prevail and take precedence.",
-
     // Terms & Conditions
     termsConditionsTitle: "Terms & Conditions",
     acceptanceOfTerms: "1. Acceptance of Terms",
     acceptanceOfTermsText:
       "By accessing and using VirtualCreators' website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.",
-
     servicesSection: "2. Services",
     servicesSectionText:
       "VirtualCreators provides digital design and development services including but not limited to:",
@@ -439,7 +390,6 @@ const translations = {
     servicesSectionItem3: "User experience (UX) design",
     servicesSectionItem4: "User interface (UI) design",
     servicesSectionItem5: "Digital strategy consulting",
-
     projectTerms: "3. Project Terms",
     projectTermsText: "All projects are subject to a separate project agreement that will outline:",
     projectTermsItem1: "Scope of work and deliverables",
@@ -447,35 +397,30 @@ const translations = {
     projectTermsItem3: "Payment terms and schedule",
     projectTermsItem4: "Revision and approval process",
     projectTermsItem5: "Intellectual property rights",
-
     paymentTerms: "4. Payment Terms",
     paymentTermsText: "Unless otherwise specified in a project agreement:",
     paymentTermsItem1: "A 50% deposit is required before work begins",
     paymentTermsItem2: "Final payment is due upon project completion",
     paymentTermsItem3: "Late payments may incur additional fees",
     paymentTermsItem4: "All prices are in EUR unless otherwise stated",
-
     intellectualProperty: "5. Intellectual Property",
     intellectualPropertyText: "Upon full payment:",
     intellectualPropertyItem1: "Client owns the final deliverables and custom code",
     intellectualPropertyItem2: "VirtualCreators retains rights to general methodologies and techniques",
     intellectualPropertyItem3: "Third-party assets remain property of their respective owners",
     intellectualPropertyItem4: "VirtualCreators may showcase completed work in portfolios",
-
     clientResponsibilities: "6. Client Responsibilities",
     clientResponsibilitiesText: "Clients are responsible for:",
     clientResponsibilitiesItem1: "Providing necessary content, materials, and access",
     clientResponsibilitiesItem2: "Timely feedback and approvals",
     clientResponsibilitiesItem3: "Ensuring content accuracy and legal compliance",
     clientResponsibilitiesItem4: "Maintaining backups of their data",
-
     warrantiesDisclaimers: "7. Warranties and Disclaimers",
     warrantiesDisclaimersText: 'VirtualCreators provides services "as is" and makes no warranties regarding:',
     warrantiesDisclaimersItem1: "Uninterrupted or error-free operation",
     warrantiesDisclaimersItem2: "Specific performance metrics or results",
     warrantiesDisclaimersItem3: "Compatibility with all systems or browsers",
     warrantiesDisclaimersItem4: "Third-party service availability",
-
     limitationLiability: "8. Limitation of Liability",
     limitationLiabilityText:
       "VirtualCreators' liability is limited to the amount paid for services. We are not liable for:",
@@ -483,46 +428,38 @@ const translations = {
     limitationLiabilityItem2: "Loss of profits, data, or business opportunities",
     limitationLiabilityItem3: "Third-party actions or service interruptions",
     limitationLiabilityItem4: "Force majeure events",
-
     termination: "9. Termination",
     terminationText: "Either party may terminate services with written notice. Upon termination:",
     terminationItem1: "Client pays for work completed to date",
     terminationItem2: "VirtualCreators delivers completed work",
     terminationItem3: "Both parties return confidential information",
     terminationItem4: "Surviving clauses remain in effect",
-
     governingLaw: "10. Governing Law",
     governingLawText:
       "These terms are governed by the laws of The Netherlands. Any disputes shall be submitted to the exclusive jurisdiction of the competent court in Amsterdam, the Netherlands.",
-
     changesToTerms: "11. Changes to Terms",
     changesToTermsText:
       "I reserve the right to modify these terms at any time. Changes will be effective immediately upon posting. Continued use of our services constitutes acceptance of modified terms.",
-
     contactInformation: "12. Contact Information",
     contactInformationText: "For questions about these Terms & Conditions, contact me:",
     contactInformationItem1: "Email: kjell@virtualcreators.io",
     contactInformationItem2: "Phone: +316 41552375",
     contactInformationItem3: "Based: The Netherlands, Amsterdam",
-
     // Terms & Conditions Language Precedence
     languagePrecedence: "13. Language Precedence",
     languagePrecedenceText:
       "These Terms & Conditions are available in multiple languages. In case of any discrepancy or misalignment between different language versions, the English version shall prevail and take precedence.",
   },
-
   nl: {
     // SEO Meta Content
     metaTitle: "VirtualCreators | Custom Web Development | Web Design & eCommerce Oplossingen",
     metaDescription:
       "Ik creëer digitale ervaringen. Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.",
-
     // Legal Pages SEO
     privacyMetaTitle: "Privacy & Cookie Beleid - VirtualCreators",
     privacyMetaDescription: "Privacy en cookie beleid voor VirtualCreators digitaal bureau diensten.",
     termsMetaTitle: "Algemene Voorwaarden - VirtualCreators",
     termsMetaDescription: "Algemene voorwaarden voor VirtualCreators digitaal bureau diensten.",
-
     // Navigation
     work: "Werk",
     services: "Diensten",
@@ -533,21 +470,18 @@ const translations = {
     english: "English",
     dutch: "Nederlands",
     backToHome: "← Terug naar Home",
-
     // Hero Section
     heroTitle1: "Ik creëer",
     heroTitle2: "digitale ervaringen",
     heroSubtitle: "Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.",
     viewMyWork: "Bekijk Mijn Werk",
     startProject: "Gratis Adviesgesprek",
-
     // Services Section
     whatIDo: "Wat Ik Doe",
     servicesTitle1: "Werk dat leidt tot",
     servicesTitle2: "impactvolle groei",
     servicesDescription:
       "Ik geloof in de kracht van eenvoud. Elk project begint met het begrijpen van jouw doelen en het creëren van oplossingen die zowel mooi als doelgericht zijn.",
-
     // Service Items
     digitalStrategy: "Digitale Strategie",
     digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
@@ -557,13 +491,11 @@ const translations = {
     webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
     userExperience: "Gebruikerservaring",
     userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
-
     // Portfolio Section
     selectedWork: "Geselecteerd Werk",
     projectsIAm: "Projecten waar ik",
     proudOf: "trots op ben",
     viewProject: "Bekijk Project",
-
     // Project Data
     onlineShop: "Online Winkel",
     creativeAgency: "Creatief Bureau",
@@ -573,17 +505,15 @@ const translations = {
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
     tractionMoviesDescription:
-      "Aangepaste weboplossingen naar hun huidige site brengen om hun online aanwezigheid te verbeteren",
+      "Aangepaste weboplossingen naar hun site brengen om hun online aanwezigheid te verbeteren",
     lifeSciGrowthDescription:
       "Een eenvoudige oplossing voor een lidmaatschapscommunitysite die flexibiliteit en begeleiding biedt",
-
     // Project Full Descriptions
     lumenixFullDescription:
-      "<p>Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.</p><br><p>Ik heb de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.</p><br><p>De herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert.</p>",
+      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nIk heb de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert.",
     tractionMoviesFullDescription:
-      "<p>TractionMovies had een meer dynamische en boeiende website nodig om hun werk beter te tonen en bezoekers aan te trekken. Hun vorige site was afhankelijk van een CMS-platform dat was stopgezet, waardoor updates moeilijk werden en de flexibiliteit beperkt was, terwijl het ook interactieve elementen miste om op te vallen in een concurrerende markt.</p><br><p>Ik heb een volledig aangepaste website ontwikkeld met op maat gemaakte componenten en interactieve ontwerpelementen die zijn afgestemd op hun merk. Het project omvatte het ontwerpen van een schone, moderne lay-out, het implementeren van vloeiende animaties en het bouwen van een platform dat gemakkelijk bij te werken en te onderhouden is zonder afhankelijk te zijn van niet-ondersteunde software. Elk aspect van de gebruikerservaring werd overwogen, van navigatie tot contentpresentatie.</p><br><p>De uiteindelijke website biedt een gepolijste, professionele uitstraling terwijl het een meer boeiende ervaring voor bezoekers biedt. Het toont het portfolio van TractionMovies effectief, maakt content gemakkelijk te verkennen en weerspiegelt hun merkidentiteit consequent. De site valt nu op als een dynamisch, gebruiksvriendelijk platform dat volledig toekomstbestendig is en gebruikers betrokken houdt.</p>",
-    lifeSciGrowthFullDescription: "<p>LifesciGrowth had een professionele lidmaatschapswebsite nodig die niet alleen hun merk weerspiegelde, maar ook een naadloze ervaring voor leden bood. Ze wilden lidmaatschappen online verkopen terwijl ze ervoor zorgden dat ledenfuncties, toegang tot content en community-engagement efficiënt werden beheerd.</p><br><p>Ik heb de website vanaf de grond opgebouwd, waarbij ik een volledige merkidentiteit creëerde—inclusief kleuren, typografie en visuele elementen—en een samenhangende, gebruiksvriendelijke klantreis ontwierp. De website werd geïntegreerd met Huddle, een community-platform dat ik opzette om lidmaatschappen, content en ledeninteracties te beheren. Aangepaste componenten en interactieve ontwerpelementen werden geïmplementeerd om de ervaring boeiend en intuïtief te maken van aanmelding tot actieve deelname.</p><br><p>Het project leverde een gepolijst, professioneel platform op dat lidmaatschapsaanmeldingen stimuleert, de merkidentiteit versterkt en een actieve, betrokken community bevordert. Door doordacht ontwerp, naadloze UX en functionele integratie met Huddle te combineren, heeft LifesciGrowth nu een complete, resultaatgerichte lidmaatschapsecosystem.</p>",
-
+      "TractionMovies had een meer dynamische en boeiende website nodig om hun werk beter te tonen en bezoekers aan te trekken. Hun vorige site was afhankelijk van een CMS-platform dat was stopgezet, waardoor updates moeilijk werden en de flexibiliteit beperkt was, terwijl het ook interactieve elementen miste om op te vallen in een concurrerende markt.\n\nIk heb een volledig aangepaste website ontwikkeld met op maat gemaakte componenten en interactieve ontwerpelementen die zijn afgestemd op hun merk. Het project omvatte het ontwerpen van een schone, moderne lay-out, het implementeren van vloeiende animaties en het bouwen van een platform dat gemakkelijk bij te werken en te onderhouden is zonder afhankelijk te zijn van niet-ondersteunde software. Elk aspect van de gebruikerservaring werd overwogen, van navigatie tot contentpresentatie.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling terwijl het een meer boeiende ervaring voor bezoekers biedt. Het toont het portfolio van TractionMovies effectief, maakt content gemakkelijk te verkennen en weerspiegelt hun merkidentiteit consequent. De site valt nu op als een dynamisch, gebruiksvriendelijk platform dat volledig toekomstbestendig is en gebruikers betrokken houdt.",
+    lifeSciGrowthFullDescription: "LifesciGrowth had een professionele lidmaatschapswebsite nodig die niet alleen hun merk weerspiegelde, maar ook een naadloze ervaring voor leden bood. Ze wilden lidmaatschappen online verkopen terwijl ze ervoor zorgden dat ledenfuncties, toegang tot content en community-engagement efficiënt werden beheerd.\n\nIk heb de website vanaf de grond opgebouwd, waarbij ik een volledige merkidentiteit creëerde—inclusief kleuren, typografie en visuele elementen—en een samenhangende, gebruiksvriendelijke klantreis ontwierp. De website werd geïntegreerd met Huddle, een community-platform dat ik opzette om lidmaatschappen, content en ledeninteracties te beheren. Aangepaste componenten en interactieve ontwerpelementen werden geïmplementeerd om de ervaring boeiend en intuïtief te maken van aanmelding tot actieve deelname.\n\nHet project leverde een gepolijst, professioneel platform op dat lidmaatschapsaanmeldingen stimuleert, de merkidentiteit versterkt en een actieve, betrokken community bevordert. Door doordacht ontwerp, naadloze UX en functionele integratie met Huddle te combineren, heeft LifesciGrowth nu een complete, resultaatgerichte lidmaatschapsecosystem.",
     // Project Results
     lumenixResult1: "300% toename in gebruikersbetrokkenheid",
     lumenixResult2: "150% boost in conversiepercentages",
@@ -597,9 +527,8 @@ const translations = {
     lifeSciGrowthResult2: "###% meer projectaanvragen",
     lifeSciGrowthResult3: "##% verbetering in merkherkenning",
     lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
-
     // Project Reviews
-    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon.\n\nAls je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
+    lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon. Als je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
     tractionMoviesReviewText: "Samenwerken met Kjell de Ruiter aan onze TractionMovies website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website.",
@@ -609,7 +538,6 @@ const translations = {
     lifeSciGrowthReviewAuthor: "Birgit",
     lifeSciGrowthReviewCompany: "LifeSciGrowth",
     clientReview: "Klantbeoordeling",
-
     // About Section
     aboutMe: "Over Mij",
     iBelieveIn: "Ik geloof in de kracht",
@@ -618,20 +546,17 @@ const translations = {
       "Opgericht in 2025, ik ben een ontwerper en webontwikkelaar die gepassioneerd is over het creëren van digitale ervaringen die ertoe doen.",
     aboutText2:
       "Ik werk samen met vooruitdenkende bedrijven die begrijpen dat geweldig ontwerp niet alleen gaat over hoe iets eruitziet, maar over hoe het werkt, hoe het voelt en hoe het verbinding maakt met mensen.",
-
     // Stats
     projectsCompleted: "Projecten Voltooid",
     yearsExperience: "Jaar Ervaring",
     clientSatisfaction: "Klanttevredenheid",
     supportAvailable: "Ondersteuning Beschikbaar",
-
     // Contact Section
     getInTouch: "Neem Contact Op",
     letsCreate: "Laten we samen iets",
     beautifulTogether: "moois creëren",
     startConversation: "Start een gesprek",
     contactDescription: "Ik hoor graag over jouw project en verken hoe ik kan helpen jouw visie tot leven te brengen.",
-
     // Contact Form
     name: "Naam",
     email: "E-mail",
@@ -644,19 +569,16 @@ const translations = {
     sendMessage: "Verstuur Bericht",
     orText: "of",
     bookConsultation: "Boek Gratis Adviesgesprek",
-
     // Contact Info
     phone: "Telefoon",
     location: "Locatie",
     basedInNetherlands: "Gevestigd in Nederland",
     followMe: "Volg mij",
-
     // Footer
     privacyCookiePolicy: "Privacy & Cookie Beleid",
     termsConditions: "Algemene Voorwaarden",
     aboutVirtualcreators: "Over Virtualcreators",
     copyright: "© 2025 Virtualcreators. Met zorg gemaakt.",
-
     // About Virtualcreators Page - New Design
     aboutBadge: "Achter het Merk",
     aboutHeroTitle1: "Het verhaal van",
@@ -664,14 +586,12 @@ const translations = {
     aboutHeroSubtitle: "Waar digitale visie en doelgericht ontwerp samenkomen. Ontdek de reis, filosofie en passie die elke pixel die ik creëer aandrijft.",
     readMyStory: "Lees Mijn Verhaal",
     workWithMe: "Werk Met Mij",
-    
     // Story Section
     myVision: "Mijn Visie",
     storyTitle1: "De Visie Achter",
     storyTitle2: "Virtualcreators",
     storyText: "In een wereld verzadigd met digitale ruis, geloof ik in de kracht van doelgericht ontwerp. Virtualcreators werd geboren uit de overtuiging dat elk merk een digitale aanwezigheid verdient die niet alleen uitzonderlijk oogt, maar ook betekenisvolle resultaten oplevert. Ik creëer ervaringen die resoneren, verbinden en bedrijven transformeren tot digitale leiders.",
     storyText2: "Mijn aanpak is eenvoudig maar diepgaand: diep begrijpen, doordacht ontwerpen en nauwgezet ontwikkelen. Elk project is een kans om grenzen te verleggen, conventies uit te dagen en iets werkelijk opmerkelijks te creëren.",
-    
     // Philosophy Section
     myPhilosophy: "Mijn Filosofie",
     philosophyTitle1: "Ontwerpprincipes",
@@ -683,7 +603,6 @@ const translations = {
     philosophyDesc2: "Ik ontwerp voor echte mensen met echte behoeften. Gebruikerservaring staat centraal in alles wat ik creëer.",
     philosophyItemTitle3: "Tijdloze Elegantie",
     philosophyDesc3: "Trends vervagen, maar goed ontwerp blijft bestaan. Ik creëer oplossingen die jarenlang relevant en impactvol blijven.",
-    
     // Process Section
     myProcess: "Mijn Proces",
     processTitle1: "Hoe Ik Ideeën",
@@ -695,7 +614,6 @@ const translations = {
     processDesc2: "Creatieve verkenning en ontwerpontwikkeling die jouw visie tot leven brengt met prachtige visuele verhalen.",
     processStepTitle3: "Ontwikkelen & Lanceren",
     processDesc3: "Nauwgezette ontwikkeling en naadloze lancering die ervoor zorgt dat jouw digitale ervaring feilloos presteert op alle apparaten.",
-    
     // Founder Section
     meetFounder: "Ontmoet de Oprichter",
     founderTitle: "Kjell de Ruiter",
@@ -705,7 +623,6 @@ const translations = {
     founderEmail: "E-mail:",
     founderPhone: "Telefoon:",
     founderWebsite: "Website:",
-    
     // CTA Section
     ctaTitle1: "Klaar Om Iets",
     ctaTitle2: "Geweldigs Te",
@@ -714,17 +631,14 @@ const translations = {
     startProject: "Start Jouw Project",
     viewWork: "Bekijk Ons Werk",
     backToTop: "Terug naar Boven",
-
     // Reading Time
     readTime3Min: "3 min lezen",
     readTime4Min: "4 min lezen", 
     readTime5Min: "5 min lezen",
-
     // Author Information
     authorName: "Kjell de Ruiter",
     authorRole: "Creator bij",
     authorCompany: "VirtualCreators",
-
     // Blog
     blog: "Blog",
     blogTitle1: "Inzichten & Verhalen",
@@ -734,7 +648,6 @@ const translations = {
     firstPostExcerpt: "Het begin van een nieuwe reis waarin ik inzichten, tips en verhalen deel uit mijn ervaring met het bouwen van digitale oplossingen voor vooruitdenkende bedrijven.",
     readMore: "Lees Meer",
     backToBlog: "Terug naar Blog",
-
     // Blog Post Content
     firstPostPara1: "Hallo! Ik ben enthousiast om deze blog te lanceren als een ruimte om inzichten, ervaringen en geleerde lessen te delen uit mijn reis als <a href=\"../../index.html#services\">webontwikkelaar en ontwerper</a>. Sinds het oprichten van VirtualCreators in 2025, heb ik het voorrecht gehad om te werken met geweldige klanten en uitdagende projecten aan te pakken die mijn benadering van <a href=\"../../index.html#work\">digitale oplossingen</a> hebben gevormd.",
     firstPostHeading1: "Waarom een Blog Beginnen?",
@@ -754,16 +667,13 @@ const translations = {
     firstPostPara6: "In aankomende posts ga ik dieper in op specifieke projecten, delen van code voorbeelden, en verkennen van de nieuwste ontwikkelingen in webtechnologie. Ik ben vooral enthousiast om te schrijven over het evoluerende landschap van webprestaties, de opkomst van moderne CSS functies, en hoe AI de manier verandert waarop we ontwikkeling benaderen.",
     firstPostPara7: "Bedankt dat je er vanaf het begin van deze reis bij bent. Ik kijk ernaar uit om meer inzichten te delen en jullie gedachten te horen. Voel je vrij om contact op te nemen als er specifieke onderwerpen zijn die je graag behandeld zou willen zien of als je vragen hebt over content die ik deel.",
     firstPostPara8: "Op naar het bouwen van betere digitale ervaringen samen!",
-    
     // Image Captions
     imageOverlapCaption: "Van concept tot uitvoering - elk project begint met doordachte planning en aandacht voor detail.",
-
     // Blog Filter Labels
     filterAll: "Alle Posts",
     filterTechnology: "Technologie",
     filterDesign: "Design",
     filterWebDev: "Webontwikkeling",
-
     // Design Trends Article
     designCategory: "Design",
     designTrendsTitle: "2025 Webdesign Trends: Wat de Digitale Toekomst Vormt",
@@ -789,7 +699,6 @@ const translations = {
     designTrendsHeading7: "Vooruitkijken",
     designTrendsPara8: "De trends die 2025 vormgeven wijzen allemaal naar één gemeenschappelijk doel: meer mensgerichte digitale ervaringen creëren. Of het nu door AI-personalisatie, duurzame praktijken of intuïtieve interacties is, de focus ligt op het beter dienen van gebruikers terwijl we ons bewust zijn van onze bredere impact.",
     designTrendsPara9: "Als ontwerpers en ontwikkelaars is onze uitdaging om deze trends doordacht te omarmen—niet als vluchtige modes, maar als evolutie naar meer effectieve, toegankelijke en verantwoordelijke digitale ervaringen. De toekomst van webdesign gaat niet alleen over wat er goed uitziet; het gaat over wat goed werkt voor mensen en de planeet.",
-
     // AI Impact Article
     technologyCategory: "Technologie",
     aiImpactTitle: "Hoe AI Ontwerp en Webontwikkeling Revolutioneert",
@@ -816,13 +725,11 @@ const translations = {
     aiImpactHeading7: "Vooruitkijken",
     aiImpactPara8: "Terwijl we door 2025 vorderen, verwacht ik dat AI's rol in ontwerp en ontwikkeling nog verfijnder wordt. We zullen waarschijnlijk AI zien die merkpersoonlijkheid, culturele nuances en complexe gebruikersreizen kan begrijpen. De uitdaging voor onze industrie zal zijn om deze mogelijkheden te omarmen terwijl we de uniek menselijke aspecten van geweldig ontwerp behouden.",
     aiImpactPara9: "De toekomst behoort toe aan ontwerpers en ontwikkelaars die AI doordacht kunnen integreren in hun creatieve proces—niet als steun, maar als krachtig gereedschap dat ons in staat stelt om meer betekenisvolle, toegankelijke en effectieve digitale ervaringen te creëren. De vraag is niet of AI onze industrie zal veranderen; het is hoe we mee zullen evolueren om betere oplossingen te creëren voor de mensen die we dienen.",
-
     // Modal
     startYourProject: "Boek Gratis Gesprek",
     projectOverview: "Project Overzicht",
     servicesProvided: "Geleverde Diensten",
     resultsImpact: "Resultaten & Impact",
-
     // Cookie Banner
     cookieBannerTitle: "Ik gebruik cookies om je ervaring te verbeteren",
     cookieBannerDescription: "Deze website gebruikt cookies om je browservaring te verbeteren en websiteverkeer te analyseren. Door mijn website te blijven gebruiken, ga je akkoord met mijn gebruik van cookies.",
@@ -835,7 +742,6 @@ const translations = {
     cookieAnalyticsDescription: "Deze cookies helpen mij begrijpen hoe bezoekers omgaan met mijn website door anoniem informatie te verzamelen en te rapporteren.",
     cookieRejectBtn: "Niet-Essentiële Afwijzen",
     cookieSaveBtn: "Voorkeuren Opslaan",
-
     // Service Labels for Modal
     webdevelopment: "Webontwikkeling",
     uiuxdesign: "UI/UX Ontwerp",
@@ -846,7 +752,6 @@ const translations = {
     backenddevelopment: "Backend Ontwikkeling",
     interactivedesign: "Interactief Ontwerp",
     seostrategy: "SEO Strategie",
-
     // Video Controls
     muteVideo: "Video dempen",
     unmuteVideo: "Video geluid aan",
@@ -854,17 +759,14 @@ const translations = {
     pauseVideo: "Video pauzeren",
     enterFullscreen: "Volledig scherm",
     exitFullscreen: "Volledig scherm verlaten",
-
     // Form Messages
     thankYouMessage: "Bedankt voor je bericht! We nemen binnenkort contact met je op.",
     sending: "Versturen...",
     rateLimitMessage: "Wacht even voordat je opnieuw een bericht verstuurt.",
-
     // Fullscreen Messages
     fullscreenNotSupported: "Volledig scherm wordt niet ondersteund op dit apparaat.",
     rotateDevice: "Draai je apparaat naar liggende modus voor een betere weergave.",
     ok: "OK",
-
     // 404 Error Page
     pageNotFoundTitle: "Pagina Niet Gevonden",
     pageNotFoundDescription: "Oeps! Het lijkt erop dat je in onontgonnen digitaal gebied bent beland. De pagina die je zoekt is mogelijk verplaatst, verwijderd of bestaat gewoon niet.",
@@ -872,7 +774,6 @@ const translations = {
     backToHome: "Terug naar Home",
     exploreBlog: "Ontdek Blog",
     popularPages: "Populaire Pagina's",
-
     // Privacy Policy
     privacyPolicyTitle: "Privacy & Cookie Beleid",
     lastUpdated: "Laatst bijgewerkt: Juli 2025",
@@ -882,7 +783,6 @@ const translations = {
     informationICollectItem2: "Je inschrijft voor mijn nieuwsbrief of updates",
     informationICollectItem3: "Met mij communiceert via e-mail of telefoon",
     informationICollectItem4: "Mijn website en diensten gebruikt",
-
     howIUseInfo: "2. Hoe ik jouw informatie gebruik",
     howIUseInfoText: "Ik gebruik de informatie die ik verzamel om:",
     howIUseInfoItem1: "Mijn diensten te leveren, onderhouden en verbeteren",
@@ -890,14 +790,12 @@ const translations = {
     howIUseInfoItem3: "Je technische berichten en ondersteuningsberichten te sturen",
     howIUseInfoItem4: "Met je te communiceren over producten, diensten en evenementen",
     howIUseInfoItem5: "Trends en gebruik te monitoren en analyseren",
-
     informationSharing: "3. Informatie delen",
     informationSharingText:
       "Ik verkoop, verhandel of draag jouw persoonlijke informatie niet over aan derden zonder jouw toestemming, behalve zoals beschreven in dit beleid. Ik kan jouw informatie delen:",
     informationSharingItem1: "Met serviceproviders die mij helpen bij het beheren van mijn website",
     informationSharingItem2: "Om te voldoen aan wettelijke verplichtingen",
     informationSharingItem3: "Om onze rechten en veiligheid te beschermen",
-
     cookiesTracking: "4. Cookies en tracking",
     cookiesTrackingText: "Ik gebruik cookies en vergelijkbare trackingtechnologieën om:",
     cookiesTrackingItem1: "Jouw voorkeuren en instellingen te onthouden",
@@ -906,43 +804,35 @@ const translations = {
     cookiesTrackingItem4: "Gepersonaliseerde content te bieden",
     cookiesTrackingText2:
       "Je kunt cookies beheren via je browserinstellingen, maar het uitschakelen van cookies kan de websitefunctionaliteit beïnvloeden.",
-
     dataSecurity: "5. Gegevensbeveiliging",
     dataSecurityText:
       "Ik implementeer passende beveiligingsmaatregelen om jouw persoonlijke informatie te beschermen tegen ongeautoriseerde toegang, wijziging, openbaarmaking of vernietiging. Echter, geen enkele methode van transmissie via internet is 100% veilig.",
-
     yourRights: "6. Jouw rechten",
     yourRightsText: "Je hebt het recht om:",
     yourRightsItem1: "Toegang te krijgen tot en jouw persoonlijke informatie bij te werken",
     yourRightsItem2: "Verwijdering van jouw persoonlijke informatie aan te vragen",
     yourRightsItem3: "Je af te melden voor marketingcommunicatie",
     yourRightsItem4: "Een kopie van jouw gegevens aan te vragen",
-
     thirdPartyServices: "7. Diensten van derden",
     thirdPartyServicesText:
       "Mijn website kan links bevatten naar websites of diensten van derden. Ik ben niet verantwoordelijk voor de privacypraktijken van deze derden. Ik moedig je aan om hun privacybeleid te bekijken.",
-
     changesToPolicy: "8. Wijzigingen in dit beleid",
     changesToPolicyText:
       'Ik kan dit privacybeleid van tijd tot tijd bijwerken. Ik zal je op de hoogte stellen van eventuele wijzigingen door het nieuwe beleid op deze pagina te plaatsen en de datum "Laatst bijgewerkt" bij te werken.',
-
     contactMe: "9. Contact opnemen",
     contactMeText: "Als je vragen hebt over dit privacybeleid, neem dan contact met me op:",
     contactMeItem1: "E-mail: kjell@virtualcreators.io",
     contactMeItem2: "Telefoon: +316 41552375",
     contactMeItem3: "Gevestigd: Nederland, Amsterdam",
-
     // Privacy Policy Language Precedence
     privacyLanguagePrecedence: "10. Taalvoorkeur",
     privacyLanguagePrecedenceText:
       "Dit Privacybeleid is beschikbaar in meerdere talen. In geval van discrepantie of onjuistheden tussen verschillende taalversies, prevaleert de Engelse versie en heeft deze voorrang.",
-
     // Terms & Conditions
     termsConditionsTitle: "Algemene Voorwaarden",
     acceptanceOfTerms: "1. Acceptatie van voorwaarden",
     acceptanceOfTermsText:
       "Door toegang te krijgen tot en gebruik te maken van VirtualCreators' website en diensten, accepteer en ga je akkoord met de voorwaarden en bepalingen van deze overeenkomst. Als je niet akkoord gaat met het bovenstaande, gebruik deze service dan niet.",
-
     servicesSection: "2. Diensten",
     servicesSectionText:
       "VirtualCreators biedt digitale ontwerp- en ontwikkelingsdiensten, waaronder maar niet beperkt tot:",
@@ -951,7 +841,6 @@ const translations = {
     servicesSectionItem3: "Gebruikerservaring (UX) ontwerp",
     servicesSectionItem4: "Gebruikersinterface (UI) ontwerp",
     servicesSectionItem5: "Digitale strategieconsultancy",
-
     projectTerms: "3. Projectvoorwaarden",
     projectTermsText:
       "Alle projecten zijn onderworpen aan een afzonderlijke projectovereenkomst die het volgende zal beschrijven:",
@@ -960,35 +849,30 @@ const translations = {
     projectTermsItem3: "Betalingsvoorwaarden en schema",
     projectTermsItem4: "Revisie- en goedkeuringsproces",
     projectTermsItem5: "Intellectueel eigendomsrechten",
-
     paymentTerms: "4. Betalingsvoorwaarden",
     paymentTermsText: "Tenzij anders gespecificeerd in een projectovereenkomst:",
     paymentTermsItem1: "Een aanbetaling van 50% is vereist voordat het werk begint",
     paymentTermsItem2: "Eindbetaling is verschuldigd bij projectvoltooiing",
     paymentTermsItem3: "Late betalingen kunnen extra kosten met zich meebrengen",
     paymentTermsItem4: "Alle prijzen zijn in EUR tenzij anders vermeld",
-
     intellectualProperty: "5. Intellectueel eigendom",
     intellectualPropertyText: "Na volledige betaling:",
     intellectualPropertyItem1: "Klant bezit de eindproducten en aangepaste code",
     intellectualPropertyItem2: "VirtualCreators behoudt rechten op algemene methodologieën en technieken",
     intellectualPropertyItem3: "Assets van derden blijven eigendom van hun respectievelijke eigenaren",
     intellectualPropertyItem4: "VirtualCreators mag voltooid werk tonen in portfolio's",
-
     clientResponsibilities: "6. Klantverantwoordelijkheden",
     clientResponsibilitiesText: "Klanten zijn verantwoordelijk voor:",
     clientResponsibilitiesItem1: "Het verstrekken van noodzakelijke content, materialen en toegang",
     clientResponsibilitiesItem2: "Tijdige feedback en goedkeuringen",
     clientResponsibilitiesItem3: "Het waarborgen van contentnauwkeurigheid en wettelijke naleving",
     clientResponsibilitiesItem4: "Het onderhouden van back-ups van hun gegevens",
-
     warrantiesDisclaimers: "7. Garanties en disclaimers",
     warrantiesDisclaimersText: 'VirtualCreators levert diensten "zoals ze zijn" en geeft geen garanties betreffende:',
     warrantiesDisclaimersItem1: "Ononderbroken of foutloze werking",
     warrantiesDisclaimersItem2: "Specifieke prestatiemetrieken of resultaten",
     warrantiesDisclaimersItem3: "Compatibiliteit met alle systemen of browsers",
     warrantiesDisclaimersItem4: "Beschikbaarheid van diensten van derden",
-
     limitationLiability: "8. Beperking van aansprakelijkheid",
     limitationLiabilityText:
       "VirtualCreators' aansprakelijkheid is beperkt tot het bedrag dat betaald is voor diensten. Wij zijn niet aansprakelijk voor:",
@@ -996,50 +880,40 @@ const translations = {
     limitationLiabilityItem2: "Verlies van winst, gegevens of zakelijke kansen",
     limitationLiabilityItem3: "Acties van derden of serviceonderbrekingen",
     limitationLiabilityItem4: "Overmacht gebeurtenissen",
-
     termination: "9. Beëindiging",
     terminationText: "Beide partijen kunnen diensten beëindigen met schriftelijke kennisgeving. Bij beëindiging:",
     terminationItem1: "Klant betaalt voor werk dat tot op heden is voltooid",
     terminationItem2: "VirtualCreators levert voltooid werk",
     terminationItem3: "Beide partijen retourneren vertrouwelijke informatie",
     terminationItem4: "Overlevende clausules blijven van kracht",
-
     governingLaw: "10. Toepasselijk recht",
     governingLawText:
       "Deze voorwaarden worden beheerst door de wetten van Nederland. Eventuele geschillen worden voorgelegd aan de exclusieve jurisdictie van de bevoegde rechtbank in Amsterdam, Nederland.",
-
     changesToTerms: "11. Wijzigingen in voorwaarden",
     changesToTermsText:
       "Ik behoud me het recht voor om deze voorwaarden op elk moment te wijzigen. Wijzigingen worden onmiddellijk van kracht na publicatie. Voortgezet gebruik van onze diensten vormt acceptatie van gewijzigde voorwaarden.",
-
     contactInformation: "12. Contactinformatie",
     contactInformationText: "Voor vragen over deze Algemene Voorwaarden, neem contact met me op:",
     contactInformationItem1: "E-mail: kjell@virtualcreators.io",
     contactInformationItem2: "Telefoon: +316 41552375",
     contactInformationItem3: "Gevestigd: Nederland, Amsterdam",
-
     // Terms & Conditions Language Precedence
     languagePrecedence: "13. Taalvoorkeur",
     languagePrecedenceText:
       "Deze Algemene Voorwaarden zijn beschikbaar in meerdere talen. In geval van discrepantie of onjuistheden tussen verschillende taalversies, prevaleert de Engelse versie en heeft deze voorrang.",
   },
 }
-
 // Get current language from localStorage or default to English
 let currentLanguage = localStorage.getItem("preferred-language") || "en"
-
 // Make translation function globally available
 window.t = (key) => translations[currentLanguage]?.[key] || translations["en"]?.[key] || key
-
 // Update all translatable elements
 function updateTranslations() {
   console.log("Updating translations to:", currentLanguage)
-
   // Update all elements with data-translate attribute
   document.querySelectorAll("[data-translate]").forEach((element) => {
     const key = element.getAttribute("data-translate")
     const translation = window.t(key)
-
     if (translation && translation !== key) {
       if (element.tagName === "INPUT" && element.type !== "submit") {
         element.placeholder = translation
@@ -1055,34 +929,26 @@ function updateTranslations() {
       }
     }
   })
-
   // Update SEO meta tags
   updateSEOMetaTags()
-
   // Update language switcher
   updateLanguageSwitcher()
-
   // Update project data
   updateProjectData()
-
   // Update modal translations if modal is open
   updateModalTranslations()
-
   // Update cookie banner translations if available
   if (typeof window.updateCookieBannerTranslations === 'function') {
     window.updateCookieBannerTranslations()
   }
-  
   // Update internal links to use correct language paths
   updateInternalLinks()
 }
-
 // Update SEO meta tags based on current language
 function updateSEOMetaTags() {
   // Determine which meta title to use based on page
   let titleKey = "metaTitle"
   let descriptionKey = "metaDescription"
-
   if (window.location.pathname.includes("privacy-policy")) {
     titleKey = "privacyMetaTitle"
     descriptionKey = "privacyMetaDescription"
@@ -1093,46 +959,37 @@ function updateSEOMetaTags() {
     titleKey = "pageNotFoundTitle"
     descriptionKey = "pageNotFoundMetaDescription"
   }
-
   // Update page title
   document.title = window.t(titleKey)
-
   // Update meta description
   const metaDescription = document.getElementById("metaDescription")
   if (metaDescription) {
     metaDescription.setAttribute("content", window.t(descriptionKey))
   }
-
   // Update Open Graph tags
   const ogTitle = document.getElementById("ogTitle")
   const ogDescription = document.getElementById("ogDescription")
   const ogLocale = document.getElementById("ogLocale")
   const ogUrl = document.getElementById("ogUrl")
-
   if (ogTitle) ogTitle.setAttribute("content", window.t(titleKey))
   if (ogDescription) ogDescription.setAttribute("content", window.t(descriptionKey))
   if (ogUrl) ogUrl.setAttribute("content", `https://virtualcreators.io/?lang=${currentLanguage}`)
   if (ogLocale) {
     ogLocale.setAttribute("content", currentLanguage === "nl" ? "nl_NL" : "en_US")
   }
-
   // Update Twitter Card tags
   const twitterTitle = document.getElementById("twitterTitle")
   const twitterDescription = document.getElementById("twitterDescription")
-
   if (twitterTitle) twitterTitle.setAttribute("content", window.t(titleKey))
   if (twitterDescription) twitterDescription.setAttribute("content", window.t(descriptionKey))
-
   // Update HTML lang attribute
   document.documentElement.lang = currentLanguage
-
   // Update hreflang tags to point to correct subdirectories
   const hreflangTags = document.querySelectorAll('link[rel="alternate"][hreflang]')
   hreflangTags.forEach(tag => {
     const hreflang = tag.getAttribute('hreflang')
     const currentPath = window.location.pathname
     const currentPage = currentPath.split('/').pop() || 'index.html'
-    
     if (hreflang === 'en') {
       tag.setAttribute('href', `https://www.virtualcreators.io/${currentPage}`)
     } else if (hreflang === 'nl') {
@@ -1142,12 +999,10 @@ function updateSEOMetaTags() {
     }
   })
 }
-
 // Update language switcher display
 function updateLanguageSwitcher() {
   const currentFlag = document.getElementById("currentFlag")
   const currentLang = document.getElementById("currentLang")
-
   if (currentFlag && currentLang) {
     if (currentLanguage === "nl") {
       currentFlag.textContent = "🇳🇱"
@@ -1157,38 +1012,31 @@ function updateLanguageSwitcher() {
       currentLang.textContent = "EN"
     }
   }
-
   // Update mobile language options active state
   document.querySelectorAll(".mobile-language-option").forEach((option) => {
     option.classList.remove("active")
   })
-
   const activeOption = document.querySelector(`[onclick*="switchLanguage('${currentLanguage}')"]`)
   if (activeOption && activeOption.classList.contains("mobile-language-option")) {
     activeOption.classList.add("active")
   }
 }
-
 // Switch language function
 function switchLanguage(lang) {
   console.log("Switching language to:", lang)
   currentLanguage = lang
   localStorage.setItem("preferred-language", lang)
-  
   // Get current page path and determine the equivalent page in the other language
   const currentPath = window.location.pathname
   let newUrl
-  
   // Handle local development vs production
   if (window.location.protocol === 'file:') {
     // Local development - construct relative path
     const pathParts = window.location.pathname.split('/')
     const docsIndex = pathParts.indexOf('docs')
-    
     if (docsIndex !== -1) {
       // We're in the docs directory
       const basePath = pathParts.slice(0, docsIndex + 1).join('/')
-      
               if (lang === 'nl') {
           // Switch to Dutch - check if we're already in a language subdirectory
           if (currentPath.includes('/nl/')) {
@@ -1220,7 +1068,6 @@ function switchLanguage(lang) {
       // Fallback for other local paths
       const basePath = window.location.pathname.split('/').slice(0, -1).join('/')
       const currentPage = currentPath.split('/').pop() || 'index.html'
-      
       if (lang === 'nl') {
         newUrl = `${basePath}/nl/${currentPage}`
       } else {
@@ -1261,34 +1108,28 @@ function switchLanguage(lang) {
       }
     }
   }
-  
   console.log("Navigating to:", newUrl)
   // Navigate to the new URL
   window.location.href = newUrl
 }
-
 // Toggle language dropdown
 function toggleLanguageDropdown() {
   const dropdown = document.getElementById("languageDropdown")
   const button = document.getElementById("languageBtn")
-
   if (dropdown && button) {
     dropdown.classList.toggle("active")
     button.classList.toggle("active")
   }
 }
-
 // Close language dropdown
 function closeLanguageDropdown() {
   const dropdown = document.getElementById("languageDropdown")
   const button = document.getElementById("languageBtn")
-
   if (dropdown && button) {
     dropdown.classList.remove("active")
     button.classList.remove("active")
   }
 }
-
 // Close dropdown when clicking outside
 document.addEventListener("click", (e) => {
   const languageSwitcher = document.querySelector(".language-switcher")
@@ -1296,7 +1137,6 @@ document.addEventListener("click", (e) => {
     closeLanguageDropdown()
   }
 })
-
 // Update project data with translations
 function updateProjectData() {
   // Update project cards in DOM
@@ -1305,21 +1145,18 @@ function updateProjectData() {
     const categorySpan = item.querySelector(".project-meta span:first-child")
     const descriptionP = item.querySelector(".project-description")
     const viewProjectBtn = item.querySelector(".project-link")
-
     if (categorySpan) {
       const categoryKey = categorySpan.getAttribute("data-translate")
       if (categoryKey) {
         categorySpan.textContent = window.t(categoryKey)
       }
     }
-
     if (descriptionP) {
       const descKey = descriptionP.getAttribute("data-translate")
       if (descKey) {
         descriptionP.textContent = window.t(descKey)
       }
     }
-
     if (viewProjectBtn) {
       const btnKey = viewProjectBtn.getAttribute("data-translate")
       if (btnKey) {
@@ -1328,7 +1165,6 @@ function updateProjectData() {
     }
   })
 }
-
 // Update modal content when language changes
 function updateModalTranslations() {
   const modal = document.getElementById("projectModal")
@@ -1337,8 +1173,7 @@ function updateModalTranslations() {
     const project = window.projects[window.currentProject]
     if (project) {
       document.getElementById("modalSubtitle").textContent =
-        `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
-
+        `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} &bull; ${project.year}`
       const modalBody = document.getElementById("modalBody")
       if (modalBody && window.generateProjectModalContent) {
         modalBody.innerHTML = window.generateProjectModalContent(project)
@@ -1346,11 +1181,9 @@ function updateModalTranslations() {
     }
   }
 }
-
 // Check for language from URL path on page load
 function checkLanguageFromURL() {
   const path = window.location.pathname
-  
   // Check if we're in a language subdirectory
   if (path.includes('/nl/')) {
     currentLanguage = 'nl'
@@ -1372,27 +1205,21 @@ function checkLanguageFromURL() {
     }
   }
 }
-
 // Initialize translations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded, initializing translations...")
-
   // Check URL for language parameter first
   checkLanguageFromURL()
-
   // Set initial language
   document.documentElement.lang = currentLanguage
-
   // Initialize translations immediately
   updateTranslations()
 })
-
 // Also update translations when the page is fully loaded
 window.addEventListener("load", () => {
   console.log("Window loaded, updating translations...")
   updateTranslations()
 })
-
 // Handle browser back/forward navigation
 window.addEventListener("popstate", (event) => {
   if (event.state && event.state.language) {
@@ -1401,16 +1228,13 @@ window.addEventListener("popstate", (event) => {
     updateTranslations()
   }
 })
-
 // Function to get the correct URL for internal links based on current language
 function getLocalizedUrl(page) {
   const path = window.location.pathname
-  
   if (window.location.protocol === 'file:') {
     // Local development - construct relative path
     const pathParts = window.location.pathname.split('/')
     const docsIndex = pathParts.indexOf('docs')
-    
     if (docsIndex !== -1) {
       const basePath = pathParts.slice(0, docsIndex + 1).join('/')
       if (path.includes('/nl/')) {
@@ -1420,7 +1244,6 @@ function getLocalizedUrl(page) {
       }
     }
   }
-  
   // Production
   if (path.includes('/nl/')) {
     return `/nl/${page}`
@@ -1428,7 +1251,6 @@ function getLocalizedUrl(page) {
     return `/${page}`
   }
 }
-
 // Update internal links to use correct language paths
 // DISABLED: Links are already correct in HTML files
 function updateInternalLinks() {
@@ -1437,7 +1259,6 @@ function updateInternalLinks() {
   console.log('updateInternalLinks: Function disabled - links are already correct')
   return
 }
-
 // Make functions globally available
 window.switchLanguage = switchLanguage
 window.toggleLanguageDropdown = toggleLanguageDropdown
