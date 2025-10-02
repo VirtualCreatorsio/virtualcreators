@@ -242,24 +242,20 @@
                 return;
             }
             console.log('🎉 Showing cookie banner');
-            console.log('📐 Banner current styles:', {
-                display: this.banner.style.display,
-                visibility: getComputedStyle(this.banner).visibility,
-                opacity: getComputedStyle(this.banner).opacity,
-                transform: getComputedStyle(this.banner).transform
+            
+            // Use requestAnimationFrame to batch DOM operations and prevent forced reflows
+            requestAnimationFrame(() => {
+                // Batch all DOM style changes together
+                this.banner.style.display = 'block';
+                this.banner.style.visibility = 'visible';
+                this.banner.style.opacity = '1';
+                
+                // Small delay to ensure smooth animation
+                setTimeout(() => {
+                    this.banner.classList.add('show');
+                    console.log('✨ Banner show class added');
+                }, 100);
             });
-            this.banner.style.display = 'block';
-            // Small delay to ensure smooth animation
-            setTimeout(() => {
-                this.banner.classList.add('show');
-                console.log('✨ Banner show class added');
-                console.log('📐 Banner updated styles:', {
-                    display: this.banner.style.display,
-                    visibility: getComputedStyle(this.banner).visibility,
-                    opacity: getComputedStyle(this.banner).opacity,
-                    transform: getComputedStyle(this.banner).transform
-                });
-            }, 100);
         },
         hideBanner: function() {
             if (!this.banner) {

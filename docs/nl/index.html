@@ -218,7 +218,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobiel navigatiemenu" aria-expanded="false" aria-controls="mobile-menu">
                     <span class="hamburger"></span>
                     <span class="hamburger"></span>
                     <span class="hamburger"></span>
@@ -720,7 +720,7 @@
                     <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Prijslijst</h3>
                     <p class="pdf-modal-subtitle">Indicatief • Bijgewerkt september 2025</p>
                 </div>
-                <button class="pdf-modal-close" onclick="closePDFPreview()">
+                <button class="pdf-modal-close" onclick="closePDFPreview()" aria-label="PDF voorvertoning sluiten">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <line x1="18" y1="6" x2="6" y2="18"/>
                         <line x1="6" y1="6" x2="18" y2="18"/>
@@ -780,7 +780,7 @@
                     <h3 class="modal-title" id="modalTitle">Project Title</h3>
                     <p class="modal-subtitle" id="modalSubtitle">Category • Year</p>
                 </div>
-                <button class="modal-close" onclick="closeProjectModal()">
+                <button class="modal-close" onclick="closeProjectModal()" aria-label="Project modal sluiten">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <line x1="18" y1="6" x2="6" y2="18"/>
                         <line x1="6" y1="6" x2="18" y2="18"/>
@@ -802,13 +802,13 @@
                     </button>
                 </div>
                 <div class="modal-navigation">
-                    <button class="nav-btn" onclick="navigateProject('prev')">
+                    <button class="nav-btn" onclick="navigateProject('prev')" aria-label="Vorige project">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="15,18 9,12 15,6"/>
                         </svg>
                     </button>
                     <span class="nav-indicator" id="navIndicator">1 of 3</span>
-                    <button class="nav-btn" onclick="navigateProject('next')">
+                    <button class="nav-btn" onclick="navigateProject('next')" aria-label="Volgende project">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <polyline points="9,18 15,12 9,6"/>
                         </svg>
