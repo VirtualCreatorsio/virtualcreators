@@ -673,7 +673,6 @@
                     <!-- Language Switcher -->
                     <div class="language-switcher">
                         <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn">
-                            <span class="language-flag" id="currentFlag">🇬🇧</span>
                             <span class="language-text" id="currentLang">EN</span>
                             <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <polyline points="6,9 12,15 18,9"/>
@@ -681,11 +680,9 @@
                         </button>
                         <div class="language-dropdown" id="languageDropdown">
                             <button class="language-option" onclick="switchLanguage('en')">
-                                <span class="language-flag">🇬🇧</span>
                                 <span>EN</span>
                             </button>
                             <button class="language-option" onclick="switchLanguage('nl')">
-                                <span class="language-flag">🇳🇱</span>
                                 <span>NL</span>
                             </button>
                         </div>
@@ -715,11 +712,9 @@
                     <div class="mobile-language-header" data-translate="language">Language</div>
                     <div class="mobile-language-options">
                         <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
-                            <span class="language-flag">🇬🇧</span>
                             <span>EN</span>
                         </button>
                         <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
-                            <span class="language-flag">🇳🇱</span>
                             <span>NL</span>
                         </button>
                     </div>
