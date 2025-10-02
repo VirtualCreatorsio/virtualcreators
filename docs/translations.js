@@ -837,7 +837,7 @@ const translations = {
     cookieSaveBtn: "Voorkeuren Opslaan",
 
     // Service Labels for Modal
-    webdevelopment: "Web-Dev",
+    webdevelopment: "Webontwikkeling",
     uiuxdesign: "UI/UX Ontwerp",
     seooptimization: "SEO Optimalisatie",
     brandidentity: "Merkidentiteit",
