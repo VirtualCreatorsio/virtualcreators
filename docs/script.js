@@ -4,9 +4,11 @@ const mousePosition = { x: 0, y: 0 }
 let isMobileDevice = false
 let calendlyLoaded = false
 // Removed: const currentLanguage = "en" // Declare currentLanguage variable
+
 // Detect if we're in Dutch locale and set asset path prefix
 const isDutchLocale = window.location.pathname.includes('/nl/')
 const assetPathPrefix = isDutchLocale ? '../' : ''
+
 // Performance optimization: Debounce function for scroll events
 function debounce(func, wait) {
   let timeout
@@ -19,6 +21,7 @@ function debounce(func, wait) {
     timeout = setTimeout(later, wait)
   }
 }
+
 // Performance optimization: Throttle function for resize events
 function throttle(func, limit) {
   let inThrottle
@@ -32,6 +35,7 @@ function throttle(func, limit) {
     }
   }
 }
+
 // PDF Portfolio Functions
 function downloadPDF() {
   // Determine which PDF to use based on current language
@@ -39,16 +43,20 @@ function downloadPDF() {
   const pdfFileName = currentLanguage === 'nl' 
     ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
     : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+  
   // Create a temporary link element to trigger download
   const link = document.createElement('a')
   link.href = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}`
   link.download = pdfFileName
   link.target = '_blank'
+  
   // Append to body, click, and remove
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
+  
 }
+
 // Set correct PDF iframe source based on current locale
 function setPDFIframeSource() {
   const iframe = document.querySelector('.pdf-iframe')
@@ -56,38 +64,48 @@ function setPDFIframeSource() {
     // Add mobile-specific parameters for better scaling
     const isMobile = window.innerWidth <= 768
     const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
+    
     // Determine which PDF to use based on current language
     const currentLanguage = localStorage.getItem("preferred-language") || "en"
     const pdfFileName = currentLanguage === 'nl' 
       ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
       : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+    
     const pdfPath = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
+    
     // Ensure iframe is visible and properly sized
     iframe.style.display = 'block'
     iframe.style.visibility = 'visible'
     iframe.style.opacity = '1'
+    
     iframe.src = pdfPath
+    
     // Add error handling for iframe loading
     iframe.onload = function() {
       console.log('PDF iframe loaded successfully:', pdfPath)
     }
+    
     iframe.onerror = function() {
       console.error('PDF iframe failed to load:', pdfPath)
     }
+    
     console.log('Setting PDF iframe source to:', pdfPath)
   } else {
     console.error('PDF iframe not found')
   }
 }
+
 function togglePDFPreview() {
   const modal = document.getElementById('pdfPreviewModal')
   if (modal) {
     modal.classList.toggle('active')
+    
     // Prevent body scroll when modal is open
     if (modal.classList.contains('active')) {
       document.body.style.overflow = 'hidden'
       // Set correct PDF iframe source when opening modal
       setPDFIframeSource()
+      
       // Force iframe reload to ensure it displays properly
       const iframe = modal.querySelector('.pdf-iframe')
       if (iframe) {
@@ -104,6 +122,7 @@ function togglePDFPreview() {
     }
   }
 }
+
 function closePDFPreview() {
   const modal = document.getElementById('pdfPreviewModal')
   if (modal) {
@@ -111,6 +130,7 @@ function closePDFPreview() {
     document.body.style.overflow = ''
   }
 }
+
 // Close PDF modal when clicking outside
 document.addEventListener('click', function(event) {
   const modal = document.getElementById('pdfPreviewModal')
@@ -120,12 +140,14 @@ document.addEventListener('click', function(event) {
     }
   }
 })
+
 // Close PDF modal with Escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closePDFPreview()
   }
 })
+
 // Project Data with enhanced video debugging
 const projects = [
   {
@@ -199,10 +221,12 @@ const projects = [
     }
   },
 ]
+
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   initializeApp()
 })
+
 // Initialize Application
 function initializeApp() {
   detectMobileDevice()
@@ -215,18 +239,26 @@ function initializeApp() {
   setupProjectTileVideos()
   setupProjectCardModalLinks()
   setupScrollSpy()
+
   // Initialize Calendly with better error handling
   initializeCalendly()
+
+
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
+
   // Add stacked scroll effect for cases
   stackedScrollCasesEffect()
+
   // Set min-height for perfect last card centering
   setStackedCasesMinHeight()
   window.addEventListener('resize', setStackedCasesMinHeight)
+  
   // Set correct PDF iframe source on page load
   setPDFIframeSource()
 }
+
+
 // Enhanced Calendly initialization with multiple fallbacks
 function initializeCalendly() {
   // Check if Calendly script is already loaded
@@ -234,28 +266,35 @@ function initializeCalendly() {
     calendlyLoaded = true
     return
   }
+
   // Method 1: Check if script tag exists and load if needed
   if (!document.querySelector('script[src*="calendly.com"]')) {
     loadCalendlyScript()
   }
+
   // Method 2: Polling check for Calendly availability
   let attempts = 0
   const maxAttempts = 50 // 10 seconds total
+
   const checkCalendly = () => {
     attempts++
+
     if (typeof window.Calendly !== "undefined") {
       calendlyLoaded = true
       return
     }
+
     if (attempts < maxAttempts) {
       setTimeout(checkCalendly, 200)
     } else {
       calendlyLoaded = false
     }
   }
+
   // Start checking
   setTimeout(checkCalendly, 100)
 }
+
 // Dynamically load Calendly script if not present
 function loadCalendlyScript() {
   return new Promise((resolve, reject) => {
@@ -264,27 +303,33 @@ function loadCalendlyScript() {
     cssLink.href = "https://assets.calendly.com/assets/external/widget.css"
     cssLink.rel = "stylesheet"
     document.head.appendChild(cssLink)
+
     // Load JavaScript
     const script = document.createElement("script")
     script.src = "https://assets.calendly.com/assets/external/widget.js"
     script.type = "text/javascript"
     script.async = true
+
     script.onload = () => {
       calendlyLoaded = true
       resolve()
     }
+
     script.onerror = () => {
       calendlyLoaded = false
       reject(new Error("Failed to load Calendly script"))
     }
+
     document.head.appendChild(script)
   })
 }
+
 // Detect mobile device
 function detectMobileDevice() {
   isMobileDevice =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
     window.innerWidth <= 768
+
   // Update on resize (throttled for performance)
   window.addEventListener("resize", throttle(() => {
     isMobileDevice =
@@ -292,6 +337,7 @@ function detectMobileDevice() {
       window.innerWidth <= 768
   }, 250))
 }
+
 // Event Listeners
 function setupEventListeners() {
   // Smooth scrolling for navigation links
@@ -307,17 +353,20 @@ function setupEventListeners() {
       }
     })
   })
+
   // Close modals when clicking outside
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal")) {
       closeProjectModal()
     }
   })
+
   // Keyboard navigation for modals
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeProjectModal()
     }
+
     if (document.getElementById("projectModal").classList.contains("active")) {
       if (e.key === "ArrowLeft") {
         navigateProject("prev")
@@ -326,6 +375,7 @@ function setupEventListeners() {
       }
     }
   })
+
   // Setup Calendly button event listeners
   // document.querySelectorAll('[onclick*="openCalendlyPopup"]').forEach((button) => {
   //   button.addEventListener("click", (e) => {
@@ -333,17 +383,22 @@ function setupEventListeners() {
   //     openCalendlyPopup()
   //   })
   // })
+
 }
+
 // Cursor Follower
 function setupCursorFollower() {
   const cursor = document.querySelector(".cursor-follower")
   if (!cursor) return
+
   document.addEventListener("mousemove", (e) => {
     mousePosition.x = e.clientX
     mousePosition.y = e.clientY
+
     cursor.style.left = e.clientX + "px"
     cursor.style.top = e.clientY + "px"
   })
+
   // Scale cursor on scroll (throttled for performance)
   window.addEventListener("scroll", throttle(() => {
     const scrollY = window.scrollY
@@ -351,51 +406,62 @@ function setupCursorFollower() {
     cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
   }, 16))
 }
+
 // Mouse Effect for Hero Background and Blog Headers
 function setupMouseEffect() {
   // Hero section mouse effect
   const heroSection = document.querySelector(".hero")
   const heroBg = document.querySelector(".hero-bg")
+
   if (heroSection && heroBg) {
   heroSection.addEventListener("mousemove", (e) => {
     const rect = heroSection.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
+
     heroBg.style.setProperty("--mouse-x", `${x}%`)
     heroBg.style.setProperty("--mouse-y", `${y}%`)
   })
   }
+
   // Blog header mouse effect
   const blogHeader = document.querySelector(".blog-header")
   const blogHeaderBg = document.querySelector(".blog-header-bg")
+
   if (blogHeader && blogHeaderBg) {
     blogHeader.addEventListener("mousemove", (e) => {
       const rect = blogHeader.getBoundingClientRect()
       const x = ((e.clientX - rect.left) / rect.width) * 100
       const y = ((e.clientY - rect.top) / rect.height) * 100
+
       blogHeaderBg.style.setProperty("--mouse-x", `${x}%`)
       blogHeaderBg.style.setProperty("--mouse-y", `${y}%`)
     })
   }
+
   // Blog post header mouse effect
   const blogPostHeader = document.querySelector(".blog-post-header")
   const blogPostHeaderBg = document.querySelector(".blog-post-header-bg")
+
   if (blogPostHeader && blogPostHeaderBg) {
     blogPostHeader.addEventListener("mousemove", (e) => {
       const rect = blogPostHeader.getBoundingClientRect()
       const x = ((e.clientX - rect.left) / rect.width) * 100
       const y = ((e.clientY - rect.top) / rect.height) * 100
+
       blogPostHeaderBg.style.setProperty("--mouse-x", `${x}%`)
       blogPostHeaderBg.style.setProperty("--mouse-y", `${y}%`)
     })
   }
 }
+
 // Scroll Animations
 function setupScrollAnimations() {
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
   }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -403,19 +469,24 @@ function setupScrollAnimations() {
       }
     })
   }, observerOptions)
+
   // Observe all fade-in sections
   document.querySelectorAll(".fade-in-section").forEach((section) => {
     observer.observe(section)
   })
 }
+
 // Navigation Functions
 function toggleMobileMenu() {
   const mobileNav = document.getElementById("mobileNav")
   const hamburger = document.querySelector(".mobile-menu-btn")
+
   if (!mobileNav || !hamburger) {
     return
   }
+
   const isActive = mobileNav.classList.contains("active")
+
   if (isActive) {
     mobileNav.classList.remove("active")
     hamburger.classList.remove("active")
@@ -426,15 +497,18 @@ function toggleMobileMenu() {
     document.body.style.overflow = "hidden"
   }
 }
+
 function closeMobileMenu() {
   const mobileNav = document.getElementById("mobileNav")
   const hamburger = document.querySelector(".mobile-menu-btn")
+
   if (mobileNav && hamburger) {
     mobileNav.classList.remove("active")
     hamburger.classList.remove("active")
     document.body.style.overflow = "unset"
   }
 }
+
 // Close mobile menu when clicking outside
 function setupMobileMenuClickOutside() {
   document.addEventListener("click", (e) => {
@@ -442,11 +516,13 @@ function setupMobileMenuClickOutside() {
     const hamburger = document.querySelector(".mobile-menu-btn")
     const isClickInsideNav = mobileNav && mobileNav.contains(e.target)
     const isClickOnHamburger = hamburger && hamburger.contains(e.target)
+
     if (mobileNav && mobileNav.classList.contains("active") && !isClickInsideNav && !isClickOnHamburger) {
       closeMobileMenu()
     }
   })
 }
+
 // Close mobile menu on window resize if it gets too large
 function setupMobileMenuResize() {
   window.addEventListener("resize", () => {
@@ -455,24 +531,28 @@ function setupMobileMenuResize() {
     }
   })
 }
+
 function scrollToWork() {
   const workSection = document.getElementById("work")
   if (workSection) {
     workSection.scrollIntoView({ behavior: "smooth" })
   }
 }
+
 function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   })
 }
+
 function setupScrollSpy() {
   // Get all sections and navigation links
   const sections = document.querySelectorAll('section[id]')
   const navLinks = document.querySelectorAll('.nav-link')
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
   const backToTopBtn = document.querySelector('.back-to-top-btn')
+  
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
     // Remove active class from all navigation items except blog links
@@ -488,10 +568,12 @@ function setupScrollSpy() {
         link.classList.remove('active')
       }
     })
+    
     // Add active class to current section's navigation items
     if (activeId) {
       const activeNavLink = document.querySelector(`.nav-link[href="#${activeId}"]`)
       const activeMobileNavLink = document.querySelector(`.mobile-nav-link[href="#${activeId}"]`)
+      
       if (activeNavLink) {
         activeNavLink.classList.add('active')
       }
@@ -500,31 +582,39 @@ function setupScrollSpy() {
       }
     }
   }
+  
   // Function to handle scroll events
   function handleScroll() {
     const scrollPosition = window.scrollY + 100 // Add offset for better UX
+    
     let currentSection = null
+    
     // Find which section is currently in view
     sections.forEach(section => {
       const sectionTop = section.offsetTop
       const sectionHeight = section.offsetHeight
       const sectionId = section.getAttribute('id')
+      
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
         currentSection = sectionId
       }
     })
+    
     // Special handling for hero section (when at top of page)
     if (window.scrollY < 100) {
       currentSection = null // No section highlighted when at top
     }
+    
     // Update active navigation item
     updateActiveNavItem(currentSection)
+    
     // Show/hide back to top button
     if (backToTopBtn) {
       if (isMobileDevice) {
         // Check if we're on the homepage (has hero section)
         const heroSection = document.getElementById('hero')
         const isHomepage = !!heroSection
+        
         if (isHomepage) {
           // On homepage mobile, only show when contact section is in view (original logic)
         const contactSection = document.getElementById('contact')
@@ -532,6 +622,7 @@ function setupScrollSpy() {
           const contactTop = contactSection.offsetTop
           const contactHeight = contactSection.offsetHeight
           const viewportHeight = window.innerHeight
+          
           // Show button when contact section starts to come into view
           if (window.scrollY + viewportHeight >= contactTop) {
               backToTopBtn.classList.add('visible')
@@ -545,6 +636,7 @@ function setupScrollSpy() {
           const viewportHeight = window.innerHeight
           const scrollableHeight = documentHeight - viewportHeight
           const scrollPercentage = (window.scrollY / scrollableHeight) * 100
+          
           if (scrollPercentage >= 80) {
             backToTopBtn.classList.add('visible')
           } else {
@@ -561,6 +653,7 @@ function setupScrollSpy() {
       }
     }
   }
+  
   // Add scroll event listener with throttling for performance
   let isScrolling = false
   window.addEventListener('scroll', () => {
@@ -572,21 +665,25 @@ function setupScrollSpy() {
       isScrolling = true
     }
   })
+  
   // Run once on page load
   handleScroll()
 }
+
 // Enhanced Calendly Integration Function with multiple fallbacks
 function openCalendlyPopup() {
   // Method 1: Try standard Calendly integration
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initInlineWidget) {
     return openCalendlyInlineWidget()
   }
+
   // Method 2: Try Calendly popup widget
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initPopupWidget) {
     return window.Calendly.initPopupWidget({
       url: "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6",
     })
   }
+
   // Method 3: Try to load Calendly and retry
   if (!calendlyLoaded) {
     loadCalendlyScript()
@@ -598,9 +695,11 @@ function openCalendlyPopup() {
       })
     return
   }
+
   // Method 4: Fallback - open in new tab
   openCalendlyFallback()
 }
+
 // Original inline widget function
 function openCalendlyInlineWidget() {
   // Create a subtle modal overlay
@@ -623,6 +722,7 @@ function openCalendlyInlineWidget() {
     opacity: 0;
     transition: opacity 0.3s ease;
   `
+
   // Create the Calendly container - elegant window size
   const calendlyContainer = document.createElement("div")
   calendlyContainer.id = "calendly-inline-widget"
@@ -640,6 +740,7 @@ function openCalendlyInlineWidget() {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   `
+
   // Create elegant header with calm purple accent
   const headerBar = document.createElement("div")
   headerBar.style.cssText = `
@@ -647,6 +748,7 @@ function openCalendlyInlineWidget() {
   background: linear-gradient(135deg, #ec4899, #8b5cf6);
   width: 100%;
 `
+
   // Create close button with modal-style design
   const closeButton = document.createElement("button")
   closeButton.innerHTML = `
@@ -678,6 +780,7 @@ function openCalendlyInlineWidget() {
   closeButton.onmouseout = () => {
     closeButton.style.backgroundColor = "#f3f4f6"
   }
+
   // Create content container
   const contentContainer = document.createElement("div")
   contentContainer.style.cssText = `
@@ -686,6 +789,7 @@ function openCalendlyInlineWidget() {
   position: relative;
   overflow: hidden;
 `
+
   // Close function with smooth animation
   const closeCalendly = () => {
     modalOverlay.style.opacity = "0"
@@ -697,13 +801,16 @@ function openCalendlyInlineWidget() {
       document.body.style.overflow = "unset"
     }, 300)
   }
+
   closeButton.onclick = closeCalendly
+
   // Close on overlay click
   modalOverlay.onclick = (e) => {
     if (e.target === modalOverlay) {
       closeCalendly()
     }
   }
+
   // Close on escape key
   const handleEscape = (e) => {
     if (e.key === "Escape") {
@@ -712,6 +819,7 @@ function openCalendlyInlineWidget() {
     }
   }
   document.addEventListener("keydown", handleEscape)
+
   // Assemble the modal
   calendlyContainer.appendChild(headerBar)
   calendlyContainer.appendChild(contentContainer)
@@ -719,11 +827,13 @@ function openCalendlyInlineWidget() {
   modalOverlay.appendChild(calendlyContainer)
   document.body.appendChild(modalOverlay)
   document.body.style.overflow = "hidden"
+
   // Smooth entrance animation
   setTimeout(() => {
     modalOverlay.style.opacity = "1"
     calendlyContainer.style.transform = "scale(1) translateY(0)"
   }, 10)
+
   // Initialize Calendly inline widget with better error handling
   try {
     window.Calendly.initInlineWidget({
@@ -734,6 +844,7 @@ function openCalendlyInlineWidget() {
       prefill: {},
       utm: {},
     })
+
     // Add subtle custom styling and ensure full width/height
     setTimeout(() => {
       addSubtleCalendlyStyles()
@@ -755,10 +866,13 @@ function openCalendlyInlineWidget() {
     closeCalendly()
     openCalendlyFallback()
   }
+
   return false
 }
+
 // Fallback function for when Calendly fails to load
 function openCalendlyFallback() {
+
   // Show a brief message to user
   const message = document.createElement("div")
   message.style.cssText = `
@@ -779,8 +893,10 @@ function openCalendlyFallback() {
     <p>Opening scheduling in a new tab...</p>
   `
   document.body.appendChild(message)
+
   // Open Calendly in new tab
   window.open("https://calendly.com/kjell-virtualcreators", "_blank")
+
   // Remove message after 2 seconds
   setTimeout(() => {
     if (message.parentElement) {
@@ -788,6 +904,7 @@ function openCalendlyFallback() {
     }
   }, 2000)
 }
+
 // Function to add subtle custom styles to Calendly widget
 function addSubtleCalendlyStyles() {
   const calendlyFrame = document.querySelector("#calendly-inline-widget iframe")
@@ -796,6 +913,7 @@ function addSubtleCalendlyStyles() {
       calendlyFrame.onload = () => {
         try {
           const frameDoc = calendlyFrame.contentDocument || calendlyFrame.contentWindow.document
+
           const customStyles = document.createElement("style")
           customStyles.textContent = `
             /* AGGRESSIVE padding/margin removal */
@@ -804,6 +922,7 @@ function addSubtleCalendlyStyles() {
               padding: 0 !important;
               box-sizing: border-box !important;
             }
+            
             body, html {
               margin: 0 !important;
               padding: 0 !important;
@@ -811,6 +930,7 @@ function addSubtleCalendlyStyles() {
               height: 100% !important;
               width: 100% !important;
             }
+            
             /* Target all possible Calendly containers */
             [data-testid="event-type-page"],
             .calendly-popup-content,
@@ -831,6 +951,7 @@ function addSubtleCalendlyStyles() {
               width: 100% !important;
               max-width: none !important;
             }
+            
             /* Force full width on main content areas */
             .calendly-popup-content,
             .calendly-main-content {
@@ -840,6 +961,7 @@ function addSubtleCalendlyStyles() {
               box-sizing: border-box !important;
               height: 100% !important;
             }
+            
             /* Remove any wrapper margins */
             .calendly-page-wrapper,
             .calendly-scheduling-page {
@@ -848,6 +970,7 @@ function addSubtleCalendlyStyles() {
               width: 100% !important;
               height: 100% !important;
             }
+            
             /* Calm purple styling for primary buttons */
             button[data-testid="confirm-button"],
             button[type="submit"],
@@ -857,6 +980,7 @@ function addSubtleCalendlyStyles() {
               transition: all 0.2s ease !important;
               border-radius: 8px !important;
             }
+            
             button[data-testid="confirm-button"]:hover,
             button[type="submit"]:hover,
             .calendly-btn-primary:hover {
@@ -864,6 +988,7 @@ function addSubtleCalendlyStyles() {
               transform: translateY(-1px) !important;
               box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
             }
+            
             /* Subtle hover effects for time slots with calm purple */
             [data-testid="time-button"]:hover,
             .calendly-time-button:hover {
@@ -871,6 +996,7 @@ function addSubtleCalendlyStyles() {
               border-color: rgba(139, 92, 246, 0.3) !important;
               transition: all 0.2s ease !important;
             }
+            
             /* Selected time slot with calm purple */
             [data-testid="time-button"][aria-pressed="true"],
             .calendly-time-button.selected {
@@ -878,6 +1004,7 @@ function addSubtleCalendlyStyles() {
               color: white !important;
               border-color: #8b5cf6 !important;
             }
+            
             /* Calm purple focus states */
             input:focus,
             select:focus,
@@ -886,32 +1013,40 @@ function addSubtleCalendlyStyles() {
               box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
               outline: none !important;
             }
+            
             /* Style the calendar navigation with calm purple */
             button[data-testid="calendar-nav-button"]:hover {
               background: rgba(139, 92, 246, 0.1) !important;
             }
+            
             /* Calendar date selection */
             [data-testid="calendar-date-button"]:hover {
               background: rgba(139, 92, 246, 0.1) !important;
             }
+            
             [data-testid="calendar-date-button"][aria-pressed="true"] {
               background: #8b5cf6 !important;
               color: white !important;
             }
+            
             /* Progress indicators and active states */
             .calendly-progress-bar,
             .calendly-step-indicator.active {
               background: #8b5cf6 !important;
             }
+            
             /* Links and interactive text */
             a, .calendly-link {
               color: #8b5cf6 !important;
             }
+            
             a:hover, .calendly-link:hover {
               color: #7c3aed !important;
             }
           `
+
           frameDoc.head.appendChild(customStyles)
+
           // Also try to directly manipulate the DOM
           setTimeout(() => {
             const allElements = frameDoc.querySelectorAll("*")
@@ -931,60 +1066,76 @@ function addSubtleCalendlyStyles() {
     }
   }
 }
+
 // Project Modal Functions
 function openProjectModal(index) {
   currentProject = index
   const modal = document.getElementById("projectModal")
   const project = projects[index]
+
   // Block page scrolling
   document.body.style.overflow = "hidden"
   document.documentElement.style.overflow = "hidden"
+
   // Update modal content
   document.getElementById("modalTitle").textContent = project.title
   document.getElementById("modalSubtitle").textContent =
-    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} &bull; ${project.year}`
+    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
   document.getElementById("navIndicator").textContent = `${index + 1} of ${projects.length}`
+
   // Generate modal body content
   const modalBody = document.getElementById("modalBody")
   modalBody.innerHTML = generateProjectModalContent(project)
+
   // Show modal
   modal.classList.add("active")
+
   // Scroll modal to top
   scrollModalToTop()
 }
+
 function closeProjectModal() {
   const modal = document.getElementById("projectModal")
   modal.classList.remove("active")
+
   // Restore page scrolling
   document.body.style.overflow = "unset"
   document.documentElement.style.overflow = "unset"
+
   // Exit fullscreen if active
   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
     exitFullscreen()
   }
 }
+
 function navigateProject(direction) {
   const totalProjects = projects.length
   let newIndex
+
   if (direction === "next") {
     newIndex = currentProject === totalProjects - 1 ? 0 : currentProject + 1
   } else {
     newIndex = currentProject === 0 ? totalProjects - 1 : currentProject - 1
   }
+
   // Update current project index
   currentProject = newIndex
   const project = projects[newIndex]
+
   // Update modal content
   document.getElementById("modalTitle").textContent = project.title
   document.getElementById("modalSubtitle").textContent =
-    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} &bull; ${project.year}`
+    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
   document.getElementById("navIndicator").textContent = `${newIndex + 1} of ${projects.length}`
+
   // Generate new modal body content
   const modalBody = document.getElementById("modalBody")
   modalBody.innerHTML = generateProjectModalContent(project)
+
   // Scroll modal to top for clear navigation
   scrollModalToTop()
 }
+
 // Function to scroll modal body to top
 function scrollModalToTop() {
   const modalBody = document.getElementById("modalBody")
@@ -992,6 +1143,7 @@ function scrollModalToTop() {
     modalBody.scrollTop = 0
   }
 }
+
 function generateProjectModalContent(project) {
   const servicesHTML = project.services
     .map(
@@ -1005,6 +1157,7 @@ function generateProjectModalContent(project) {
     `,
     )
     .join("")
+
   const resultsHTML = project.results
     .map(
       (result) => `
@@ -1015,6 +1168,7 @@ function generateProjectModalContent(project) {
     `,
     )
     .join("")
+
   // Review Section
   let reviewHTML = ""
   if (project.review) {
@@ -1036,6 +1190,7 @@ function generateProjectModalContent(project) {
       </div>
     `
   }
+
   return `
         <div class="project-video-container">
             <video 
@@ -1094,16 +1249,19 @@ function generateProjectModalContent(project) {
             `
             }
         </div>
+        
         <div class="project-overview">
             <h4>${window.t("projectOverview")}</h4>
             <div class="project-description-content">${window.t(project.fullDescription).replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')}</div>
         </div>
+        
         <div class="services-provided">
             <h4>${window.t("servicesProvided")}</h4>
             <div class="services-grid-modal">
                 ${servicesHTML}
             </div>
         </div>
+        
         <div class="results-section">
             <h4>${window.t("resultsImpact")}</h4>
             <div class="results-grid">
@@ -1113,12 +1271,15 @@ function generateProjectModalContent(project) {
         ${reviewHTML}
     `
 }
+
 // Enhanced video error handling
 function handleVideoError(videoElement) {
+
   // Show fallback image
   const container = videoElement.closest(".project-video-container")
   if (container) {
     videoElement.style.display = "none"
+
     // Create fallback message
     const fallback = document.createElement("div")
     fallback.style.cssText = `
@@ -1137,13 +1298,17 @@ function handleVideoError(videoElement) {
     container.appendChild(fallback)
   }
 }
+
 // Video control functions
 function toggleVideoSound() {
   const video = document.getElementById("modalVideo")
   const soundToggle = document.getElementById("soundToggle")
+
   if (!video || !soundToggle) return
+
   const soundOffIcon = soundToggle.querySelector(".sound-off-icon")
   const soundOnIcon = soundToggle.querySelector(".sound-on-icon")
+
   if (video.muted) {
     video.muted = false
     soundOffIcon.style.display = "none"
@@ -1156,12 +1321,16 @@ function toggleVideoSound() {
     soundToggle.setAttribute("aria-label", window.t("unmuteVideo"))
   }
 }
+
 function toggleVideoPlayback() {
   const video = document.getElementById("modalVideo")
   const playPauseToggle = document.getElementById("playPauseToggle")
+
   if (!video || !playPauseToggle) return
+
   const pauseIcon = playPauseToggle.querySelector(".pause-icon")
   const playIcon = playPauseToggle.querySelector(".play-icon")
+
   if (video.paused) {
     video.play()
     pauseIcon.style.display = "block"
@@ -1174,23 +1343,28 @@ function toggleVideoPlayback() {
     playPauseToggle.setAttribute("aria-label", window.t("playVideo"))
   }
 }
+
 // Enhanced fullscreen functionality with mobile support
 function toggleFullscreen() {
   const video = document.getElementById("modalVideo")
   const fullscreenBtn = document.getElementById("fullscreenToggle")
+
   if (!video || !fullscreenBtn) return
+
   // Check if already in fullscreen
   const isInFullscreen =
     document.fullscreenElement ||
     document.webkitFullscreenElement ||
     document.mozFullScreenElement ||
     document.msFullscreenElement
+
   if (!isInFullscreen) {
     enterFullscreen(video, fullscreenBtn)
   } else {
     exitFullscreen(fullscreenBtn)
   }
 }
+
 function enterFullscreen(video, fullscreenBtn) {
   try {
     // For mobile devices, especially iOS
@@ -1201,6 +1375,7 @@ function enterFullscreen(video, fullscreenBtn) {
         updateFullscreenButton(fullscreenBtn, true)
         return
       }
+
       // For other mobile browsers that support requestFullscreen on video
       if (video.requestFullscreen) {
         video
@@ -1211,6 +1386,7 @@ function enterFullscreen(video, fullscreenBtn) {
           .catch(handleFullscreenError)
         return
       }
+
       // Fallback for mobile: try container fullscreen
       const container = video.closest(".project-video-container")
       if (container && container.requestFullscreen) {
@@ -1222,10 +1398,12 @@ function enterFullscreen(video, fullscreenBtn) {
           .catch(handleFullscreenError)
         return
       }
+
       // Last resort: show message
       showFullscreenMessage()
       return
     }
+
     // Desktop fullscreen
     if (video.requestFullscreen) {
       video
@@ -1250,6 +1428,7 @@ function enterFullscreen(video, fullscreenBtn) {
     handleFullscreenError(error)
   }
 }
+
 function exitFullscreen(fullscreenBtn) {
   try {
     if (document.exitFullscreen) {
@@ -1270,8 +1449,10 @@ function exitFullscreen(fullscreenBtn) {
     // Exit fullscreen error handled silently
   }
 }
+
 function updateFullscreenButton(fullscreenBtn, isFullscreen) {
   if (!fullscreenBtn) return
+
   if (isFullscreen) {
     fullscreenBtn.innerHTML = `
       <svg class="fullscreen-exit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1288,9 +1469,11 @@ function updateFullscreenButton(fullscreenBtn, isFullscreen) {
     fullscreenBtn.setAttribute("aria-label", window.t("enterFullscreen"))
   }
 }
+
 function handleFullscreenError(error) {
   showFullscreenMessage()
 }
+
 function showFullscreenMessage() {
   // Create a temporary message for users
   const message = document.createElement("div")
@@ -1314,6 +1497,7 @@ function showFullscreenMessage() {
     <button onclick="this.parentElement.remove()" style="margin-top: 10px; padding: 8px 16px; background: #8b5cf6; color: white; border: none; border-radius: 4px; cursor: pointer;">${window.t("ok")}</button>
   `
   document.body.appendChild(message)
+
   // Auto remove after 5 seconds
   setTimeout(() => {
     if (message.parentElement) {
@@ -1321,11 +1505,13 @@ function showFullscreenMessage() {
     }
   }, 5000)
 }
+
 // Add fullscreen event listeners
 document.addEventListener("fullscreenchange", handleFullscreenChange)
 document.addEventListener("webkitfullscreenchange", handleFullscreenChange)
 document.addEventListener("mozfullscreenchange", handleFullscreenChange)
 document.addEventListener("MSFullscreenChange", handleFullscreenChange)
+
 function handleFullscreenChange() {
   const fullscreenBtn = document.getElementById("fullscreenToggle")
   const isInFullscreen =
@@ -1333,40 +1519,50 @@ function handleFullscreenChange() {
     document.webkitFullscreenElement ||
     document.mozFullScreenElement ||
     document.msFullscreenElement
+
   if (fullscreenBtn) {
     updateFullscreenButton(fullscreenBtn, !!isInFullscreen)
   }
 }
+
 // Track form load time for anti-spam protection
 let formLoadTime = Date.now()
+
 // Enhanced Form Handlers with Formspree Integration
 function handleContactSubmit(event) {
   event.preventDefault()
+
   const form = event.target
   const submitButton = form.querySelector('button[type="submit"]')
   const buttonText = submitButton.querySelector(".btn-text")
   const buttonLoading = submitButton.querySelector(".btn-loading")
+
   // Check honeypot fields for spam protection
   const honeypotField = form.querySelector('input[name="website"]')
   const formspreeHoneypot = form.querySelector('input[name="_gotcha"]')
+  
   if ((honeypotField && honeypotField.value.trim() !== '') || 
       (formspreeHoneypot && formspreeHoneypot.value.trim() !== '')) {
     // Spam detected - silently reject the submission
     console.log('🛡️ Spam submission blocked by honeypot field')
+    
     // Show fake success message to confuse bots
     showFormMessage(window.t("thankYouMessage"), "success")
     form.reset()
     return false
   }
+
   // Check if form was submitted too quickly (likely a bot)
   const timeSinceLoad = Date.now() - formLoadTime
   if (timeSinceLoad < 3000) { // Less than 3 seconds
     console.log('🛡️ Spam submission blocked - too fast submission')
+    
     // Show fake success message to confuse bots
     showFormMessage(window.t("thankYouMessage"), "success")
     form.reset()
     return false
   }
+
   // Rate limiting - prevent multiple submissions within 60 seconds
   const lastSubmissionTime = localStorage.getItem('lastFormSubmission')
   const currentTime = Date.now()
@@ -1375,19 +1571,23 @@ function handleContactSubmit(event) {
     showFormMessage(window.t("rateLimitMessage"), "error")
     return false
   }
+
   // Update language field with current language
   const languageField = document.getElementById("formLanguage")
   if (languageField) {
     languageField.value = window.currentLanguage || "en"
   }
+
   // Show loading state
   if (buttonText && buttonLoading) {
     buttonText.style.display = "none"
     buttonLoading.style.display = "inline"
   }
   submitButton.disabled = true
+
   // Create FormData object
   const formData = new FormData(form)
+
   // Submit to Formspree
   fetch(form.action, {
     method: "POST",
@@ -1429,6 +1629,7 @@ function handleContactSubmit(event) {
       submitButton.disabled = false
     })
 }
+
 // Show form submission message
 function showFormMessage(message, type) {
   // Remove any existing message
@@ -1436,6 +1637,7 @@ function showFormMessage(message, type) {
   if (existingMessage) {
     existingMessage.remove()
   }
+
   // Create new message
   const messageDiv = document.createElement("div")
   messageDiv.className = `form-message form-message-${type}`
@@ -1452,10 +1654,12 @@ function showFormMessage(message, type) {
     }
   `
   messageDiv.textContent = message
+
   // Add message after the form
   const form = document.querySelector(".contact-form")
   if (form) {
     form.appendChild(messageDiv)
+
     // Auto-remove success messages after 5 seconds
     if (type === "success") {
       setTimeout(() => {
@@ -1466,6 +1670,7 @@ function showFormMessage(message, type) {
     }
   }
 }
+
 // Update modal content when language changes
 function updateModalTranslations() {
   const modal = document.getElementById("projectModal")
@@ -1473,11 +1678,13 @@ function updateModalTranslations() {
     // Re-generate modal content with new translations
     const project = projects[currentProject]
     document.getElementById("modalSubtitle").textContent =
-      `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} &bull; ${project.year}`
+      `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+
     const modalBody = document.getElementById("modalBody")
     modalBody.innerHTML = generateProjectModalContent(project)
   }
 }
+
 // Utility Functions
 function getIconSVG(iconName) {
   const icons = {
@@ -1492,8 +1699,10 @@ function getIconSVG(iconName) {
     smartphone:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
   }
+
   return icons[iconName] || icons["code"]
 }
+
 // Helper function to get the company website link for each project
 function getCompanyLink(project) {
   let url = "#";
@@ -1512,15 +1721,18 @@ function getCompanyLink(project) {
   }
   return `<a href="${url}" target="_blank" rel="noopener">${window.t(project.review.company)}</a>`;
 }
+
 // Smooth scroll polyfill for older browsers
 if (!("scrollBehavior" in document.documentElement.style)) {
   const script = document.createElement("script")
   script.src = "https://cdn.jsdelivr.net/gh/iamdustan/smoothscroll@master/src/smoothscroll.js"
   document.head.appendChild(script)
 }
+
 // Enhanced video hover functionality for project tiles with error handling
 function setupProjectTileVideos() {
   const projectImages = document.querySelectorAll(".project-image")
+
   projectImages.forEach((imageContainer, index) => {
     const video = document.createElement("video")
     video.className = "project-hover-video"
@@ -1528,15 +1740,19 @@ function setupProjectTileVideos() {
     video.loop = true
     video.playsInline = true
     video.preload = "none"
+
     const source = document.createElement("source")
     source.src = isMobileDevice && projects[index].mobileVideo ? projects[index].mobileVideo : projects[index].video
     source.type = "video/mp4"
     video.appendChild(source)
+
     // Add error handling for hover videos
     video.onerror = () => {
       video.style.display = "none"
     }
+
     imageContainer.insertBefore(video, imageContainer.firstChild)
+
     imageContainer.addEventListener("mouseenter", () => {
       if (video.style.display !== "none") {
         // Load video only when needed
@@ -1552,6 +1768,7 @@ function setupProjectTileVideos() {
         imageContainer.querySelector(".project-img").style.opacity = "0"
       }
     })
+
     imageContainer.addEventListener("mouseleave", () => {
       if (video.style.display !== "none") {
         video.pause()
@@ -1562,6 +1779,7 @@ function setupProjectTileVideos() {
     })
   })
 }
+
 function setupProjectCardModalLinks() {
   const projectList = document.querySelector('.projects-list.stacked-scroll');
   if (!projectList) return;
@@ -1594,17 +1812,20 @@ function setupProjectCardModalLinks() {
     }
   });
 }
+
 // Add stacked scroll effect for cases section
 function stackedScrollCasesEffect() {
   const list = document.querySelector('.projects-list.stacked-scroll')
   if (!list) return
   const items = Array.from(list.querySelectorAll('.stacked-scroll-item'))
   if (items.length < 2) return
+
   function animate() {
     const viewportHeight = window.innerHeight
     const isMobile = window.innerWidth <= 1023
     const isSmallMobile = window.innerWidth <= 640
     const isVerySmallMobile = window.innerWidth <= 414 && window.innerHeight >= 800
+    
     // Dynamic sticky offset based on screen size for better visibility
     let stickyOffset = 0
     if (isMobile) {
@@ -1624,6 +1845,7 @@ function stackedScrollCasesEffect() {
     const centerY = isMobile
       ? scrollY + stickyOffset + cardHeight / 2
       : scrollY + viewportHeight / 2
+
     // Z-index logic (different for mobile)
     if (isMobile) {
       // On mobile, always stack later cards above earlier ones
@@ -1643,6 +1865,7 @@ function stackedScrollCasesEffect() {
         entry.item.style.zIndex = 100 - idx
       })
     }
+
     // Transform/opacity logic
     items.forEach((item, i) => {
       const cardTop = listTop + i * cardHeight
@@ -1673,6 +1896,7 @@ function stackedScrollCasesEffect() {
   window.addEventListener('resize', throttle(animate, 250))
   animate()
 }
+
 // Dynamically set min-height for stacked cases section
 function setStackedCasesMinHeight() {
   const list = document.querySelector('.projects-list.stacked-3d')
@@ -1684,10 +1908,12 @@ function setStackedCasesMinHeight() {
   const minHeight = (items.length - 1) * cardHeight + window.innerHeight - 0.5 * cardHeight
   list.style.minHeight = minHeight + 'px'
 }
+
 // Make variables globally available for translations
 window.projects = projects
 window.currentProject = currentProject
 window.generateProjectModalContent = generateProjectModalContent
+
 // Make functions globally available - CRITICAL for HTML onclick handlers
 window.openCalendlyPopup = openCalendlyPopup
 window.toggleMobileMenu = toggleMobileMenu
@@ -1701,3 +1927,4 @@ window.toggleVideoPlayback = toggleVideoPlayback
 window.toggleFullscreen = toggleFullscreen
 window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
+
