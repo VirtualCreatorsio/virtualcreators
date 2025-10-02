@@ -224,7 +224,10 @@ const projects = [
 
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  initializeApp()
+  // Defer initialization to prevent forced reflows
+  requestAnimationFrame(() => {
+    initializeApp()
+  })
 })
 
 // Initialize Application
@@ -428,14 +431,32 @@ function setupMouseEffect() {
   const heroBg = document.querySelector(".hero-bg")
 
   if (heroSection && heroBg) {
-  heroSection.addEventListener("mousemove", (e) => {
-    const rect = heroSection.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width) * 100
-    const y = ((e.clientY - rect.top) / rect.height) * 100
+    // Cache rect to prevent forced reflows
+    let heroRect = null
+    let lastRectUpdate = 0
+    
+    const updateHeroRect = () => {
+      const now = Date.now()
+      if (now - lastRectUpdate < 100) return // Update max every 100ms
+      lastRectUpdate = now
+      heroRect = heroSection.getBoundingClientRect()
+    }
+    
+    // Initial rect
+    requestAnimationFrame(updateHeroRect)
+    
+    heroSection.addEventListener("mousemove", (e) => {
+      if (!heroRect) updateHeroRect()
+      
+      const x = ((e.clientX - heroRect.left) / heroRect.width) * 100
+      const y = ((e.clientY - heroRect.top) / heroRect.height) * 100
 
-    heroBg.style.setProperty("--mouse-x", `${x}%`)
-    heroBg.style.setProperty("--mouse-y", `${y}%`)
-  })
+      heroBg.style.setProperty("--mouse-x", `${x}%`)
+      heroBg.style.setProperty("--mouse-y", `${y}%`)
+    })
+    
+    // Update rect on resize
+    window.addEventListener("resize", throttle(updateHeroRect, 250))
   }
 
   // Blog header mouse effect
@@ -443,14 +464,32 @@ function setupMouseEffect() {
   const blogHeaderBg = document.querySelector(".blog-header-bg")
 
   if (blogHeader && blogHeaderBg) {
+    // Cache rect to prevent forced reflows
+    let blogRect = null
+    let lastBlogRectUpdate = 0
+    
+    const updateBlogRect = () => {
+      const now = Date.now()
+      if (now - lastBlogRectUpdate < 100) return // Update max every 100ms
+      lastBlogRectUpdate = now
+      blogRect = blogHeader.getBoundingClientRect()
+    }
+    
+    // Initial rect
+    requestAnimationFrame(updateBlogRect)
+    
     blogHeader.addEventListener("mousemove", (e) => {
-      const rect = blogHeader.getBoundingClientRect()
-      const x = ((e.clientX - rect.left) / rect.width) * 100
-      const y = ((e.clientY - rect.top) / rect.height) * 100
+      if (!blogRect) updateBlogRect()
+      
+      const x = ((e.clientX - blogRect.left) / blogRect.width) * 100
+      const y = ((e.clientY - blogRect.top) / blogRect.height) * 100
 
       blogHeaderBg.style.setProperty("--mouse-x", `${x}%`)
       blogHeaderBg.style.setProperty("--mouse-y", `${y}%`)
     })
+    
+    // Update rect on resize
+    window.addEventListener("resize", throttle(updateBlogRect, 250))
   }
 
   // Blog post header mouse effect
@@ -458,14 +497,32 @@ function setupMouseEffect() {
   const blogPostHeaderBg = document.querySelector(".blog-post-header-bg")
 
   if (blogPostHeader && blogPostHeaderBg) {
+    // Cache rect to prevent forced reflows
+    let blogPostRect = null
+    let lastBlogPostRectUpdate = 0
+    
+    const updateBlogPostRect = () => {
+      const now = Date.now()
+      if (now - lastBlogPostRectUpdate < 100) return // Update max every 100ms
+      lastBlogPostRectUpdate = now
+      blogPostRect = blogPostHeader.getBoundingClientRect()
+    }
+    
+    // Initial rect
+    requestAnimationFrame(updateBlogPostRect)
+    
     blogPostHeader.addEventListener("mousemove", (e) => {
-      const rect = blogPostHeader.getBoundingClientRect()
-      const x = ((e.clientX - rect.left) / rect.width) * 100
-      const y = ((e.clientY - rect.top) / rect.height) * 100
+      if (!blogPostRect) updateBlogPostRect()
+      
+      const x = ((e.clientX - blogPostRect.left) / blogPostRect.width) * 100
+      const y = ((e.clientY - blogPostRect.top) / blogPostRect.height) * 100
 
       blogPostHeaderBg.style.setProperty("--mouse-x", `${x}%`)
       blogPostHeaderBg.style.setProperty("--mouse-y", `${y}%`)
     })
+    
+    // Update rect on resize
+    window.addEventListener("resize", throttle(updateBlogPostRect, 250))
   }
 }
 
@@ -580,17 +637,22 @@ function setupScrollSpy() {
     if (now - lastSectionUpdate < 100) return // Update max every 100ms
     lastSectionUpdate = now
     
-    sections.forEach(section => {
-      const sectionId = section.getAttribute('id')
-      sectionPositions.set(sectionId, {
-        top: section.offsetTop,
-        height: section.offsetHeight
+    // Defer DOM property reads to prevent forced reflows
+    requestAnimationFrame(() => {
+      sections.forEach(section => {
+        const sectionId = section.getAttribute('id')
+        sectionPositions.set(sectionId, {
+          top: section.offsetTop,
+          height: section.offsetHeight
+        })
       })
     })
   }
   
-  // Initial cache
-  updateSectionPositions()
+  // Initial cache - defer to prevent forced reflows during initialization
+  requestAnimationFrame(() => {
+    updateSectionPositions()
+  })
   
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
