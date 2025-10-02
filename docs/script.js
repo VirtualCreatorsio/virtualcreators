@@ -61,8 +61,8 @@ function downloadPDF() {
 function setPDFIframeSource() {
   const iframe = document.querySelector('.pdf-iframe')
   if (iframe) {
-    // Add mobile-specific parameters for better scaling
-    const isMobile = window.innerWidth <= 768
+    // Add mobile-specific parameters for better scaling using cached width
+    const isMobile = cachedWindowWidth <= 768
     const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
     
     // Determine which PDF to use based on current language
@@ -325,16 +325,30 @@ function loadCalendlyScript() {
 }
 
 // Detect mobile device
+// Cache for window dimensions to prevent forced reflows
+let cachedWindowWidth = window.innerWidth
+let cachedWindowHeight = window.innerHeight
+let lastResizeTime = 0
+
 function detectMobileDevice() {
+  // Use cached width to prevent forced reflow
   isMobileDevice =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    window.innerWidth <= 768
+    cachedWindowWidth <= 768
 
-  // Update on resize (throttled for performance)
+  // Update on resize (throttled for performance with RAF)
   window.addEventListener("resize", throttle(() => {
-    isMobileDevice =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-      window.innerWidth <= 768
+    const now = Date.now()
+    if (now - lastResizeTime < 16) return // Limit to 60fps
+    lastResizeTime = now
+    
+    requestAnimationFrame(() => {
+      cachedWindowWidth = window.innerWidth
+      cachedWindowHeight = window.innerHeight
+      isMobileDevice =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        cachedWindowWidth <= 768
+    })
   }, 250))
 }
 
@@ -490,10 +504,12 @@ function toggleMobileMenu() {
   if (isActive) {
     mobileNav.classList.remove("active")
     hamburger.classList.remove("active")
+    hamburger.setAttribute("aria-expanded", "false")
     document.body.style.overflow = "unset"
   } else {
     mobileNav.classList.add("active")
     hamburger.classList.add("active")
+    hamburger.setAttribute("aria-expanded", "true")
     document.body.style.overflow = "hidden"
   }
 }
@@ -505,6 +521,7 @@ function closeMobileMenu() {
   if (mobileNav && hamburger) {
     mobileNav.classList.remove("active")
     hamburger.classList.remove("active")
+    hamburger.setAttribute("aria-expanded", "false")
     document.body.style.overflow = "unset"
   }
 }
@@ -546,12 +563,34 @@ function scrollToTop() {
   })
 }
 
+// Cache for section positions to prevent forced reflows
+let sectionPositions = new Map()
+let lastSectionUpdate = 0
+
 function setupScrollSpy() {
   // Get all sections and navigation links
   const sections = document.querySelectorAll('section[id]')
   const navLinks = document.querySelectorAll('.nav-link')
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
   const backToTopBtn = document.querySelector('.back-to-top-btn')
+  
+  // Cache section positions to prevent forced reflows
+  function updateSectionPositions() {
+    const now = Date.now()
+    if (now - lastSectionUpdate < 100) return // Update max every 100ms
+    lastSectionUpdate = now
+    
+    sections.forEach(section => {
+      const sectionId = section.getAttribute('id')
+      sectionPositions.set(sectionId, {
+        top: section.offsetTop,
+        height: section.offsetHeight
+      })
+    })
+  }
+  
+  // Initial cache
+  updateSectionPositions()
   
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
@@ -583,22 +622,25 @@ function setupScrollSpy() {
     }
   }
   
-  // Function to handle scroll events
+  // Function to handle scroll events with RAF
   function handleScroll() {
-    const scrollPosition = window.scrollY + 100 // Add offset for better UX
-    
-    let currentSection = null
-    
-    // Find which section is currently in view
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.offsetHeight
-      const sectionId = section.getAttribute('id')
+    requestAnimationFrame(() => {
+      const scrollPosition = window.scrollY + 100 // Add offset for better UX
       
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        currentSection = sectionId
-      }
-    })
+      let currentSection = null
+      
+      // Update section positions if needed
+      updateSectionPositions()
+      
+      // Find which section is currently in view using cached positions
+      sections.forEach(section => {
+        const sectionId = section.getAttribute('id')
+        const position = sectionPositions.get(sectionId)
+        
+        if (position && scrollPosition >= position.top && scrollPosition < position.top + position.height) {
+          currentSection = sectionId
+        }
+      })
     
     // Special handling for hero section (when at top of page)
     if (window.scrollY < 100) {
@@ -652,6 +694,7 @@ function setupScrollSpy() {
         }
       }
     }
+    })
   }
   
   // Add scroll event listener with throttling for performance
@@ -1814,6 +1857,13 @@ function setupProjectCardModalLinks() {
 }
 
 // Add stacked scroll effect for cases section
+// Cache for stacked scroll effect to prevent forced reflows
+let cachedViewportHeight = window.innerHeight
+let cachedViewportWidth = window.innerWidth
+let cachedCardHeight = 0
+let cachedListTop = 0
+let lastStackedUpdate = 0
+
 function stackedScrollCasesEffect() {
   const list = document.querySelector('.projects-list.stacked-scroll')
   if (!list) return
@@ -1821,10 +1871,16 @@ function stackedScrollCasesEffect() {
   if (items.length < 2) return
 
   function animate() {
-    const viewportHeight = window.innerHeight
-    const isMobile = window.innerWidth <= 1023
-    const isSmallMobile = window.innerWidth <= 640
-    const isVerySmallMobile = window.innerWidth <= 414 && window.innerHeight >= 800
+    const now = Date.now()
+    if (now - lastStackedUpdate < 16) return // Limit to 60fps
+    lastStackedUpdate = now
+    
+    requestAnimationFrame(() => {
+      // Use cached dimensions to prevent forced reflows
+      const viewportHeight = cachedViewportHeight
+      const isMobile = cachedViewportWidth <= 1023
+      const isSmallMobile = cachedViewportWidth <= 640
+      const isVerySmallMobile = cachedViewportWidth <= 414 && cachedViewportHeight >= 800
     
     // Dynamic sticky offset based on screen size for better visibility
     let stickyOffset = 0
@@ -1837,59 +1893,68 @@ function stackedScrollCasesEffect() {
         stickyOffset = 7 * 16 // 7rem for regular mobile/tablet
       }
     }
-    const listRect = list.getBoundingClientRect()
-    const listTop = listRect.top + window.scrollY
-    const cardHeight = items[0].offsetHeight
-    const scrollY = window.scrollY
-    // On mobile, center is lower to leave space for navbar
-    const centerY = isMobile
-      ? scrollY + stickyOffset + cardHeight / 2
-      : scrollY + viewportHeight / 2
+      // Cache expensive calculations
+      if (cachedCardHeight === 0) {
+        cachedCardHeight = items[0].offsetHeight
+      }
+      if (cachedListTop === 0) {
+        const listRect = list.getBoundingClientRect()
+        cachedListTop = listRect.top + window.scrollY
+      }
+      
+      const listTop = cachedListTop
+      const cardHeight = cachedCardHeight
+      const scrollY = window.scrollY
+      // On mobile, center is lower to leave space for navbar
+      const centerY = isMobile
+        ? scrollY + stickyOffset + cardHeight / 2
+        : scrollY + viewportHeight / 2
 
-    // Z-index logic (different for mobile)
-    if (isMobile) {
-      // On mobile, always stack later cards above earlier ones
+      // Z-index logic (different for mobile)
+      if (isMobile) {
+        // On mobile, always stack later cards above earlier ones
+        items.forEach((item, i) => {
+          item.style.zIndex = 100 + i;
+        });
+      } else {
+        // Desktop/tablet: closest to center gets highest z-index
+        const indexed = items.map((item, i) => {
+          const cardTop = listTop + i * cardHeight
+          const cardCenter = cardTop + cardHeight / 2
+          const distToCenter = Math.abs(cardCenter - centerY)
+          return { item, i, distToCenter }
+        })
+        indexed.sort((a, b) => a.distToCenter - b.distToCenter)
+        indexed.forEach((entry, idx) => {
+          entry.item.style.zIndex = 100 - idx
+        })
+      }
+
+      // Transform/opacity logic
       items.forEach((item, i) => {
-        item.style.zIndex = 100 + i;
-      });
-    } else {
-      // Desktop/tablet: closest to center gets highest z-index
-      const indexed = items.map((item, i) => {
         const cardTop = listTop + i * cardHeight
         const cardCenter = cardTop + cardHeight / 2
-        const distToCenter = Math.abs(cardCenter - centerY)
-        return { item, i, distToCenter }
+        const distToCenter = cardCenter - centerY
+        let isActive = Math.abs(distToCenter) < cardHeight / 2
+        let isLast = i === items.length - 1
+        let isFirst = i === 0
+        if (isLast && distToCenter <= 0) {
+          item.style.transform = 'translateY(-50%) scale(1)';
+          item.style.opacity = 1;
+        } else if (isFirst && distToCenter >= 0) {
+          item.style.transform = 'translateY(-50%) scale(1)';
+          item.style.opacity = 1;
+        } else if (isActive) {
+          item.style.transform = 'translateY(-50%) scale(1)';
+          item.style.opacity = 1;
+        } else if (distToCenter < 0) {
+          item.style.transform = `translateY(-60%) scale(0.96)`;
+          item.style.opacity = 1;
+        } else {
+          item.style.transform = `translateY(0%) scale(0.96)`;
+          item.style.opacity = 1;
+        }
       })
-      indexed.sort((a, b) => a.distToCenter - b.distToCenter)
-      indexed.forEach((entry, idx) => {
-        entry.item.style.zIndex = 100 - idx
-      })
-    }
-
-    // Transform/opacity logic
-    items.forEach((item, i) => {
-      const cardTop = listTop + i * cardHeight
-      const cardCenter = cardTop + cardHeight / 2
-      const distToCenter = cardCenter - centerY
-      let isActive = Math.abs(distToCenter) < cardHeight / 2
-      let isLast = i === items.length - 1
-      let isFirst = i === 0
-      if (isLast && distToCenter <= 0) {
-        item.style.transform = 'translateY(-50%) scale(1)';
-        item.style.opacity = 1;
-      } else if (isFirst && distToCenter >= 0) {
-        item.style.transform = 'translateY(-50%) scale(1)';
-        item.style.opacity = 1;
-      } else if (isActive) {
-        item.style.transform = 'translateY(-50%) scale(1)';
-        item.style.opacity = 1;
-      } else if (distToCenter < 0) {
-        item.style.transform = `translateY(-60%) scale(0.96)`;
-        item.style.opacity = 1;
-      } else {
-        item.style.transform = `translateY(0%) scale(0.96)`;
-        item.style.opacity = 1;
-      }
     })
   }
   window.addEventListener('scroll', throttle(animate, 16), { passive: true })
