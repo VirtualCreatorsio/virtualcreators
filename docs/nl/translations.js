@@ -1025,8 +1025,18 @@ const translations = {
   },
 }
 
-// Get current language from localStorage or default to English
-let currentLanguage = localStorage.getItem("preferred-language") || "en"
+// Get current language from URL path first, then localStorage, then default to English
+let currentLanguage = "en" // Default fallback
+
+// Check URL path first to determine current language
+const path = window.location.pathname
+if (path.includes('/nl/')) {
+  currentLanguage = 'nl'
+  localStorage.setItem("preferred-language", 'nl')
+} else {
+  // For root path or any other path, check localStorage or default to English
+  currentLanguage = localStorage.getItem("preferred-language") || "en"
+}
 
 // Make translation function globally available
 window.t = (key) => translations[currentLanguage]?.[key] || translations["en"]?.[key] || key
@@ -1145,17 +1155,20 @@ function updateSEOMetaTags() {
 
 // Update language switcher display
 function updateLanguageSwitcher() {
-  const currentFlag = document.getElementById("currentFlag")
   const currentLang = document.getElementById("currentLang")
-
-  if (currentFlag && currentLang) {
+  
+  if (currentLang) {
     if (currentLanguage === "nl") {
-      currentFlag.textContent = "🇳🇱"
       currentLang.textContent = "NL"
     } else {
-      currentFlag.textContent = "🇬🇧"
       currentLang.textContent = "EN"
     }
+  }
+  
+  // Also update the language switcher button aria-label
+  const languageBtn = document.getElementById("languageBtn")
+  if (languageBtn) {
+    languageBtn.setAttribute("aria-label", `Toggle language selection - Current: ${currentLanguage.toUpperCase()}`)
   }
 
   // Update mobile language options active state
@@ -1376,20 +1389,12 @@ function checkLanguageFromURL() {
 // Initialize translations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded, initializing translations...")
-
-  // Check URL for language parameter first
-  checkLanguageFromURL()
+  console.log("Current language detected:", currentLanguage)
 
   // Set initial language
   document.documentElement.lang = currentLanguage
 
   // Initialize translations immediately
-  updateTranslations()
-})
-
-// Also update translations when the page is fully loaded
-window.addEventListener("load", () => {
-  console.log("Window loaded, updating translations...")
   updateTranslations()
 })
 
