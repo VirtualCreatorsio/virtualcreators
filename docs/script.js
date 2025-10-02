@@ -182,12 +182,23 @@ const projects = [
   },
 ]
 
-// Initialize when DOM is loaded with performance optimization
+// Initialize when DOM is loaded with smooth loading optimization
 document.addEventListener("DOMContentLoaded", () => {
+  // Ensure smooth loading without jumping
+  document.body.style.visibility = 'visible'
+  
   // Use requestAnimationFrame to defer initialization and avoid blocking the main thread
   requestAnimationFrame(() => {
     initializeApp()
   })
+})
+
+// Prevent FOUC by hiding body until CSS is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Small delay to ensure CSS is applied
+  setTimeout(() => {
+    document.body.style.visibility = 'visible'
+  }, 10)
 })
 
 // Initialize Application
@@ -223,7 +234,7 @@ function initializeApp() {
 }
 
 
-// Enhanced Calendly initialization with multiple fallbacks
+// Enhanced Calendly initialization with async loading support
 function initializeCalendly() {
   // Check if Calendly script is already loaded
   if (typeof window.Calendly !== "undefined") {
@@ -236,9 +247,9 @@ function initializeCalendly() {
     loadCalendlyScript()
   }
 
-  // Method 2: Polling check for Calendly availability
+  // Method 2: Polling check for Calendly availability with reduced frequency
   let attempts = 0
-  const maxAttempts = 50 // 10 seconds total
+  const maxAttempts = 30 // Reduced from 50 to 6 seconds total
 
   const checkCalendly = () => {
     attempts++
@@ -255,8 +266,8 @@ function initializeCalendly() {
     }
   }
 
-  // Start checking
-  setTimeout(checkCalendly, 100)
+  // Start checking with longer initial delay for async loading
+  setTimeout(checkCalendly, 500)
 }
 
 // Dynamically load Calendly script if not present
