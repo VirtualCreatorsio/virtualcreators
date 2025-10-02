@@ -553,7 +553,7 @@ const translations = {
     digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
     brandIdentity: "Merkidentiteit",
     brandIdentityDescription: "Onderscheidende visuele systemen die jouw unieke verhaal communiceren",
-    webDevelopment: "Webontwikkeling",
+    webDevelopment: "Web-Dev",
     webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
     userExperience: "Gebruikerservaring",
     userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
@@ -837,7 +837,7 @@ const translations = {
     cookieSaveBtn: "Voorkeuren Opslaan",
 
     // Service Labels for Modal
-    webdevelopment: "Webontwikkeling",
+    webdevelopment: "Web-Dev",
     uiuxdesign: "UI/UX Ontwerp",
     seooptimization: "SEO Optimalisatie",
     brandidentity: "Merkidentiteit",
