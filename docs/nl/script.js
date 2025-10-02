@@ -5,14 +5,118 @@ let isMobileDevice = false
 let calendlyLoaded = false
 // Removed: const currentLanguage = "en" // Declare currentLanguage variable
 
+// Detect if we're in Dutch locale and set asset path prefix
+const isDutchLocale = window.location.pathname.includes('/nl/')
+const assetPathPrefix = isDutchLocale ? '../' : ''
+
+// PDF Portfolio Functions
+function downloadPDF() {
+  // Create a temporary link element to trigger download
+  const link = document.createElement('a')
+  link.href = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf`
+  link.download = 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
+  link.target = '_blank'
+  
+  // Append to body, click, and remove
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+  
+}
+
+// Set correct PDF iframe source based on current locale
+function setPDFIframeSource() {
+  const iframe = document.querySelector('.pdf-iframe')
+  if (iframe) {
+    // Add mobile-specific parameters for better scaling
+    const isMobile = window.innerWidth <= 768
+    const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
+    const pdfPath = `${assetPathPrefix}assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
+    
+    // Ensure iframe is visible and properly sized
+    iframe.style.display = 'block'
+    iframe.style.visibility = 'visible'
+    iframe.style.opacity = '1'
+    
+    iframe.src = pdfPath
+    
+    // Add error handling for iframe loading
+    iframe.onload = function() {
+      console.log('PDF iframe loaded successfully:', pdfPath)
+    }
+    
+    iframe.onerror = function() {
+      console.error('PDF iframe failed to load:', pdfPath)
+    }
+    
+    console.log('Setting PDF iframe source to:', pdfPath)
+  } else {
+    console.error('PDF iframe not found')
+  }
+}
+
+function togglePDFPreview() {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal) {
+    modal.classList.toggle('active')
+    
+    // Prevent body scroll when modal is open
+    if (modal.classList.contains('active')) {
+      document.body.style.overflow = 'hidden'
+      // Set correct PDF iframe source when opening modal
+      setPDFIframeSource()
+      
+      // Force iframe reload to ensure it displays properly
+      const iframe = modal.querySelector('.pdf-iframe')
+      if (iframe) {
+        setTimeout(() => {
+          const currentSrc = iframe.src
+          iframe.src = ''
+          setTimeout(() => {
+            iframe.src = currentSrc
+          }, 10)
+        }, 100)
+      }
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+}
+
+function closePDFPreview() {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal) {
+    modal.classList.remove('active')
+    document.body.style.overflow = ''
+  }
+}
+
+// Close PDF modal when clicking outside
+document.addEventListener('click', function(event) {
+  const modal = document.getElementById('pdfPreviewModal')
+  if (modal && modal.classList.contains('active')) {
+    if (event.target === modal) {
+      closePDFPreview()
+    }
+  }
+})
+
+// Close PDF modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closePDFPreview()
+  }
+})
+
 // Project Data with enhanced video debugging
 const projects = [
   {
     title: "Lumenix",
     category: "Online Shop",
     year: "2025",
-    image: "../assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "../assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Mobile video (using same file temporarily)
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -34,8 +138,8 @@ const projects = [
     title: "TractionMovies",
     category: "Creative Agency",
     year: "2025",
-    image: "../assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "../assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -56,8 +160,9 @@ const projects = [
     title: "LifeSciGrowth",
     category: "Coaching & Community",
     year: "2025",
-    image: "../assets/coming-soon.jpg", // Make sure this matches your actual file
-    video: "../assets/Portfolio-coming-soon.mp4", // Make sure this matches your actual file
+    image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
+    video: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Mobile video
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -77,9 +182,23 @@ const projects = [
   },
 ]
 
-// Initialize when DOM is loaded
+// Initialize when DOM is loaded with smooth loading optimization
 document.addEventListener("DOMContentLoaded", () => {
-  initializeApp()
+  // Ensure smooth loading without jumping
+  document.body.style.visibility = 'visible'
+  
+  // Use requestAnimationFrame to defer initialization and avoid blocking the main thread
+  requestAnimationFrame(() => {
+    initializeApp()
+  })
+})
+
+// Prevent FOUC by hiding body until CSS is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Small delay to ensure CSS is applied
+  setTimeout(() => {
+    document.body.style.visibility = 'visible'
+  }, 10)
 })
 
 // Initialize Application
@@ -94,12 +213,11 @@ function initializeApp() {
   setupProjectTileVideos()
   setupProjectCardModalLinks()
   setupScrollSpy()
+  setupImageOptimization()
 
   // Initialize Calendly with better error handling
   initializeCalendly()
 
-  // Debug video files on production
-  debugVideoFiles()
 
   // Make updateModalTranslations available globally
   window.updateModalTranslations = updateModalTranslations
@@ -110,72 +228,33 @@ function initializeApp() {
   // Set min-height for perfect last card centering
   setStackedCasesMinHeight()
   window.addEventListener('resize', setStackedCasesMinHeight)
+  
+  // Set correct PDF iframe source on page load
+  setPDFIframeSource()
 }
 
-// Debug function to check video file availability
-function debugVideoFiles() {
-  console.log("🎬 Debugging video files...")
 
-  projects.forEach((project, index) => {
-    console.log(`Checking ${project.title}:`)
-    console.log(`  Image: ${project.image}`)
-    console.log(`  Video: ${project.video}`)
-
-    // Test if video file exists
-    fetch(project.video, { method: "HEAD" })
-      .then((response) => {
-        if (response.ok) {
-          console.log(`✅ ${project.title} video found (${response.status})`)
-        } else {
-          console.error(`❌ ${project.title} video NOT found (${response.status})`)
-        }
-      })
-      .catch((error) => {
-        console.error(`❌ ${project.title} video error:`, error)
-      })
-
-    // Test if image file exists
-    fetch(project.image, { method: "HEAD" })
-      .then((response) => {
-        if (response.ok) {
-          console.log(`✅ ${project.title} image found (${response.status})`)
-        } else {
-          console.error(`❌ ${project.title} image NOT found (${response.status})`)
-        }
-      })
-      .catch((error) => {
-        console.error(`❌ ${project.title} image error:`, error)
-      })
-  })
-}
-
-// Enhanced Calendly initialization with multiple fallbacks
+// Enhanced Calendly initialization with async loading support
 function initializeCalendly() {
-  console.log("Initializing Calendly...")
-
   // Check if Calendly script is already loaded
   if (typeof window.Calendly !== "undefined") {
-    console.log("Calendly already loaded")
     calendlyLoaded = true
     return
   }
 
   // Method 1: Check if script tag exists and load if needed
   if (!document.querySelector('script[src*="calendly.com"]')) {
-    console.log("Calendly script not found, loading dynamically...")
     loadCalendlyScript()
   }
 
-  // Method 2: Polling check for Calendly availability
+  // Method 2: Polling check for Calendly availability with reduced frequency
   let attempts = 0
-  const maxAttempts = 50 // 10 seconds total
+  const maxAttempts = 30 // Reduced from 50 to 6 seconds total
 
   const checkCalendly = () => {
     attempts++
-    console.log(`Checking Calendly availability... Attempt ${attempts}`)
 
     if (typeof window.Calendly !== "undefined") {
-      console.log("✅ Calendly loaded successfully!")
       calendlyLoaded = true
       return
     }
@@ -183,13 +262,12 @@ function initializeCalendly() {
     if (attempts < maxAttempts) {
       setTimeout(checkCalendly, 200)
     } else {
-      console.warn("❌ Calendly failed to load after maximum attempts")
       calendlyLoaded = false
     }
   }
 
-  // Start checking
-  setTimeout(checkCalendly, 100)
+  // Start checking with longer initial delay for async loading
+  setTimeout(checkCalendly, 500)
 }
 
 // Dynamically load Calendly script if not present
@@ -208,13 +286,11 @@ function loadCalendlyScript() {
     script.async = true
 
     script.onload = () => {
-      console.log("✅ Calendly script loaded dynamically")
       calendlyLoaded = true
       resolve()
     }
 
     script.onerror = () => {
-      console.error("❌ Failed to load Calendly script")
       calendlyLoaded = false
       reject(new Error("Failed to load Calendly script"))
     }
@@ -223,17 +299,28 @@ function loadCalendlyScript() {
   })
 }
 
-// Detect mobile device
+// Detect mobile device with performance optimization
 function detectMobileDevice() {
-  isMobileDevice =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    window.innerWidth <= 768
+  // Cache initial detection
+  const userAgent = navigator.userAgent
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+  
+  // Use cached viewport width to avoid forced reflow
+  const cachedWidth = window.innerWidth
+  isMobileDevice = isMobileUA || cachedWidth <= 768
 
-  // Update on resize
+  // Throttled resize handler to prevent excessive reflows
+  let resizeTimeout
   window.addEventListener("resize", () => {
-    isMobileDevice =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-      window.innerWidth <= 768
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout)
+    }
+    resizeTimeout = setTimeout(() => {
+      // Use requestAnimationFrame to batch DOM reads
+      requestAnimationFrame(() => {
+        isMobileDevice = isMobileUA || window.innerWidth <= 768
+      })
+    }, 16) // ~60fps throttling
   })
 }
 
@@ -283,28 +370,43 @@ function setupEventListeners() {
   //   })
   // })
 
-  console.log("✅ Event listeners attached")
 }
 
-// Cursor Follower
+// Cursor Follower with smooth performance optimization
 function setupCursorFollower() {
   const cursor = document.querySelector(".cursor-follower")
   if (!cursor) return
 
+  // Use requestAnimationFrame for smooth cursor movement without throttling
+  let animationFrameId
   document.addEventListener("mousemove", (e) => {
     mousePosition.x = e.clientX
     mousePosition.y = e.clientY
 
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
+    // Cancel previous animation frame to prevent queuing
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId)
+    }
+    
+    // Use requestAnimationFrame for smooth updates without throttling
+    animationFrameId = requestAnimationFrame(() => {
+      cursor.style.left = mousePosition.x + "px"
+      cursor.style.top = mousePosition.y + "px"
+    })
   })
 
-  // Scale cursor on scroll
+  // Scale cursor on scroll with minimal throttling
+  let scrollTimeout
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY
-    const scale = scrollY > 100 ? 0.5 : 1
-    cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
-  })
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout)
+    }
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY
+      const scale = scrollY > 100 ? 0.5 : 1
+      cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
+    }, 8) // Minimal throttling for scroll events only
+  }, { passive: true })
 }
 
 // Mouse Effect for Hero Background and Blog Headers
@@ -382,7 +484,6 @@ function toggleMobileMenu() {
   const hamburger = document.querySelector(".mobile-menu-btn")
 
   if (!mobileNav || !hamburger) {
-    console.log("Mobile menu elements not found")
     return
   }
 
@@ -454,6 +555,23 @@ function setupScrollSpy() {
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
   const backToTopBtn = document.querySelector('.back-to-top-btn')
   
+  // Cache section positions to avoid repeated DOM queries
+  let sectionPositions = []
+  let lastUpdateTime = 0
+  const UPDATE_INTERVAL = 100 // Update positions every 100ms max
+  
+  function updateSectionPositions() {
+    const now = Date.now()
+    if (now - lastUpdateTime < UPDATE_INTERVAL) return
+    
+    sectionPositions = Array.from(sections).map(section => ({
+      id: section.getAttribute('id'),
+      top: section.offsetTop,
+      height: section.offsetHeight
+    }))
+    lastUpdateTime = now
+  }
+  
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
     // Remove active class from all navigation items except blog links
@@ -484,20 +602,19 @@ function setupScrollSpy() {
     }
   }
   
-  // Function to handle scroll events
+  // Function to handle scroll events with optimized DOM access
   function handleScroll() {
     const scrollPosition = window.scrollY + 100 // Add offset for better UX
     
+    // Update section positions if needed
+    updateSectionPositions()
+    
     let currentSection = null
     
-    // Find which section is currently in view
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.offsetHeight
-      const sectionId = section.getAttribute('id')
-      
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        currentSection = sectionId
+    // Find which section is currently in view using cached positions
+    sectionPositions.forEach(({ id, top, height }) => {
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        currentSection = id
       }
     })
     
@@ -509,7 +626,7 @@ function setupScrollSpy() {
     // Update active navigation item
     updateActiveNavItem(currentSection)
     
-    // Show/hide back to top button
+    // Show/hide back to top button with cached values
     if (backToTopBtn) {
       if (isMobileDevice) {
         // Check if we're on the homepage (has hero section)
@@ -518,14 +635,15 @@ function setupScrollSpy() {
         
         if (isHomepage) {
           // On homepage mobile, only show when contact section is in view (original logic)
-        const contactSection = document.getElementById('contact')
-        if (contactSection) {
-          const contactTop = contactSection.offsetTop
-          const contactHeight = contactSection.offsetHeight
-          const viewportHeight = window.innerHeight
-          
-          // Show button when contact section starts to come into view
-          if (window.scrollY + viewportHeight >= contactTop) {
+          const contactSection = document.getElementById('contact')
+          if (contactSection) {
+            // Cache these values to avoid repeated DOM queries
+            const contactTop = contactSection.offsetTop
+            const contactHeight = contactSection.offsetHeight
+            const viewportHeight = window.innerHeight
+            
+            // Show button when contact section starts to come into view
+            if (window.scrollY + viewportHeight >= contactTop) {
               backToTopBtn.classList.add('visible')
             } else {
               backToTopBtn.classList.remove('visible')
@@ -555,7 +673,7 @@ function setupScrollSpy() {
     }
   }
   
-  // Add scroll event listener with throttling for performance
+  // Add scroll event listener with improved throttling for performance
   let isScrolling = false
   window.addEventListener('scroll', () => {
     if (!isScrolling) {
@@ -565,7 +683,7 @@ function setupScrollSpy() {
       })
       isScrolling = true
     }
-  })
+  }, { passive: true })
   
   // Run once on page load
   handleScroll()
@@ -573,19 +691,13 @@ function setupScrollSpy() {
 
 // Enhanced Calendly Integration Function with multiple fallbacks
 function openCalendlyPopup() {
-  console.log("🚀 Opening Calendly popup...")
-  console.log("Calendly loaded:", calendlyLoaded)
-  console.log("Window.Calendly:", typeof window.Calendly)
-
   // Method 1: Try standard Calendly integration
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initInlineWidget) {
-    console.log("✅ Using Calendly inline widget")
     return openCalendlyInlineWidget()
   }
 
   // Method 2: Try Calendly popup widget
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initPopupWidget) {
-    console.log("✅ Using Calendly popup widget")
     return window.Calendly.initPopupWidget({
       url: "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6",
     })
@@ -593,20 +705,17 @@ function openCalendlyPopup() {
 
   // Method 3: Try to load Calendly and retry
   if (!calendlyLoaded) {
-    console.log("⏳ Calendly not loaded, attempting to load...")
     loadCalendlyScript()
       .then(() => {
         setTimeout(() => openCalendlyPopup(), 500)
       })
       .catch(() => {
-        console.log("❌ Failed to load Calendly, using fallback")
         openCalendlyFallback()
       })
     return
   }
 
   // Method 4: Fallback - open in new tab
-  console.log("🔄 Using fallback method")
   openCalendlyFallback()
 }
 
@@ -773,7 +882,6 @@ function openCalendlyInlineWidget() {
       }
     }, 1000)
   } catch (error) {
-    console.error("Error initializing Calendly:", error)
     closeCalendly()
     openCalendlyFallback()
   }
@@ -783,7 +891,6 @@ function openCalendlyInlineWidget() {
 
 // Fallback function for when Calendly fails to load
 function openCalendlyFallback() {
-  console.log("🔄 Opening Calendly fallback (new tab)")
 
   // Show a brief message to user
   const message = document.createElement("div")
@@ -970,11 +1077,11 @@ function addSubtleCalendlyStyles() {
             })
           }, 500)
         } catch (e) {
-          console.log("Could not access iframe content for styling:", e)
+          // Could not access iframe content for styling
         }
       }
     } catch (e) {
-      console.log("Could not style Calendly iframe:", e)
+      // Could not style Calendly iframe
     }
   }
 }
@@ -1115,11 +1222,8 @@ function generateProjectModalContent(project) {
                 poster="${project.image}"
                 ${isMobileDevice ? "controls" : ""}
                 onerror="handleVideoError(this)"
-                onloadstart="console.log('Video loading started:', this.src)"
-                oncanplay="console.log('Video can play:', this.src)"
-                onloadeddata="console.log('Video loaded:', this.src)"
             >
-                <source src="${project.video}" type="video/mp4" onerror="console.error('Video source error:', this.src)">
+                <source src="${isMobileDevice && project.mobileVideo ? project.mobileVideo : project.video}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             ${
@@ -1189,9 +1293,6 @@ function generateProjectModalContent(project) {
 
 // Enhanced video error handling
 function handleVideoError(videoElement) {
-  console.error("Video failed to load:", videoElement.src)
-  console.error("Video error code:", videoElement.error?.code)
-  console.error("Video error message:", videoElement.error?.message)
 
   // Show fallback image
   const container = videoElement.closest(".project-video-container")
@@ -1343,7 +1444,6 @@ function enterFullscreen(video, fullscreenBtn) {
       showFullscreenMessage()
     }
   } catch (error) {
-    console.log("Fullscreen error:", error)
     handleFullscreenError(error)
   }
 }
@@ -1365,7 +1465,7 @@ function exitFullscreen(fullscreenBtn) {
       updateFullscreenButton(fullscreenBtn, false)
     }
   } catch (error) {
-    console.log("Exit fullscreen error:", error)
+    // Exit fullscreen error handled silently
   }
 }
 
@@ -1390,7 +1490,6 @@ function updateFullscreenButton(fullscreenBtn, isFullscreen) {
 }
 
 function handleFullscreenError(error) {
-  console.log("Fullscreen failed:", error)
   showFullscreenMessage()
 }
 
@@ -1662,18 +1761,13 @@ function setupProjectTileVideos() {
     video.preload = "metadata"
 
     const source = document.createElement("source")
-    source.src = projects[index].video
+    source.src = isMobileDevice && projects[index].mobileVideo ? projects[index].mobileVideo : projects[index].video
     source.type = "video/mp4"
     video.appendChild(source)
 
     // Add error handling for hover videos
     video.onerror = () => {
-      console.error(`Hover video failed to load: ${projects[index].video}`)
       video.style.display = "none"
-    }
-
-    video.onloadstart = () => {
-      console.log(`Hover video loading: ${projects[index].video}`)
     }
 
     imageContainer.insertBefore(video, imageContainer.firstChild)
@@ -1682,7 +1776,6 @@ function setupProjectTileVideos() {
       if (video.style.display !== "none") {
         video.currentTime = 0
         video.play().catch((e) => {
-          console.log("Hover video play failed:", e)
           video.style.display = "none"
         })
         video.style.opacity = "1"
@@ -1734,18 +1827,39 @@ function setupProjectCardModalLinks() {
   });
 }
 
-// Add stacked scroll effect for cases section
+// Add stacked scroll effect for cases section with performance optimization
 function stackedScrollCasesEffect() {
   const list = document.querySelector('.projects-list.stacked-scroll')
   if (!list) return
   const items = Array.from(list.querySelectorAll('.stacked-scroll-item'))
   if (items.length < 2) return
 
+  // Cache frequently accessed values
+  let cachedViewportHeight = window.innerHeight
+  let cachedViewportWidth = window.innerWidth
+  let cachedCardHeight = items[0].offsetHeight
+  let cachedListTop = 0
+  let lastUpdateTime = 0
+  const UPDATE_INTERVAL = 16 // ~60fps
+
+  function updateCachedValues() {
+    const now = Date.now()
+    if (now - lastUpdateTime < UPDATE_INTERVAL) return
+    
+    cachedViewportHeight = window.innerHeight
+    cachedViewportWidth = window.innerWidth
+    cachedCardHeight = items[0].offsetHeight
+    cachedListTop = list.getBoundingClientRect().top + window.scrollY
+    lastUpdateTime = now
+  }
+
   function animate() {
-    const viewportHeight = window.innerHeight
-    const isMobile = window.innerWidth <= 1023
-    const isSmallMobile = window.innerWidth <= 640
-    const isVerySmallMobile = window.innerWidth <= 414 && window.innerHeight >= 800
+    // Update cached values if needed
+    updateCachedValues()
+    
+    const isMobile = cachedViewportWidth <= 1023
+    const isSmallMobile = cachedViewportWidth <= 640
+    const isVerySmallMobile = cachedViewportWidth <= 414 && cachedViewportHeight >= 800
     
     // Dynamic sticky offset based on screen size for better visibility
     let stickyOffset = 0
@@ -1758,14 +1872,12 @@ function stackedScrollCasesEffect() {
         stickyOffset = 7 * 16 // 7rem for regular mobile/tablet
       }
     }
-    const listRect = list.getBoundingClientRect()
-    const listTop = listRect.top + window.scrollY
-    const cardHeight = items[0].offsetHeight
+    
     const scrollY = window.scrollY
     // On mobile, center is lower to leave space for navbar
     const centerY = isMobile
-      ? scrollY + stickyOffset + cardHeight / 2
-      : scrollY + viewportHeight / 2
+      ? scrollY + stickyOffset + cachedCardHeight / 2
+      : scrollY + cachedViewportHeight / 2
 
     // Z-index logic (different for mobile)
     if (isMobile) {
@@ -1776,8 +1888,8 @@ function stackedScrollCasesEffect() {
     } else {
       // Desktop/tablet: closest to center gets highest z-index
       const indexed = items.map((item, i) => {
-        const cardTop = listTop + i * cardHeight
-        const cardCenter = cardTop + cardHeight / 2
+        const cardTop = cachedListTop + i * cachedCardHeight
+        const cardCenter = cardTop + cachedCardHeight / 2
         const distToCenter = Math.abs(cardCenter - centerY)
         return { item, i, distToCenter }
       })
@@ -1787,12 +1899,12 @@ function stackedScrollCasesEffect() {
       })
     }
 
-    // Transform/opacity logic
+    // Transform/opacity logic using cached values
     items.forEach((item, i) => {
-      const cardTop = listTop + i * cardHeight
-      const cardCenter = cardTop + cardHeight / 2
+      const cardTop = cachedListTop + i * cachedCardHeight
+      const cardCenter = cardTop + cachedCardHeight / 2
       const distToCenter = cardCenter - centerY
-      let isActive = Math.abs(distToCenter) < cardHeight / 2
+      let isActive = Math.abs(distToCenter) < cachedCardHeight / 2
       let isLast = i === items.length - 1
       let isFirst = i === 0
       if (isLast && distToCenter <= 0) {
@@ -1813,8 +1925,35 @@ function stackedScrollCasesEffect() {
       }
     })
   }
-  window.addEventListener('scroll', animate, { passive: true })
-  window.addEventListener('resize', animate)
+  
+  // Throttled scroll handler
+  let isScrolling = false
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      requestAnimationFrame(() => {
+        animate()
+        isScrolling = false
+      })
+      isScrolling = true
+    }
+  }, { passive: true })
+  
+  // Throttled resize handler
+  let resizeTimeout
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) {
+      clearTimeout(resizeTimeout)
+    }
+    resizeTimeout = setTimeout(() => {
+      requestAnimationFrame(() => {
+        // Force update cached values on resize
+        lastUpdateTime = 0
+        updateCachedValues()
+        animate()
+      })
+    }, 16)
+  })
+  
   animate()
 }
 
@@ -1835,6 +1974,48 @@ window.projects = projects
 window.currentProject = currentProject
 window.generateProjectModalContent = generateProjectModalContent
 
+// Image Optimization Setup
+function setupImageOptimization() {
+  // Handle lazy loading images
+  const lazyImages = document.querySelectorAll('img[loading="lazy"]')
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target
+          img.classList.add('loaded')
+          observer.unobserve(img)
+        }
+      })
+    }, {
+      rootMargin: '50px 0px', // Start loading 50px before image comes into view
+      threshold: 0.01
+    })
+
+    lazyImages.forEach(img => {
+      imageObserver.observe(img)
+    })
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    lazyImages.forEach(img => {
+      img.classList.add('loaded')
+    })
+  }
+
+  // Optimize picture elements for better performance
+  const pictures = document.querySelectorAll('picture')
+  pictures.forEach(picture => {
+    const img = picture.querySelector('img')
+    if (img) {
+      // Add loading optimization
+      img.addEventListener('load', () => {
+        img.classList.add('loaded')
+      })
+    }
+  })
+}
+
 // Make functions globally available - CRITICAL for HTML onclick handlers
 window.openCalendlyPopup = openCalendlyPopup
 window.toggleMobileMenu = toggleMobileMenu
@@ -1849,5 +2030,3 @@ window.toggleFullscreen = toggleFullscreen
 window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
 
-console.log("✅ All functions attached to window object")
-console.log("openCalendlyPopup available:", typeof window.openCalendlyPopup)
