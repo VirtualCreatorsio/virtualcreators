@@ -648,7 +648,7 @@
         });
         const onloadcssdefined = function(cb) {
           const resolvedHref = ss.href;
-          const i = sheets.length;
+          let i = sheets.length;
           while (i--) {
             if (sheets[i].href === resolvedHref) {
               return cb();
