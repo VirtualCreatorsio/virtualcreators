@@ -58,6 +58,10 @@
             console.log('🚀 Initializing Cookie Banner...');
             console.log('📄 Document ready state:', document.readyState);
             console.log('🌐 Current URL:', window.location.href);
+            
+            // Initialize GTM consent mode with default denied state
+            this.initializeConsentMode();
+            
             // Test if cookies are supported
             const cookieSupport = this.testCookieSupport();
             if (!cookieSupport) {
@@ -68,6 +72,23 @@
             this.createBanner();
             // Check if we need to show the banner
             this.checkConsent();
+        },
+        initializeConsentMode: function() {
+            console.log('🔧 Initializing GTM Consent Mode...');
+            
+            // Initialize dataLayer if it doesn't exist
+            window.dataLayer = window.dataLayer || [];
+            
+            // Set default consent state (denied) before GTM loads
+            window.dataLayer.push({
+                'event': 'consent_default',
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+            });
+            
+            console.log('✅ GTM Consent Mode initialized with default denied state');
         },
         testCookieSupport: function() {
             try {
@@ -361,21 +382,76 @@
         },
         applyConsent: function(consent) {
             console.log('⚙️ Applying consent:', consent);
-            // Apply analytics cookies
+            
+            // Apply analytics cookies based on consent
             if (consent.analytics) {
                 this.loadAnalytics();
             } else {
                 this.removeAnalyticsCookies();
             }
+            
+            // Update GTM consent mode based on user's choice
+            if (typeof window.dataLayer !== 'undefined') {
+                window.dataLayer.push({
+                    'event': 'consent_update',
+                    'analytics_storage': consent.analytics ? 'granted' : 'denied',
+                    'ad_storage': consent.analytics ? 'granted' : 'denied',
+                    'ad_user_data': consent.analytics ? 'granted' : 'denied',
+                    'ad_personalization': consent.analytics ? 'granted' : 'denied'
+                });
+                
+                console.log('✅ GTM consent mode updated:', consent.analytics ? 'granted' : 'denied');
+            }
         },
         loadAnalytics: function() {
-            console.log('📊 Analytics cookies accepted - loading analytics');
-            // Add your analytics code here (Google Analytics, etc.)
+            console.log('📊 Analytics cookies accepted - enabling GA4 via GTM');
+            
+            // Enable Google Analytics 4 via GTM dataLayer
+            if (typeof window.dataLayer !== 'undefined') {
+                // Set consent mode to granted for analytics
+                window.dataLayer.push({
+                    'event': 'consent_update',
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted'
+                });
+                
+                // Trigger GTM to reload with new consent settings
+                window.dataLayer.push({
+                    'event': 'gtm.js',
+                    'gtm.start': new Date().getTime()
+                });
+                
+                console.log('✅ GA4 consent granted via GTM dataLayer');
+            } else {
+                console.warn('⚠️ GTM dataLayer not found - GTM may not be loaded yet');
+            }
         },
         removeAnalyticsCookies: function() {
-            const analyticsCookies = ['_ga', '_gid', '_gat', '_gtag'];
+            console.log('🚫 Analytics cookies rejected - disabling GA4 via GTM');
+            
+            // Disable Google Analytics 4 via GTM dataLayer
+            if (typeof window.dataLayer !== 'undefined') {
+                // Set consent mode to denied for analytics
+                window.dataLayer.push({
+                    'event': 'consent_update',
+                    'analytics_storage': 'denied',
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied'
+                });
+                
+                console.log('❌ GA4 consent denied via GTM dataLayer');
+            }
+            
+            // Remove existing GA4 cookies
+            const analyticsCookies = ['_ga', '_gid', '_gat', '_gtag', '_ga_', '_gcl_au', '_gcl_aw', '_gcl_dc'];
             analyticsCookies.forEach(cookie => {
                 CookieManager.delete(cookie);
+                // Also try to delete with domain variations
+                CookieManager.delete(cookie, '.virtualcreators.io');
+                CookieManager.delete(cookie, '.www.virtualcreators.io');
             });
             console.log('🧹 Analytics cookies removed');
         },
