@@ -29,120 +29,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
 
-    <!-- Preconnect to external domains -->
+    <!-- Calendly Integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../cookie-banner.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://assets.calendly.com">
-    
-    <!-- Critical CSS - inline for faster rendering -->
-    <style>
-        /* Critical above-the-fold styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: #111827; }
-        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
-        .hero-section { padding-top: 120px; min-height: 100vh; display: flex; align-items: center; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        
-        /* Language dropdown critical styles */
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-            padding-right: 10px;
-        }
-        .language-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            background: none;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-        .language-btn:hover {
-            border-color: #d1d5db;
-            background-color: #f9fafb;
-        }
-        .language-text {
-            font-weight: 500;
-            min-width: 1.5rem;
-        }
-        .language-arrow {
-            width: 1rem;
-            height: 1rem;
-            stroke-width: 2;
-            transition: transform 0.3s ease;
-        }
-        .language-btn.active .language-arrow {
-            transform: rotate(180deg);
-        }
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 0.5rem;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        .language-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .language-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 0.875rem;
-            color: #374151;
-        }
-        .language-option:hover {
-            background-color: #f3f4f6;
-        }
-        .language-option:first-child {
-            border-radius: 0.5rem 0.5rem 0 0;
-        }
-        .language-option:last-child {
-            border-radius: 0 0 0.5rem 0.5rem;
-        }
-        @media (max-width: 1023px) {
-            .language-switcher,
-            .nav-right {
-                display: none;
-            }
-        }
-    </style>
-    
-    <!-- Non-critical CSS - load asynchronously -->
-    <link rel="preload" href="../../styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../../styles.css"></noscript>
-    
-    <link rel="preload" href="../../cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="../../cookie-banner.css"></noscript>
-    
-    <!-- Google Fonts - optimized loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"></noscript>
-    
-    <!-- Calendly CSS - load asynchronously -->
-    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://www.virtualcreators.io/nl/blog/posts/web-design-trends.html" />
     
     <!-- DNS prefetch for additional resources -->
@@ -228,17 +123,17 @@
                 <div class="nav-right">
                     <!-- Language Switcher -->
                     <div class="language-switcher">
-                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn" aria-label="Toggle language selection" aria-expanded="false" aria-haspopup="true">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn">
                             <span class="language-text" id="currentLang">NL</span>
                             <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <polyline points="6,9 12,15 18,9"/>
                             </svg>
                         </button>
-                        <div class="language-dropdown" id="languageDropdown" role="menu" aria-labelledby="languageBtn">
-                            <button class="language-option" onclick="switchLanguage('en')" role="menuitem">
+                        <div class="language-dropdown" id="languageDropdown">
+                            <button class="language-option" onclick="switchLanguage('en')">
                                 <span>EN</span>
                             </button>
-                            <button class="language-option" onclick="switchLanguage('nl')" role="menuitem">
+                            <button class="language-option" onclick="switchLanguage('nl')">
                                 <span>NL</span>
                             </button>
                         </div>
@@ -247,7 +142,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobiel navigatiemenu" aria-expanded="false" aria-controls="mobile-menu">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <span class="hamburger"></span>
                     <span class="hamburger"></span>
                     <span class="hamburger"></span>
@@ -384,7 +279,7 @@
     </section>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top-btn" onclick="scrollToTop()" aria-label="Terug naar boven">
+    <button class="back-to-top-btn" onclick="scrollToTop()">
         <svg class="back-to-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M12 19V5M5 12L12 5L19 12"/>
         </svg>
@@ -409,34 +304,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript - load asynchronously to avoid blocking render -->
-    <script src="../../translations.js" defer></script>
-    <script src="../../script.js" defer></script>
-    <script src="../../cookie-banner.js" defer></script>
-    
-    <!-- Calendly JavaScript - load asynchronously -->
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    
-    <!-- Fallback for browsers that don't support preload -->
-    <script>
-        // Load CSS asynchronously for browsers that don't support preload
-        function loadCSS(href) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            document.head.appendChild(link);
-        }
-        
-        // Load non-critical CSS after page load
-        window.addEventListener('load', function() {
-            // Ensure all CSS is loaded
-            if (!document.querySelector('link[href="../../styles.css"]').sheet) {
-                loadCSS('../../styles.css');
-            }
-            if (!document.querySelector('link[href="../../cookie-banner.css"]').sheet) {
-                loadCSS('../../cookie-banner.css');
-            }
-        });
-    </script>
+    <script src="../../translations.js"></script>
+    <script src="../../script.js"></script>
+    <script src="../../cookie-banner.js"></script>
 </body>
 </html> 
