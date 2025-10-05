@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial - VirtualCreators Blog</title>
+    <meta name="description" content="Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.">
+    <meta name="keywords" content="WooCommerce shortcode, WordPress customer account, WooCommerce customization, latest order display, customer account enhancement, WooCommerce PHP code, WordPress development, e-commerce shortcode, customer experience, account page customization">
+    <meta name="author" content="Virtualcreators">
+    <meta name="brand" content="Virtualcreators">
+    
+    <!-- Favicon Support -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/vc-logo-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    <link rel="alternate" hreflang="nl" href="https://www.virtualcreators.io/nl/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial - VirtualCreators Blog">
+    <meta property="og:description" content="Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.">
+    <meta property="og:url" content="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
+    <meta property="og:image:width" content="32">
+    <meta property="og:image:height" content="32">
+    <meta property="og:image:type" content="image/png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial - VirtualCreators Blog">
+    <meta name="twitter:description" content="Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.">
+    <meta name="twitter:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
+
+    <!-- Calendly Integration -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../cookie-banner.css">
+    
+    <!-- Custom styles for email-gated code snippet -->
+    <style>
+        .code-snippet-gated {
+            position: relative;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+            overflow: hidden;
+        }
+        
+        .code-lock-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        
+        .code-lock-indicator svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+        
+        .email-gate-form {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .email-gate-content h4 {
+            margin: 0 0 6px 0;
+            color: #1f2937;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .email-gate-content p {
+            margin: 0 0 16px 0;
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .unlock-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .unlock-btn:hover {
+            background: #5b5bd6;
+            transform: translateY(-1px);
+        }
+        
+        .unlock-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .privacy-note {
+            margin: 8px 0 0 0;
+            color: #9ca3af;
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .code-content {
+            background: #1f2937;
+            color: #f9fafb;
+        }
+        
+        .code-content .code-header {
+            background: #374151;
+            border-bottom: 1px solid #4b5563;
+        }
+        
+        .code-content pre {
+            margin: 0;
+            padding: 20px;
+            background: #1f2937;
+            color: #f9fafb;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .code-content pre code {
+            background: transparent;
+            color: #f9fafb;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        /* Tab Styles */
+        .code-tabs {
+            border: 1px solid #e5e7eb;
+            border-radius: 0;
+            background: #f9fafb;
+            overflow: hidden;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: #fff;
+            color: #1f2937;
+            border-bottom: 2px solid #6366f1;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .tab-content {
+            position: relative;
+        }
+        
+        .tab-pane {
+            display: none;
+            position: relative;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .preview-container {
+            padding: 20px;
+            background: transparent;
+        }
+        
+        .preview-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: transparent;
+        }
+        
+        .preview-section h4 {
+            margin: 0 0 15px 0;
+            color: #374151;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+        
+        .preview-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .code-lock-overlay {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        
+        .lock-content {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .lock-content svg {
+            width: 48px;
+            height: 48px;
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+        
+        .lock-content h4 {
+            margin: 0 0 1rem 0;
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .lock-content p {
+            margin: 0 0 2rem 0;
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .unlock-code-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .unlock-code-form input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            background: #ffffff;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        
+        .unlock-code-form input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .unlock-code-form input::placeholder {
+            color: #9ca3af;
+            font-size: 16px;
+        }
+        
+        .unlock-code-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: none;
+        }
+        
+        .unlock-code-btn:hover {
+            background: #5b5bd6;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        .unlock-code-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Preview Styling */
+        .laatste-bestelling {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background: transparent;
+        }
+        
+        .laatste-bestelling strong {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .view-order-link {
+            color: #e91e63;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .view-order-link:hover {
+            text-decoration: underline;
+        }
+        
+        .copy-btn {
+            background: #4b5563;
+            color: #f9fafb;
+            border: 1px solid #6b7280;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #6b7280;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    
+    <!-- DNS prefetch for additional resources -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MDRST6BP');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="en" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    <link rel="alternate" hreflang="nl" href="https://www.virtualcreators.io/nl/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html" />
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.virtualcreators.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.virtualcreators.io/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial",
+          "item": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html"
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial",
+      "description": "Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.",
+      "image": "https://www.virtualcreators.io/assets/vc-logo-32x32.png",
+      "author": {
+        "@type": "Person",
+        "name": "Kjell de Ruiter",
+        "url": "https://www.virtualcreators.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VirtualCreators",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.virtualcreators.io/assets/vc-logo-32x32.png"
+        }
+      },
+      "datePublished": "2025-10-05T00:00:00Z",
+      "dateModified": "2025-10-05T00:00:00Z",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html"
+      },
+      "keywords": ["WooCommerce shortcode", "WordPress customer account", "WooCommerce customization", "latest order display", "customer account enhancement", "WooCommerce PHP code", "WordPress development", "e-commerce shortcode", "customer experience", "account page customization"],
+      "articleSection": "WordPress Development",
+      "wordCount": 1200,
+      "about": {
+        "@type": "Thing",
+        "name": "WooCommerce Customer Account Enhancement"
+      },
+      "mentions": [
+        {
+          "@type": "Thing",
+          "name": "WordPress"
+        },
+        {
+          "@type": "Thing", 
+          "name": "WooCommerce"
+        },
+        {
+          "@type": "Thing",
+          "name": "PHP Development"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- HowTo Schema for Tutorial Content -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Create a WooCommerce Customer Account Enhancement Shortcode",
+      "description": "Step-by-step tutorial on creating a custom WooCommerce shortcode to display customer's latest order on account pages",
+      "image": "https://www.virtualcreators.io/assets/vc-logo-32x32.png",
+      "totalTime": "PT15M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "supply": [
+        {
+          "@type": "HowToSupply",
+          "name": "WordPress website with WooCommerce installed"
+        },
+        {
+          "@type": "HowToSupply", 
+          "name": "Access to theme files or code snippets plugin"
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "WordPress Admin Panel"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Code Editor"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Add PHP Code",
+          "text": "Place the provided PHP code in your theme's functions.php file or code snippets plugin",
+          "url": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html#code-snippet"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Use Shortcode",
+          "text": "Add the [laatste_bestelling] shortcode to any page or post where you want to display customer order information",
+          "url": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html#shortcode-examples"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Customize Styling",
+          "text": "Modify the inline CSS styles in the function to match your brand's design system",
+          "url": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html#customize"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Update Links",
+          "text": "Change the fallback link to your preferred product category or shop page",
+          "url": "https://www.virtualcreators.io/blog/posts/wordpress-elementor-woocommerce-power-combo.html#update-links"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I add a WooCommerce shortcode to display customer's latest order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can create a custom shortcode by adding PHP code to your theme's functions.php file or using a code snippets plugin. The shortcode will automatically display the customer's most recent order details or show a shopping prompt for new customers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the WooCommerce latest order shortcode display?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The shortcode displays the customer's most recent order including order date, total amount, status, and a link to view full order details. For customers without orders, it shows a friendly message with a 'Begin Shopping' button."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the styling of the WooCommerce order display?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the shortcode includes inline CSS that you can modify to match your brand's design system. You can change colors, fonts, spacing, and button styles to create a cohesive look with your store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I use the WooCommerce customer account shortcode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can use the [laatste_bestelling] shortcode on any page, post, or widget in WordPress. It's particularly effective on customer account pages, dashboard widgets, or anywhere you want to show order information to logged-in customers."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDRST6BP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Cursor Follower -->
+    <div class="cursor-follower"></div>
+
+    <!-- Cookie Banner is now dynamically injected by cookie-banner.js -->
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="../../index.html" class="logo">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="../../index.html#work" class="nav-link" data-translate="work">Work</a>
+                        <a href="../../index.html#services" class="nav-link" data-translate="services">Services</a>
+                        <a href="../../index.html#about" class="nav-link" data-translate="about">About</a>
+                        <a href="../../index.html#contact" class="nav-link" data-translate="contact">Contact</a>
+                        <a href="../index.html" class="nav-link active" data-translate="blog">Blog</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn" aria-label="Toggle language selection" aria-expanded="false" aria-haspopup="true">
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown" role="menu" aria-labelledby="languageBtn">
+                            <button class="language-option" onclick="switchLanguage('en')" role="menuitem">
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')" role="menuitem">
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost" onclick="openCalendlyPopup()" data-translate="letsalk">Let's Talk</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="../../index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Work</a>
+                <a href="../../index.html#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Services</a>
+                <a href="../../index.html#about" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
+                <a href="../../index.html#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
+                <a href="../index.html" class="mobile-nav-link active" onclick="closeMobileMenu()" data-translate="blog">Blog</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header" data-translate="language">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span>NL</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mobile-cta" onclick="openCalendlyPopup(); closeMobileMenu()" data-translate="letsalk">Let's Talk</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Header -->
+    <section class="blog-post-header">
+        <div class="blog-post-header-bg"></div>
+        <div class="container">
+            <div class="blog-post-meta">
+                <span class="post-date">October 5, 2025</span>
+                <div class="meta-dot"></div>
+                <span class="post-category" data-translate="technologyCategory">Technology</span>
+                <div class="meta-dot"></div>
+                <span class="post-read-time" data-translate="readTime6Min">6 min read</span>
+            </div>
+            <h1 class="blog-post-title" data-translate="wordpressComboTitle">
+                WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial
+            </h1>
+            <p class="blog-post-excerpt" data-translate="wordpressComboExcerpt">
+                Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.
+            </p>
+            <div class="blog-post-author">
+                <div class="brand-dot-small"></div>
+                <div class="blog-post-author-text">
+                    <span class="blog-post-author-name" data-translate="authorName">Kjell de Ruiter</span> <span data-translate="authorRole">Creator at</span> <a href="../../index.html" class="blog-post-author-link" data-translate="authorCompany">VirtualCreators</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post-content">
+        <div class="container">
+            <article class="blog-post-article">
+                <p class="blog-intro">Enhancing your WooCommerce customer account pages can significantly improve user experience and reduce support tickets. In this tutorial, I'll show you how to create a custom shortcode that displays your customer's latest order directly on their account page, making it easier for them to track their purchases and continue shopping.</p>
+
+                <h2>Why Enhance Customer Account Pages?</h2>
+                <p>Customer account pages are often overlooked, but they're crucial for user experience. When customers can easily see their latest order and navigate to continue shopping, it reduces support tickets and increases customer satisfaction. This simple enhancement can make a big difference in your store's usability.</p>
+
+                <h3>1. Improved User Experience</h3>
+                <p>Customers can quickly see their latest order status, total amount, and easily navigate to view order details or continue shopping. This reduces the time they spend searching for information and creates a smoother experience.</p>
+
+                <h3>2. Reduced Support Tickets</h3>
+                <p>When customers can easily access their order information, they're less likely to contact support for basic inquiries. This saves your team time and improves customer satisfaction by providing instant access to their data.</p>
+
+                <h3>3. Increased Engagement</h3>
+                <p>By making it easier for customers to see their recent purchases and continue shopping, you're encouraging repeat visits and purchases. The fallback "Begin Shopping" button also helps guide new customers to your products.</p>
+
+                <h2>How the Shortcode Works</h2>
+
+                <p>The custom shortcode I'll show you creates a dynamic display that adapts based on the customer's order history:</p>
+
+                <h3>For Customers with Orders</h3>
+                <p>When a customer has placed orders, the shortcode displays their most recent purchase with key details like order date, total amount, status, and a direct link to view the full order details.</p>
+
+                <h3>For New Customers</h3>
+                <p>For customers who haven't placed any orders yet, the shortcode shows a friendly message encouraging them to start shopping, with a prominent call-to-action button that directs them to your product categories.</p>
+
+                <h3>Automatic Integration</h3>
+                <p>The shortcode automatically integrates with WooCommerce's existing order system, pulling real data from your store's database. It respects user permissions and only shows information to logged-in customers.</p>
+
+                <p>Now that you understand how the shortcode works, let's dive into the actual implementation. The code is surprisingly simple but incredibly powerful, requiring just a few lines of PHP to create a professional customer account enhancement.</p>
+
+                <h2 id="code-snippet">Custom Code Snippet: Enhanced Customer Account Navigation</h2>
+
+                <p>Here's the complete code snippet that you can implement to extend the functionality of your customer account pages. This creates a seamless experience where customers can easily navigate to your store or view their most recent order directly from their account dashboard.</p>
+
+                <!-- Email Gated Code Snippet -->
+                <div class="code-snippet-gated" id="code-snippet-container">
+                    <div class="code-header">
+                        <span class="code-title">Customer Account Navigation</span>
+                        <div class="code-lock-indicator">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <circle cx="12" cy="16" r="1"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <span>Email Required</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Code Content -->
+                    <div class="code-content" id="code-content">
+                    <div class="code-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" onclick="switchTab('preview')">Preview</button>
+                            <button class="tab-btn" onclick="switchTab('code')">Code</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div id="preview-tab" class="tab-pane active">
+                                <div class="preview-container">
+                                    <div class="preview-section">
+                                        <h4>No Orders (Fallback State)</h4>
+                                        <div class="laatste-bestelling-fallback" style="text-align: center; color: #374151; font-size: 16px; line-height: 1.5;">
+                                            🛍️ Je hebt nog geen bestellingen geplaatst.<br><br>
+                                            <a href="#" style="
+                                                display: inline-block;
+                                                background-color: #ed500a;
+                                                color: #fff;
+                                                padding: 10px 20px;
+                                                text-decoration: none;
+                                                border-radius: 999px;
+                                                font-weight: 600;
+                                                transition: background-color 0.3s ease;
+                                            " onmouseover="this.style.backgroundColor='#ed500a'" onmouseout="this.style.backgroundColor='#ed500a'">
+                                                Begin met winkelen
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="preview-section">
+                                        <h4>With Orders (Current State)</h4>
+                                        <div class="laatste-bestelling">
+                                            <strong>Laatste bestelling</strong><br>
+                                            📅 Datum: 24 september 2025<br>
+                                            💰 Totaal: € 319,90<br>
+                                            📦 Status: In behandeling<br>
+                                            🔍 <a href="#" class="view-order-link">Bekijk bestelling</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="code-tab" class="tab-pane">
+                                <div class="code-lock-overlay" id="code-lock-overlay">
+                                    <div class="lock-content">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                            <circle cx="12" cy="16" r="1"/>
+                                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                        <h4>Code Access Required</h4>
+                                        <p>Enter your email to unlock the complete PHP code</p>
+                                        <form class="unlock-code-form" id="unlock-code-form" action="https://formspree.io/f/xwprqbqo" method="POST">
+                                            <input type="email" name="email" placeholder="Enter your email address" required id="code-email">
+                                            <input type="hidden" name="subject" value="Blog PHP Snippet Lead">
+                                            <input type="hidden" name="message" value="New lead captured from blog post! User unlocked the PHP code snippet for WooCommerce customer account enhancement tutorial.">
+                                            <input type="hidden" name="_replyto" id="replyto-email">
+                                            <input type="hidden" name="_subject" value="Blog PHP Snippet Lead">
+                                            <button type="submit" class="unlock-code-btn">Unlock Code</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <pre id="lead-capture-code" style="display: none;"><code>&lt;?php
+/**
+* WordPress + WooCommerce Latest Order Shortcode
+* Displays the customer's most recent order with navigation to store
+*/
+
+// Add to your theme's functions.php or put it inside a code snippets plugin code snippet to leave your functions.php files untouched
+
+function laatste_bestelling_blok_shortcode() {
+    if (!is_user_logged_in()) return '';
+
+    $customer_orders = wc_get_orders([
+        'limit' =&gt; 1,
+        'customer_id' =&gt; get_current_user_id(),
+        'orderby' =&gt; 'date',
+        'order' =&gt; 'DESC',
+    ]);
+
+    if (empty($customer_orders)) {
+        return '
+            &lt;div class="laatste-bestelling-fallback" style="text-align: center;"&gt;
+                🛍️ Je hebt nog geen bestellingen geplaatst.&lt;br&gt;&lt;br&gt;
+                &lt;a href="/product-category/your-desired-category/" style="
+                    display: inline-block;
+                    background-color: #ed500a;
+                    color: #fff;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    border-radius: 999px;
+                    font-weight: 600;
+                    transition: background-color 0.3s ease;
+                " onmouseover="this.style.backgroundColor=\'#ed500a\'" onmouseout="this.style.backgroundColor=\'#ed500a\'"&gt;
+                    Begin met winkelen
+                &lt;/a&gt;
+            &lt;/div&gt;
+        ';
+    }
+
+    $order = $customer_orders[0];
+    $order_date = $order->get_date_created()-&gt;date_i18n('j F Y');
+    $order_total = $order->get_formatted_order_total();
+    $order_status = wc_get_order_status_name($order->get_status());
+    $order_view_url = $order->get_view_order_url();
+
+    return "
+        &lt;div class='laatste-bestelling'&gt;
+            &lt;strong&gt;Laatste bestelling&lt;/strong&gt;&lt;br&gt;
+            📅 Datum: {$order_date}&lt;br&gt;
+            💰 Totaal: {$order_total}&lt;br&gt;
+            📦 Status: {$order_status}&lt;br&gt;
+            🔍 &lt;a href='{$order_view_url}'&gt;Bekijk bestelling&lt;/a&gt;
+        &lt;/div&gt;
+    ";
+}
+add_shortcode('laatste_bestelling', 'laatste_bestelling_blok_shortcode');
+?&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <h3 id="customize">How to Use This Code</h3>
+                <ol>
+                    <li><strong>Add to your theme:</strong> Place this code in your theme's functions.php file or put it inside a code snippets plugin to leave your functions.php files untouched</li>
+                    <li><strong>Use the Shortcode:</strong> Use <code>[laatste_bestelling]</code> shortcode anywhere on your site to display the customer's latest order</li>
+                    <li><strong>Customize Styling:</strong> Modify the inline CSS styles in the function to match your brand's design system</li>
+                    <li><strong>Update Links:</strong> Change the fallback link from <code>/product-category/your-desired-category/</code> to your preferred product category or shop page</li>
+                </ol>
+
+                <div class="code-snippet" id="shortcode-examples">
+                    <div class="code-header">
+                        <span class="code-title">Shortcode Examples</span>
+                    </div>
+                    <pre id="shortcode-examples"><code>// Display latest order information
+[laatste_bestelling]
+
+// Use in Elementor widgets or page builders
+// Simply add the shortcode to any text widget or shortcode element
+
+// Example usage in a page or post:
+// Add this shortcode to display the customer's latest order
+[laatste_bestelling]
+
+// Real-world example: https://lumenix-beamers.nl/mijn-account/
+// This shortcode is perfect for customer account pages to show order history</code></pre>
+                </div>
+
+                <h2>Why This Shortcode Works</h2>
+                
+                <p>This simple shortcode provides immediate value to your customers and your business:</p>
+                
+                <ul>
+                    <li><strong>Quick Order Access:</strong> Customers can instantly see their latest order details</li>
+                    <li><strong>Reduced Support Load:</strong> Less "where is my order?" inquiries from customers</li>
+                    <li><strong>Increased Engagement:</strong> Direct links to continue shopping encourage repeat purchases</li>
+                    <li><strong>Professional Appearance:</strong> Clean, branded display that matches your store design</li>
+                </ul>
+
+                <h2>Getting Started</h2>
+                
+                <p>Ready to add this shortcode to your WooCommerce store? Here's your simple implementation plan:</p>
+                
+                <ol>
+                    <li><strong>Add the code:</strong> Place the PHP code in your functions.php or code snippets plugin</li>
+                    <li><strong>Test the shortcode:</strong> Use <code>[laatste_bestelling]</code> on any page or post</li>
+                    <li><strong>Customize the styling:</strong> Adjust the inline CSS to match your brand colors</li>
+                    <li><strong>Update the fallback link:</strong> Change the product category link to your preferred page</li>
+                    <li><strong>Deploy and monitor:</strong> Watch how it improves your customer experience</li>
+                </ol>
+
+                <p data-translate="wordpressComboConclusion">
+                    This simple shortcode demonstrates the power of WordPress + WooCommerce customization. With just a few lines of code, you can create a professional order display that enhances your customer experience. Whether you're running a small online store or a large e-commerce operation, this shortcode provides immediate value with minimal effort. For more advanced <a href="../../about-virtualcreators.html">WordPress development solutions</a>, consider our comprehensive development services.
+                </p>
+
+                <p data-translate="wordpressComboCTA">
+                    Need help implementing this shortcode or want to explore more WooCommerce customizations? <a href="../../index.html#contact">Get your free consultation</a> and let's discuss how we can enhance your e-commerce store.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog Navigation -->
+    <section class="blog-navigation">
+        <div class="container">
+            <div class="blog-nav-content">
+                <a href="../index.html" class="back-to-blog">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span data-translate="backToBlog">Back to Blog</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+        <svg class="back-to-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 19V5M5 12L12 5L19 12"/>
+        </svg>
+        <span class="back-to-top-text" data-translate="backToTop">Back to Top</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </div>
+                <div class="footer-links">
+                    <a href="../../privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
+                    <a href="../../terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
+                    <a href="../../about-virtualcreators.html" class="footer-link" data-translate="aboutVirtualcreators">About virtualcreators</a>
+                </div>
+                <div class="footer-copyright" data-translate="copyright">© 2025 VirtualCreators. Crafted with care.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../translations.js"></script>
+    <script src="../../script.js"></script>
+    <script src="../../cookie-banner.js"></script>
+    
+    <!-- Code Copy Functionality -->
+    <script>
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const text = codeElement.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                // Show success message
+                const button = codeElement.parentElement.querySelector('.copy-btn');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>';
+                button.style.color = '#10b981';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.color = '';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Failed to copy code. Please select and copy manually.');
+            });
+        }
+
+           // Tab Functionality
+           function switchTab(tabName) {
+               // Hide all tab panes
+               document.querySelectorAll('.tab-pane').forEach(pane => {
+                   pane.classList.remove('active');
+               });
+               
+               // Remove active class from all buttons
+               document.querySelectorAll('.tab-btn').forEach(btn => {
+                   btn.classList.remove('active');
+               });
+               
+               // Show selected tab pane
+               document.getElementById(tabName + '-tab').classList.add('active');
+               
+               // Add active class to clicked button
+               event.target.classList.add('active');
+               
+               // If switching to code tab, show the lock overlay
+               if (tabName === 'code') {
+                   const codeLockOverlay = document.getElementById('code-lock-overlay');
+                   const codeContent = document.getElementById('lead-capture-code');
+                   
+                   if (codeLockOverlay && codeContent) {
+                       // Check if code is already unlocked
+                       if (localStorage.getItem('codeUnlocked') === 'true') {
+                           codeLockOverlay.style.display = 'none';
+                           codeContent.style.display = 'block';
+                       } else {
+                           // Show the lock overlay
+                           codeLockOverlay.style.display = 'flex';
+                           codeContent.style.display = 'none';
+                       }
+                   }
+               }
+           }
+           
+           // Code Access Check
+           function checkCodeAccess() {
+               const codeLockOverlay = document.getElementById('code-lock-overlay');
+               const codeContent = document.getElementById('lead-capture-code');
+               
+               console.log('checkCodeAccess called');
+               console.log('codeUnlocked:', localStorage.getItem('codeUnlocked'));
+               console.log('codeLockOverlay:', codeLockOverlay);
+               console.log('codeContent:', codeContent);
+               
+               if (localStorage.getItem('codeUnlocked') === 'true') {
+                   console.log('Code is unlocked - hiding overlay, showing code');
+                   codeLockOverlay.style.display = 'none';
+                   codeContent.style.display = 'block';
+               } else {
+                   console.log('Code is locked - showing overlay, hiding code');
+                   codeLockOverlay.style.display = 'flex';
+                   codeContent.style.display = 'none';
+               }
+           }
+           
+           // Clear localStorage function for testing (remove in production)
+           function clearCodeAccess() {
+               localStorage.removeItem('codeUnlocked');
+               localStorage.removeItem('unlockedEmail');
+               console.log('Code access cleared');
+               checkCodeAccess();
+           }
+           
+           // Initialize on page load
+           document.addEventListener('DOMContentLoaded', function() {
+               // Don't check code access on page load - only when code tab is clicked
+               // checkCodeAccess();
+               
+               // Code unlock form
+               const unlockCodeForm = document.getElementById('unlock-code-form');
+               if (unlockCodeForm) {
+                   unlockCodeForm.addEventListener('submit', function(e) {
+                       e.preventDefault();
+                       
+                       const email = document.getElementById('code-email').value;
+                       
+                       // Validate email
+                       if (!email || !isValidEmail(email)) {
+                           alert('Please enter a valid email address.');
+                           return;
+                       }
+                       
+                       // Set the replyto field to the user's email
+                       document.getElementById('replyto-email').value = email;
+                       
+                       // Store in localStorage
+                       localStorage.setItem('codeUnlocked', 'true');
+                       localStorage.setItem('unlockedEmail', email);
+                       
+                       // Hide overlay and show code
+                       checkCodeAccess();
+                       
+                       // Track the lead capture
+                       console.log('Code unlocked for:', email);
+                       
+                       // Send email notification to Formspree
+                       sendEmailNotification(email);
+                       
+                       // Optional: Send to your analytics or CRM
+                       if (typeof gtag !== 'undefined') {
+                           gtag('event', 'code_unlock', {
+                               'event_category': 'code_access',
+                               'event_label': 'wordpress_woocommerce_snippet',
+                               'value': 1
+                           });
+                       }
+                   });
+               }
+               
+               function isValidEmail(email) {
+                   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                   return emailRegex.test(email);
+               }
+               
+               // Email notification function using your Formspree endpoint
+               function sendEmailNotification(userEmail) {
+                   const emailInfo = {
+                       email: userEmail,
+                       timestamp: new Date().toISOString(),
+                       page: window.location.href,
+                       blogPost: 'WordPress WooCommerce Customer Account Enhancement'
+                   };
+                   
+                   // Store lead in localStorage for backup
+                   const existingLeads = JSON.parse(localStorage.getItem('blogLeads') || '[]');
+                   existingLeads.push(emailInfo);
+                   localStorage.setItem('blogLeads', JSON.stringify(existingLeads));
+                   
+                   // Log to console for immediate visibility
+                   console.log('📧 NEW LEAD CAPTURED!');
+                   console.log('Email:', emailInfo.email);
+                   console.log('Time:', emailInfo.timestamp);
+                   console.log('Page:', emailInfo.page);
+                   console.log('Blog Post:', emailInfo.blogPost);
+                   console.log('💾 Lead saved to localStorage.blogLeads');
+                   
+                   // Create FormData for proper Formspree submission
+                   const formData = new FormData();
+                   formData.append('email', userEmail);
+                   formData.append('subject', 'Blog PHP Snippet Lead');
+                   formData.append('message', `New lead captured from blog post!
+
+Email: ${userEmail}
+Blog Post: WordPress WooCommerce Customer Account Enhancement
+Page: ${window.location.href}
+Timestamp: ${new Date().toISOString()}
+
+This user has unlocked the PHP code snippet for the WooCommerce customer account enhancement tutorial.`);
+                   formData.append('_replyto', userEmail);
+                   formData.append('_subject', 'Blog PHP Snippet Lead');
+                   
+                   // Send to your Formspree endpoint using FormData
+                   fetch('https://formspree.io/f/xwprqbqo', {
+                       method: 'POST',
+                       body: formData
+                   }).then(response => {
+                       if (response.ok) {
+                           console.log('✅ Email notification sent successfully to your Formspree account!');
+                           console.log('📧 Check your Formspree dashboard at: https://formspree.io/f/xwprqbqo');
+                       } else {
+                           console.error('❌ Failed to send to Formspree, but lead is saved locally');
+                           console.log('📧 Lead details:', emailInfo);
+                       }
+                   }).catch(error => {
+                       console.error('❌ Error sending to Formspree:', error);
+                       console.log('📧 Lead details (saved locally):', emailInfo);
+                   });
+                   
+                   // Code unlocked successfully - no popup message needed
+               }
+               
+               // Copy code function
+               function copyCode(elementId) {
+                   const codeElement = document.getElementById(elementId);
+                   if (codeElement) {
+                       const text = codeElement.textContent || codeElement.innerText;
+                       navigator.clipboard.writeText(text).then(function() {
+                           // Show success feedback
+                           const copyBtn = document.querySelector(`[onclick="copyCode('${elementId}')"]`);
+                           if (copyBtn) {
+                               const originalHTML = copyBtn.innerHTML;
+                               copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>';
+                               copyBtn.style.color = '#10b981';
+                               setTimeout(() => {
+                                   copyBtn.innerHTML = originalHTML;
+                                   copyBtn.style.color = '';
+                               }, 2000);
+                           }
+                       }).catch(function(err) {
+                           console.error('Failed to copy: ', err);
+                           alert('Failed to copy code. Please select and copy manually.');
+                       });
+                   }
+               }
+           });
+    </script>
+</body>
+</html>
