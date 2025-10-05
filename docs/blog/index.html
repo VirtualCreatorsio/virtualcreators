@@ -6,6 +6,11 @@
     <title>Blog - VirtualCreators</title>
     <meta name="description" content="Discover cutting-edge web development insights, design trends & digital strategies from VirtualCreators. Expert tips to boost your online presence & stay ahead of the competition.">
     
+    <!-- Favicon Support -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/vc-logo-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Blog - VirtualCreators">
     <meta property="og:description" content="Discover cutting-edge web development insights, design trends & digital strategies from VirtualCreators. Expert tips to boost your online presence & stay ahead of the competition.">
@@ -22,12 +27,6 @@
     <meta name="twitter:title" content="Blog - VirtualCreators">
     <meta name="twitter:description" content="Discover cutting-edge web development insights, design trends & digital strategies from VirtualCreators. Expert tips to boost your online presence & stay ahead of the competition.">
     <meta name="twitter:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
-    
-    <!-- Favicon Support -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/vc-logo-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 
     <!-- Calendly Integration -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -43,6 +42,18 @@
     <!-- DNS prefetch for additional resources -->
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    
+    <!-- Initialize GTM Consent Mode before GTM loads -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'consent_default',
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+    </script>
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -178,7 +189,34 @@
     <section class="blog-posts">
         <div class="container">
             <div class="posts-grid">
-                <!-- Post 1 - AI Article -->
+                <!-- Post 1 - WordPress WooCommerce Tutorial -->
+                <article class="post-card" data-category="technology">
+                    <div class="post-header">
+                        <div class="post-meta">
+                            <span class="post-category" data-translate="technologyCategory">Technology</span>
+                            <div class="meta-dot"></div>
+                            <span class="post-date">October 5, 2025</span>
+                            <div class="meta-dot"></div>
+                            <span class="post-read-time" data-translate="readTime6Min">6 min read</span>
+                        </div>
+                        <h2 class="post-title">
+                            <a href="posts/wordpress-elementor-woocommerce-power-combo.html">WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.
+                        </p>
+                    </div>
+                    <div class="post-footer">
+                        <a href="posts/wordpress-elementor-woocommerce-power-combo.html" class="read-more">
+                            <span data-translate="readMore">Read More</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post 2 - AI Article -->
                 <article class="post-card" data-category="technology">
                     <div class="post-header">
                         <div class="post-meta">
