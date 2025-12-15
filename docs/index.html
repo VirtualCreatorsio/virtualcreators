@@ -54,8 +54,8 @@
     body {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
       line-height: 1.6;
-      color: #111827;
-      background-color: #ffffff;
+      color: #ffffff;
+      background-color: #000000;
       overflow-x: hidden;
     }
     .container {
@@ -91,7 +91,7 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -344,11 +344,6 @@
       width: 100%;
       justify-content: center;
     }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
     .hero {
       min-height: 100vh;
       display: flex;
@@ -373,7 +368,7 @@
     .hero-content {
       text-align: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
     .hero-text {
       margin-bottom: 2rem;
@@ -428,6 +423,98 @@
       .hero-buttons {
         flex-direction: row;
         justify-content: center;
+      }
+    }
+    .logo-ticker {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: auto;
+      width: 100vw;
+      transform: translateX(-50%);
+      overflow: hidden;
+      padding: 3rem 0;
+      z-index: 1;
+      background: transparent;
+    }
+    .logo-ticker-wrapper {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .logo-ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      animation: logoTicker 40s linear infinite;
+      will-change: transform;
+      flex-shrink: 0;
+    }
+    .logo-ticker-item {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4rem;
+      transition: opacity 0.3s ease;
+    }
+    .logo-ticker-item img {
+      max-height: 4rem;
+      max-width: 160px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: opacity 0.3s ease, filter 0.3s ease;
+      opacity: 0.4;
+    }
+    .logo-ticker-item:hover img,
+    .logo-ticker-link:hover img,
+    .logo-ticker-link:active img,
+    .logo-ticker-link:focus img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    @keyframes logoTicker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    @media (max-width: 768px) {
+      .logo-ticker {
+        bottom: 0;
+        padding: 2rem 0;
+      }
+      .logo-ticker-item {
+        height: 3rem;
+      }
+      .logo-ticker-item img {
+        max-height: 3rem;
+        max-width: 120px;
+      }
+      .logo-ticker-track {
+        gap: 4rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .logo-ticker {
+        bottom: 0;
+        padding: 1.5rem 0;
+      }
+      .logo-ticker-item {
+        height: 2.5rem;
+      }
+      .logo-ticker-item img {
+        max-height: 2.5rem;
+        max-width: 100px;
+      }
+      .logo-ticker-track {
+        gap: 3rem;
       }
     }
     .fade-in-section {
@@ -616,6 +703,45 @@
         display: none;
       }
     }
+    /* Critical: Hide Spline background immediately to prevent flash */
+    .spline-background {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    .spline-container {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .spline-container iframe {
+      width: 120% !important;
+      height: 100% !important;
+      position: absolute !important;
+      left: -10% !important;
+      top: 0 !important;
+      border: none !important;
+      display: block !important;
+    }
+    @media (max-width: 1024px) {
+      .spline-container iframe {
+        width: 150% !important;
+        left: -25% !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .spline-container iframe {
+        width: 180% !important;
+        left: -40% !important;
+      }
+    }
     </style>
     
     <!-- Non-critical CSS loading - async to reduce critical path -->
@@ -725,7 +851,6 @@
       "foundingDate": "2024",
       "slogan": "Crafting digital experiences that drive meaningful growth",
       "sameAs": [
-        "https://www.linkedin.com/in/kjell-de-ruiter-870227151",
         "https://www.instagram.com/virtualcreators.io/"
       ],
       "contactPoint": [{
@@ -809,14 +934,18 @@
     </script>
 </head>
 <body>
+    <!-- Spline 3D Background - Fixed across entire site -->
+    <div class="spline-background" style="visibility: hidden; opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+        <div class="spline-container" style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+            <iframe src='https://my.spline.design/untitled-BhkSACTnvZSVNrT1EXLRi9yM/' frameborder='0' width='100%' height='100%' style="width: 120%; height: 100%; position: absolute; left: -10%; top: 0; border: none; display: block;"></iframe>
+        </div>
+    </div>
+    
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDRST6BP"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <!-- Cursor Follower -->
-    <div class="cursor-follower"></div>
-
     <!-- Cookie Banner is now dynamically injected by cookie-banner.js -->
 
     <!-- Navigation -->
@@ -833,7 +962,7 @@
                     <div class="nav-links">
                         <a href="#work" class="nav-link" data-translate="work">Work</a>
                         <a href="#services" class="nav-link" data-translate="services">Services</a>
-                        <a href="#about" class="nav-link" data-translate="about">About</a>
+                        <a href="about-virtualcreators.html" class="nav-link" data-translate="about">About</a>
                         <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
                         <a href="blog/index.html" class="nav-link">Blog</a>
                     </div>
@@ -875,7 +1004,7 @@
             <div class="mobile-nav-content">
                 <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Work</a>
                 <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Services</a>
-                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
+                <a href="about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
                 <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
                 <a href="blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
                 <!-- Mobile Language Switcher -->
@@ -897,32 +1026,105 @@
 
     <!-- Hero Section -->
     <section class="hero fade-in-section" id="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="section-label" style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem;">
+                        <span class="brand-dot-small"></span>
+                        <span data-translate="heroLabel">Design & Web-Development Studio</span>
+                    </div>
                     <h1 class="hero-title">
-                        <span data-translate="heroTitle1">I craft</span><br>
-                        <span class="hero-title-italic" data-translate="heroTitle2">digital experiences</span>
+                        <span data-translate="heroTitle1">We build digital</span><br>
+                        <span class="hero-title-italic" data-translate="heroTitle2">experiences</span>
                     </h1>
                     <p class="hero-subtitle" data-translate="heroSubtitle">
-                        Thoughtful design and development for brands that want to make a meaningful impact.
+                        From concept to conversion - We craft websites that transform brands digitally.
                     </p>
                 </div>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="scrollToWork()">
-                        <span data-translate="viewMyWork">View My Work</span>
+                    <button class="btn btn-primary btn-large" onclick="scrollToWork()" data-translate="seeProjects">
+                        See Projects
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </button>
-                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="startProject">
-                        Start a Project
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation">
+                        Book Free Consultation
                     </button>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <!-- Gradient Glow Effect -->
+        <div class="hero-gradient-glow"></div>
+        <!-- Logo Ticker -->
+        <div class="logo-ticker">
+            <div class="logo-ticker-wrapper">
+                <div class="logo-ticker-track">
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                        </a>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" style="bottom: 8rem;">
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -1027,7 +1229,12 @@
                             </div>
                             <h3 class="project-title" onclick="openProjectModal(0)">Lumenix</h3>
                         </div>
-                        <p class="project-description" data-translate="lumenixDescription">A complete rebranding of their online precense through custom web-solutions</p>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Brand Identity</span>
+                            <span class="project-badge">E-commerce</span>
+                        </div>
                         <button class="project-link" onclick="openProjectModal(0)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1063,7 +1270,11 @@
                             </div>
                             <h3 class="project-title" onclick="openProjectModal(1)">TractionMovies</h3>
                         </div>
-                        <p class="project-description" data-translate="tractionMoviesDescription">Bringing custom web-solutions to their current site to elevate their online presence</p>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Mobile First</span>
+                        </div>
                         <button class="project-link" onclick="openProjectModal(1)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1099,7 +1310,12 @@
                             </div>
                             <h3 class="project-title" onclick="openProjectModal(2)">LifeSciGrowth</h3>
                         </div>
-                        <p class="project-description" data-translate="lifeSciGrowthDescription">A simplistic solution for a membership community site that offers flexibility and guidance</p>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Interactive Design</span>
+                            <span class="project-badge">Community Platform</span>
+                        </div>
                         <button class="project-link" onclick="openProjectModal(2)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1127,44 +1343,118 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about fade-in-section" id="about">
+    <!-- FAQ Section -->
+    <section class="faq fade-in-section" id="about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-header">
-                        <div class="section-badge">
-                            <div class="brand-dot-small"></div>
-                            <span class="section-label" data-translate="aboutMe">About Me</span>
-                        </div>
-                        <h2 class="section-title">
-                            <span data-translate="iBelieveIn">I believe in the power</span><br>
-                            <span class="title-italic" data-translate="thoughtfulDesign">of thoughtful design</span>
-                        </h2>
+            <div class="faq-grid">
+                <!-- Left Column: Title and Image -->
+                <div class="faq-left">
+                    <div class="faq-label">
+                        <div class="brand-dot-small"></div>
+                        <span class="section-label" data-translate="faqLabel">Frequently asked questions</span>
                     </div>
-                    <div class="about-text">
-                        <p data-translate="aboutText1">Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.</p>
-                        <p data-translate="aboutText2">I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.</p>
+                    <h2 class="faq-title">
+                        <span class="faq-title-gradient" data-translate="faqTitleGradient">Ans</span><span data-translate="faqTitleRest">wers</span>
+                    </h2>
+                    <p class="faq-description" data-translate="faqDescription">Find answers to common questions about our design process, services etc...</p>
+                    <p class="faq-cta-text" data-translate="faqCtaText">Can't find what you're looking for? Book a free consultation and we will answer any further questions you might have.</p>
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation" style="margin-top: 1rem;">
+                        Book Free Consultation
+                    </button>
+                </div>
+
+                <!-- Right Column: FAQ List -->
+                <div class="faq-right">
+                    <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ1">What services do you provide?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA1">We provide comprehensive web design and development services including custom website design, responsive development, e-commerce solutions, brand identity design, and ongoing website maintenance and support.</p>
                     </div>
                 </div>
 
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">4+</div>
-                        <div class="stat-label" data-translate="projectsCompleted">Projects Completed</div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ2">How do I start working with you?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA2">Getting started is easy! Simply book a free consultation through our website, and we'll discuss your project goals, timeline, and budget. From there, we'll create a custom proposal tailored to your needs.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label" data-translate="yearsExperience">Years Experience</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ3">What design tools do you use?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA3">We use industry-standard design tools including Figma for design and prototyping, Adobe Creative Suite for advanced graphics, and modern development frameworks like React, Next.js, and WordPress for building responsive, high-performance websites.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label" data-translate="clientSatisfaction">Client Satisfaction</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ4">How long does a project take?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA4">Project timelines vary depending on scope and complexity. A simple website typically takes 4-6 weeks, while more complex projects with custom features may take 8-12 weeks. We'll provide a detailed timeline during our initial consultation.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">9:00-17:00</div>
-                        <div class="stat-label" data-translate="supportAvailable">Support Available</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ5">Do you provide revisions?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA5">Yes! We include revision rounds in all our project packages. Typically, we offer 2-3 rounds of revisions during the design phase to ensure the final product perfectly matches your vision. Additional revisions can be arranged if needed.</p>
                     </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ6">What industries do you work with?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA6">We work with businesses across various industries including technology, healthcare, e-commerce, professional services, creative agencies, and more. Our design approach adapts to each industry's unique needs and target audience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ7">Do you offer development services?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA7">Absolutely! We provide full-stack development services including front-end development, back-end development, database design, API integration, and custom functionality. We build modern, scalable websites using the latest technologies.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ8">What is your pricing structure?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA8">Our pricing is customized based on project scope, complexity, and requirements. We offer transparent, fixed-price quotes after understanding your needs. Book a free consultation to discuss your project and receive a detailed proposal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ9">Can you redesign my existing website?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA9">Yes! We specialize in website redesigns and can transform your existing site into a modern, user-friendly experience. We'll analyze your current site, identify areas for improvement, and create a fresh design that better serves your business goals.</p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -1205,6 +1495,10 @@
                         <div class="form-group">
                             <label class="form-label" data-translate="message">Message</label>
                             <textarea name="message" class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><span data-translate="url">Website URL</span> <span style="font-weight: 300; opacity: 0.7;">(optional)</span></label>
+                            <input type="url" name="url" class="form-input" placeholder="https://yourwebsite.com" data-translate="yourUrl">
                         </div>
                         
                         <!-- Hidden fields for additional context -->
@@ -1290,9 +1584,8 @@
                     </div>
 
                     <div class="social-links">
-                        <div class="social-label" data-translate="followMe">Follow me</div>
+                        <div class="social-label" data-translate="followMe">Follow us</div>
                         <div class="social-list">
-                            <a href="https://www.linkedin.com/in/kjell-de-ruiter-870227151" class="social-link">linkedin</a>
                             <a href="https://www.instagram.com/virtualcreators.io/" class="social-link">Instagram</a>
                         </div>
                     </div>
@@ -1300,93 +1593,6 @@
             </div>
         </div>
     </section>
-
-    <!-- PDF Portfolio Section - Contact Form -->
-    <section class="pdf-portfolio-contact fade-in-section" id="pdf-portfolio-contact">
-        <div class="container">
-            <div class="pdf-portfolio-contact-content">
-                <div class="pdf-contact-header">
-                    <h3 class="pdf-contact-title" data-translate="interestedInWorking">Interested in working together?</h3>
-                    <p class="pdf-contact-description" data-translate="downloadPortfolioContact">
-                        Download my service & pricing guide to see my offerings and get a better understanding of what I can do for you.
-                    </p>
-                </div>
-                
-                <div class="pdf-contact-card">
-                    <div class="pdf-contact-preview">
-                        <div class="pdf-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14,2 14,8 20,8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10,9 9,9 8,9"/>
-                            </svg>
-                        </div>
-                        <div class="pdf-contact-info">
-                            <h4 class="pdf-contact-filename" data-translate="portfolioTitle">Service & Pricing Guide</h4>
-                            <p class="pdf-contact-meta">
-                                <span data-translate="pdfFormat">PDF</span>
-                                <span class="pdf-separator">•</span>
-                                <span data-translate="fileSize">2.4 MB</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="pdf-contact-actions">
-                        <button class="btn btn-primary" onclick="downloadPDF()" data-translate="downloadPDF">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7,10 12,15 17,10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                            Download Guide
-                        </button>
-                        <button class="btn btn-ghost" onclick="togglePDFPreview()" data-translate="previewPDF">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                            Preview
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PDF Preview Modal -->
-    <div class="pdf-preview-modal" id="pdfPreviewModal">
-        <div class="pdf-modal-content">
-            <div class="pdf-modal-header">
-                <div class="pdf-modal-title-section">
-                    <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Pricing Guide</h3>
-                    <p class="pdf-modal-subtitle">Indicative • Updated September 2025</p>
-                </div>
-                <button class="pdf-modal-close" onclick="closePDFPreview()" aria-label="Close PDF preview">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="pdf-modal-body">
-                <iframe src="assets/VIRTUAL CREATORS Service & Pricing Guide.pdf#toolbar=0&navpanes=0&scrollbar=0" 
-                        class="pdf-iframe" 
-                        title="Service & Pricing Guide Preview">
-                </iframe>
-            </div>
-            <div class="pdf-modal-footer">
-                <button class="btn btn-primary" onclick="downloadPDF(); closePDFPreview();" data-translate="downloadPDF">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7,10 12,15 17,10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    Download Guide
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top-btn" onclick="scrollToTop()">
