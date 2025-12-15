@@ -491,6 +491,7 @@ body {
   .spline-container iframe {
     width: 180%;
     left: -40%;
+    opacity: 0.7;
   }
 }
 .hero-bg {
