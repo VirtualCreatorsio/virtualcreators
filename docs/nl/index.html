@@ -344,11 +344,6 @@
       width: 100%;
       justify-content: center;
     }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
     .hero {
       min-height: 100vh;
       display: flex;
@@ -616,6 +611,45 @@
         display: none;
       }
     }
+    /* Critical: Hide Spline background immediately to prevent flash */
+    .spline-background {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    .spline-container {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .spline-container iframe {
+      width: 120% !important;
+      height: 100% !important;
+      position: absolute !important;
+      left: -10% !important;
+      top: 0 !important;
+      border: none !important;
+      display: block !important;
+    }
+    @media (max-width: 1024px) {
+      .spline-container iframe {
+        width: 150% !important;
+        left: -25% !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .spline-container iframe {
+        width: 180% !important;
+        left: -40% !important;
+      }
+    }
     </style>
     
     <!-- Non-critical CSS loading - async to reduce critical path -->
@@ -724,7 +758,6 @@
       "foundingDate": "2024",
       "slogan": "Crafting digital experiences that drive meaningful growth",
       "sameAs": [
-        "https://www.linkedin.com/in/kjell-de-ruiter-870227151",
         "https://www.instagram.com/virtualcreators.io/"
       ],
       "contactPoint": [{
@@ -808,14 +841,18 @@
     </script>
 </head>
 <body>
+    <!-- Spline 3D Background - Fixed across entire site -->
+    <div class="spline-background" style="visibility: hidden; opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+        <div class="spline-container" style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+            <iframe src='https://my.spline.design/untitled-BhkSACTnvZSVNrT1EXLRi9yM/' frameborder='0' width='100%' height='100%' style="width: 120%; height: 100%; position: absolute; left: -10%; top: 0; border: none; display: block;"></iframe>
+        </div>
+    </div>
+    
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDRST6BP"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <!-- Cursor Follower -->
-    <div class="cursor-follower"></div>
-
     <!-- Cookie Banner is now dynamically injected by cookie-banner.js -->
 
     <!-- Navigation -->
@@ -832,7 +869,7 @@
                     <div class="nav-links">
                         <a href="#work" class="nav-link" data-translate="work">Werk</a>
                         <a href="#services" class="nav-link" data-translate="services">Diensten</a>
-                        <a href="#about" class="nav-link" data-translate="about">Over</a>
+                        <a href="about-virtualcreators.html" class="nav-link" data-translate="about">Over</a>
                         <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
                         <a href="blog/index.html" class="nav-link">Blog</a>
                     </div>
@@ -874,7 +911,7 @@
             <div class="mobile-nav-content">
                 <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Werk</a>
                 <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Diensten</a>
-                <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">Over</a>
+                <a href="about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">Over</a>
                 <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
                 <a href="blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
                 <!-- Mobile Language Switcher -->
@@ -896,32 +933,105 @@
 
     <!-- Hero Section -->
     <section class="hero fade-in-section" id="hero">
-        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="section-label" style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem;">
+                        <span class="brand-dot-small"></span>
+                        <span data-translate="heroLabel">Design & Web-Development Studio</span>
+                    </div>
                     <h1 class="hero-title">
-                        <span data-translate="heroTitle1">Ik creëer</span><br>
-                        <span class="hero-title-italic" data-translate="heroTitle2">digitale ervaringen</span>
+                        <span data-translate="heroTitle1">We bouwen digitale</span><br>
+                        <span class="hero-title-italic" data-translate="heroTitle2">ervaringen</span>
                     </h1>
                     <p class="hero-subtitle" data-translate="heroSubtitle">
-                        Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.
+                        Van concept tot conversie - We creëren websites die merken digitaal transformeren.
                     </p>
                 </div>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="scrollToWork()">
-                        <span data-translate="viewMyWork">View My Work</span>
+                    <button class="btn btn-primary btn-large" onclick="scrollToWork()" data-translate="seeProjects">
+                        See Projects
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </button>
-                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="startProject">
-                        Start a Project
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation">
+                        Book Free Consultation
                     </button>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <!-- Gradient Glow Effect -->
+        <div class="hero-gradient-glow"></div>
+        <!-- Logo Ticker -->
+        <div class="logo-ticker">
+            <div class="logo-ticker-wrapper">
+                <div class="logo-ticker-track">
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                        </a>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="logo-ticker-item">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
+                            <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" style="bottom: 8rem;">
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -1026,7 +1136,12 @@
                             </div>
                             <h3 class="project-title" onclick="openProjectModal(0)">Lumenix</h3>
                         </div>
-                        <p class="project-description" data-translate="lumenixDescription">A complete rebranding of their online precense through custom web-solutions</p>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Brand Identity</span>
+                            <span class="project-badge">E-commerce</span>
+                        </div>
                         <button class="project-link" onclick="openProjectModal(0)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1098,7 +1213,12 @@
                             </div>
                             <h3 class="project-title" onclick="openProjectModal(2)">LifeSciGrowth</h3>
                         </div>
-                        <p class="project-description" data-translate="lifeSciGrowthDescription">A simplistic solution for a membership community site that offers flexibility and guidance</p>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Interactive Design</span>
+                            <span class="project-badge">Community Platform</span>
+                        </div>
                         <button class="project-link" onclick="openProjectModal(2)" data-translate="viewProject">
                             View Project
                             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1126,44 +1246,118 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about fade-in-section" id="about">
+    <!-- FAQ Section -->
+    <section class="faq fade-in-section" id="about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-header">
-                        <div class="section-badge">
-                            <div class="brand-dot-small"></div>
-                            <span class="section-label" data-translate="aboutMe">About Me</span>
-                        </div>
-                        <h2 class="section-title">
-                            <span data-translate="iBelieveIn">I believe in the power</span><br>
-                            <span class="title-italic" data-translate="thoughtfulDesign">of thoughtful design</span>
-                        </h2>
+            <div class="faq-grid">
+                <!-- Left Column: Title and Image -->
+                <div class="faq-left">
+                    <div class="faq-label">
+                        <div class="brand-dot-small"></div>
+                        <span class="section-label" data-translate="faqLabel">Veelgestelde vragen</span>
                     </div>
-                    <div class="about-text">
-                        <p data-translate="aboutText1">Founded in 2025, I am a designer and web-developer who is passionate about creating digital experiences that matter.</p>
-                        <p data-translate="aboutText2">I work with forward-thinking companies who understand that great design isn't just about how something looks, it's about how it works, how it feels, and how it connects with people.</p>
+                    <h2 class="faq-title">
+                        <span class="faq-title-gradient" data-translate="faqTitleGradient">Ant</span><span data-translate="faqTitleRest">woorden</span>
+                    </h2>
+                    <p class="faq-description" data-translate="faqDescription">Vind antwoorden op veelgestelde vragen over ons ontwerpproces, diensten etc...</p>
+                    <p class="faq-cta-text" data-translate="faqCtaText">Kunt u niet vinden wat u zoekt? Boek een gratis consultatie en wij beantwoorden alle verdere vragen die u mogelijk heeft.</p>
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation" style="margin-top: 1rem;">
+                        Boek Gratis Consultatie
+                    </button>
+                </div>
+
+                <!-- Right Column: FAQ List -->
+                <div class="faq-right">
+                    <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ1">Welke diensten bieden jullie aan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA1">Wij bieden uitgebreide webdesign en ontwikkelingsdiensten, waaronder custom website design, responsive ontwikkeling, e-commerce oplossingen, brand identity design en doorlopende website onderhoud en ondersteuning.</p>
                     </div>
                 </div>
 
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">4+</div>
-                        <div class="stat-label" data-translate="projectsCompleted">Projects Completed</div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ2">Hoe begin ik met jullie samen te werken?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA2">Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken uw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij uw behoeften.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label" data-translate="yearsExperience">Years Experience</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ3">Welke ontwerptools gebruiken jullie?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA3">Wij gebruiken industrie-standaard ontwerptools zoals Figma voor design en prototyping, Adobe Creative Suite voor geavanceerde graphics, en moderne ontwikkelframeworks zoals React, Next.js en WordPress voor het bouwen van responsive, hoogwaardige websites.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label" data-translate="clientSatisfaction">Client Satisfaction</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ4">Hoe lang duurt een project?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA4">Projecttijdlijnen variëren afhankelijk van de scope en complexiteit. Een eenvoudige website duurt meestal 4-6 weken, terwijl complexere projecten met custom functies 8-12 weken kunnen duren. We geven een gedetailleerde tijdlijn tijdens ons eerste consult.</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">9:00-17:00</div>
-                        <div class="stat-label" data-translate="supportAvailable">Support Available</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ5">Bieden jullie revisies aan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA5">Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij uw visie. Extra revisies kunnen indien nodig worden geregeld.</p>
                     </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ6">Met welke branches werken jullie?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA6">Wij werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, professionele dienstverlening, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ7">Bieden jullie ontwikkeldiensten aan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA7">Absoluut! Wij bieden full-stack ontwikkeldiensten aan, waaronder front-end ontwikkeling, back-end ontwikkeling, database design, API-integratie en custom functionaliteit. We bouwen moderne, schaalbare websites met de nieuwste technologieën.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ8">Wat is jullie prijsstructuur?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA8">Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van uw behoeften. Boek een gratis consult om uw project te bespreken en een gedetailleerde offerte te ontvangen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ9">Kunnen jullie mijn bestaande website opnieuw ontwerpen?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA9">Ja! Wij zijn gespecialiseerd in website-redesigns en kunnen uw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren uw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij uw bedrijfsdoelen.</p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -1204,6 +1398,10 @@
                         <div class="form-group">
                             <label class="form-label" data-translate="message">Message</label>
                             <textarea name="message" class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><span data-translate="url">Website URL</span> <span style="font-weight: 300; opacity: 0.7;">(optioneel)</span></label>
+                            <input type="url" name="url" class="form-input" placeholder="https://jouwwebsite.nl" data-translate="yourUrl">
                         </div>
                         
                         <!-- Hidden fields for additional context -->
@@ -1289,9 +1487,8 @@
                     </div>
 
                     <div class="social-links">
-                        <div class="social-label" data-translate="followMe">Follow me</div>
+                        <div class="social-label" data-translate="followMe">Follow us</div>
                         <div class="social-list">
-                            <a href="https://www.linkedin.com/in/kjell-de-ruiter-870227151" class="social-link">linkedin</a>
                             <a href="https://www.instagram.com/virtualcreators.io/" class="social-link">Instagram</a>
                         </div>
                     </div>
@@ -1299,93 +1496,6 @@
             </div>
         </div>
     </section>
-
-    <!-- PDF Portfolio Section - Contact Form -->
-    <section class="pdf-portfolio-contact fade-in-section" id="pdf-portfolio-contact">
-        <div class="container">
-            <div class="pdf-portfolio-contact-content">
-                <div class="pdf-contact-header">
-                    <h3 class="pdf-contact-title" data-translate="interestedInWorking">Geïnteresseerd in samenwerken?</h3>
-                    <p class="pdf-contact-description" data-translate="downloadPortfolioContact">
-                        Download mijn service & prijslijst om mijn aanbod te bekijken en meer inzicht te krijgen in wat ik voor je kan betekenen.
-                    </p>
-                </div>
-                
-                <div class="pdf-contact-card">
-                    <div class="pdf-contact-preview">
-                        <div class="pdf-contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14,2 14,8 20,8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10,9 9,9 8,9"/>
-                            </svg>
-                        </div>
-                        <div class="pdf-contact-info">
-                            <h4 class="pdf-contact-filename" data-translate="portfolioTitle">Service & Prijslijst</h4>
-                            <p class="pdf-contact-meta">
-                                <span data-translate="pdfFormat">PDF</span>
-                                <span class="pdf-separator">•</span>
-                                <span data-translate="fileSize">2.4 MB</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="pdf-contact-actions">
-                        <button class="btn btn-primary" onclick="downloadPDF()" data-translate="downloadPDF">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                                <polyline points="7,10 12,15 17,10"/>
-                                <line x1="12" y1="15" x2="12" y2="3"/>
-                            </svg>
-                            Download Prijslijst
-                        </button>
-                        <button class="btn btn-ghost" onclick="togglePDFPreview()" data-translate="previewPDF">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                            Preview
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PDF Preview Modal -->
-    <div class="pdf-preview-modal" id="pdfPreviewModal">
-        <div class="pdf-modal-content">
-            <div class="pdf-modal-header">
-                <div class="pdf-modal-title-section">
-                    <h3 class="pdf-modal-title" data-translate="portfolioPreview">Service & Prijslijst</h3>
-                    <p class="pdf-modal-subtitle">Indicatief • Bijgewerkt september 2025</p>
-                </div>
-                <button class="pdf-modal-close" onclick="closePDFPreview()" aria-label="PDF voorvertoning sluiten">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="pdf-modal-body">
-                <iframe src="../assets/VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf#toolbar=0&navpanes=0&scrollbar=0" 
-                        class="pdf-iframe" 
-                        title="Service & Prijslijst Preview">
-                </iframe>
-            </div>
-            <div class="pdf-modal-footer">
-                <button class="btn btn-primary" onclick="downloadPDF(); closePDFPreview();" data-translate="downloadPDF">
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7,10 12,15 17,10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    Download Prijslijst
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top-btn" onclick="scrollToTop()">

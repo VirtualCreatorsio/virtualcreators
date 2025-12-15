@@ -37,117 +37,6 @@ function throttle(func, limit) {
 }
 
 // PDF Portfolio Functions
-function downloadPDF() {
-  // Determine which PDF to use based on current language
-  const currentLanguage = localStorage.getItem("preferred-language") || "en"
-  const pdfFileName = currentLanguage === 'nl' 
-    ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
-    : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
-  
-  // Create a temporary link element to trigger download
-  const link = document.createElement('a')
-  link.href = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}`
-  link.download = pdfFileName
-  link.target = '_blank'
-  
-  // Append to body, click, and remove
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
-  
-}
-
-// Set correct PDF iframe source based on current locale
-function setPDFIframeSource() {
-  const iframe = document.querySelector('.pdf-iframe')
-  if (iframe) {
-    // Add mobile-specific parameters for better scaling using cached width
-    const isMobile = cachedWindowWidth <= 768
-    const mobileParams = isMobile ? '&view=FitH&zoom=100' : ''
-    
-    // Determine which PDF to use based on current language
-    const currentLanguage = localStorage.getItem("preferred-language") || "en"
-    const pdfFileName = currentLanguage === 'nl' 
-      ? 'VIRTUAL CREATORS Service & Pricing Guide Dutch.pdf'
-      : 'VIRTUAL CREATORS Service & Pricing Guide.pdf'
-    
-    const pdfPath = `${assetPathPrefix}assets/${encodeURIComponent(pdfFileName)}#toolbar=0&navpanes=0&scrollbar=0${mobileParams}`
-    
-    // Ensure iframe is visible and properly sized
-    iframe.style.display = 'block'
-    iframe.style.visibility = 'visible'
-    iframe.style.opacity = '1'
-    
-    iframe.src = pdfPath
-    
-    // Add error handling for iframe loading
-    iframe.onload = function() {
-      console.log('PDF iframe loaded successfully:', pdfPath)
-    }
-    
-    iframe.onerror = function() {
-      console.error('PDF iframe failed to load:', pdfPath)
-    }
-    
-    console.log('Setting PDF iframe source to:', pdfPath)
-  } else {
-    console.error('PDF iframe not found')
-  }
-}
-
-function togglePDFPreview() {
-  const modal = document.getElementById('pdfPreviewModal')
-  if (modal) {
-    modal.classList.toggle('active')
-    
-    // Prevent body scroll when modal is open
-    if (modal.classList.contains('active')) {
-      document.body.style.overflow = 'hidden'
-      // Set correct PDF iframe source when opening modal
-      setPDFIframeSource()
-      
-      // Force iframe reload to ensure it displays properly
-      const iframe = modal.querySelector('.pdf-iframe')
-      if (iframe) {
-        setTimeout(() => {
-          const currentSrc = iframe.src
-          iframe.src = ''
-          setTimeout(() => {
-            iframe.src = currentSrc
-          }, 10)
-        }, 100)
-      }
-    } else {
-      document.body.style.overflow = ''
-    }
-  }
-}
-
-function closePDFPreview() {
-  const modal = document.getElementById('pdfPreviewModal')
-  if (modal) {
-    modal.classList.remove('active')
-    document.body.style.overflow = ''
-  }
-}
-
-// Close PDF modal when clicking outside
-document.addEventListener('click', function(event) {
-  const modal = document.getElementById('pdfPreviewModal')
-  if (modal && modal.classList.contains('active')) {
-    if (event.target === modal) {
-      closePDFPreview()
-    }
-  }
-})
-
-// Close PDF modal with Escape key
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    closePDFPreview()
-  }
-})
-
 // Project Data with enhanced video debugging
 const projects = [
   {
@@ -242,6 +131,7 @@ function initializeApp() {
   setupProjectTileVideos()
   setupProjectCardModalLinks()
   setupScrollSpy()
+  setupHeroGradientGlow()
 
   // Initialize Calendly with better error handling
   initializeCalendly()
@@ -257,8 +147,8 @@ function initializeApp() {
   setStackedCasesMinHeight()
   window.addEventListener('resize', setStackedCasesMinHeight)
   
-  // Set correct PDF iframe source on page load
-  setPDFIframeSource()
+  // Initialize Spline background visibility
+  initializeSplineBackground()
 }
 
 
@@ -403,62 +293,17 @@ function setupEventListeners() {
 
 }
 
-// Cursor Follower
+// Cursor Follower - Disabled to allow Spline's cursor follower to work
 function setupCursorFollower() {
   const cursor = document.querySelector(".cursor-follower")
   if (!cursor) return
 
-  document.addEventListener("mousemove", (e) => {
-    mousePosition.x = e.clientX
-    mousePosition.y = e.clientY
-
-    cursor.style.left = e.clientX + "px"
-    cursor.style.top = e.clientY + "px"
-  })
-
-  // Scale cursor on scroll (throttled for performance)
-  window.addEventListener("scroll", throttle(() => {
-    const scrollY = window.scrollY
-    const scale = scrollY > 100 ? 0.5 : 1
-    cursor.style.transform = `translate(-50%, -50%) scale(${scale})`
-  }, 16))
+  // Hide the custom cursor follower completely to allow Spline's cursor follower to work
+  cursor.style.display = "none"
 }
 
 // Mouse Effect for Hero Background and Blog Headers
 function setupMouseEffect() {
-  // Hero section mouse effect
-  const heroSection = document.querySelector(".hero")
-  const heroBg = document.querySelector(".hero-bg")
-
-  if (heroSection && heroBg) {
-    // Cache rect to prevent forced reflows
-    let heroRect = null
-    let lastRectUpdate = 0
-    
-    const updateHeroRect = () => {
-      const now = Date.now()
-      if (now - lastRectUpdate < 100) return // Update max every 100ms
-      lastRectUpdate = now
-      heroRect = heroSection.getBoundingClientRect()
-    }
-    
-    // Initial rect
-    requestAnimationFrame(updateHeroRect)
-    
-    heroSection.addEventListener("mousemove", (e) => {
-      if (!heroRect) updateHeroRect()
-      
-      const x = ((e.clientX - heroRect.left) / heroRect.width) * 100
-      const y = ((e.clientY - heroRect.top) / heroRect.height) * 100
-
-      heroBg.style.setProperty("--mouse-x", `${x}%`)
-      heroBg.style.setProperty("--mouse-y", `${y}%`)
-    })
-    
-    // Update rect on resize
-    window.addEventListener("resize", throttle(updateHeroRect, 250))
-  }
-
   // Blog header mouse effect
   const blogHeader = document.querySelector(".blog-header")
   const blogHeaderBg = document.querySelector(".blog-header-bg")
@@ -2041,6 +1886,76 @@ window.projects = projects
 window.currentProject = currentProject
 window.generateProjectModalContent = generateProjectModalContent
 
+// Hero Gradient Glow Fade Effect
+function setupHeroGradientGlow() {
+  const heroSection = document.querySelector('.hero')
+  const gradientGlow = document.querySelector('.hero-gradient-glow')
+  
+  if (!heroSection || !gradientGlow) {
+    return
+  }
+  
+  function updateGradientGlow() {
+    const heroRect = heroSection.getBoundingClientRect()
+    const windowHeight = window.innerHeight
+    const scrollY = window.scrollY
+    
+    // Start fading immediately when user starts scrolling down
+    // Fully fade when user has scrolled past a certain point (e.g., 200px)
+    // This ensures the glow disappears before the next section appears
+    const fadeStartPoint = 0 // Start fading immediately
+    const fadeEndPoint = 300 // Fully faded after scrolling 300px
+    
+    let opacity = 1
+    
+    if (scrollY > fadeStartPoint) {
+      // Calculate fade progress (0 = fully visible, 1 = fully faded)
+      const fadeProgress = Math.min(1, (scrollY - fadeStartPoint) / (fadeEndPoint - fadeStartPoint))
+      opacity = 1 - fadeProgress
+    }
+    
+    // Ensure opacity is between 0 and 1
+    opacity = Math.max(0, Math.min(1, opacity))
+    
+    gradientGlow.style.opacity = opacity
+  }
+  
+  // Update on scroll with throttling
+  let isScrolling = false
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        updateGradientGlow()
+        isScrolling = false
+      })
+      isScrolling = true
+    }
+  }, { passive: true })
+  
+  // Initial update
+  updateGradientGlow()
+}
+
+// FAQ Toggle Function
+function toggleFAQ(button) {
+  const faqItem = button.closest('.faq-item')
+  const isActive = faqItem.classList.contains('active')
+  
+  // Close all other FAQ items
+  document.querySelectorAll('.faq-item').forEach(item => {
+    if (item !== faqItem) {
+      item.classList.remove('active')
+    }
+  })
+  
+  // Toggle current item
+  if (isActive) {
+    faqItem.classList.remove('active')
+  } else {
+    faqItem.classList.add('active')
+  }
+}
+
 // Make functions globally available - CRITICAL for HTML onclick handlers
 window.openCalendlyPopup = openCalendlyPopup
 window.toggleMobileMenu = toggleMobileMenu
@@ -2054,4 +1969,33 @@ window.toggleVideoPlayback = toggleVideoPlayback
 window.toggleFullscreen = toggleFullscreen
 window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
+window.toggleFAQ = toggleFAQ
+
+// Initialize Spline background visibility to prevent flash
+function initializeSplineBackground() {
+  const splineBackground = document.querySelector('.spline-background')
+  if (!splineBackground) return
+  
+  // Function to show the Spline background
+  function showSpline() {
+    // Remove inline styles that might be blocking
+    splineBackground.style.visibility = ''
+    splineBackground.style.opacity = ''
+    // Add loaded class to trigger CSS transition
+    splineBackground.classList.add('loaded')
+  }
+  
+  // Show after a delay to ensure CSS is loaded and page is stable
+  // Longer delay helps prevent flash during language switches
+  setTimeout(showSpline, 500)
+  
+  // Fallback: also show on window load in case the first attempt didn't work
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (!splineBackground.classList.contains('loaded')) {
+        showSpline()
+      }
+    }, 300)
+  }, { once: true })
+}
 

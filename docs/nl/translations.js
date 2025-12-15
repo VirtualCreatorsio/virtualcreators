@@ -4,7 +4,7 @@ const translations = {
     // SEO Meta Content
     metaTitle: "VirtualCreators | Custom Web Development | Web Design & eCommerce Solutions",
     metaDescription:
-      "I craft digital experiences. Thoughtful design and development for brands that want to make a meaningful impact.",
+      "We craft digital experiences. From concept to conversion - We craft websites that transform brands digitally.",
 
     // Legal Pages SEO
     privacyMetaTitle: "Privacy & Cookie Policy - VirtualCreators",
@@ -24,18 +24,20 @@ const translations = {
     backToHome: "← Back to Home",
 
     // Hero Section
-    heroTitle1: "I craft",
-    heroTitle2: "digital experiences",
-    heroSubtitle: "Thoughtful design and development for brands that want to make a meaningful impact.",
+    heroLabel: "Design & Web-Development Studio",
+    heroTitle1: "We build digital",
+    heroTitle2: "experiences",
+    heroSubtitle: "From concept to conversion - We craft websites that transform brands digitally.",
     viewMyWork: "View My Work",
+    seeProjects: "See Projects",
     startProject: "Book Free Call",
 
     // Services Section
-    whatIDo: "What I Do",
+    whatIDo: "What We Do",
     servicesTitle1: "Services that drive",
     servicesTitle2: "meaningful growth",
     servicesDescription:
-      "I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.",
+      "Delivering brand-focused design and web development solutions that elevate visibility and drive measurable results.",
 
     // Service Items
     digitalStrategy: "Digital Strategy",
@@ -99,7 +101,7 @@ const translations = {
     clientReview: "Client Review",
 
     // About Section
-    aboutMe: "About Me",
+    aboutMe: "About Us",
     iBelieveIn: "I believe in the power",
     thoughtfulDesign: "of thoughtful design",
     aboutText1:
@@ -535,10 +537,12 @@ const translations = {
     backToHome: "← Terug naar Home",
 
     // Hero Section
-    heroTitle1: "Ik creëer",
-    heroTitle2: "digitale ervaringen",
-    heroSubtitle: "Doordacht ontwerp en ontwikkeling voor merken die een betekenisvolle impact willen maken.",
+    heroLabel: "Design & Web-Development Studio",
+    heroTitle1: "We bouwen digitale",
+    heroTitle2: "ervaringen",
+    heroSubtitle: "Van concept tot conversie - We creëren websites die merken digitaal transformeren.",
     viewMyWork: "Bekijk Mijn Werk",
+    seeProjects: "Bekijk Projecten",
     startProject: "Gratis Adviesgesprek",
 
     // Services Section
@@ -612,12 +616,37 @@ const translations = {
 
     // About Section
     aboutMe: "Over Mij",
-    iBelieveIn: "Ik geloof in de kracht",
+    iBelieveIn: "Wij geloven in de kracht",
     thoughtfulDesign: "van doordacht ontwerp",
     aboutText1:
-      "Opgericht in 2025, ik ben een ontwerper en webontwikkelaar die gepassioneerd is over het creëren van digitale ervaringen die ertoe doen.",
+      "Opgericht in 2025, zijn wij een team van ontwerpers en web-ontwikkelaars die gepassioneerd zijn over het creëren van digitale ervaringen die ertoe doen.",
     aboutText2:
-      "Ik werk samen met vooruitdenkende bedrijven die begrijpen dat geweldig ontwerp niet alleen gaat over hoe iets eruitziet, maar over hoe het werkt, hoe het voelt en hoe het verbinding maakt met mensen.",
+      "Wij werken met vooruitstrevende bedrijven die begrijpen dat geweldig ontwerp niet alleen gaat over hoe iets eruitziet, het gaat over hoe het werkt, hoe het voelt en hoe het verbinding maakt met mensen.",
+
+    // FAQ Section
+    faqLabel: "Veelgestelde vragen",
+    faqTitleGradient: "Ant",
+    faqTitleRest: "woorden",
+    faqDescription: "Vind antwoorden op veelgestelde vragen over ons ontwerpproces, diensten en meer.",
+    faqCtaText: "Kunt u niet vinden wat u zoekt? Boek een gratis consultatie en wij beantwoorden alle verdere vragen die u mogelijk heeft.",
+    faqQ1: "Welke diensten bieden jullie aan?",
+    faqA1: "Wij bieden uitgebreide webdesign en ontwikkelingsdiensten, waaronder custom website design, responsive ontwikkeling, e-commerce oplossingen, brand identity design en doorlopende website onderhoud en ondersteuning.",
+    faqQ2: "Hoe begin ik met jullie samen te werken?",
+    faqA2: "Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken uw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij uw behoeften.",
+    faqQ3: "Welke ontwerptools gebruiken jullie?",
+    faqA3: "Wij gebruiken industrie-standaard ontwerptools zoals Figma voor design en prototyping, Adobe Creative Suite voor geavanceerde graphics, en moderne ontwikkelframeworks zoals React, Next.js en WordPress voor het bouwen van responsive, hoogwaardige websites.",
+    faqQ4: "Hoe lang duurt een project?",
+    faqA4: "Projecttijdlijnen variëren afhankelijk van de scope en complexiteit. Een eenvoudige website duurt meestal 4-6 weken, terwijl complexere projecten met custom functies 8-12 weken kunnen duren. We geven een gedetailleerde tijdlijn tijdens ons eerste consult.",
+    faqQ5: "Bieden jullie revisies aan?",
+    faqA5: "Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij uw visie. Extra revisies kunnen indien nodig worden geregeld.",
+    faqQ6: "Met welke branches werken jullie?",
+    faqA6: "Wij werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, professionele dienstverlening, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.",
+    faqQ7: "Bieden jullie ontwikkeldiensten aan?",
+    faqA7: "Absoluut! Wij bieden full-stack ontwikkeldiensten aan, waaronder front-end ontwikkeling, back-end ontwikkeling, database design, API-integratie en custom functionaliteit. We bouwen moderne, schaalbare websites met de nieuwste technologieën.",
+    faqQ8: "Wat is jullie prijsstructuur?",
+    faqA8: "Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van uw behoeften. Boek een gratis consult om uw project te bespreken en een gedetailleerde offerte te ontvangen.",
+    faqQ9: "Kunnen jullie mijn bestaande website opnieuw ontwerpen?",
+    faqA9: "Ja! Wij zijn gespecialiseerd in website-redesigns en kunnen uw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren uw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij uw bedrijfsdoelen.",
 
     // Stats
     projectsCompleted: "Projecten Voltooid",
@@ -1276,8 +1305,19 @@ function switchLanguage(lang) {
   }
   
   console.log("Navigating to:", newUrl)
-  // Navigate to the new URL
-  window.location.href = newUrl
+  
+  // Hide Spline immediately before navigation to prevent flash
+  const splineBackground = document.querySelector('.spline-background')
+  if (splineBackground) {
+    splineBackground.style.visibility = 'hidden'
+    splineBackground.style.opacity = '0'
+    splineBackground.classList.remove('loaded')
+  }
+  
+  // Small delay to ensure styles are applied before navigation
+  setTimeout(() => {
+    window.location.href = newUrl
+  }, 50)
 }
 
 // Toggle language dropdown
