@@ -2038,7 +2038,7 @@ html.modal-open {
 }
 @media (max-width: 768px) {
   .project-video-container {
-    height: 16rem;
+    height: 20rem;
     margin-bottom: 1.5rem;
   }
   .project-video {
@@ -2065,7 +2065,7 @@ html.modal-open {
 }
 @media (max-width: 480px) {
   .project-video-container {
-    height: 12.5rem;
+    height: 20rem;
     margin-bottom: 1rem;
   }
   .project-video {
