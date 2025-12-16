@@ -2640,7 +2640,7 @@ html.modal-open {
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  height: 24rem;
+  height: 32rem;
   background-color: #1f1f1f;
 }
 .project-video {
@@ -2695,7 +2695,7 @@ html.modal-open {
 }
 @media (max-width: 768px) {
   .project-video-container {
-    height: 16rem;
+    height: 20rem;
     margin-bottom: 1.5rem;
     border-radius: 0;
   }
@@ -2723,7 +2723,7 @@ html.modal-open {
 }
 @media (max-width: 480px) {
   .project-video-container {
-    height: 12.5rem;
+    height: 20rem;
     margin-bottom: 1rem;
   }
   .project-video {
