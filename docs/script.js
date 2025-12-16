@@ -153,6 +153,9 @@ function initializeApp() {
   
   // Initialize Spline background visibility
   initializeSplineBackground()
+  
+  // Initialize navigation link scramble effect
+  setupNavLinkScramble()
 }
 
 
@@ -2074,6 +2077,107 @@ function initializeSplineBackground() {
       }
     }, 300)
   }, { once: true })
+}
+
+// Navigation Link Scramble Effect
+function setupNavLinkScramble() {
+  const navLinks = document.querySelectorAll('.nav-link')
+  const CYCLES_PER_LETTER = 2
+  const SHUFFLE_TIME = 50
+  const CHARS = "!@#$%^&*():{};|,.<>/?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  
+  // Function to update original text for a link
+  const updateLinkText = (link) => {
+    const currentText = link.textContent.trim()
+    if (currentText && currentText.length > 0) {
+      link.dataset.originalText = currentText
+    }
+  }
+  
+  navLinks.forEach(link => {
+    let intervalRef = null
+    
+    // Initialize original text
+    updateLinkText(link)
+    
+    // Update original text when translations change
+    const observer = new MutationObserver(() => {
+      // Only update if not currently scrambling
+      if (!intervalRef) {
+        updateLinkText(link)
+      }
+    })
+    observer.observe(link, { childList: true, characterData: true, subtree: true })
+    
+    const scramble = () => {
+      // Stop any existing scramble
+      if (intervalRef) {
+        clearInterval(intervalRef)
+        intervalRef = null
+      }
+      
+      // Update original text before scrambling
+      updateLinkText(link)
+      
+      let pos = 0
+      const targetText = link.dataset.originalText || link.textContent.trim()
+      
+      if (!targetText || targetText.length === 0) return
+      
+      intervalRef = setInterval(() => {
+        const scrambled = targetText.split('')
+          .map((char, index) => {
+            // Skip spaces
+            if (char === ' ') return ' '
+            
+            // If we've passed this letter position, show the real char
+            if (pos / CYCLES_PER_LETTER > index) {
+              return char
+            }
+            
+            // Otherwise show random char
+            const randomCharIndex = Math.floor(Math.random() * CHARS.length)
+            return CHARS[randomCharIndex]
+          })
+          .join('')
+        
+        link.textContent = scrambled
+        pos++
+        
+        if (pos >= targetText.length * CYCLES_PER_LETTER) {
+          stopScramble()
+        }
+      }, SHUFFLE_TIME)
+    }
+    
+    const stopScramble = () => {
+      if (intervalRef) {
+        clearInterval(intervalRef)
+        intervalRef = null
+      }
+      const targetText = link.dataset.originalText || link.textContent.trim()
+      if (targetText) {
+        link.textContent = targetText
+      }
+    }
+    
+    link.addEventListener('mouseenter', scramble)
+    link.addEventListener('mouseleave', stopScramble)
+  })
+  
+  // Re-initialize after translations update
+  if (typeof window.updateTranslations === 'function') {
+    const originalUpdateTranslations = window.updateTranslations
+    window.updateTranslations = function() {
+      originalUpdateTranslations()
+      // Re-initialize scramble effect after translations update
+      setTimeout(() => {
+        navLinks.forEach(link => {
+          updateLinkText(link)
+        })
+      }, 100)
+    }
+  }
 }
 
 // Make functions globally available - CRITICAL for HTML onclick handlers
