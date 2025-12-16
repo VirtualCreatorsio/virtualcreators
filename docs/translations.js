@@ -334,6 +334,9 @@ const translations = {
     startYourProject: "Book Free Call",
     projectOverview: "Project Overview",
     servicesProvided: "Services Provided",
+    deliverables: "Deliverables",
+    pageScroll: "Page Scroll",
+    projectGallery: "Project Gallery",
 
     // Cookie Banner
     cookieBannerTitle: "We use cookies to enhance your experience",
@@ -850,6 +853,7 @@ const translations = {
     startYourProject: "Boek Gratis Gesprek",
     projectOverview: "Project Overzicht",
     servicesProvided: "Geleverde Diensten",
+    deliverables: "Opgeleverde Items",
     resultsImpact: "Resultaten & Impact",
 
     // Cookie Banner
