@@ -2256,9 +2256,9 @@ html.modal-open {
 .inline-scroll-video .scroll-video {
   width: 100%;
   height: auto;
-  min-height: 20rem;
-  max-height: 40rem;
-  object-fit: cover;
+  min-height: 18rem;
+  max-height: 20rem;
+  object-fit: fill;
   display: block;
   border-radius: 0.75rem;
 }
