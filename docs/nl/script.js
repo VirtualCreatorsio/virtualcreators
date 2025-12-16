@@ -46,6 +46,13 @@ const projects = [
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Mobile video (using same file temporarily)
+    scrollVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/lumenix-project.webp`, // Background image for scroll video
+    images: [
+      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Homepage" },
+      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Product Page" },
+      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Checkout" },
+    ],
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
     services: [
@@ -69,6 +76,11 @@ const projects = [
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
+    scrollVideo: null, // No scroll video for this project
+    images: [
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "TractionMovies Homepage" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "TractionMovies Portfolio" },
+    ],
     description: "tractionMoviesDescription",
     fullDescription: "tractionMoviesFullDescription",
     services: [
@@ -92,6 +104,12 @@ const projects = [
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Mobile video
+    scrollVideo: null, // No scroll video for this project
+    images: [
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Homepage" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Community" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Courses" },
+    ],
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
@@ -1100,8 +1118,8 @@ function scrollModalToTop() {
 function generateProjectModalContent(project) {
   const servicesHTML = project.services
     .map(
-      (service) => `
-        <div class="service-badge">
+      (service, index) => `
+        <div class="service-badge ${index === 0 ? 'active' : ''}" data-service-index="${index}" onclick="toggleServiceBadge(${index})">
             <div class="service-badge-icon">
                 ${getIconSVG(service.icon)}
             </div>
@@ -1145,6 +1163,7 @@ function generateProjectModalContent(project) {
   }
 
   return `
+        <!-- Hero Video Section -->
         <div class="project-video-container">
             <video 
                 id="modalVideo" 
@@ -1203,24 +1222,81 @@ function generateProjectModalContent(project) {
             }
         </div>
         
-        <div class="project-overview">
-            <h4>${window.t("projectOverview")}</h4>
-            <div class="project-description-content">${window.t(project.fullDescription).replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>')}</div>
-        </div>
-        
-        <div class="services-provided">
-            <h4>${window.t("servicesProvided")}</h4>
-            <div class="services-grid-modal">
+        <!-- Deliverables Section -->
+        <div class="modal-deliverables">
+            <h3 class="modal-section-title">${window.t("deliverables") || "Deliverables"}</h3>
+            <div class="deliverables-grid">
                 ${servicesHTML}
             </div>
         </div>
         
-        <div class="results-section">
-            <h4>${window.t("resultsImpact")}</h4>
+        <!-- Project Overview / The Solution -->
+        <div class="modal-solution">
+            <div class="solution-content">
+                <div class="project-description-content">
+                    ${(() => {
+                        // Split the description into paragraphs
+                        const descriptionText = window.t(project.fullDescription);
+                        const paragraphs = descriptionText.split(/\n\n+/).filter(p => p.trim());
+                        
+                        // If we have paragraphs and a scroll video, insert video after first paragraph
+                        if (paragraphs.length > 0 && project.scrollVideo) {
+                            const firstParagraph = `<p>${paragraphs[0].trim()}</p>`;
+                            const remainingParagraphs = paragraphs.slice(1).map(p => `<p>${p.trim()}</p>`).join('');
+                            
+                            const backgroundImage = project.scrollVideoBackground ? `style="background-image: url('${project.scrollVideoBackground}');"` : '';
+                            return `
+                                ${firstParagraph}
+                                <div class="inline-scroll-video" ${backgroundImage}>
+                                    <div class="scroll-video-wrapper">
+                                        <div class="scroll-video-container">
+                                            <video 
+                                                class="scroll-video" 
+                                                autoplay 
+                                                muted 
+                                                loop 
+                                                playsinline
+                                                ${isMobileDevice ? "controls" : ""}
+                                            >
+                                                <source src="${project.scrollVideo}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                ${remainingParagraphs}
+                            `;
+                        } else {
+                            // No scroll video or no paragraphs, just render normally
+                            return descriptionText.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>');
+                        }
+                    })()}
+                </div>
+            </div>
+        </div>
+        
+        ${project.images && project.images.length > 0 ? `
+        <!-- Image Gallery Section -->
+        <div class="modal-gallery">
+            <h3 class="modal-section-title">${window.t("projectGallery") || "Project Gallery"}</h3>
+            <div class="gallery-grid">
+                ${project.images.map((img, index) => `
+                    <div class="gallery-item ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}">
+                        <img src="${img.src}" alt="${img.alt || project.title + ' Screenshot ' + (index + 1)}" loading="lazy">
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        ` : ''}
+        
+        <!-- Results & Impact Section -->
+        <div class="modal-results">
+            <h3 class="modal-section-title">${window.t("resultsImpact")}</h3>
             <div class="results-grid">
                 ${resultsHTML}
             </div>
         </div>
+        
         ${reviewHTML}
     `
 }
@@ -1656,6 +1732,27 @@ function getIconSVG(iconName) {
   return icons[iconName] || icons["code"]
 }
 
+// Toggle service badge (accordion behavior for all screen sizes)
+function toggleServiceBadge(index) {
+  const badges = document.querySelectorAll('.service-badge');
+  const clickedBadge = document.querySelector(`.service-badge[data-service-index="${index}"]`);
+  
+  if (!clickedBadge) return;
+  
+  // If clicking the same badge, toggle it
+  if (clickedBadge.classList.contains('active')) {
+    clickedBadge.classList.remove('active');
+  } else {
+    // Remove active from all badges
+    badges.forEach(badge => badge.classList.remove('active'));
+    // Add active to clicked badge
+    clickedBadge.classList.add('active');
+  }
+}
+
+// Make function globally available
+window.toggleServiceBadge = toggleServiceBadge;
+
 // Helper function to get the company website link for each project
 function getCompanyLink(project) {
   let url = "#";
@@ -1738,7 +1835,20 @@ function setupProjectCardModalLinks() {
   if (!projectList) return;
   const items = Array.from(projectList.querySelectorAll('.project-item'));
   items.forEach((item, index) => {
-    // Project Title
+    // Make entire project card clickable
+    item.addEventListener('click', (e) => {
+      // Only open modal if click is not on a button or link that has its own action
+      const clickedElement = e.target;
+      const isButton = clickedElement.tagName === 'BUTTON' || clickedElement.closest('button');
+      const isLink = clickedElement.tagName === 'A' || clickedElement.closest('a');
+      
+      // If clicking on a button or link, let it handle its own click
+      if (!isButton && !isLink) {
+        openProjectModal(index);
+      }
+    });
+    
+    // Project Title - keep for backwards compatibility
     const title = item.querySelector('.project-title');
     if (title) {
       title.style.cursor = 'pointer';
@@ -1747,7 +1857,7 @@ function setupProjectCardModalLinks() {
         openProjectModal(index);
       });
     }
-    // Project Image
+    // Project Image - keep for backwards compatibility
     const image = item.querySelector('.project-image');
     if (image) {
       image.addEventListener('click', (e) => {
@@ -1755,7 +1865,7 @@ function setupProjectCardModalLinks() {
         openProjectModal(index);
       });
     }
-    // View Project Button
+    // View Project Button - keep for backwards compatibility
     const btn = item.querySelector('.project-link');
     if (btn) {
       btn.addEventListener('click', (e) => {

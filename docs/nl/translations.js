@@ -850,6 +850,9 @@ const translations = {
     startYourProject: "Boek Gratis Gesprek",
     projectOverview: "Project Overzicht",
     servicesProvided: "Geleverde Diensten",
+    deliverables: "Opgeleverde Items",
+    pageScroll: "Pagina Scroll",
+    projectGallery: "Project Galerij",
     resultsImpact: "Resultaten & Impact",
 
     // Cookie Banner
