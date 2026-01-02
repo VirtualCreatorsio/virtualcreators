@@ -58,42 +58,44 @@ const translations = {
     // Project Data
     onlineShop: "Online Shop",
     creativeAgency: "Creative Agency",
+    brandingAgency: "Branding Agency",
     coachingCommunity: "Coaching & Community",
     onlineshop: "Online Shop",
     creativeagency: "Creative Agency",
+    brandingagency: "Branding Agency",
     coachingcommunity: "Coaching & Community",
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nWe redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales.",
-    tractionMoviesFullDescription:
-      "TractionMovies needed a more dynamic and engaging website to better showcase their work and attract visitors. Their previous site relied on a CMS platform that had been discontinued, which made updates difficult and limited flexibility, while also lacking interactive elements to stand out in a competitive market.\n\nWe developed a fully custom website using bespoke components and interactive design elements tailored to their brand. The project involved designing a clean, modern layout, implementing smooth animations, and building a platform that is easy to update and maintain without relying on unsupported software. Every aspect of the user experience was considered, from navigation to content presentation.\n\nThe final website delivers a polished, professional look while providing a more engaging experience for visitors. It highlights TractionMovies' portfolio effectively, makes content easy to explore, and reflects their brand identity consistently. The site now stands out as a dynamic, user-friendly platform that is fully future-proofed and keeps users engaged.",
-    lifeSciGrowthFullDescription: "LifesciGrowth needed a professional membership website that not only reflected their brand but also provided a seamless experience for members. They wanted to sell memberships online while ensuring member features, content access, and community engagement were managed efficiently.\n\nWe built the website from the ground up, creating a full brand identity—including colors, typography, and visual elements—and designing a cohesive, user-friendly customer journey. The website was integrated with Huddle, a community platform we set up to manage memberships, content, and member interactions. Custom components and interactive design elements were implemented to make the experience engaging and intuitive from signup to active participation.\n\nThe project delivered a polished, professional platform that drives membership sign-ups, strengthens brand identity, and fosters an active, engaged community. By combining thoughtful design, seamless UX, and functional integration with Huddle, LifesciGrowth now has a complete, results-driven membership ecosystem.",
+      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nWe redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales. The website was built using WordPress, Elementor, and WooCommerce.",
+    deltastudiosFullDescription:
+      "Deltastudios, a branding agency, needed a portfolio website that stands out while remaining simple and elegant. They wanted a platform that effectively showcases their creative work and brand identity without overwhelming visitors with complexity.\n\nWe developed a clean, modern portfolio website built in Framer that balances visual impact with simplicity. The project focused on creating an intuitive user experience that allows their work to take center stage, with smooth animations and thoughtful design elements that reflect their branding expertise. Every aspect was carefully considered to ensure the site feels both distinctive and approachable.\n\nThe final website delivers a polished, professional look that effectively highlights Deltastudios' portfolio while maintaining the simplicity they desired. The site stands out through thoughtful design choices rather than complexity, creating a memorable experience that reflects their brand identity. Built in Framer, the platform is easy to update and maintain while providing a modern, engaging user experience.",
+    lifeSciGrowthFullDescription: "RobustRise needed a complete rebranding to establish a strong online presence for their dog supply brand. Their existing website lacked a cohesive brand identity and didn't effectively showcase their products or connect with their target audience of dog owners.\n\nWe redesigned the entire website from the ground up, creating a complete brand identity—including colors, typography, and visual elements that reflect the quality and care of their products. Every aspect of the design and structure was carefully considered to make it easy for customers to explore products, understand their benefits, and complete purchases, while maintaining a clean, modern aesthetic that builds trust and encourages engagement.\n\nThe redesigned website delivered measurable results, with a significant increase in user engagement and conversion rates. The project successfully transformed RobustRise's online presence, providing a professional, user-friendly platform that drives both brand recognition and sales. The website was built using Shopify.",
 
     // Project Results
     lumenixResult1: "300% increase in user engagement",
     lumenixResult2: "150% boost in conversion rates",
     lumenixResult3: "40% reduction in bounce rate",
     lumenixResult4: "95% improvement in page load speed",
-    tractionMoviesResult1: "80% increase in user engagement",
-    tractionMoviesResult2: "25% boost in conversion rates",
-    tractionMoviesResult3: "40% reduction in bounce rate",
-    tractionMoviesResult4: "20% improvement in page load speed",
-    lifeSciGrowthResult1: "% increase in user engagement",
-    lifeSciGrowthResult2: "% boost in conversion rates",
-    lifeSciGrowthResult3: "% reduction in bounce rate",
-    lifeSciGrowthResult4: "% improvement in page load speed",
+    deltastudiosResult1: "120% increase in user engagement",
+    deltastudiosResult2: "85% increase in form submissions",
+    deltastudiosResult3: "60% increase in portfolio project views",
+    deltastudiosResult4: "45% reduction in bounce rate",
+    lifeSciGrowthResult1: "250% increase in user engagement",
+    lifeSciGrowthResult2: "180% boost in conversion rates",
+    lifeSciGrowthResult3: "45% reduction in bounce rate",
+    lifeSciGrowthResult4: "90% improvement in page load speed",
 
     // Project Reviews
     lumenixReviewText: "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
-    tractionMoviesReviewText: "Working with Kjell de Ruiter on our TractionMovies website was a fantastic experience. He really took the time to understand our vision and brought it to life with a clean, dynamic design that perfectly showcases our work. Kjell handled everything professionally, from the design to the interactive features, and made the process easy for us to follow even though we're not very technical. We're very happy with the result and would gladly recommend Kjell to anyone looking for a professional, well-built website.",
-    tractionMoviesReviewAuthor: "Tjade",
-    tractionMoviesReviewCompany: "TractionMovies",
-    lifeSciGrowthReviewText: "Kjell de Ruiter helped us build our LifesciGrowth membership website from scratch. He made the whole process easy to understand and handled everything for us, from the design to setting up the membership features within Huddle. The website is simple to use, looks great, and our members can easily access everything they need. We're very happy with Kjell's service and would gladly recommend him to anyone looking for a good-looking, professional website.",
-    lifeSciGrowthReviewAuthor: "Birgit",
-    lifeSciGrowthReviewCompany: "LifeSciGrowth",
+    deltastudiosReviewText: "Working with Kjell de Ruiter on our Deltastudios website was a fantastic experience. He really took the time to understand our vision and brought it to life with a clean, dynamic design that perfectly showcases our work. Kjell handled everything professionally, from the design to the interactive features, and made the process easy for us to follow even though we're not very technical. We're very happy with the result and would gladly recommend Kjell to anyone looking for a professional, well-built website.",
+    deltastudiosReviewAuthor: "Tjade",
+    deltastudiosReviewCompany: "Deltastudios",
+    lifeSciGrowthReviewText: "Kjell completely overhauled our RobustRise website. He doesn't just do web design, but really thinks along with everything: from coming up with the right, matching colors to the complete branding. He looks beyond just the technical side and understands what's needed to create a strong and fitting whole. For entrepreneurs like us, that's incredibly valuable, because we can continue to focus on our own work where we're good at. Thanks for the great collaboration.",
+    lifeSciGrowthReviewAuthor: "Thomas Evers & Maurits Verhoek",
+    lifeSciGrowthReviewCompany: "RobustRise",
     clientReview: "Client Review",
 
     // About Section
@@ -602,42 +604,42 @@ const translations = {
     creativeagency: "Creatief Bureau",
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
-    tractionMoviesDescription:
-      "Aangepaste weboplossingen naar hun site brengen om hun online aanwezigheid te verbeteren",
+    deltastudiosDescription:
+      "Een portfolio website die opvalt maar tegelijkertijd eenvoudig blijft",
     lifeSciGrowthDescription:
-      "Een eenvoudige oplossing voor een lidmaatschapscommunitysite die flexibiliteit en begeleiding biedt",
+      "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert.",
-    tractionMoviesFullDescription:
-      "TractionMovies had een meer dynamische en boeiende website nodig om hun werk beter te tonen en bezoekers aan te trekken. Hun vorige site was afhankelijk van een CMS-platform dat was stopgezet, waardoor updates moeilijk werden en de flexibiliteit beperkt was, terwijl het ook interactieve elementen miste om op te vallen in een concurrerende markt.\n\nWij hebben een volledig aangepaste website ontwikkeld met op maat gemaakte componenten en interactieve ontwerpelementen die zijn afgestemd op hun merk. Het project omvatte het ontwerpen van een schone, moderne lay-out, het implementeren van vloeiende animaties en het bouwen van een platform dat gemakkelijk bij te werken en te onderhouden is zonder afhankelijk te zijn van niet-ondersteunde software. Elk aspect van de gebruikerservaring werd overwogen, van navigatie tot contentpresentatie.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling terwijl het een meer boeiende ervaring voor bezoekers biedt. Het toont het portfolio van TractionMovies effectief, maakt content gemakkelijk te verkennen en weerspiegelt hun merkidentiteit consequent. De site valt nu op als een dynamisch, gebruiksvriendelijk platform dat volledig toekomstbestendig is en gebruikers betrokken houdt.",
-    lifeSciGrowthFullDescription: "LifesciGrowth had een professionele lidmaatschapswebsite nodig die niet alleen hun merk weerspiegelde, maar ook een naadloze ervaring voor leden bood. Ze wilden lidmaatschappen online verkopen terwijl ze ervoor zorgden dat ledenfuncties, toegang tot content en community-engagement efficiënt werden beheerd.\n\nWij hebben de website vanaf de grond opgebouwd, waarbij wij een volledige merkidentiteit creëerden—inclusief kleuren, typografie en visuele elementen—en een samenhangende, gebruiksvriendelijke klantreis ontwierpen. De website werd geïntegreerd met Huddle, een community-platform dat wij opzetten om lidmaatschappen, content en ledeninteracties te beheren. Aangepaste componenten en interactieve ontwerpelementen werden geïmplementeerd om de ervaring boeiend en intuïtief te maken van aanmelding tot actieve deelname.\n\nHet project leverde een gepolijst, professioneel platform op dat lidmaatschapsaanmeldingen stimuleert, de merkidentiteit versterkt en een actieve, betrokken community bevordert. Door doordacht ontwerp, naadloze UX en functionele integratie met Huddle te combineren, heeft LifesciGrowth nu een complete, resultaatgerichte lidmaatschapsecosystem.",
+      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert. De website is gebouwd met WordPress, Elementor en WooCommerce.",
+    deltastudiosFullDescription:
+      "Deltastudios, een branding agency, had een portfolio website nodig die opvalt maar tegelijkertijd eenvoudig blijft. Ze wilden een platform dat hun creatieve werk en merkidentiteit effectief toont zonder bezoekers te overweldigen met complexiteit.\n\nWij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creëren van een intuïtieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling die het portfolio van Deltastudios effectief toont terwijl de eenvoud behouden blijft. De site valt op door doordachte ontwerpkeuzes in plaats van complexiteit, waardoor een memorabele ervaring ontstaat die hun merkidentiteit weerspiegelt. Gebouwd in Framer, is het platform gemakkelijk bij te werken en te onderhouden terwijl het een moderne, boeiende gebruikerservaring biedt.",
+    lifeSciGrowthFullDescription: "RobustRise had een complete rebranding nodig om een sterke online aanwezigheid te creëren voor hun hondensupply merk. Hun bestaande website miste een samenhangende merkidentiteit en toonde hun producten niet effectief of verbond niet met hun doelgroep van hondeneigenaren.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, waarbij wij een complete merkidentiteit creëerden—inclusief kleuren, typografie en visuele elementen die de kwaliteit en zorg van hun producten weerspiegelen. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het klanten gemakkelijk te maken om producten te verkennen, hun voordelen te begrijpen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat vertrouwen opwekt en betrokkenheid stimuleert.\n\nDe herontworpen website leverde meetbare resultaten op, met een significante toename in gebruikersbetrokkenheid en conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van RobustRise, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel merkherkenning als verkoop stimuleert. De website is gebouwd met Shopify.",
 
     // Project Results
     lumenixResult1: "300% toename in gebruikersbetrokkenheid",
     lumenixResult2: "150% boost in conversiepercentages",
     lumenixResult3: "40% vermindering van bounce rate",
     lumenixResult4: "95% verbetering in pagina laadsnelheid",
-    tractionMoviesResult1: "80% toename in gebruikersbetrokkenheid",
-    tractionMoviesResult2: "25% boost in conversiepercentages",
-    tractionMoviesResult3: "40% vermindering van bounce rate",
-    tractionMoviesResult4: "20% verbetering in pagina laadsnelheid",
-    lifeSciGrowthResult1: "###% toename in websiteverkeer",
-    lifeSciGrowthResult2: "###% meer projectaanvragen",
-    lifeSciGrowthResult3: "##% verbetering in merkherkenning",
-    lifeSciGrowthResult4: "Uitgelicht in # ontwerpublicaties",
+    deltastudiosResult1: "120% toename in gebruikersbetrokkenheid",
+    deltastudiosResult2: "85% toename in formulierinzendingen",
+    deltastudiosResult3: "60% toename in portfolio projectweergaven",
+    deltastudiosResult4: "45% vermindering van bounce rate",
+    lifeSciGrowthResult1: "250% toename in gebruikersbetrokkenheid",
+    lifeSciGrowthResult2: "180% boost in conversiepercentages",
+    lifeSciGrowthResult3: "45% vermindering van bounce rate",
+    lifeSciGrowthResult4: "90% verbetering in pagina laadsnelheid",
 
     // Project Reviews
     lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon. Als je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",
     lumenixReviewAuthor: "Michael - SEO Specialist",
     lumenixReviewCompany: "Lumenix-Beamers",
-    tractionMoviesReviewText: "Samenwerken met Kjell de Ruiter aan onze TractionMovies website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website.",
-    tractionMoviesReviewAuthor: "Tjade",
-    tractionMoviesReviewCompany: "TractionMovies",
-    lifeSciGrowthReviewText: "Kjell de Ruiter hielp ons onze LifesciGrowth lidmaatschapswebsite vanaf nul te bouwen. Hij maakte het hele proces gemakkelijk te begrijpen en regelde alles voor ons, van het ontwerp tot het opzetten van de lidmaatschapsfuncties binnen Huddle. De website is eenvoudig te gebruiken, ziet er geweldig uit en onze leden kunnen gemakkelijk toegang krijgen tot alles wat ze nodig hebben. We zijn erg blij met Kjell's service en zouden hem graag aanbevelen aan iedereen die op zoek is naar een mooie, professionele website.",
-    lifeSciGrowthReviewAuthor: "Birgit",
-    lifeSciGrowthReviewCompany: "LifeSciGrowth",
+    deltastudiosReviewText: "Samenwerken met Kjell de Ruiter aan onze Deltastudios website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website.",
+    deltastudiosReviewAuthor: "Tjade",
+    deltastudiosReviewCompany: "Deltastudios",
+    lifeSciGrowthReviewText: "Kjell heeft onze website Robustrise volledig aangepakt. Hij doet niet alleen webontwerp, maar denkt echt mee over alles: van het bedenken van de juiste, bijpassende kleuren tot de complete branding. Hij kijkt verder dan alleen de techniek en begrijpt wat er nodig is om een sterk en passend geheel neer te zetten. Voor ondernemers zoals wij is dat ontzettend fijn, omdat wij ons zo kunnen blijven focussen op onze eigen werkzaamheden waar wij goed in zijn. Bedankt voor de fijne samenwerking",
+    lifeSciGrowthReviewAuthor: "Thomas Evers & Maurits Verhoek",
+    lifeSciGrowthReviewCompany: "RobustRise",
     clientReview: "Klantbeoordeling",
 
     // About Section
