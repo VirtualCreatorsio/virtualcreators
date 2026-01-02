@@ -46,8 +46,8 @@ const projects = [
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Mobile video (using same file temporarily)
-    scrollVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/lumenix-project.webp`, // Background image for scroll video
+    scrollVideo: `${assetPathPrefix}assets/scroll-vid Lumenix.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video
     images: [
       { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Homepage" },
       { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Product Page" },
@@ -71,53 +71,54 @@ const projects = [
     }
   },
   {
-    title: "TractionMovies",
-    category: "Creative Agency",
+    title: "Deltastudios",
+    category: "Branding Agency",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     scrollVideo: null, // No scroll video for this project
     images: [
-      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "TractionMovies Homepage" },
-      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "TractionMovies Portfolio" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "Deltastudios Homepage" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "Deltastudios Portfolio" },
     ],
-    description: "tractionMoviesDescription",
-    fullDescription: "tractionMoviesFullDescription",
+    description: "deltastudiosDescription",
+    fullDescription: "deltastudiosFullDescription",
     services: [
       { icon: "smartphone", label: "Mobile First Approach" },
       { icon: "palette", label: "UI/UX Design" },
       { icon: "code", label: "Web Development" },
       { icon: "zap", label: "Performance Optimization" },
     ],
-    results: ["tractionMoviesResult1", "tractionMoviesResult2", "tractionMoviesResult3", "tractionMoviesResult4"],
+    results: ["deltastudiosResult1", "deltastudiosResult2", "deltastudiosResult3", "deltastudiosResult4"],
     review: {
       rating: 5,
-      text: "tractionMoviesReviewText",
-      author: "tractionMoviesReviewAuthor",
-      company: "tractionMoviesReviewCompany"
+      text: "deltastudiosReviewText",
+      author: "deltastudiosReviewAuthor",
+      company: "deltastudiosReviewCompany"
     }
   },
   {
-    title: "LifeSciGrowth",
-    category: "Coaching & Community",
+    title: "RobustRise",
+    category: "Online Shop",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
-    video: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Desktop video
-    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lifescigrowth Web-Project.mp4`, // Mobile video
-    scrollVideo: null, // No scroll video for this project
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
+    scrollVideo: `${assetPathPrefix}assets/scroll-vid-RobustRise.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video
     images: [
-      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Homepage" },
-      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Community" },
-      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "LifeSciGrowth Courses" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "RobustRise Homepage" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "RobustRise Community" },
+      { src: `${assetPathPrefix}assets/coming-soon.jpg`, alt: "RobustRise Courses" },
     ],
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
     services: [
-      { icon: "palette", label: "UI/UX Design" },
       { icon: "code", label: "Web Development" },
-      { icon: "zap", label: "Interactive Design" },
-      { icon: "search", label: "SEO Strategy" },
+      { icon: "palette", label: "UI/UX Design" },
+      { icon: "search", label: "SEO Optimization" },
       { icon: "bar-chart", label: "Brand Identity" },
+      { icon: "zap", label: "Performance Optimization" },
     ],
     results: ["lifeSciGrowthResult1", "lifeSciGrowthResult2", "lifeSciGrowthResult3", "lifeSciGrowthResult4"],
     review: {
@@ -170,6 +171,20 @@ function initializeApp() {
   
   // Initialize navigation link scramble effect
   setupNavLinkScramble()
+  
+  // Initialize FAQ background mask
+  setTimeout(() => {
+    updateFAQBackgroundMask()
+  }, 200)
+  
+  // Update FAQ mask on window resize
+  let resizeTimeout
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(() => {
+      updateFAQBackgroundMask()
+    }, 150)
+  })
 }
 
 
@@ -1256,7 +1271,7 @@ function generateProjectModalContent(project) {
                                                 muted 
                                                 loop 
                                                 playsinline
-                                                ${isMobileDevice ? "controls" : ""}
+                                                controls
                                             >
                                                 <source src="${project.scrollVideo}" type="video/mp4">
                                                 Your browser does not support the video tag.
@@ -1760,10 +1775,10 @@ function getCompanyLink(project) {
     case "Lumenix":
       url = "https://www.lumenix-beamers.nl";
       break;
-    case "TractionMovies":
-      url = "https://tractionmovies.com";
+    case "Deltastudios":
+      url = "https://deltastudios.com";
       break;
-    case "LifeSciGrowth":
+    case "RobustRise":
       url = "https://lifescigrowth.com";
       break;
     default:
@@ -2067,6 +2082,47 @@ function toggleFAQ(button) {
   } else {
     faqItem.classList.add('active')
   }
+  
+  // Update mask after toggle (in case item expanded/contracted)
+  setTimeout(updateFAQBackgroundMask, 100)
+}
+
+// Create mask for FAQ section background to show 3D effect only through FAQ items
+function updateFAQBackgroundMask() {
+  const faqSection = document.querySelector('.faq')
+  if (!faqSection) return
+  
+  const faqItems = faqSection.querySelectorAll('.faq-item')
+  if (faqItems.length === 0) return
+  
+  const faqRect = faqSection.getBoundingClientRect()
+  const sectionHeight = faqRect.height
+  const sectionWidth = faqRect.width
+  
+  // Build mask with radial gradients for each FAQ item
+  const maskGradients = []
+  
+  faqItems.forEach((item) => {
+    const itemRect = item.getBoundingClientRect()
+    const relativeTop = ((itemRect.top - faqRect.top) / sectionHeight) * 100
+    const relativeLeft = ((itemRect.left - faqRect.left) / sectionWidth) * 100
+    const itemWidth = (itemRect.width / sectionWidth) * 100
+    const itemHeight = (itemRect.height / sectionHeight) * 100
+    
+    // Create radial gradient centered on the FAQ item
+    // Make it slightly larger than the item to account for borders/rounded corners
+    const gradientSize = Math.max(itemWidth, itemHeight) * 1.2
+    maskGradients.push(
+      `radial-gradient(ellipse ${gradientSize}% ${gradientSize * 0.3}% at ${relativeLeft + itemWidth / 2}% ${relativeTop + itemHeight / 2}%, transparent 0%, transparent 48%, black 52%)`
+    )
+  })
+  
+  // Add base gradient to keep left side and gaps dark
+  maskGradients.push('linear-gradient(to right, black 0%, black 45%, black 100%)')
+  
+  // Apply mask to ::before pseudo-element
+  const maskValue = maskGradients.join(', ')
+  faqSection.style.setProperty('--faq-mask', maskValue)
 }
 
 // Make functions globally available - CRITICAL for HTML onclick handlers
@@ -2083,6 +2139,7 @@ window.toggleFullscreen = toggleFullscreen
 window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
 window.toggleFAQ = toggleFAQ
+window.updateFAQBackgroundMask = updateFAQBackgroundMask
 
 // Initialize Spline background visibility to prevent flash
 function initializeSplineBackground() {
