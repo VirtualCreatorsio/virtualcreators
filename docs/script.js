@@ -189,6 +189,68 @@ function initializeApp() {
       updateFAQBackgroundMask()
     }, 150)
   })
+  
+  // Initialize services cards
+  initializeServicesCards()
+  
+  // Initialize rotating gradient borders
+  initializeRotatingGradients()
+}
+
+// Initialize Rotating Gradient Borders
+function initializeRotatingGradients() {
+  const elements = document.querySelectorAll(".border-gradient");
+  
+  elements.forEach((element) => {
+    let angle = 0;
+    const rotateGradient = () => {
+      angle = (angle + 1) % 360;
+      element.style.setProperty("--gradient-angle", `${angle}deg`);
+      requestAnimationFrame(rotateGradient);
+    };
+    rotateGradient();
+  });
+}
+
+// Initialize Services Cards Expand/Collapse
+function initializeServicesCards() {
+  const serviceCards = document.querySelectorAll('.service-card')
+  
+  if (serviceCards.length === 0) return
+  
+  // Set first card as active by default
+  if (serviceCards.length > 0) {
+    serviceCards[0].classList.add('active')
+  }
+  
+  serviceCards.forEach((card) => {
+    // Set icon from data attribute
+    const iconName = card.getAttribute('data-icon')
+    const iconElement = card.querySelector('.service-card-icon')
+    if (iconElement && iconName) {
+      iconElement.innerHTML = getIconSVG(iconName)
+    }
+    
+    // Click handler
+    card.addEventListener('click', () => {
+      // Remove active class from all cards
+      serviceCards.forEach((c) => c.classList.remove('active'))
+      // Add active class to clicked card
+      card.classList.add('active')
+    })
+    
+    // Hover handler for desktop (only if not active)
+    if (!isMobileDevice) {
+      card.addEventListener('mouseenter', () => {
+        if (!card.classList.contains('active')) {
+          // Remove active from all
+          serviceCards.forEach((c) => c.classList.remove('active'))
+          // Add active to hovered
+          card.classList.add('active')
+        }
+      })
+    }
+  })
 }
 
 
@@ -670,7 +732,7 @@ function openCalendlyPopup() {
   // Method 2: Try Calendly popup widget
   if (calendlyLoaded && typeof window.Calendly !== "undefined" && window.Calendly.initPopupWidget) {
     return window.Calendly.initPopupWidget({
-      url: "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6",
+      url: "https://calendly.com/kjell-virtualcreators/45min-discovery-call?primary_color=8b5cf6",
     })
   }
 
@@ -701,31 +763,31 @@ function openCalendlyInlineWidget() {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 1rem;
     opacity: 0;
     transition: opacity 0.3s ease;
   `
 
-  // Create the Calendly container - elegant window size
+  // Create the Calendly container - match cases modal size
   const calendlyContainer = document.createElement("div")
   calendlyContainer.id = "calendly-inline-widget"
   calendlyContainer.style.cssText = `
     width: 100%;
-    max-width: 680px;
-    height: 85vh;
-    max-height: 700px;
-    min-height: 600px;
-    background: white;
-    border-radius: 16px;
+    max-width: 64rem;
+    max-height: 90vh;
+    height: 90vh;
+    background: #1f1f1f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
     transform: scale(0.95) translateY(20px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -754,28 +816,34 @@ function openCalendlyInlineWidget() {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #f3f4f6;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10001;
-  transition: background-color 0.3s ease;
-  color: #6b7280;
+  transition: all 0.3s ease;
+  color: #9ca3af;
 `
   closeButton.onmouseover = () => {
-    closeButton.style.backgroundColor = "#e5e7eb"
+    closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.15)"
+    closeButton.style.borderColor = "rgba(255, 255, 255, 0.2)"
+    closeButton.style.color = "#ffffff"
   }
   closeButton.onmouseout = () => {
-    closeButton.style.backgroundColor = "#f3f4f6"
+    closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.1)"
+    closeButton.style.borderColor = "rgba(255, 255, 255, 0.1)"
+    closeButton.style.color = "#9ca3af"
   }
 
   // Create content container
   const contentContainer = document.createElement("div")
   contentContainer.style.cssText = `
   height: calc(100% - 4px);
+  width: 100%;
   padding: 0;
+  margin: 0;
   position: relative;
   overflow: hidden;
 `
@@ -828,7 +896,7 @@ function openCalendlyInlineWidget() {
   try {
     window.Calendly.initInlineWidget({
       url:
-        "https://calendly.com/kjell-virtualcreators?primary_color=8b5cf6&hide_gdpr_banner=1&embed_domain=" +
+        "https://calendly.com/kjell-virtualcreators/45min-discovery-call?primary_color=8b5cf6&hide_gdpr_banner=1&embed_domain=" +
         window.location.hostname,
       parentElement: contentContainer,
       prefill: {},
@@ -848,7 +916,7 @@ function openCalendlyInlineWidget() {
       margin: 0 !important;
       padding: 0 !important;
       display: block !important;
-      background: white !important;
+      background: #1f1f1f !important;
     `
       }
     }, 1000)
@@ -885,7 +953,7 @@ function openCalendlyFallback() {
   document.body.appendChild(message)
 
   // Open Calendly in new tab
-  window.open("https://calendly.com/kjell-virtualcreators", "_blank")
+  window.open("https://calendly.com/kjell-virtualcreators/45min-discovery-call", "_blank")
 
   // Remove message after 2 seconds
   setTimeout(() => {
@@ -940,6 +1008,51 @@ function addSubtleCalendlyStyles() {
               border: none !important;
               width: 100% !important;
               max-width: none !important;
+              background: #1f1f1f !important;
+              color: #ffffff !important;
+            }
+            
+            /* Dark theme for Calendly content */
+            body, html, div, section, article, main {
+              background: #1f1f1f !important;
+              color: #ffffff !important;
+            }
+            
+            /* Text colors */
+            h1, h2, h3, h4, h5, h6, p, span, a, label, button, input, textarea, select {
+              color: #ffffff !important;
+            }
+            
+            /* Input fields dark theme */
+            input, textarea, select {
+              background: rgba(255, 255, 255, 0.05) !important;
+              border: 1px solid rgba(255, 255, 255, 0.1) !important;
+              color: #ffffff !important;
+            }
+            
+            input:focus, textarea:focus, select:focus {
+              background: rgba(255, 255, 255, 0.08) !important;
+              border-color: rgba(139, 92, 246, 0.5) !important;
+            }
+            
+            /* Buttons dark theme */
+            button {
+              background: linear-gradient(to right, #ec4899, #8b5cf6) !important;
+              color: #ffffff !important;
+              border: none !important;
+            }
+            
+            button:hover {
+              background: linear-gradient(to right, #db2777, #7c3aed) !important;
+            }
+            
+            /* Links */
+            a {
+              color: #8b5cf6 !important;
+            }
+            
+            a:hover {
+              color: #a78bfa !important;
             }
             
             /* Force full width on main content areas */
@@ -947,7 +1060,8 @@ function addSubtleCalendlyStyles() {
             .calendly-main-content {
               width: 100% !important;
               max-width: none !important;
-              padding: 15px !important;
+              padding: 0 !important;
+              margin: 0 !important;
               box-sizing: border-box !important;
               height: 100% !important;
             }
@@ -959,6 +1073,19 @@ function addSubtleCalendlyStyles() {
               padding: 0 !important;
               width: 100% !important;
               height: 100% !important;
+              min-height: 100% !important;
+            }
+            
+            /* Remove all padding from Calendly containers */
+            [class*="calendly"] {
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+            
+            /* Ensure body and html have no padding */
+            body, html {
+              padding: 0 !important;
+              margin: 0 !important;
             }
             
             /* Calm purple styling for primary buttons */
@@ -1082,6 +1209,13 @@ function openProjectModal(index) {
 
   // Scroll modal to top
   scrollModalToTop()
+  
+  // Initialize modal animations and text reveal
+  setTimeout(() => {
+    setupModalScrollListener()
+    initializeModalTextReveal()
+    initializeModalSectionAnimations()
+  }, 100)
 }
 
 function closeProjectModal() {
@@ -1124,6 +1258,13 @@ function navigateProject(direction) {
 
   // Scroll modal to top for clear navigation
   scrollModalToTop()
+  
+  // Re-initialize modal animations and text reveal
+  setTimeout(() => {
+    setupModalScrollListener()
+    initializeModalTextReveal()
+    initializeModalSectionAnimations()
+  }, 100)
 }
 
 // Function to scroll modal body to top
@@ -1242,7 +1383,7 @@ function generateProjectModalContent(project) {
         </div>
         
         <!-- Deliverables Section -->
-        <div class="modal-deliverables">
+        <div class="modal-deliverables modal-section-fade">
             <h3 class="modal-section-title">${window.t("deliverables") || "Deliverables"}</h3>
             <div class="deliverables-grid">
                 ${servicesHTML}
@@ -1250,7 +1391,7 @@ function generateProjectModalContent(project) {
         </div>
         
         <!-- Project Overview / The Solution -->
-        <div class="modal-solution">
+        <div class="modal-solution modal-section-fade">
             <div class="solution-content">
                 <div class="project-description-content">
                     ${(() => {
@@ -1260,8 +1401,8 @@ function generateProjectModalContent(project) {
                         
                         // If we have paragraphs and a scroll video, insert video after first paragraph
                         if (paragraphs.length > 0 && project.scrollVideo) {
-                            const firstParagraph = `<p>${paragraphs[0].trim()}</p>`;
-                            const remainingParagraphs = paragraphs.slice(1).map(p => `<p>${p.trim()}</p>`).join('');
+                            const firstParagraph = `<p class="text-tracking">${paragraphs[0].trim()}</p>`;
+                            const remainingParagraphs = paragraphs.slice(1).map(p => `<p class="text-tracking">${p.trim()}</p>`).join('');
                             
                             const backgroundImage = project.scrollVideoBackground ? `style="background-image: url('${project.scrollVideoBackground}');"` : '';
                             return `
@@ -1286,8 +1427,9 @@ function generateProjectModalContent(project) {
                                 ${remainingParagraphs}
                             `;
                         } else {
-                            // No scroll video or no paragraphs, just render normally
-                            return descriptionText.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>');
+                            // No scroll video or no paragraphs, just render normally with text-tracking class
+                            const paraText = descriptionText.replace(/\n\n/g, '</p><p class="text-tracking">').replace(/^/, '<p class="text-tracking">').replace(/$/, '</p>');
+                            return paraText;
                         }
                     })()}
                 </div>
@@ -1296,11 +1438,11 @@ function generateProjectModalContent(project) {
         
         ${project.images && project.images.length > 0 ? `
         <!-- Image Gallery Section -->
-        <div class="modal-gallery">
+        <div class="modal-gallery modal-section-fade">
             <h3 class="modal-section-title">${window.t("projectGallery") || "Project Gallery"}</h3>
             <div class="gallery-grid">
                 ${project.images.map((img, index) => `
-                    <div class="gallery-item ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}">
+                    <div class="gallery-item gallery-item-fade ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}" style="animation-delay: ${index * 0.1}s;">
                         <img src="${img.src}" alt="${img.alt || project.title + ' Screenshot ' + (index + 1)}" loading="lazy">
                     </div>
                 `).join('')}
@@ -1309,14 +1451,14 @@ function generateProjectModalContent(project) {
         ` : ''}
         
         <!-- Results & Impact Section -->
-        <div class="modal-results">
+        <div class="modal-results modal-section-fade">
             <h3 class="modal-section-title">${window.t("resultsImpact")}</h3>
             <div class="results-grid">
                 ${resultsHTML}
             </div>
         </div>
         
-        ${reviewHTML}
+        ${reviewHTML ? `<div class="modal-section-fade">${reviewHTML}</div>` : ''}
     `
 }
 
@@ -2361,4 +2503,161 @@ window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
 window.toggleFAQ = toggleFAQ
 window.updateFAQBackgroundMask = updateFAQBackgroundMask
+
+// Modal Text Reveal Functionality - Aligned with about page
+function convertToLetterSpans(element, text) {
+  const letterSpans = text.split('').map(char => {
+    if (char === ' ') {
+      return ' '
+    }
+    return `<span class="letter-tracking">${char}</span>`
+  }).join('')
+  
+  element.innerHTML = letterSpans
+  
+  const letters = element.querySelectorAll('.letter-tracking')
+  
+  // Set initial styles directly on each letter
+  letters.forEach(letter => {
+    letter.style.color = '#9ca3af'
+    letter.style.opacity = '1'
+  })
+  
+  // Store reference to element and its letters
+  element._letters = letters
+  element._totalLetters = letters.length
+  
+  return letters.length
+}
+
+function initializeModalTextReveal() {
+  const modalBody = document.getElementById('modalBody')
+  if (!modalBody) return
+  
+  const textRevealElements = modalBody.querySelectorAll('.text-tracking')
+  
+  textRevealElements.forEach(element => {
+    // Check if already initialized
+    if (element.dataset.revealInitialized === 'true') {
+      return
+    }
+    
+    const text = element.textContent.trim()
+    if (text && text.length > 0) {
+      convertToLetterSpans(element, text)
+      element.dataset.revealInitialized = 'true'
+    }
+  })
+  
+  // Update reveal on scroll
+  updateModalTextReveal()
+}
+
+function updateModalTextReveal() {
+  const modalBody = document.getElementById('modalBody')
+  if (!modalBody) return
+  
+  const textRevealElements = modalBody.querySelectorAll('.text-tracking')
+  
+  if (textRevealElements.length === 0) return
+  
+  // Calculate total letters across all elements
+  let totalLetters = 0
+  let allLetters = []
+  
+  textRevealElements.forEach((element) => {
+    if (element._letters) {
+      allLetters = allLetters.concat(Array.from(element._letters))
+      totalLetters += element._totalLetters
+    }
+  })
+  
+  if (totalLetters === 0) return
+  
+  // Use the first element to calculate scroll progress for the entire section
+  const firstElement = textRevealElements[0]
+  const firstElementRect = firstElement.getBoundingClientRect()
+  const modalBodyRect = modalBody.getBoundingClientRect()
+  const viewportHeight = modalBody.clientHeight
+  
+  // Calculate overall progress through the text section (same logic as about page)
+  let overallProgress = 0
+  
+  // Check if first element top is less than viewport threshold (80% of viewport height)
+  // This matches the about page logic: rect.top < windowHeight * 0.8
+  const viewportThreshold = viewportHeight * 0.8
+  const elementTopRelative = firstElementRect.top - modalBodyRect.top
+  
+  if (elementTopRelative < viewportThreshold) {
+    // Calculate progress based on scroll through the entire text section
+    const lastElement = textRevealElements[textRevealElements.length - 1]
+    const lastElementRect = lastElement.getBoundingClientRect()
+    const sectionHeight = lastElementRect.bottom - firstElementRect.top
+    
+    // Same calculation as about page: (windowHeight * 0.8 - rect.top) / (sectionHeight + windowHeight * 0.4)
+    overallProgress = Math.min(1, (viewportThreshold - elementTopRelative) / (sectionHeight + viewportHeight * 0.4))
+  }
+  
+  // Calculate how many letters to show across all elements
+  const lettersToShow = Math.floor(overallProgress * totalLetters)
+  
+  // Apply the effect sequentially across all letters
+  allLetters.forEach((letter, globalIndex) => {
+    if (globalIndex < lettersToShow) {
+      // Letter is revealed - make it white for readability
+      letter.style.color = '#ffffff'
+      letter.style.opacity = '1'
+    } else {
+      // Letter is not revealed - keep it grey
+      letter.style.color = '#9ca3af'
+      letter.style.opacity = '1'
+    }
+  })
+}
+
+// Modal Section Fade-in Animations
+function initializeModalSectionAnimations() {
+  const modalBody = document.getElementById('modalBody')
+  if (!modalBody) return
+  
+  const sections = modalBody.querySelectorAll('.modal-section-fade')
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1'
+        entry.target.style.transform = 'translateY(0)'
+      }
+    })
+  }, {
+    threshold: 0.1,
+    root: modalBody
+  })
+  
+  sections.forEach(section => {
+    section.style.opacity = '0'
+    section.style.transform = 'translateY(20px)'
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+    observer.observe(section)
+  })
+}
+
+// Set up scroll listener for text reveal (will be attached when modal opens)
+let modalScrollTimeout
+function setupModalScrollListener() {
+  const modalBody = document.getElementById('modalBody')
+  if (modalBody) {
+    // Remove existing listener if any
+    modalBody.removeEventListener('scroll', handleModalScroll)
+    // Add new listener
+    modalBody.addEventListener('scroll', handleModalScroll)
+  }
+}
+
+function handleModalScroll() {
+  clearTimeout(modalScrollTimeout)
+  modalScrollTimeout = setTimeout(() => {
+    updateModalTextReveal()
+  }, 10)
+}
 

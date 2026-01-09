@@ -1042,7 +1042,7 @@
                     </p>
                 </div>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="scrollToWork()" data-translate="seeProjects">
+                    <button class="btn btn-primary btn-large border-gradient" onclick="scrollToWork()" data-translate="seeProjects">
                         See Projects
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1157,56 +1157,59 @@
                     <p class="section-description" data-translate="servicesDescription">
                         I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.
                     </p>
+                    <a href="#contact" class="btn btn-primary btn-large border-gradient">
+                        <span data-translate="contactButton">Contact us</span>
+                    </a>
                 </div>
 
-                <div class="services-list">
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">01</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="digitalStrategy">Digital Strategy</h3>
-                                <p class="service-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                <div class="services-cards-container">
+                    <div class="service-card active" data-service="0" data-icon="zap">
+                        <div class="service-card-number">01</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="digitalStrategy">Digital Strategy</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="digitalStrategyTitle">Strategic Vision</h3>
+                            <p class="service-card-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">02</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="brandIdentity">Brand Identity</h3>
-                                <p class="service-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="1" data-icon="bar-chart">
+                        <div class="service-card-number">02</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="brandIdentity">Brand Identity</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="brandIdentityTitle">Visual Identity</h3>
+                            <p class="service-card-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">03</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="webDevelopment">Web Development</h3>
-                                <p class="service-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="2" data-icon="palette">
+                        <div class="service-card-number">03</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="webDevelopment">Web Development</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="webDevelopmentTitle">Design Excellence</h3>
+                            <p class="service-card-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">04</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="userExperience">User Experience</h3>
-                                <p class="service-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="3" data-icon="code">
+                        <div class="service-card-number">04</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="userExperience">User Experience</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="userExperienceTitle">Technical Excellence</h3>
+                            <p class="service-card-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
                 </div>
             </div>
@@ -1525,7 +1528,7 @@
                         <input type="text" name="_gotcha" class="honeypot-field" tabindex="-1" autocomplete="off">
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-contact" data-translate="sendMessage">
+                            <button type="submit" class="btn btn-primary btn-contact border-gradient" data-translate="sendMessage">
                                 <span class="btn-text">Send Message</span>
                                 <span class="btn-loading" style="display: none;" data-translate="sending">Sending...</span>
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1565,7 +1568,7 @@
                             </div>
                             <div class="contact-text">
                                 <div class="contact-label" data-translate="email">Email</div>
-                                <div class="contact-value">kjell@virtualcreators.io</div>
+                                <div class="contact-value"><a href="mailto:kjell@virtualcreators.io">kjell@virtualcreators.io</a></div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1576,7 +1579,7 @@
                             </div>
                             <div class="contact-text">
                                 <div class="contact-label" data-translate="phone">Phone</div>
-                                <div class="contact-value">+316 41552375</div>
+                                <div class="contact-value"><a href="tel:+31641552375">+316 41552375</a></div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1616,10 +1619,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
+                <a href="index.html" class="footer-brand">
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
-                </div>
+                </a>
                 <div class="footer-links">
                     <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
                     <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>

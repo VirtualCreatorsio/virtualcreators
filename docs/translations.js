@@ -17,6 +17,7 @@ const translations = {
     services: "Services",
     about: "About",
     contact: "Contact",
+    contactButton: "Contact us",
     letsalk: "Free Consultation",
     language: "Language",
     english: "English",
@@ -30,6 +31,7 @@ const translations = {
     heroSubtitle: "From concept to conversion - We craft websites that transform brands digitally.",
     viewMyWork: "View My Work",
     seeProjects: "See Projects",
+    viewCases: "View Cases",
     startProject: "Book Free Call",
 
     // Services Section
@@ -37,17 +39,23 @@ const translations = {
     servicesTitle1: "Services that drive",
     servicesTitle2: "meaningful growth",
     servicesDescription:
-      "Delivering brand-focused design and web development solutions that elevate visibility and drive measurable results.",
+      "Your vision deserves more than just execution—it needs transformation. We craft digital experiences where strategy meets creativity, where every pixel serves a purpose, and where brands don't just exist, they resonate. From identity to code, we turn your ambition into undeniable presence.",
 
     // Service Items
     digitalStrategy: "Brand Identity",
     digitalStrategyDescription: "We craft unique, memorable brand identities that resonate with your audience — from logos to visual systems — ensuring every touchpoint reflects your brand's essence.",
+    digitalStrategyTitle: "Strategic Vision",
     brandIdentity: "Digital Strategy",
-    brandIdentityDescription: "We build cohesive digital strategies that align your brand’s voice, guide your presence across channels, and create meaningful connections with the people you want to reach.",
+    brandIdentityDescription: "We build cohesive digital strategies that align your brand's voice, guide your presence across channels, and create meaningful connections with the people you want to reach.",
+    brandIdentityTitle: "Visual Identity",
     webDevelopment: "Web-Design",
     webDevelopmentDescription: "Your brand deserves a digital presence that stands out. We craft custom website designs with intentional UX/UI, clear visual hierarchy, and an experience that feels unmistakably yours.",
+    webDevelopmentTitle: "Design Excellence",
     userExperience: "Web-Development",
     userExperienceDescription: "We build custom websites with modern, resilient code, transforming design into a smooth, responsive, and trustworthy brand experience at every interaction.",
+    userExperienceTitle: "Technical Excellence",
+    exploreOurCases: "Explore our cases",
+    previewService: "Preview service",
 
     // Portfolio Section
     selectedWork: "Selected Work",
@@ -571,6 +579,7 @@ const translations = {
     heroSubtitle: "Van concept tot conversie - Wij creëren websites die merken digitaal transformeren.",
     viewMyWork: "Bekijk Ons Werk",
     seeProjects: "Bekijk Projecten",
+    viewCases: "Bekijk Cases",
     startProject: "Gratis Adviesgesprek",
 
     // Services Section
@@ -583,12 +592,18 @@ const translations = {
     // Service Items
     digitalStrategy: "Digitale Strategie",
     digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
+    digitalStrategyTitle: "Strategische Visie",
     brandIdentity: "Merkidentiteit",
     brandIdentityDescription: "Onderscheidende visuele systemen die jouw unieke verhaal communiceren",
+    brandIdentityTitle: "Visuele Identiteit",
     webDevelopment: "Webontwikkeling",
     webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
+    webDevelopmentTitle: "Design Excellentie",
     userExperience: "Gebruikerservaring",
     userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
+    userExperienceTitle: "Technische Excellentie",
+    exploreOurCases: "Bekijk onze cases",
+    previewService: "Preview service",
 
     // Portfolio Section
     selectedWork: "Geselecteerd Werk",
@@ -1435,6 +1450,10 @@ function checkLanguageFromURL() {
 // Initialize translations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded, initializing translations...")
+  
+  // Check language from URL first
+  checkLanguageFromURL()
+  
   console.log("Current language detected:", currentLanguage)
 
   // Set initial language
