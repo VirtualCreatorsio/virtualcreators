@@ -512,25 +512,10 @@
             margin-bottom: 3rem;
         }
 
-        /* Glassy Button Effects for Specific CTA Buttons */
-        .about-hero .hero-buttons .btn-primary {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Align Read My Story button with See Projects button styling */
+        .about-hero .hero-buttons .btn-primary.border-gradient {
+            /* Uses the same styling as .border-gradient from styles.css */
             color: #ffffff;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .about-hero .hero-buttons .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         /* Match header gradient styling for "Work With Me" button */
@@ -546,24 +531,10 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .cta-section .hero-buttons .btn-primary {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Align CTA section button with See Projects button styling */
+        .cta-section .hero-buttons .btn-primary.border-gradient {
+            /* Uses the same styling as .border-gradient from styles.css */
             color: #ffffff;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .cta-section .hero-buttons .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         /* Match header gradient styling for "View My Work" button */
@@ -847,7 +818,7 @@
                     Where digital vision meets purposeful design. Discover the journey, philosophy, and passion that drives every pixel we create.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="scrollToStory()">
+                    <button class="btn btn-primary btn-large border-gradient" onclick="scrollToStory()">
                         <span data-translate="readMyStory">Read My Story</span>
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1086,7 +1057,7 @@
                     Let's transform your vision into a digital reality that drives results and creates lasting impact.
                 </p>
                  <div class="hero-buttons">
-                     <button class="btn btn-primary btn-large" onclick="openCalendlyPopup()">
+                     <button class="btn btn-primary btn-large border-gradient" onclick="openCalendlyPopup()">
                          <span data-translate="letsalk">Let's Talk</span>
                          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                              <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1113,10 +1084,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
+                <a href="index.html" class="footer-brand">
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
-                </div>
+                </a>
                 <div class="footer-links">
                     <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy Policy</a>
                     <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>

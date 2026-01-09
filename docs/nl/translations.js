@@ -17,6 +17,7 @@ const translations = {
     services: "Services",
     about: "About",
     contact: "Contact",
+    contactButton: "Contact ons",
     letsalk: "Free Consultation",
     language: "Language",
     english: "English",
@@ -48,24 +49,9 @@ const translations = {
     webDevelopmentDescription: "Clean, performant websites built with modern technologies",
     userExperience: "User Experience",
     userExperienceDescription: "Intuitive interfaces that users love and businesses trust",
+    previewService: "Preview service",
 
     // Portfolio Section
-    selectedWork: "Selected Work",
-    projectsIAm: "Projects I am",
-    proudOf: "proud of",
-    viewProject: "View Project",
-
-    // Project Data
-    onlineShop: "Online Shop",
-    creativeAgency: "Creative Agency",
-    coachingCommunity: "Coaching & Community",
-    onlineshop: "Online Shop",
-    creativeagency: "Creative Agency",
-    coachingcommunity: "Coaching & Community",
-    lumenixDescription: "A complete rebranding of their online presence through custom web-solutions",
-    deltastudiosDescription: "A portfolio website that stands out while remaining simple",
-    lifeSciGrowthDescription:
-      "A complete rebranding of their online presence through custom web solutions",
 
     // Project Full Descriptions
     lumenixFullDescription:
@@ -412,15 +398,6 @@ const translations = {
     thirdPartyServicesText:
       "My website may contain links to third-party websites or services. I am not responsible for the privacy practices of these third parties. I encourage you to review their privacy policies.",
 
-    changesToPolicy: "8. Changes to This Policy",
-    changesToPolicyText:
-      'I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.',
-
-    contactMe: "9. Contact me",
-    contactMeText: "If you have any questions about this Privacy Policy, please contact me:",
-    contactMeItem1: "Email: kjell@virtualcreators.io",
-    contactMeItem2: "Phone: +316 41552375",
-    contactMeItem3: "Based: The Netherlands, Amsterdam",
 
     // Privacy Policy Language Precedence
     privacyLanguagePrecedence: "10. Language Precedence",
@@ -528,8 +505,9 @@ const translations = {
     // Navigation
     work: "Werk",
     services: "Diensten",
-    about: "Over Mij",
+    about: "Over ons",
     contact: "Contact",
+    contactButton: "Contact ons",
     letsalk: "Gratis Adviesgesprek",
     language: "Taal",
     english: "English",
@@ -543,38 +521,46 @@ const translations = {
     heroSubtitle: "Van concept tot conversie - We creëren websites die merken digitaal transformeren.",
     viewMyWork: "Bekijk Mijn Werk",
     seeProjects: "Bekijk Projecten",
+    viewCases: "Bekijk Cases",
     startProject: "Gratis Adviesgesprek",
 
     // Services Section
-    whatIDo: "Wat Ik Doe",
-    servicesTitle1: "Werk dat leidt tot",
-    servicesTitle2: "impactvolle groei",
+    whatIDo: "Wat We Doen",
+    servicesTitle1: "Diensten die leiden tot",
+    servicesTitle2: "betekenisvolle groei",
     servicesDescription:
-      "Ik geloof in de kracht van eenvoud. Elk project begint met het begrijpen van jouw doelen en het creëren van oplossingen die zowel mooi als doelgericht zijn.",
+      "Jouw visie verdient meer dan alleen uitvoering—het heeft transformatie nodig. We creëren digitale ervaringen waar strategie en creativiteit samenkomen, waar elke pixel een doel dient, en waar merken niet alleen bestaan, maar resoneren. Van identiteit tot code, we transformeren jouw ambitie tot onmiskenbare aanwezigheid.",
 
     // Service Items
-    digitalStrategy: "Digitale Strategie",
-    digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
-    brandIdentity: "Merkidentiteit",
-    brandIdentityDescription: "Onderscheidende visuele systemen die jouw unieke verhaal communiceren",
-    webDevelopment: "Webontwikkeling",
-    webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
-    userExperience: "Gebruikerservaring",
-    userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
+    digitalStrategy: "Merkidentiteit",
+    digitalStrategyDescription: "We creëren unieke, memorabele merkidentiteiten die resoneren met jouw doelgroep — van logo's tot visuele systemen — en zorgen dat elk contactpunt de essentie van jouw merk weerspiegelt.",
+    digitalStrategyTitle: "Strategische Visie",
+    brandIdentity: "Digitale Strategie",
+    brandIdentityDescription: "We bouwen samenhangende digitale strategieën die jouw merkstem afstemmen, jouw aanwezigheid over kanalen begeleiden, en betekenisvolle verbindingen creëren met de mensen die je wilt bereiken.",
+    brandIdentityTitle: "Visuele Identiteit",
+    webDevelopment: "Web-Design",
+    webDevelopmentDescription: "Jouw merk verdient een digitale aanwezigheid die opvalt. We creëren op maat gemaakte website-ontwerpen met doordachte UX/UI, duidelijke visuele hiërarchie, en een ervaring die onmiskenbaar van jou voelt.",
+    webDevelopmentTitle: "Design Excellentie",
+    userExperience: "Web-Development",
+    userExperienceDescription: "We bouwen op maat gemaakte websites met moderne, veerkrachtige code, die ontwerp transformeren tot een soepele, responsieve en betrouwbare merkervaring bij elke interactie.",
+    userExperienceTitle: "Technische Excellentie",
+    exploreOurCases: "Bekijk onze cases",
+    previewService: "Preview service",
 
     // Portfolio Section
     selectedWork: "Geselecteerd Werk",
-    projectsIAm: "Projecten waar ik",
-    proudOf: "trots op ben",
+    projectsIAm: "Projecten waar wij",
+    proudOf: "trots op zijn",
     viewProject: "Bekijk Project",
 
     // Project Data
     onlineShop: "Online Winkel",
     creativeAgency: "Creatief Bureau",
+    brandingAgency: "Branding Bureau",
     coachingCommunity: "Coaching & Community",
     onlineshop: "Online Winkel",
     creativeagency: "Creatief Bureau",
-    brandingagency: "Branding Agency",
+    brandingagency: "Branding Bureau",
     coachingcommunity: "Coaching & Community",
     lumenixDescription: "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
     deltastudiosDescription:
@@ -625,29 +611,30 @@ const translations = {
       "Wij werken met vooruitstrevende bedrijven die begrijpen dat geweldig ontwerp niet alleen gaat over hoe iets eruitziet, het gaat over hoe het werkt, hoe het voelt en hoe het verbinding maakt met mensen.",
 
     // FAQ Section
+    // FAQ Section
     faqLabel: "Veelgestelde vragen",
     faqTitleGradient: "Ant",
     faqTitleRest: "woorden",
-    faqDescription: "Vind antwoorden op veelgestelde vragen over ons ontwerpproces, diensten en meer.",
-    faqCtaText: "Kunt u niet vinden wat u zoekt? Boek een gratis consultatie en wij beantwoorden alle verdere vragen die u mogelijk heeft.",
+    faqDescription: "Vind antwoorden op veelgestelde vragen over ons ontwerpproces en diensten.",
+    faqCtaText: "Kun je niet vinden wat je zoekt? Boek een gratis consultatie en we beantwoorden alle verdere vragen die je mogelijk hebt.",
     faqQ1: "Welke diensten bieden jullie aan?",
-    faqA1: "Wij bieden uitgebreide webdesign en ontwikkelingsdiensten, waaronder custom website design, responsive ontwikkeling, e-commerce oplossingen, brand identity design en doorlopende website onderhoud en ondersteuning.",
+    faqA1: "We zijn gespecialiseerd in webdesign en -ontwikkeling, waarbij we responsief front-end design combineren met praktische UI/UX principes. We bouwen functionele, visueel consistente digitale ervaringen die bruikbaarheid verbeteren, prestaties optimaliseren en de online aanwezigheid van een merk versterken.",
     faqQ2: "Hoe begin ik met jullie samen te werken?",
-    faqA2: "Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken uw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij uw behoeften.",
+    faqA2: "Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken jouw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij jouw behoeften.",
     faqQ3: "Welke ontwerptools gebruiken jullie?",
-    faqA3: "Wij gebruiken industrie-standaard ontwerptools zoals Figma voor design en prototyping, Adobe Creative Suite voor geavanceerde graphics, en moderne ontwikkelframeworks zoals React, Next.js en WordPress voor het bouwen van responsive, hoogwaardige websites.",
+    faqA3: "We werken met industrieleidende tools zoals Figma, Framer en Adobe Suite om strakke, hoogwaardige ontwerpen te creëren.",
     faqQ4: "Hoe lang duurt een project?",
-    faqA4: "Projecttijdlijnen variëren afhankelijk van de scope en complexiteit. Een eenvoudige website duurt meestal 4-6 weken, terwijl complexere projecten met custom functies 8-12 weken kunnen duren. We geven een gedetailleerde tijdlijn tijdens ons eerste consult.",
+    faqA4: "Projecttijdlijnen variëren op basis van scope, maar de meeste ontwerpen nemen 2–4 weken in beslag. We geven een duidelijke tijdlijn na ons eerste consult, zodat je weet wat je kunt verwachten.",
     faqQ5: "Bieden jullie revisies aan?",
-    faqA5: "Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij uw visie. Extra revisies kunnen indien nodig worden geregeld.",
+    faqA5: "Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij jouw visie. Extra revisies kunnen indien nodig worden geregeld.",
     faqQ6: "Met welke branches werken jullie?",
-    faqA6: "Wij werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, professionele dienstverlening, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.",
+    faqA6: "We werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.",
     faqQ7: "Bieden jullie ontwikkeldiensten aan?",
-    faqA7: "Absoluut! Wij bieden full-stack ontwikkeldiensten aan, waaronder front-end ontwikkeling, back-end ontwikkeling, database design, API-integratie en custom functionaliteit. We bouwen moderne, schaalbare websites met de nieuwste technologieën.",
+    faqA7: "Ja, we zijn gespecialiseerd in Framer, WordPress/Elementor & Shopify ontwikkeling, waardoor naadloze design-to-live website overgangen worden gegarandeerd met hoogwaardige interacties en animaties.",
     faqQ8: "Wat is jullie prijsstructuur?",
-    faqA8: "Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van uw behoeften. Boek een gratis consult om uw project te bespreken en een gedetailleerde offerte te ontvangen.",
+    faqA8: "Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van jouw behoeften. Boek een gratis consultatie om jouw project te bespreken en een gedetailleerde offerte te ontvangen.",
     faqQ9: "Kunnen jullie mijn bestaande website opnieuw ontwerpen?",
-    faqA9: "Ja! Wij zijn gespecialiseerd in website-redesigns en kunnen uw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren uw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij uw bedrijfsdoelen.",
+    faqA9: "Ja! We zijn gespecialiseerd in website-redesigns en kunnen jouw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren jouw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij jouw bedrijfsdoelen.",
 
     // Stats
     projectsCompleted: "Projecten Voltooid",
@@ -660,7 +647,7 @@ const translations = {
     letsCreate: "Laten we samen iets",
     beautifulTogether: "moois creëren",
     startConversation: "Start een gesprek",
-    contactDescription: "Ik hoor graag over jouw project en verken hoe ik kan helpen jouw visie tot leven te brengen.",
+    contactDescription: "We horen graag over jouw project en verkennen hoe wij jou kunnen helpen jouw visie tot leven te brengen.",
 
     // Contact Form
     name: "Naam",
@@ -669,6 +656,8 @@ const translations = {
     message: "Bericht",
     yourName: "Jouw naam",
     yourEmail: "jouw@email.com",
+    url: "Website URL",
+    yourUrl: "https://jouwwebsite.nl",
     tellProject: "Vertel me over jouw project",
     shareVision: "Deel jouw visie met mij...",
     sendMessage: "Verstuur Bericht",
@@ -679,7 +668,7 @@ const translations = {
     phone: "Telefoon",
     location: "Locatie",
     basedInNetherlands: "Gevestigd in Nederland",
-    followMe: "Volg mij",
+    followMe: "Volg ons",
 
     // Footer
     privacyCookiePolicy: "Privacy & Cookie Beleid",
@@ -1433,6 +1422,10 @@ function checkLanguageFromURL() {
 // Initialize translations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded, initializing translations...")
+  
+  // Check language from URL first
+  checkLanguageFromURL()
+  
   console.log("Current language detected:", currentLanguage)
 
   // Set initial language

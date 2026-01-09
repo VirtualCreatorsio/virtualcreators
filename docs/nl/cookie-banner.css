@@ -4,11 +4,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
   z-index: 10000;
   transform: translateY(100%);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,13 +55,13 @@
 .cookie-banner-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #111827;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .cookie-banner-description {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #9ca3af;
   line-height: 1.5;
   margin: 0;
 }
@@ -70,6 +70,23 @@
   display: flex;
   gap: 0.75rem;
   flex-shrink: 0;
+}
+
+/* Cookie banner buttons - black text for primary, white for ghost */
+.cookie-banner .btn-primary {
+  color: #000000 !important;
+}
+
+.cookie-banner .btn-ghost {
+  color: #ffffff !important;
+}
+
+.cookie-banner .btn-primary:hover {
+  color: #ffffff !important;
+}
+
+.cookie-banner .btn-ghost:hover {
+  color: #ffffff !important;
 }
 
 .btn-small {
@@ -101,13 +118,14 @@
 }
 
 .cookie-modal .modal-content {
-  background: white;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   max-width: 500px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
   transform: scale(0.95);
   transition: transform 0.3s ease;
 }
@@ -118,7 +136,7 @@
 
 .cookie-modal .modal-header {
   padding: 1.5rem 1.5rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -127,7 +145,7 @@
 .cookie-modal .modal-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #111827;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -136,12 +154,12 @@
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  color: #6b7280;
+  color: #9ca3af;
   transition: color 0.2s ease;
 }
 
 .cookie-modal .modal-close:hover {
-  color: #111827;
+  color: #ffffff;
 }
 
 .cookie-modal .modal-close svg {
@@ -171,13 +189,13 @@
 .cookie-category-header h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #111827;
+  color: #ffffff;
   margin: 0;
 }
 
 .cookie-category-description {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #9ca3af;
   line-height: 1.5;
   margin: 0;
 }
@@ -236,10 +254,27 @@
 
 .cookie-modal .modal-footer {
   padding: 1rem 1.5rem 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   gap: 0.75rem;
   justify-content: flex-end;
+}
+
+/* Cookie modal buttons - black text for primary, white for ghost */
+.cookie-modal .btn-primary {
+  color: #000000 !important;
+}
+
+.cookie-modal .btn-ghost {
+  color: #ffffff !important;
+}
+
+.cookie-modal .btn-primary:hover {
+  color: #ffffff !important;
+}
+
+.cookie-modal .btn-ghost:hover {
+  color: #ffffff !important;
 }
 
 /* Mobile Responsive for Cookie Banner */

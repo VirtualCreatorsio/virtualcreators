@@ -949,7 +949,7 @@
                     </p>
                 </div>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-large" onclick="scrollToWork()" data-translate="seeProjects">
+                    <button class="btn btn-primary btn-large border-gradient" onclick="scrollToWork()" data-translate="seeProjects">
                         See Projects
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1064,56 +1064,59 @@
                     <p class="section-description" data-translate="servicesDescription">
                         I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.
                     </p>
+                    <a href="#contact" class="btn btn-primary btn-large border-gradient">
+                        <span data-translate="contactButton">Contact ons</span>
+                    </a>
                 </div>
 
-                <div class="services-list">
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">01</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="digitalStrategy">Digital Strategy</h3>
-                                <p class="service-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                <div class="services-cards-container">
+                    <div class="service-card active" data-service="0" data-icon="zap">
+                        <div class="service-card-number">01</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="digitalStrategy">Digital Strategy</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="digitalStrategyTitle">Strategic Vision</h3>
+                            <p class="service-card-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">02</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="brandIdentity">Brand Identity</h3>
-                                <p class="service-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="1" data-icon="bar-chart">
+                        <div class="service-card-number">02</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="brandIdentity">Brand Identity</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="brandIdentityTitle">Visual Identity</h3>
+                            <p class="service-card-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">03</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="webDevelopment">Web Development</h3>
-                                <p class="service-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="2" data-icon="palette">
+                        <div class="service-card-number">03</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="webDevelopment">Web Development</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="webDevelopmentTitle">Design Excellence</h3>
+                            <p class="service-card-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
-                    <div class="service-item">
-                        <div class="service-content">
-                            <span class="service-number">04</span>
-                            <div class="service-text">
-                                <h3 class="service-title" data-translate="userExperience">User Experience</h3>
-                                <p class="service-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
-                            </div>
-                            <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
+                    <div class="service-card" data-service="3" data-icon="code">
+                        <div class="service-card-number">04</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="userExperience">User Experience</span>
                         </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="userExperienceTitle">Technical Excellence</h3>
+                            <p class="service-card-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
                     </div>
                 </div>
             </div>
@@ -1269,8 +1272,8 @@
                     <h2 class="faq-title">
                         <span class="faq-title-gradient" data-translate="faqTitleGradient">Ant</span><span data-translate="faqTitleRest">woorden</span>
                     </h2>
-                    <p class="faq-description" data-translate="faqDescription">Vind antwoorden op veelgestelde vragen over ons ontwerpproces, diensten etc...</p>
-                    <p class="faq-cta-text" data-translate="faqCtaText">Kunt u niet vinden wat u zoekt? Boek een gratis consultatie en wij beantwoorden alle verdere vragen die u mogelijk heeft.</p>
+                    <p class="faq-description" data-translate="faqDescription">Vind antwoorden op veelgestelde vragen over ons ontwerpproces en diensten.</p>
+                    <p class="faq-cta-text" data-translate="faqCtaText">Kun je niet vinden wat je zoekt? Boek een gratis consultatie en we beantwoorden alle verdere vragen die je mogelijk hebt.</p>
                     <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation" style="margin-top: 1rem;">
                         Boek Gratis Consultatie
                     </button>
@@ -1285,7 +1288,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA1">Wij bieden uitgebreide webdesign en ontwikkelingsdiensten, waaronder custom website design, responsive ontwikkeling, e-commerce oplossingen, brand identity design en doorlopende website onderhoud en ondersteuning.</p>
+                        <p data-translate="faqA1">We zijn gespecialiseerd in webdesign en -ontwikkeling, waarbij we responsief front-end design combineren met praktische UI/UX principes. We bouwen functionele, visueel consistente digitale ervaringen die bruikbaarheid verbeteren, prestaties optimaliseren en de online aanwezigheid van een merk versterken.</p>
                     </div>
                 </div>
 
@@ -1295,7 +1298,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA2">Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken uw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij uw behoeften.</p>
+                        <p data-translate="faqA2">Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken jouw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij jouw behoeften.</p>
                     </div>
                 </div>
 
@@ -1305,7 +1308,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA3">Wij gebruiken industrie-standaard ontwerptools zoals Figma voor design en prototyping, Adobe Creative Suite voor geavanceerde graphics, en moderne ontwikkelframeworks zoals React, Next.js en WordPress voor het bouwen van responsive, hoogwaardige websites.</p>
+                        <p data-translate="faqA3">We werken met industrieleidende tools zoals Figma, Framer en Adobe Suite om strakke, hoogwaardige ontwerpen te creëren.</p>
                     </div>
                 </div>
 
@@ -1315,7 +1318,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA4">Projecttijdlijnen variëren afhankelijk van de scope en complexiteit. Een eenvoudige website duurt meestal 4-6 weken, terwijl complexere projecten met custom functies 8-12 weken kunnen duren. We geven een gedetailleerde tijdlijn tijdens ons eerste consult.</p>
+                        <p data-translate="faqA4">Projecttijdlijnen variëren op basis van scope, maar de meeste ontwerpen nemen 2–4 weken in beslag. We geven een duidelijke tijdlijn na ons eerste consult, zodat je weet wat je kunt verwachten.</p>
                     </div>
                 </div>
 
@@ -1325,7 +1328,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA5">Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij uw visie. Extra revisies kunnen indien nodig worden geregeld.</p>
+                        <p data-translate="faqA5">Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij jouw visie. Extra revisies kunnen indien nodig worden geregeld.</p>
                     </div>
                 </div>
 
@@ -1335,7 +1338,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA6">Wij werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, professionele dienstverlening, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.</p>
+                        <p data-translate="faqA6">We werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.</p>
                     </div>
                 </div>
 
@@ -1345,7 +1348,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA7">Absoluut! Wij bieden full-stack ontwikkeldiensten aan, waaronder front-end ontwikkeling, back-end ontwikkeling, database design, API-integratie en custom functionaliteit. We bouwen moderne, schaalbare websites met de nieuwste technologieën.</p>
+                        <p data-translate="faqA7">Ja, we zijn gespecialiseerd in Framer, WordPress/Elementor & Shopify ontwikkeling, waardoor naadloze design-to-live website overgangen worden gegarandeerd met hoogwaardige interacties en animaties.</p>
                     </div>
                 </div>
 
@@ -1355,7 +1358,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA8">Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van uw behoeften. Boek een gratis consult om uw project te bespreken en een gedetailleerde offerte te ontvangen.</p>
+                        <p data-translate="faqA8">Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van jouw behoeften. Boek een gratis consultatie om jouw project te bespreken en een gedetailleerde offerte te ontvangen.</p>
                     </div>
                 </div>
 
@@ -1365,7 +1368,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p data-translate="faqA9">Ja! Wij zijn gespecialiseerd in website-redesigns en kunnen uw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren uw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij uw bedrijfsdoelen.</p>
+                        <p data-translate="faqA9">Ja! We zijn gespecialiseerd in website-redesigns en kunnen jouw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren jouw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij jouw bedrijfsdoelen.</p>
                     </div>
                 </div>
                 </div>
@@ -1428,7 +1431,7 @@
                         <input type="text" name="_gotcha" class="honeypot-field" tabindex="-1" autocomplete="off">
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-contact" data-translate="sendMessage">
+                            <button type="submit" class="btn btn-primary btn-contact border-gradient" data-translate="sendMessage">
                                 <span class="btn-text">Send Message</span>
                                 <span class="btn-loading" style="display: none;" data-translate="sending">Sending...</span>
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1468,7 +1471,7 @@
                             </div>
                             <div class="contact-text">
                                 <div class="contact-label" data-translate="email">Email</div>
-                                <div class="contact-value">kjell@virtualcreators.io</div>
+                                <div class="contact-value"><a href="mailto:kjell@virtualcreators.io">kjell@virtualcreators.io</a></div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1479,7 +1482,7 @@
                             </div>
                             <div class="contact-text">
                                 <div class="contact-label" data-translate="phone">Phone</div>
-                                <div class="contact-value">+316 41552375</div>
+                                <div class="contact-value"><a href="tel:+31641552375">+316 41552375</a></div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1519,10 +1522,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
+                <a href="index.html" class="footer-brand">
                     <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
                     <div class="brand-dot"></div>
-                </div>
+                </a>
                 <div class="footer-links">
                     <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
                     <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
@@ -1580,7 +1583,7 @@
     </div>
 
     <!-- Optimized JavaScript loading -->
-    <script src="../translations.js" defer></script>
+    <script src="translations.js" defer></script>
     <script src="../script.js" defer></script>
     <script src="../cookie-banner.js" defer></script>
     
