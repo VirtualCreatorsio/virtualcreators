@@ -846,15 +846,15 @@ const translations = {
     resultsImpact: "Resultaten & Impact",
 
     // Cookie Banner
-    cookieBannerTitle: "Ik gebruik cookies om je ervaring te verbeteren",
-    cookieBannerDescription: "Deze website gebruikt cookies om je browservaring te verbeteren en websiteverkeer te analyseren. Door mijn website te blijven gebruiken, ga je akkoord met mijn gebruik van cookies.",
+    cookieBannerTitle: "Wij gebruiken cookies om je ervaring te verbeteren",
+    cookieBannerDescription: "Deze website gebruikt cookies om je browservaring te verbeteren en websiteverkeer te analyseren. Door onze website te blijven gebruiken, ga je akkoord met ons gebruik van cookies.",
     cookieManageBtn: "Cookies Beheren",
     cookieAcceptBtn: "Alles Accepteren",
     cookieSettingsTitle: "Cookie Instellingen",
     cookieEssentialTitle: "Essentiële Cookies",
     cookieEssentialDescription: "Deze cookies zijn noodzakelijk voor het functioneren van de website en kunnen niet worden uitgeschakeld.",
     cookieAnalyticsTitle: "Analyse Cookies",
-    cookieAnalyticsDescription: "Deze cookies helpen mij begrijpen hoe bezoekers omgaan met mijn website door anoniem informatie te verzamelen en te rapporteren.",
+    cookieAnalyticsDescription: "Deze cookies helpen ons begrijpen hoe bezoekers omgaan met onze website door anoniem informatie te verzamelen en te rapporteren.",
     cookieRejectBtn: "Niet-Essentiële Afwijzen",
     cookieSaveBtn: "Voorkeuren Opslaan",
 
