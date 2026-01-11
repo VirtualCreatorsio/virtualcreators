@@ -2930,6 +2930,19 @@ html.modal-open {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  z-index: 1;
+  pointer-events: auto;
+}
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+.gallery-item:hover::after {
+  background: rgba(0, 0, 0, 0.2);
 }
 .gallery-item-fade {
   opacity: 0;
@@ -2959,9 +2972,11 @@ html.modal-open {
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
+  pointer-events: none;
+  user-select: none;
 }
 .gallery-item:hover {
   transform: scale(1.02);
@@ -2969,6 +2984,201 @@ html.modal-open {
 }
 .gallery-item:hover img {
   transform: scale(1.05);
+}
+
+/* Gallery Lightbox */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gallery-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gallery-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.gallery-lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3001;
+  animation: galleryLightboxFadeIn 0.3s ease-out;
+}
+
+@keyframes galleryLightboxFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gallery-lightbox-image-container {
+  position: relative;
+  max-width: 100%;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 3002;
+}
+
+.gallery-lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-lightbox-close svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 3002;
+}
+
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-lightbox-prev {
+  left: -4rem;
+}
+
+.gallery-lightbox-next {
+  right: -4rem;
+}
+
+.gallery-lightbox-prev svg,
+.gallery-lightbox-next svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.gallery-lightbox-counter {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  z-index: 3002;
+}
+
+@media (max-width: 768px) {
+  .gallery-lightbox-content {
+    max-width: 95vw;
+    padding: 1rem;
+  }
+
+  .gallery-lightbox-image {
+    max-height: 85vh;
+  }
+
+  .gallery-lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .gallery-lightbox-close svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .gallery-lightbox-prev {
+    left: 0.5rem;
+  }
+
+  .gallery-lightbox-next {
+    right: 0.5rem;
+  }
+
+  .gallery-lightbox-prev svg,
+  .gallery-lightbox-next svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .gallery-lightbox-counter {
+    bottom: 1rem;
+  }
 }
 
 /* Results Section */

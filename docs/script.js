@@ -44,14 +44,16 @@ const projects = [
     category: "Online Shop",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
-    video: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Desktop video
-    mobileVideo: `${assetPathPrefix}assets/Virtualcreators - Lumenix Web-Project.mp4`, // Mobile video (using same file temporarily)
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
+    mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
     scrollVideo: `${assetPathPrefix}assets/scroll-vid Lumenix.mp4`, // Page scroll video
     scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video
     images: [
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Homepage" },
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Product Page" },
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Lumenix Checkout" },
+      { src: `${assetPathPrefix}assets/Lumenix-Hero-sectie.png`, alt: "Lumenix Hero Section" },
+      { src: `${assetPathPrefix}assets/Lumenix-Promo-sectie.png`, alt: "Lumenix Promo Section" },
+      { src: `${assetPathPrefix}assets/Lumenix-category-page.png`, alt: "Lumenix Category Page" },
+      { src: `${assetPathPrefix}assets/Lumenix-lifestyle carousel.png`, alt: "Lumenix Lifestyle Carousel" },
+      { src: `${assetPathPrefix}assets/Lumenix-checkout.png`, alt: "Lumenix Checkout" },
     ],
     description: "lumenixDescription",
     fullDescription: "lumenixFullDescription",
@@ -76,10 +78,14 @@ const projects = [
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
-    scrollVideo: null, // No scroll video for this project
+    scrollVideo: `${assetPathPrefix}assets/Delta-scroll-vid.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video
     images: [
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Deltastudios Homepage" },
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "Deltastudios Portfolio" },
+      { src: `${assetPathPrefix}assets/Deltastudios portfolio case.png`, alt: "Deltastudios Portfolio Case" },
+      { src: `${assetPathPrefix}assets/Deltastudios-services.png`, alt: "Deltastudios Services" },
+      { src: `${assetPathPrefix}assets/Deltastudios portfolio case - werksectie.png`, alt: "Deltastudios Work Section" },
+      { src: `${assetPathPrefix}assets/Deltastudios portfolio case - cases-pop-up.png`, alt: "Deltastudios Cases Pop-up" },
+      { src: `${assetPathPrefix}assets/Deltastudios portfolio case - scroll-reveal .png`, alt: "Deltastudios Scroll Reveal" },
     ],
     description: "deltastudiosDescription",
     fullDescription: "deltastudiosFullDescription",
@@ -107,9 +113,11 @@ const projects = [
     scrollVideo: `${assetPathPrefix}assets/scroll-vid-RobustRise.mp4`, // Page scroll video
     scrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video
     images: [
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "RobustRise Homepage" },
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "RobustRise Community" },
-      { src: `${assetPathPrefix}assets/lumenix-project.webp`, alt: "RobustRise Courses" },
+      { src: `${assetPathPrefix}assets/RobustRise Hero-sectie.png`, alt: "RobustRise Hero Section" },
+      { src: `${assetPathPrefix}assets/RobustRise-carousel-switcher.png`, alt: "RobustRise Carousel Switcher" },
+      { src: `${assetPathPrefix}assets/RobustRise-over-ons.png`, alt: "RobustRise Over Ons" },
+      { src: `${assetPathPrefix}assets/RobustRise-Blog.png`, alt: "RobustRise Blog" },
+      { src: `${assetPathPrefix}assets/RobustRise-custom-cart.png`, alt: "RobustRise Custom Cart" },
     ],
     description: "lifeSciGrowthDescription",
     fullDescription: "lifeSciGrowthFullDescription",
@@ -1442,7 +1450,7 @@ function generateProjectModalContent(project) {
             <h3 class="modal-section-title">${window.t("projectGallery") || "Project Gallery"}</h3>
             <div class="gallery-grid">
                 ${project.images.map((img, index) => `
-                    <div class="gallery-item gallery-item-fade ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}" style="animation-delay: ${index * 0.1}s;">
+                    <div class="gallery-item gallery-item-fade ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}" style="animation-delay: ${index * 0.1}s;" onclick="event.stopPropagation(); openGalleryLightbox(${index});" data-gallery-index="${index}">
                         <img src="${img.src}" alt="${img.alt || project.title + ' Screenshot ' + (index + 1)}" loading="lazy">
                     </div>
                 `).join('')}
@@ -1922,10 +1930,10 @@ function getCompanyLink(project) {
       url = "https://www.lumenix-beamers.nl";
       break;
     case "Deltastudios":
-      url = "https://deltastudios.com";
+      url = "https://deltastudios.nl";
       break;
     case "RobustRise":
-      url = "https://lifescigrowth.com";
+      url = "https://robustrise.nl";
       break;
     default:
       url = "#";
@@ -2503,6 +2511,167 @@ window.handleContactSubmit = handleContactSubmit
 window.handleVideoError = handleVideoError
 window.toggleFAQ = toggleFAQ
 window.updateFAQBackgroundMask = updateFAQBackgroundMask
+window.openGalleryLightbox = openGalleryLightbox
+window.closeGalleryLightbox = closeGalleryLightbox
+window.navigateGalleryImage = navigateGalleryImage
+
+// Gallery Lightbox Functionality
+let currentGalleryImages = []
+let currentGalleryIndex = 0
+let currentGalleryTitle = ''
+
+function openGalleryLightbox(index) {
+  console.log('openGalleryLightbox called with index:', index)
+  // Get all gallery images from the current project modal
+  const modalBody = document.getElementById('modalBody')
+  if (!modalBody) {
+    console.log('No modalBody found')
+    return
+  }
+  
+  const galleryItems = modalBody.querySelectorAll('.gallery-item')
+  console.log('Found gallery items:', galleryItems.length)
+  if (galleryItems.length === 0) {
+    console.log('No gallery items found')
+    return
+  }
+  
+  // Extract image data
+  currentGalleryImages = Array.from(galleryItems).map(item => {
+    const img = item.querySelector('img')
+    return {
+      src: img.src,
+      alt: img.alt
+    }
+  })
+  
+  currentGalleryIndex = parseInt(index) || 0
+  currentGalleryTitle = ''
+  
+  // Create or get lightbox
+  let lightbox = document.getElementById('galleryLightbox')
+  if (!lightbox) {
+    lightbox = createGalleryLightbox()
+    document.body.appendChild(lightbox)
+  }
+  
+  // Update lightbox content
+  updateGalleryLightbox()
+  
+  // Show lightbox
+  lightbox.classList.add('active')
+  document.body.style.overflow = 'hidden'
+  
+  // Add keyboard listeners
+  document.addEventListener('keydown', handleGalleryKeyboard)
+}
+
+function createGalleryLightbox() {
+  const lightbox = document.createElement('div')
+  lightbox.id = 'galleryLightbox'
+  lightbox.className = 'gallery-lightbox'
+  lightbox.innerHTML = `
+    <div class="gallery-lightbox-overlay" onclick="closeGalleryLightbox()"></div>
+    <div class="gallery-lightbox-content">
+      <button class="gallery-lightbox-close" onclick="closeGalleryLightbox()" aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <button class="gallery-lightbox-prev" onclick="navigateGalleryImage('prev')" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="15,18 9,12 15,6"/>
+        </svg>
+      </button>
+      <button class="gallery-lightbox-next" onclick="navigateGalleryImage('next')" aria-label="Next image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="9,18 15,12 9,6"/>
+        </svg>
+      </button>
+      <div class="gallery-lightbox-image-container">
+        <img class="gallery-lightbox-image" src="" alt="">
+      </div>
+      <div class="gallery-lightbox-counter">
+        <span class="gallery-lightbox-current">1</span> / <span class="gallery-lightbox-total">1</span>
+      </div>
+    </div>
+  `
+  return lightbox
+}
+
+function updateGalleryLightbox() {
+  if (currentGalleryImages.length === 0) return
+  
+  const lightbox = document.getElementById('galleryLightbox')
+  if (!lightbox) return
+  
+  const img = lightbox.querySelector('.gallery-lightbox-image')
+  const current = lightbox.querySelector('.gallery-lightbox-current')
+  const total = lightbox.querySelector('.gallery-lightbox-total')
+  const prevBtn = lightbox.querySelector('.gallery-lightbox-prev')
+  const nextBtn = lightbox.querySelector('.gallery-lightbox-next')
+  
+  if (img && currentGalleryImages[currentGalleryIndex]) {
+    img.src = currentGalleryImages[currentGalleryIndex].src
+    img.alt = currentGalleryImages[currentGalleryIndex].alt
+    
+    // Fade in effect
+    img.style.opacity = '0'
+    setTimeout(() => {
+      img.style.opacity = '1'
+    }, 50)
+  }
+  
+  if (current) {
+    current.textContent = currentGalleryIndex + 1
+  }
+  
+  if (total) {
+    total.textContent = currentGalleryImages.length
+  }
+  
+  // Update button visibility
+  if (prevBtn) {
+    prevBtn.style.display = currentGalleryImages.length > 1 ? 'flex' : 'none'
+  }
+  if (nextBtn) {
+    nextBtn.style.display = currentGalleryImages.length > 1 ? 'flex' : 'none'
+  }
+}
+
+function navigateGalleryImage(direction) {
+  if (currentGalleryImages.length === 0) return
+  
+  if (direction === 'next') {
+    currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length
+  } else if (direction === 'prev') {
+    currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length
+  }
+  
+  updateGalleryLightbox()
+}
+
+function closeGalleryLightbox() {
+  const lightbox = document.getElementById('galleryLightbox')
+  if (lightbox) {
+    lightbox.classList.remove('active')
+    document.body.style.overflow = ''
+  }
+  
+  // Remove keyboard listeners
+  document.removeEventListener('keydown', handleGalleryKeyboard)
+}
+
+function handleGalleryKeyboard(e) {
+  if (e.key === 'Escape') {
+    closeGalleryLightbox()
+  } else if (e.key === 'ArrowLeft') {
+    navigateGalleryImage('prev')
+  } else if (e.key === 'ArrowRight') {
+    navigateGalleryImage('next')
+  }
+}
 
 // Modal Text Reveal Functionality - Aligned with about page
 function convertToLetterSpans(element, text) {
