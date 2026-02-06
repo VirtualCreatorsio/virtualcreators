@@ -1254,7 +1254,17 @@ async function openProjectModal(index) {
     
     if (!projectHTML) {
       // Determine path prefix based on current location
-      const pathPrefix = window.location.pathname.includes('/nl/') ? '../' : ''
+      // Handle both local file:// and http(s):// protocols
+      const isLocalFile = window.location.protocol === 'file:'
+      const isDutchPath = window.location.pathname.includes('/nl/')
+      
+      let pathPrefix = ''
+      if (isDutchPath) {
+        pathPrefix = isLocalFile ? '../' : '../'
+      } else {
+        pathPrefix = isLocalFile ? '' : ''
+      }
+      
       const projectPath = `${pathPrefix}projects/${projectSlug}.html`
       
       // Fetch project page
@@ -1269,7 +1279,12 @@ async function openProjectModal(index) {
       // Parse HTML and extract project content
       const parser = new DOMParser()
       const doc = parser.parseFromString(fullHTML, 'text/html')
-      const projectContent = doc.querySelector('.project-content')
+      // Look for .case-content first (main content wrapper), fallback to .project-content
+      let projectContent = doc.querySelector('.case-content')
+      
+      if (!projectContent) {
+        projectContent = doc.querySelector('.project-content')
+      }
       
       if (!projectContent) {
         throw new Error('Project content not found in HTML')
@@ -1283,6 +1298,11 @@ async function openProjectModal(index) {
     
     // Inject fetched content
     modalBody.innerHTML = projectHTML
+    
+    // Apply translations to the fetched content
+    if (typeof window.updateTranslations === 'function') {
+      window.updateTranslations()
+    }
     
     // Replace case page background images with modal-specific backgrounds
     if (project.modalScrollVideoBackground) {
