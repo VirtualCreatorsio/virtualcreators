@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtualcreators - Digital Agency Portfolio | virtualcreators.io</title>
+    <meta name="description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="metaDescription">
+    
+    <!-- Brand-specific SEO -->
+    <meta name="keywords" content="Virtualcreators, virtualcreators.io, virtual creators, digital agency, web design, web development">
+    <meta name="author" content="Virtualcreators">
+    <meta name="brand" content="Virtualcreators">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://www.virtualcreators.io/" />
+    <link rel="alternate" hreflang="nl" href="https://www.virtualcreators.io/nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualcreators.io/" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Virtualcreators - Digital Agency Portfolio | virtualcreators.io" id="ogTitle">
+    <meta property="og:description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="ogDescription">
+    <meta property="og:url" content="https://www.virtualcreators.io" id="ogUrl">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US" id="ogLocale">
+    <meta property="og:locale:alternate" content="nl_NL">
+    
+    <!-- Open Graph Image -->
+    <meta property="og:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
+    <meta property="og:image:width" content="32">
+    <meta property="og:image:height" content="32">
+    <meta property="og:image:type" content="image/png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Virtualcreators - Digital Agency Portfolio | virtualcreators.io" id="twitterTitle">
+    <meta name="twitter:description" content="Transform your digital presence with Virtualcreators. Expert web design & development that drives growth. Get modern, responsive websites that convert visitors into customers from Virtualcreators." id="twitterDescription">
+    <meta name="twitter:image" content="https://www.virtualcreators.io/assets/vc-logo-32x32.png">
+     
+    <!-- Favicon Support -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/vc-logo-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+    <!-- Critical CSS - Exact extraction from styles.css -->
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      line-height: 1.6;
+      color: #ffffff;
+      background-color: #000000;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 3rem;
+      }
+    }
+    .cursor-follower {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(to bottom, #ec4899, #8b5cf6); 
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5; 
+      transition: transform 0.15s ease-out;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .cursor-follower {
+        display: block;
+      }
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    @media (min-width: 1024px) {
+      .nav-container {
+        padding: 0 3rem;
+      }
+    }
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      position: relative;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      z-index: 1001;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+    .logo-bold {
+      font-weight: 500;
+    }
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(to bottom, #ec4899, #8b5cf6);
+    }
+    .brand-dot-small {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(to bottom, #ec4899, #8b5cf6);
+    }
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 3rem;
+      margin-right: -60px;
+    }
+    @media (min-width: 1024px) {
+      .desktop-nav {
+        display: flex;
+      }
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .nav-link {
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.025em;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #111827;
+    }
+    .nav-link.active {
+      color: #8b5cf6;
+      font-weight: 500;
+    }
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      z-index: 1001;
+    }
+    .mobile-menu-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    .mobile-menu-btn:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    @media (min-width: 1024px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+    }
+    .hamburger {
+      width: 24px;
+      height: 3px;
+      background-color: #111827;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .mobile-menu-btn.active .hamburger:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    .mobile-menu-btn.active .hamburger:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.active .hamburger:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    .mobile-nav {
+      display: none;
+      background-color: white;
+      border-top: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1000;
+    }
+    .mobile-nav.active {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .mobile-nav-content {
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .mobile-nav-link {
+      color: #6b7280;
+      text-decoration: none;
+      padding: 0.75rem 0;
+      font-size: 1.125rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .mobile-nav-link:last-of-type {
+      border-bottom: none;
+    }
+    .mobile-nav-link:hover,
+    .mobile-nav-link:active {
+      color: #111827;
+    }
+    .mobile-nav-link.active {
+      color: #8b5cf6;
+      font-weight: 500;
+    }
+    .mobile-cta {
+      width: fit-content;
+      padding: 15px !important;
+    }
+    .mobile-language-switcher {
+      padding: 1rem 0;
+      border-top: 1px solid #f3f4f6;
+      margin-top: 1rem;
+    }
+    .mobile-language-header {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .mobile-language-options {
+      display: flex;
+      gap: 1rem;
+    }
+    .mobile-language-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: none;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .mobile-language-option:hover {
+      border-color: #d1d5db;
+      background-color: #f9fafb;
+    }
+    @media (min-width: 1024px) {
+      .mobile-language-switcher {
+        display: none;
+      }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 300;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      font-family: inherit;
+      position: relative;
+    }
+    .btn-primary {
+      background-color: #111827;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(to right, #ec4899, #8b5cf6);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .btn-ghost {
+      background: linear-gradient(to right, #ec4899, #8b5cf6);
+      color: white;
+    }
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .btn-large {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+    }
+    .btn-contact {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-top: 5rem;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        #ec4899 0%,
+        #8b5cf6 50%,
+        transparent 70%
+      );
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text {
+      margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-size: 3.75rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 6rem;
+      }
+    }
+    .hero-title-italic {
+      font-weight: 500;
+      font-style: italic;
+      background: linear-gradient(to right, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-right: 1rem;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #6b7280;
+      max-width: 32rem;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    @media (min-width: 768px) {
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+    }
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      padding-top: 2rem;
+    }
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+    .logo-ticker {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: auto;
+      width: 100vw;
+      transform: translateX(-50%);
+      overflow: hidden;
+      padding: 3rem 0;
+      z-index: 1;
+      background: transparent;
+    }
+    .logo-ticker-wrapper {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .logo-ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      animation: logoTicker 40s linear infinite;
+      will-change: transform;
+      flex-shrink: 0;
+    }
+    .logo-ticker-item {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4rem;
+      transition: opacity 0.3s ease;
+      pointer-events: auto;
+      cursor: default;
+    }
+    .logo-ticker-item img {
+      max-height: 4rem;
+      max-width: 160px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: opacity 0.3s ease, filter 0.3s ease;
+      opacity: 0.4;
+    }
+    .logo-ticker-item:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    @keyframes logoTicker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    @media (max-width: 768px) {
+      .logo-ticker {
+        bottom: 0;
+        padding: 2rem 0;
+      }
+      .logo-ticker-item {
+        height: 3rem;
+      }
+      .logo-ticker-item img {
+        max-height: 3rem;
+        max-width: 120px;
+      }
+      .logo-ticker-track {
+        gap: 4rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .logo-ticker {
+        bottom: 0;
+        padding: 1.5rem 0;
+      }
+      .logo-ticker-item {
+        height: 2.5rem;
+      }
+      .logo-ticker-item img {
+        max-height: 2.5rem;
+        max-width: 100px;
+      }
+      .logo-ticker-track {
+        gap: 3rem;
+      }
+    }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .language-switcher {
+      position: relative;
+      display: inline-block;
+      padding-right: 10px;
+    }
+    .language-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: none;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    .language-btn:hover {
+      border-color: #d1d5db;
+      background-color: #f9fafb;
+    }
+    .language-text {
+      font-weight: 500;
+      min-width: 1.5rem;
+    }
+    .language-arrow {
+      width: 1rem;
+      height: 1rem;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+    .language-btn.active .language-arrow {
+      transform: rotate(180deg);
+    }
+    .language-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      z-index: 1001;
+      min-width: 140px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    .language-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 0.875rem;
+      color: #374151;
+    }
+    .language-option:hover {
+      background-color: #f3f4f6;
+    }
+    .language-option:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .language-option:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+    @media (max-width: 1023px) {
+      .language-switcher,
+      .nav-right {
+        display: none;
+      }
+    }
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
+      transform: translateY(20px);
+    }
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top-btn:hover {
+      background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.3);
+      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+      transform: translateY(-2px);
+    }
+    .back-to-top-arrow {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      color: #6b7280;
+      transition: all 0.3s ease;
+    }
+    .back-to-top-btn:hover .back-to-top-arrow {
+      color: #8b5cf6;
+      transform: translateY(-1px);
+    }
+    .back-to-top-text {
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(17, 24, 39, 0.9);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      margin-right: 0.75rem;
+      pointer-events: none;
+    }
+    .back-to-top-text::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid rgba(17, 24, 39, 0.9);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+    .back-to-top-btn:hover .back-to-top-text {
+      opacity: 1;
+      visibility: visible;
+    }
+    @media (max-width: 768px) {
+      .back-to-top-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 44px;
+        height: 44px;
+      }
+      .back-to-top-arrow {
+        width: 16px;
+        height: 16px;
+      }
+      .back-to-top-text {
+        display: none;
+      }
+    }
+    /* Critical: Hide Spline background immediately to prevent flash */
+    .spline-background {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    .spline-container {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .spline-container iframe {
+      width: 120% !important;
+      height: 100% !important;
+      position: absolute !important;
+      left: -10% !important;
+      top: 0 !important;
+      border: none !important;
+      display: block !important;
+    }
+    @media (max-width: 1024px) {
+      .spline-container iframe {
+        width: 150% !important;
+        left: -25% !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .spline-container iframe {
+        width: 180% !important;
+        left: -40% !important;
+      }
+    }
+    </style>
+    
+    <!-- Non-critical CSS loading - async to reduce critical path -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="preload" href="cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="cookie-banner.css"></noscript>
+    
+    <!-- Ensure CSS loads immediately to prevent FOUC -->
+    <script>
+    // Load CSS immediately to prevent flash of unstyled content
+    (function() {
+      const loadCSS = function(href, before, media) {
+        const doc = window.document;
+        const ss = doc.createElement("link");
+        const ref = before || doc.getElementsByTagName("script")[0];
+        const sheets = doc.styleSheets;
+        ss.rel = "stylesheet";
+        ss.href = href;
+        ss.media = "only x";
+        function ready(cb) {
+          if (doc.body) cb(); else setTimeout(function() { ready(cb); });
+        }
+        ready(function() {
+          ref.parentNode.insertBefore(ss, (before ? ref : ref.nextSibling));
+        });
+        const onloadcssdefined = function(cb) {
+          const resolvedHref = ss.href;
+          let i = sheets.length;
+          while (i--) {
+            if (sheets[i].href === resolvedHref) {
+              return cb();
+            }
+          }
+          setTimeout(function() { onloadcssdefined(cb); });
+        };
+        function loadCB() {
+          if (ss.addEventListener) {
+            ss.removeEventListener("load", loadCB);
+          }
+          ss.media = media || "all";
+        }
+        if (ss.addEventListener) {
+          ss.addEventListener("load", loadCB);
+        }
+        ss.onloadcssdefined = onloadcssdefined;
+        onloadcssdefined(loadCB);
+        return ss;
+      };
+      
+      // Load critical CSS files immediately
+      loadCSS("styles.css");
+      loadCSS("cookie-banner.css");
+    })();
+    </script>
+    
+    <!-- Calendly CSS - Load with lower priority -->
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
+    <!-- Optimized Google Fonts loading - prevent font flash -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="canonical" href="https://www.virtualcreators.io/" />
+    
+    <!-- Strategic preconnect hints for critical resources -->
+    <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DNS prefetch for additional resources -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    
+    <!-- Initialize GTM Consent Mode before GTM loads -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'consent_default',
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MDRST6BP');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Compression hints -->
+    <meta http-equiv="Accept-Encoding" content="gzip, deflate, br">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Virtualcreators",
+      "alternateName": ["VirtualCreators", "Virtual Creators"],
+      "url": "https://www.virtualcreators.io/",
+      "logo": "https://www.virtualcreators.io/assets/vc-logo-32x32.png",
+      "description": "Virtualcreators is a digital agency specializing in web design and development. We create modern, responsive websites that convert visitors into customers.",
+      "foundingDate": "2024",
+      "slogan": "Crafting digital experiences that drive meaningful growth",
+      "sameAs": [
+        "https://www.instagram.com/virtualcreators.io/"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "email": "kjell@virtualcreators.io",
+        "telephone": "+31641552375",
+        "contactType": "customer support",
+        "areaServed": ["NL", "EN"]
+      }],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NL"
+      },
+      "knowsAbout": ["Web Design", "Web Development", "Digital Strategy", "Brand Identity", "User Experience Design"],
+      "serviceArea": {
+        "@type": "Place",
+        "name": "Worldwide"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Virtualcreators",
+      "alternateName": "virtualcreators.io",
+      "url": "https://www.virtualcreators.io/",
+      "description": "Virtualcreators - Digital agency portfolio showcasing expert web design and development services",
+      "inLanguage": ["en", "nl"],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Virtualcreators"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.virtualcreators.io/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Additional Brand Recognition Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Virtualcreators",
+      "alternateName": ["VirtualCreators", "Virtual Creators"],
+      "description": "Virtualcreators specializes in creating digital experiences through expert web design and development services.",
+      "url": "https://www.virtualcreators.io/",
+      "telephone": "+31641552375",
+      "email": "kjell@virtualcreators.io",
+      "serviceType": ["Web Design", "Web Development", "Digital Strategy", "Brand Identity"],
+      "areaServed": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Virtualcreators Digital Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design",
+              "description": "Custom website design services"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Professional website development"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Spline 3D Background - Fixed across entire site -->
+    <div class="spline-background" style="visibility: hidden; opacity: 0; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+        <div class="spline-container" style="width: 100%; height: 100%; overflow: hidden; position: relative;">
+            <iframe src='https://my.spline.design/untitled-BhkSACTnvZSVNrT1EXLRi9yM/' frameborder='0' width='100%' height='100%' style="width: 120%; height: 100%; position: absolute; left: -10%; top: 0; border: none; display: block;"></iframe>
+        </div>
+    </div>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDRST6BP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Cookie Banner is now dynamically injected by cookie-banner.js -->
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="#" class="logo" onclick="scrollToTop(); return false;">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="#work" class="nav-link" data-translate="work">Work</a>
+                        <a href="#services" class="nav-link" data-translate="services">Services</a>
+                        <a href="about-virtualcreators.html" class="nav-link" data-translate="about">About</a>
+                        <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
+                        <a href="blog/index.html" class="nav-link">Blog</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn" aria-label="Toggle language selection" aria-expanded="false" aria-haspopup="true">
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown" role="menu" aria-labelledby="languageBtn">
+                            <button class="language-option" onclick="switchLanguage('en')" role="menuitem">
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')" role="menuitem">
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost" onclick="openCalendlyPopup()" data-translate="letsalk">Free Consultation</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Work</a>
+                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Services</a>
+                <a href="about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
+                <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
+                <a href="blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header" data-translate="language">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span>NL</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mobile-cta" onclick="openCalendlyPopup(); closeMobileMenu()" data-translate="letsalk">Free Consultation</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in-section" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="section-label" style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem;">
+                        <span class="brand-dot-small"></span>
+                        <span data-translate="heroLabel">Design & Web-Development Studio</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span data-translate="heroTitle1">We build digital</span><br>
+                        <span class="hero-title-italic" data-translate="heroTitle2">experiences</span>
+                    </h1>
+                    <p class="hero-subtitle" data-translate="heroSubtitle">
+                        From concept to conversion - We craft websites that transform brands digitally.
+                    </p>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large border-gradient" onclick="scrollToWork()" data-translate="seeProjects">
+                        See Projects
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation">
+                        Book Free Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Gradient Glow Effect -->
+        <div class="hero-gradient-glow"></div>
+        <!-- Logo Ticker -->
+        <div class="logo-ticker">
+            <div class="logo-ticker-wrapper">
+                <div class="logo-ticker-track">
+                    <div class="logo-ticker-item">
+                        <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="logo-ticker-item">
+                        <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
+                    </div>
+                    <div class="logo-ticker-item">
+                        <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" style="bottom: 8rem;">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services fade-in-section" id="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="services-intro">
+                    <div class="section-header">
+                        <div class="section-badge">
+                            <div class="brand-dot-small"></div>
+                            <span class="section-label" data-translate="whatIDo">What I Do</span>
+                        </div>
+                        <h2 class="section-title">
+                            <span data-translate="servicesTitle1">Services that drive</span><br>
+                            <span class="title-italic" data-translate="servicesTitle2">meaningful growth</span>
+                        </h2>
+                    </div>
+                    <p class="section-description" data-translate="servicesDescription">
+                        I believe in the power of simplicity. Every project begins with understanding your goals and crafting solutions that are both beautiful and purposeful.
+                    </p>
+                    <a href="#contact" class="btn btn-primary btn-large border-gradient">
+                        <span data-translate="contactButton">Contact us</span>
+                    </a>
+                </div>
+
+                <div class="services-cards-container">
+                    <div class="service-card active" data-service="0" data-icon="zap">
+                        <div class="service-card-number">01</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="digitalStrategy">Brand Identity</span>
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="digitalStrategyTitle">Strategic Vision</h3>
+                            <p class="service-card-description" data-translate="digitalStrategyDescription">We craft unique, memorable brand identities that resonate with your audience — from logos to visual systems — ensuring every touchpoint reflects your brand's essence.</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
+                    </div>
+                    <div class="service-card" data-service="1" data-icon="bar-chart">
+                        <div class="service-card-number">02</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="brandIdentity">Digital Strategy</span>
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="brandIdentityTitle">Visual Identity</h3>
+                            <p class="service-card-description" data-translate="brandIdentityDescription">We build cohesive digital strategies that align your brand's voice, guide your presence across channels, and create meaningful connections with the people you want to reach.</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
+                    </div>
+                    <div class="service-card" data-service="2" data-icon="palette">
+                        <div class="service-card-number">03</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="webDevelopment">Web-Design</span>
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="webDevelopmentTitle">Design Excellence</h3>
+                            <p class="service-card-description" data-translate="webDevelopmentDescription">Your brand deserves a digital presence that stands out. We craft custom website designs with intentional UX/UI, clear visual hierarchy, and an experience that feels unmistakably yours.</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
+                    </div>
+                    <div class="service-card" data-service="3" data-icon="code">
+                        <div class="service-card-number">04</div>
+                        <div class="service-card-title-vertical">
+                            <span data-translate="userExperience">Web-Development</span>
+                        </div>
+                        <div class="service-card-content">
+                            <h3 class="service-card-title" data-translate="userExperienceTitle">Technical Excellence</h3>
+                            <p class="service-card-description" data-translate="userExperienceDescription">We build custom websites with modern, resilient code, transforming design into a smooth, responsive, and trustworthy brand experience at every interaction.</p>
+                            <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                        </div>
+                        <div class="service-card-icon"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio fade-in-section" id="work">
+        <div class="container">
+            <div class="portfolio-header">
+                <div class="section-badge-mid">
+                    <div class="brand-dot-small"></div>
+                    <span class="section-label" data-translate="selectedWork">Selected Work</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-translate="projectsIAm">Projects I am</span><br>
+                    <span class="title-italic" data-translate="proudOf">proud of</span>
+                </h2>
+            </div>
+
+            <div class="projects-list stacked-scroll">
+                <!-- Project 1 -->
+                <div class="project-item stacked-scroll-item">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span data-translate="onlineShop">Online Shop</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title" onclick="openProjectModal(0)">Lumenix</h3>
+                        </div>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Brand Identity</span>
+                            <span class="project-badge">E-commerce</span>
+                        </div>
+                        <button class="project-link" onclick="openProjectModal(0)" data-translate="viewProject">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-image" onclick="openProjectModal(0)">
+                        <picture>
+                            <source media="(max-width: 640px)" srcset="assets/lumenix-project.webp" width="348" height="224">
+                            <source media="(max-width: 1024px)" srcset="assets/lumenix-project.webp" width="500" height="320">
+                            <img src="assets/lumenix-project.webp" alt="Lumenix-Beamers Project" class="project-img" width="700" height="450" loading="lazy">
+                        </picture>
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-item project-reverse stacked-scroll-item">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span data-translate="brandingAgency">Branding Agency</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title" onclick="openProjectModal(1)">Deltastudios</h3>
+                        </div>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Mobile First</span>
+                        </div>
+                        <button class="project-link" onclick="openProjectModal(1)" data-translate="viewProject">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-image" onclick="openProjectModal(1)">
+                        <picture>
+                            <source media="(max-width: 640px)" srcset="assets/tractionmovies-project.webp" width="348" height="224">
+                            <source media="(max-width: 1024px)" srcset="assets/tractionmovies-project.webp" width="500" height="320">
+                            <img src="assets/tractionmovies-project.webp" alt="Deltastudios Project" class="project-img" width="700" height="450" loading="lazy">
+                        </picture>
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item stacked-scroll-item">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span data-translate="onlineShop">Online Shop</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title" onclick="openProjectModal(2)">RobustRise</h3>
+                        </div>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Brand Identity</span>
+                            <span class="project-badge">E-commerce</span>
+                        </div>
+                        <button class="project-link" onclick="openProjectModal(2)" data-translate="viewProject">
+                            View Project
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="project-image" onclick="openProjectModal(2)">
+                        <picture>
+                            <source media="(max-width: 640px)" srcset="assets/lifescigrowth-project.webp" width="348" height="224">
+                            <source media="(max-width: 1024px)" srcset="assets/lifescigrowth-project.webp" width="500" height="320">
+                            <img src="assets/lifescigrowth-project.webp" alt="RobustRise Project" class="project-img" width="700" height="450" loading="lazy">
+                        </picture>
+                        <div class="project-overlay">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Projects Button -->
+            <div class="portfolio-view-all">
+                <a href="projects/index.html" class="btn btn-primary btn-large border-gradient">
+                    <span data-translate="viewAllProjects">View All Projects</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq fade-in-section" id="about">
+        <div class="container">
+            <div class="faq-grid">
+                <!-- Left Column: Title and Image -->
+                <div class="faq-left">
+                    <div class="faq-label">
+                        <div class="brand-dot-small"></div>
+                        <span class="section-label" data-translate="faqLabel">Frequently asked questions</span>
+                    </div>
+                    <h2 class="faq-title">
+                        <span class="faq-title-gradient" data-translate="faqTitleGradient">Ans</span><span data-translate="faqTitleRest">wers</span>
+                    </h2>
+                    <p class="faq-description" data-translate="faqDescription">Find answers to common questions about our design process, services etc...</p>
+                    <p class="faq-cta-text" data-translate="faqCtaText">Can't find what you're looking for? Book a free consultation and we will answer any further questions you might have.</p>
+                    <button class="btn btn-ghost btn-large" onclick="openCalendlyPopup()" data-translate="bookConsultation" style="margin-top: 1rem;">
+                        Book Free Consultation
+                    </button>
+                </div>
+
+                <!-- Right Column: FAQ List -->
+                <div class="faq-right">
+                    <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ1">What services do you provide?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA1">We provide comprehensive web design and development services including custom website design, responsive development, e-commerce solutions, brand identity design, and ongoing website maintenance and support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ2">How do I start working with you?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA2">Getting started is easy! Simply book a free consultation through our website, and we'll discuss your project goals, timeline, and budget. From there, we'll create a custom proposal tailored to your needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ3">What design tools do you use?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA3">We use industry-standard design tools including Figma for design and prototyping, Adobe Creative Suite for advanced graphics, and modern development frameworks like React, Next.js, and WordPress for building responsive, high-performance websites.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ4">How long does a project take?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA4">Project timelines vary depending on scope and complexity. A simple website typically takes 4-6 weeks, while more complex projects with custom features may take 8-12 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ5">Do you provide revisions?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA5">Yes! We include revision rounds in all our project packages. Typically, we offer 2-3 rounds of revisions during the design phase to ensure the final product perfectly matches your vision. Additional revisions can be arranged if needed.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ6">What industries do you work with?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA6">We work with businesses across various industries including technology, healthcare, e-commerce, professional services, creative agencies, and more. Our design approach adapts to each industry's unique needs and target audience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ7">Do you offer development services?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA7">Absolutely! We provide full-stack development services including front-end development, back-end development, database design, API integration, and custom functionality. We build modern, scalable websites using the latest technologies.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ8">What is your pricing structure?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA8">Our pricing is customized based on project scope, complexity, and requirements. We offer transparent, fixed-price quotes after understanding your needs. Book a free consultation to discuss your project and receive a detailed proposal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span data-translate="faqQ9">Can you redesign my existing website?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-translate="faqA9">Yes! We specialize in website redesigns and can transform your existing site into a modern, user-friendly experience. We'll analyze your current site, identify areas for improvement, and create a fresh design that better serves your business goals.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in-section" id="contact">
+        <div class="container">
+            <div class="contact-header">
+                <div class="section-badge-mid">
+                    <div class="brand-dot-small"></div>
+                    <span class="section-label" data-translate="getInTouch">Get In Touch</span>
+                </div>
+                <h2 class="section-title">
+                    <span data-translate="letsCreate">Let's create something</span><br>
+                    <span class="title-italic" data-translate="beautifulTogether">beautiful together</span>
+                </h2>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Form with Formspree Integration -->
+                <div class="contact-form-card">
+                    <form class="contact-form" action="https://formspree.io/f/xdkgreqr" method="POST" onsubmit="handleContactSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" data-translate="name">Name</label>
+                                <input type="text" name="name" class="form-input" data-translate="yourName" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" data-translate="email">Email</label>
+                                <input type="email" name="email" class="form-input" data-translate="yourEmail" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-translate="project">Project</label>
+                            <input type="text" name="project" class="form-input" data-translate="tellProject" placeholder="Tell me about your project" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" data-translate="message">Message</label>
+                            <textarea name="message" class="form-textarea" data-translate="shareVision" placeholder="Share your vision with me..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label"><span data-translate="url">Website URL</span> <span style="font-weight: 300; opacity: 0.7;">(optional)</span></label>
+                            <input type="url" name="url" class="form-input" placeholder="https://yourwebsite.com" data-translate="yourUrl">
+                        </div>
+                        
+                        <!-- Hidden fields for additional context -->
+                        <input type="hidden" name="_subject" value="New contact form submission from VirtualCreators">
+                        <input type="hidden" name="_language" id="formLanguage" value="en">
+                        
+                        <!-- Honeypot fields for spam protection (must remain empty) -->
+                        <div class="honeypot-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
+                            <label for="website">Website (leave blank)</label>
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
+                        <!-- Formspree built-in honeypot field -->
+                        <input type="text" name="_gotcha" class="honeypot-field" tabindex="-1" autocomplete="off">
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-contact border-gradient" data-translate="sendMessage">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading" style="display: none;" data-translate="sending">Sending...</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            <div class="form-divider">
+                                <span class="divider-text" data-translate="orText">or</span>
+                            </div>
+                            <button type="button" class="btn btn-ghost btn-consultation" onclick="openCalendlyPopup()" data-translate="bookConsultation">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                Book Free Consultation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-intro">
+                        <h3 class="contact-title" data-translate="startConversation">Start a conversation</h3>
+                        <p class="contact-description" data-translate="contactDescription">I'd love to hear about your project and explore how I can help bring your vision to life.</p>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label" data-translate="email">Email</div>
+                                <div class="contact-value"><a href="mailto:kjell@virtualcreators.io">kjell@virtualcreators.io</a></div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label" data-translate="phone">Phone</div>
+                                <div class="contact-value"><a href="tel:+31641552375">+316 41552375</a></div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <div class="contact-label" data-translate="location">Location</div>
+                                <div class="contact-value" data-translate="basedInNetherlands">Based in the Netherlands</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <div class="social-label" data-translate="followMe">Follow us</div>
+                        <div class="social-list">
+                            <a href="https://www.instagram.com/virtualcreators.io/" class="social-link">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top-btn" onclick="scrollToTop()">
+        <svg class="back-to-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 19V5M5 12L12 5L19 12"/>
+        </svg>
+        <span class="back-to-top-text" data-translate="backToTop">Back to Top</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="index.html" class="footer-brand">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </a>
+                <div class="footer-links">
+                    <a href="privacy-policy.html" class="footer-link" data-translate="privacyCookiePolicy">Privacy & Cookie Policy</a>
+                    <a href="terms-conditions.html" class="footer-link" data-translate="termsConditions">Terms & Conditions</a>
+                    <a href="about-virtualcreators.html" class="footer-link" data-translate="aboutVirtualcreators">About virtualcreators</a>
+                </div>
+                <div class="footer-copyright" data-translate="copyright">© 2025 Virtualcreators. Crafted with care.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-section">
+                    <h3 class="modal-title" id="modalTitle">Project Title</h3>
+                    <p class="modal-subtitle" id="modalSubtitle">Category • Year</p>
+                </div>
+                <button class="modal-close" onclick="closeProjectModal()" aria-label="Close project modal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                <!-- Video and content will be populated by JavaScript -->
+            </div>
+
+            <div class="modal-footer">
+                <div class="modal-cta">
+                    <button class="btn btn-primary" onclick="openCalendlyPopup()" data-translate="startYourProject">
+                        Start Your Project
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-navigation">
+                    <button class="nav-btn" onclick="navigateProject('prev')" aria-label="Previous project">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="15,18 9,12 15,6"/>
+                        </svg>
+                    </button>
+                    <span class="nav-indicator" id="navIndicator">1 of 3</span>
+                    <button class="nav-btn" onclick="navigateProject('next')" aria-label="Next project">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9,18 15,12 9,6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Language redirect logic for root index.html
+    (function() {
+        // Check if we're on the root page and not already redirected
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html' || window.location.pathname.endsWith('index.html')) {
+            // Check for stored language preference
+            const storedLang = localStorage.getItem('preferred-language')
+            
+            // Only redirect if there's a clear stored preference for Dutch
+            if (storedLang === 'nl') {
+                // Handle local development vs production
+                if (window.location.protocol === 'file:') {
+                    const basePath = window.location.pathname.split('/').slice(0, -1).join('/')
+                    window.location.href = `${basePath}/nl/index.html`
+                } else {
+                    window.location.href = '/nl/'
+                }
+                return
+            }
+            
+            // For now, disable automatic browser language detection to prevent unwanted redirects
+            // Only redirect if user has explicitly chosen Dutch
+            
+            // Default to English (stay on root) if no preference
+            if (!storedLang) {
+                localStorage.setItem('preferred-language', 'en')
+            }
+        }
+    })()
+    </script>
+    
+
+    <!-- Optimized JavaScript loading -->
+    <script src="translations.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="cookie-banner.js" defer></script>
+    
+    <!-- Calendly Script - Load asynchronously -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
