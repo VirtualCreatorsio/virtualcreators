@@ -837,75 +837,47 @@
             <div class="logo-ticker-wrapper">
                 <div class="logo-ticker-track">
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
-                        </a>
+                        <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
-                        </a>
+                        <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
-                        </a>
+                        <img src="../assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
-                        </a>
+                        <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
-                        </a>
+                        <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
-                        </a>
+                        <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
-                        </a>
+                        <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
                     </div>
                     <!-- Duplicate for seamless loop -->
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
-                        </a>
+                        <img src="../assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
-                        </a>
+                        <img src="../assets/Repositive.webp" alt="Repositive" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
-                        </a>
+                        <img src="../assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
-                        </a>
+                        <img src="../assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
-                        </a>
+                        <img src="../assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
-                        </a>
+                        <img src="../assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
-                        </a>
+                        <img src="../assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1104,12 +1076,8 @@
     
     <!-- Text Tracking Effect - Translation System Patch -->
     <script>
-        console.log('Text tracking script loaded!');
-        
         // Function to convert text to letter spans
         function convertToLetterSpans(element, text) {
-            console.log(`Converting to letter spans: "${text.substring(0, 50)}..."`);
-            
             const letterSpans = text.split('').map(char => {
                 if (char === ' ') {
                     return ' ';
@@ -1120,7 +1088,6 @@
             element.innerHTML = letterSpans;
             
             const letters = element.querySelectorAll('.letter-tracking');
-            console.log(`Created ${letters.length} letter spans`);
             
             // Set initial styles directly on each letter
             letters.forEach(letter => {
@@ -1137,33 +1104,25 @@
         
         // Patch the translation system to work with text tracking
         function patchTranslationSystem() {
-            console.log('=== PATCHING TRANSLATION SYSTEM ===');
-            
             // Wait for translations.js to load
             function checkForTranslationSystem() {
                 if (typeof window.updateTranslations === 'function') {
-                    console.log('Found translation system, patching it...');
-                    
                     // Store the original function
                     const originalUpdateTranslations = window.updateTranslations;
                     
                     // Override with our patched version
                     window.updateTranslations = function() {
-                        console.log('=== PATCHED TRANSLATION UPDATE CALLED ===');
-                        
                         // Call the original translation function
                         originalUpdateTranslations();
                         
                         // Immediately after translations, convert text-tracking elements to letter spans
                         setTimeout(() => {
                             const trackingElements = document.querySelectorAll('.text-tracking[data-translate]');
-                            console.log(`Found ${trackingElements.length} text-tracking elements to process`);
                             
                             trackingElements.forEach((element, index) => {
                                 const text = element.textContent.trim();
                                 if (text && text.length > 0) {
                                     convertToLetterSpans(element, text);
-                                    console.log(`Processed text-tracking element ${index}`);
                                 }
                             });
                             
@@ -1173,13 +1132,10 @@
                         }, 50); // Small delay to ensure translation is complete
                     };
                     
-                    console.log('Translation system successfully patched!');
-                    
                     // Trigger initial conversion
                     window.updateTranslations();
                     
                 } else {
-                    console.log('Translation system not ready, retrying...');
                     setTimeout(checkForTranslationSystem, 100);
                 }
             }
@@ -1188,11 +1144,8 @@
         }
         
         function initTextTracking() {
-            console.log('=== INITIALIZING TEXT TRACKING ===');
-            
             // Find elements with text-tracking class
             const elements = document.querySelectorAll('.text-tracking');
-            console.log('Found text-tracking elements:', elements.length);
             
             if (elements.length === 0) {
                 console.error('No elements with .text-tracking class found!');
@@ -1204,11 +1157,8 @@
                 const text = element.textContent.trim();
                 if (text && text.length > 0) {
                     convertToLetterSpans(element, text);
-                    console.log(`Initialized text-tracking element ${index}`);
                 }
             });
-            
-            console.log('Text tracking initialization complete!');
         }
         
         function updateTracking() {
@@ -1269,28 +1219,19 @@
                     letter.style.opacity = '1';
                 }
             });
-            
-            // Log progress for debugging
-            if (overallProgress > 0) {
-                console.log(`Overall progress: ${Math.round(overallProgress * 100)}%, showing ${lettersToShow}/${totalLetters} letters across ${elements.length} paragraphs`);
-            }
         }
         
         // Test function to manually trigger the effect
         function testTextEffect() {
-            console.log('=== TESTING TEXT EFFECT ===');
             const elements = document.querySelectorAll('.text-tracking');
             elements.forEach((element, elemIndex) => {
                 if (element._letters) {
-                    console.log(`Testing element ${elemIndex} with ${element._letters.length} letters`);
                     element._letters.forEach((letter, index) => {
                         setTimeout(() => {
                             // Directly set style for dramatic effect
                             letter.style.color = '#ffffff';
                             letter.style.opacity = '1';
                             letter.style.backgroundColor = 'yellow'; // Temporary highlight for testing
-                            
-                            console.log(`Letter ${index}: Applied styles - opacity: ${letter.style.opacity}, color: ${letter.style.color}`);
                             
                             // Remove highlight after 1 second
                             setTimeout(() => {
@@ -1304,14 +1245,12 @@
         
         // Debug function to check current state
         function debugLetters() {
-            console.log('=== DEBUGGING LETTERS ===');
             const elements = document.querySelectorAll('.text-tracking');
             elements.forEach((element, elemIndex) => {
-                console.log(`Element ${elemIndex}:`);
                 if (element._letters) {
                     const first5 = Array.from(element._letters).slice(0, 5);
                     first5.forEach((letter, letterIndex) => {
-                        console.log(`  Letter ${letterIndex}: style.opacity=${letter.style.opacity}, style.color=${letter.style.color}`);
+                        // Debug function - no console output needed
                     });
                 }
             });
@@ -1319,7 +1258,6 @@
         
         // Instant reveal function for immediate testing
         function instantReveal() {
-            console.log('=== INSTANT REVEAL ===');
             const elements = document.querySelectorAll('.text-tracking');
             elements.forEach((element, elemIndex) => {
                 if (element._letters) {
@@ -1328,30 +1266,21 @@
                         letter.style.opacity = '1';
                         letter.style.backgroundColor = 'lightblue';
                     });
-                    console.log(`Revealed all ${element._letters.length} letters in element ${elemIndex}`);
                 }
             });
         }
         
         // Super simple test function
         function simpleTest() {
-            console.log('=== SIMPLE TEST ===');
-            
-            // First, let's see if we can even find the elements
             const elements = document.querySelectorAll('.text-tracking');
-            console.log('Found .text-tracking elements:', elements.length);
             
             elements.forEach((element, index) => {
-                console.log(`Element ${index}:`, element);
-                console.log(`Element ${index} innerHTML:`, element.innerHTML.substring(0, 100));
-                
                 // Add a very obvious border to the element itself
                 element.style.border = '5px solid red';
                 element.style.padding = '10px';
                 
                 // Check if it has letters
                 const letters = element.querySelectorAll('.letter-tracking');
-                console.log(`Element ${index} has ${letters.length} letter spans`);
                 
                 if (letters.length > 0) {
                     // Make first 10 letters very obvious
@@ -1360,7 +1289,6 @@
                         letters[i].style.color = 'white';
                         letters[i].style.fontSize = '2em';
                         letters[i].style.fontWeight = 'bold';
-                        console.log(`Modified letter ${i}:`, letters[i].textContent);
                     }
                 }
             });
@@ -1368,16 +1296,8 @@
         
         // Test if translations are interfering
         function checkTranslations() {
-            console.log('=== CHECKING TRANSLATIONS ===');
             const elements = document.querySelectorAll('.text-tracking');
-            
-            elements.forEach((element, index) => {
-                console.log(`Element ${index}:`);
-                console.log('  - Has data-translate:', element.hasAttribute('data-translate'));
-                console.log('  - data-translate value:', element.getAttribute('data-translate'));
-                console.log('  - Current text content:', element.textContent.substring(0, 50));
-                console.log('  - Current innerHTML:', element.innerHTML.substring(0, 100));
-            });
+            // Debug function - no console output needed
         }
         
         // Scroll handler
@@ -1394,8 +1314,6 @@
         
         // Initialize everything
         function init() {
-            console.log('=== STARTING INITIALIZATION ===');
-            
             // Make test functions globally available immediately
             window.testTextEffect = testTextEffect;
             window.debugLetters = debugLetters;
@@ -1409,18 +1327,10 @@
             
             // Patch the translation system to work with our text tracking
             patchTranslationSystem();
-            
-            console.log('=== INITIALIZATION COMPLETE ===');
-            console.log('DEBUG FUNCTIONS AVAILABLE:');
-            console.log('  simpleTest() - adds red borders and makes first 10 letters HUGE');
-            console.log('  checkTranslations() - check if translations are interfering');
-            console.log('  instantReveal() - immediate visual test');
-            console.log('  debugLetters() - see current letter states');
         }
         
         // Manual reinitialize function for debugging
         function reinitializeTextTracking() {
-            console.log('=== MANUAL RE-INITIALIZATION ===');
             patchTranslationSystem();
         }
         
@@ -1442,7 +1352,6 @@
             const processSteps = document.querySelectorAll('.process-step');
             
             if (!processSection || !processTimeline || processSteps.length === 0) {
-                console.log('Process timeline elements not found');
                 return;
             }
             
@@ -1498,11 +1407,6 @@
                         step.classList.remove('active');
                     }
                 });
-                
-                // Debug logging
-                if (progress > 0) {
-                    console.log(`Process timeline progress: ${Math.round(progress * 100)}%, active step: ${activeStepIndex + 1}`);
-                }
             }
             
             // Add scroll listener for process timeline
@@ -1515,8 +1419,6 @@
             
             // Initial update
             updateProcessTimeline();
-            
-            console.log('Process timeline animation initialized');
         }
         
         // Initialize process timeline after DOM is ready
@@ -1562,7 +1464,6 @@
             navbar.style.transition = 'background-color 0.3s ease, backdrop-filter 0.3s ease';
             
             window.addEventListener('scroll', handleScroll);
-            console.log('About page header background effect initialized');
         }
         
         // Initialize about page header effect
@@ -1588,7 +1489,6 @@
             const backToTopBtn = document.querySelector('.back-to-top-btn');
             
             if (!backToTopBtn) {
-                console.log('Back to top button not found');
                 return;
             }
             
@@ -1637,8 +1537,6 @@
             
             // Run once on page load
             handleBackToTopScroll();
-            
-            console.log('About page back to top functionality initialized');
         }
         
         // Make scrollToTop globally available for the onclick handler
