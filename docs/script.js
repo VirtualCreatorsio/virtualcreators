@@ -47,7 +47,8 @@ const projects = [
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
     scrollVideo: `${assetPathPrefix}assets/scroll-vid Lumenix.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video (modal)
     images: [
       { src: `${assetPathPrefix}assets/Lumenix-Hero-sectie.png`, alt: "Lumenix Hero Section" },
       { src: `${assetPathPrefix}assets/Lumenix-Promo-sectie.png`, alt: "Lumenix Promo Section" },
@@ -79,7 +80,8 @@ const projects = [
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     scrollVideo: `${assetPathPrefix}assets/Delta-scroll-vid.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video (modal)
     images: [
       { src: `${assetPathPrefix}assets/Deltastudios portfolio case.png`, alt: "Deltastudios Portfolio Case" },
       { src: `${assetPathPrefix}assets/Deltastudios-services.png`, alt: "Deltastudios Services" },
@@ -111,7 +113,8 @@ const projects = [
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
     scrollVideo: `${assetPathPrefix}assets/scroll-vid-RobustRise.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video (modal)
     images: [
       { src: `${assetPathPrefix}assets/RobustRise Hero-sectie.png`, alt: "RobustRise Hero Section" },
       { src: `${assetPathPrefix}assets/RobustRise-carousel-switcher.png`, alt: "RobustRise Carousel Switcher" },
@@ -143,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Defer initialization to prevent forced reflows
   requestAnimationFrame(() => {
     initializeApp()
+    // URL hash functionality removed - no longer handling project URL hash on page load
   })
 })
 
@@ -1192,39 +1196,171 @@ function addSubtleCalendlyStyles() {
   }
 }
 
+// Project slug mapping for SEO-friendly URLs
+const projectSlugs = {
+  0: "lumenix",
+  1: "deltastudios",
+  2: "robustrise"
+}
+
+// Project slug to index mapping (reverse lookup)
+const slugToIndex = {
+  "lumenix": 0,
+  "deltastudios": 1,
+  "robustrise": 2
+}
+
+// Cache for fetched project pages
+const projectPageCache = new Map()
+
 // Project Modal Functions
-function openProjectModal(index) {
+async function openProjectModal(index) {
   currentProject = index
   const modal = document.getElementById("projectModal")
   const project = projects[index]
+  const projectSlug = projectSlugs[index]
 
   // Block page scrolling
   document.body.style.overflow = "hidden"
   document.documentElement.style.overflow = "hidden"
 
-  // Update modal content
-  document.getElementById("modalTitle").textContent = project.title
-  document.getElementById("modalSubtitle").textContent =
-    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+  // Update modal header
+  document.getElementById("modalTitle").innerHTML = `${project.title} <span style="font-style: italic; font-weight: 300; opacity: 0.7; font-size: 0.67em;">CASE</span>`
   document.getElementById("navIndicator").textContent = `${index + 1} of ${projects.length}`
 
-  // Generate modal body content
   const modalBody = document.getElementById("modalBody")
-  modalBody.innerHTML = generateProjectModalContent(project)
-
-  // Show modal
-  modal.classList.add("active")
-
-  // Scroll modal to top
-  scrollModalToTop()
   
-  // Initialize modal animations and text reveal
-  setTimeout(() => {
-    setupModalScrollListener()
-    initializeModalTextReveal()
-    initializeModalSectionAnimations()
-  }, 100)
+  // Show loading state
+  modalBody.innerHTML = `
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 400px; flex-direction: column; gap: 1rem;">
+      <div style="width: 40px; height: 40px; border: 3px solid rgba(139, 92, 246, 0.3); border-top-color: #8b5cf6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <p style="color: #6b7280; font-size: 0.875rem;">Loading project...</p>
+    </div>
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  `
+  
+  // Show modal immediately with loading state
+  modal.classList.add("active")
+  
+  // URL hash functionality removed - no longer updating URL for modals
+
+  try {
+    // Check cache first
+    let projectHTML = projectPageCache.get(projectSlug)
+    
+    if (!projectHTML) {
+      // Determine path prefix based on current location
+      const pathPrefix = window.location.pathname.includes('/nl/') ? '../' : ''
+      const projectPath = `${pathPrefix}projects/${projectSlug}.html`
+      
+      // Fetch project page
+      const response = await fetch(projectPath)
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load project page: ${response.status}`)
+      }
+      
+      const fullHTML = await response.text()
+      
+      // Parse HTML and extract project content
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(fullHTML, 'text/html')
+      const projectContent = doc.querySelector('.project-content')
+      
+      if (!projectContent) {
+        throw new Error('Project content not found in HTML')
+      }
+      
+      projectHTML = projectContent.innerHTML
+      
+      // Cache the content
+      projectPageCache.set(projectSlug, projectHTML)
+    }
+    
+    // Inject fetched content
+    modalBody.innerHTML = projectHTML
+    
+    // Replace case page background images with modal-specific backgrounds
+    if (project.modalScrollVideoBackground) {
+      const scrollVideoElements = modalBody.querySelectorAll('.case-inline-scroll-video')
+      scrollVideoElements.forEach(element => {
+        element.style.backgroundImage = `url('${project.modalScrollVideoBackground}')`
+      })
+    }
+    
+    // Scroll modal to top
+    scrollModalToTop()
+    
+    // Initialize modal animations and text reveal
+    setTimeout(() => {
+      setupModalScrollListener()
+      initializeModalTextReveal()
+      initializeModalSectionAnimations()
+      initializeGallerySliders()
+      
+      // Re-initialize video controls if needed
+      if (typeof setupModalVideoControls === 'function') {
+        setupModalVideoControls()
+      }
+    }, 100)
+    
+  } catch (error) {
+    console.warn('Failed to load project page, falling back to JS-generated content:', error)
+    
+    // Fallback to JS-generated content
+    modalBody.innerHTML = generateProjectModalContent(project)
+    
+    // Scroll modal to top
+    scrollModalToTop()
+    
+    // Initialize modal animations and text reveal
+    setTimeout(() => {
+      setupModalScrollListener()
+      initializeModalTextReveal()
+      initializeModalSectionAnimations()
+      initializeGallerySliders()
+    }, 100)
+  }
 }
+
+// Update URL hash for shareable project links
+function updateProjectURL(slug) {
+  if (history.pushState) {
+    const newURL = `${window.location.pathname}#project=${slug}`
+    window.history.pushState({ project: slug }, '', newURL)
+  }
+}
+
+// Handle URL hash on page load
+function handleProjectURLHash() {
+  const hash = window.location.hash
+  if (hash && hash.startsWith('#project=')) {
+    const slug = hash.replace('#project=', '')
+    const index = slugToIndex[slug]
+    if (index !== undefined) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        openProjectModal(index)
+      }, 300)
+    }
+  }
+}
+
+// URL hash functionality removed - no longer handling browser back/forward buttons for modals
+// window.addEventListener('popstate', (e) => {
+//   if (e.state && e.state.project) {
+//     const index = slugToIndex[e.state.project]
+//     if (index !== undefined) {
+//       openProjectModal(index)
+//     }
+//   } else {
+//     closeProjectModal()
+//   }
+// })
 
 function closeProjectModal() {
   const modal = document.getElementById("projectModal")
@@ -1238,6 +1374,8 @@ function closeProjectModal() {
   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
     exitFullscreen()
   }
+  
+  // URL hash functionality removed - no longer clearing URL hash
 }
 
 function navigateProject(direction) {
@@ -1255,9 +1393,7 @@ function navigateProject(direction) {
   const project = projects[newIndex]
 
   // Update modal content
-  document.getElementById("modalTitle").textContent = project.title
-  document.getElementById("modalSubtitle").textContent =
-    `${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", ""))} • ${project.year}`
+  document.getElementById("modalTitle").innerHTML = `${project.title} <span style="font-style: italic; font-weight: 300; opacity: 0.7; font-size: 0.67em;">CASE</span>`
   document.getElementById("navIndicator").textContent = `${newIndex + 1} of ${projects.length}`
 
   // Generate new modal body content
@@ -1272,6 +1408,7 @@ function navigateProject(direction) {
     setupModalScrollListener()
     initializeModalTextReveal()
     initializeModalSectionAnimations()
+    initializeGallerySliders()
   }, 100)
 }
 
@@ -1286,13 +1423,8 @@ function scrollModalToTop() {
 function generateProjectModalContent(project) {
   const servicesHTML = project.services
     .map(
-      (service, index) => `
-        <div class="service-badge ${index === 0 ? 'active' : ''}" data-service-index="${index}" onclick="toggleServiceBadge(${index})">
-            <div class="service-badge-icon">
-                ${getIconSVG(service.icon)}
-            </div>
-            <span class="service-badge-label">${window.t(service.label.toLowerCase().replace(/\s+/g, "").replace("/", "").replace("-", ""))}</span>
-        </div>
+      (service) => `
+        <span class="project-badge">${window.t(service.label.toLowerCase().replace(/\s+/g, "").replace("/", "").replace("-", ""))}</span>
     `,
     )
     .join("")
@@ -1331,70 +1463,32 @@ function generateProjectModalContent(project) {
   }
 
   return `
-        <!-- Hero Video Section -->
-        <div class="project-video-container">
-            <video 
-                id="modalVideo" 
-                class="project-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline
-                poster="${project.image}"
-                ${isMobileDevice ? "controls" : ""}
-                onerror="handleVideoError(this)"
-            >
-                <source src="${isMobileDevice && project.mobileVideo ? project.mobileVideo : project.video}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            ${
-              !isMobileDevice
-                ? `
-            <div class="video-controls">
-                <button class="sound-toggle" onclick="toggleVideoSound()" id="soundToggle" aria-label="${window.t("unmuteVideo")}">
-                    <svg class="sound-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/>
-                        <line x1="23" y1="9" x2="17" y2="15"/>
-                        <line x1="17" y1="9" x2="23" y2="15"/>
-                    </svg>
-                    <svg class="sound-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
-                        <polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/>
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                    </svg>
-                </button>
-                <button class="play-pause-toggle" onclick="toggleVideoPlayback()" id="playPauseToggle" aria-label="${window.t("pauseVideo")}">
-                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <rect x="6" y="4" width="4" height="16"/>
-                        <rect x="14" y="4" width="4" height="16"/>
-                    </svg>
-                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
-                        <polygon points="5,3 19,12 5,21"/>
-                    </svg>
-                </button>
-                <button class="fullscreen-toggle" onclick="toggleFullscreen()" id="fullscreenToggle" aria-label="${window.t("enterFullscreen")}">
-                    <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
-                    </svg>
-                </button>
+        <!-- Modal Hero Section -->
+        <div class="modal-header-section">
+            <div class="modal-meta">
+                <span>${window.t(project.category.toLowerCase().replace(/\s+/g, "").replace("&", "")) || project.category}</span>
+                <span>•</span>
+                <span>${project.year}</span>
             </div>
-            `
-                : `
-            <div class="video-controls mobile-video-controls">
-                <button class="fullscreen-toggle mobile-fullscreen-btn" onclick="toggleFullscreen()" id="fullscreenToggle" aria-label="${window.t("enterFullscreen")}">
-                    <svg class="fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>
-                    </svg>
-                </button>
-            </div>
-            `
-            }
-        </div>
-        
-        <!-- Deliverables Section -->
-        <div class="modal-deliverables modal-section-fade">
-            <h3 class="modal-section-title">${window.t("deliverables") || "Deliverables"}</h3>
-            <div class="deliverables-grid">
-                ${servicesHTML}
+            <h1 class="modal-hero-title">
+                ${project.title} <span class="modal-hero-suffix">CASE</span>
+            </h1>
+            <p class="modal-hero-description">
+                ${(() => {
+                    // Get the full description and extract the first sentence/paragraph to match case page
+                    const fullDesc = window.t(project.fullDescription) || project.fullDescription;
+                    // Split by newlines and get first paragraph, or split by sentence if no paragraphs
+                    const firstParagraph = fullDesc.split('\n\n')[0] || fullDesc.split('.')[0] + '.';
+                    return firstParagraph.trim();
+                })()}
+            </p>
+            
+            <!-- Deliverables Section -->
+            <div class="modal-deliverables-inline">
+                <h3 class="modal-section-title">${window.t("deliverables") || "Deliverables"}</h3>
+                <div class="project-badges">
+                    ${servicesHTML}
+                </div>
             </div>
         </div>
         
@@ -1407,14 +1501,12 @@ function generateProjectModalContent(project) {
                         const descriptionText = window.t(project.fullDescription);
                         const paragraphs = descriptionText.split(/\n\n+/).filter(p => p.trim());
                         
-                        // If we have paragraphs and a scroll video, insert video after first paragraph
+                        // If we have paragraphs and a scroll video, show video first, then all paragraphs together
                         if (paragraphs.length > 0 && project.scrollVideo) {
-                            const firstParagraph = `<p class="text-tracking">${paragraphs[0].trim()}</p>`;
-                            const remainingParagraphs = paragraphs.slice(1).map(p => `<p class="text-tracking">${p.trim()}</p>`).join('');
+                            const allParagraphs = paragraphs.map(p => `<p class="text-tracking">${p.trim()}</p>`).join('');
                             
-                            const backgroundImage = project.scrollVideoBackground ? `style="background-image: url('${project.scrollVideoBackground}');"` : '';
+                            const backgroundImage = project.modalScrollVideoBackground ? `style="background-image: url('${project.modalScrollVideoBackground}');"` : '';
                             return `
-                                ${firstParagraph}
                                 <div class="inline-scroll-video" ${backgroundImage}>
                                     <div class="scroll-video-wrapper">
                                         <div class="scroll-video-container">
@@ -1432,7 +1524,7 @@ function generateProjectModalContent(project) {
                                         </div>
                                     </div>
                                 </div>
-                                ${remainingParagraphs}
+                                ${allParagraphs}
                             `;
                         } else {
                             // No scroll video or no paragraphs, just render normally with text-tracking class
@@ -1448,12 +1540,33 @@ function generateProjectModalContent(project) {
         <!-- Image Gallery Section -->
         <div class="modal-gallery modal-section-fade">
             <h3 class="modal-section-title">${window.t("projectGallery") || "Project Gallery"}</h3>
-            <div class="gallery-grid">
-                ${project.images.map((img, index) => `
-                    <div class="gallery-item gallery-item-fade ${index === 0 && project.images.length % 2 === 1 ? 'gallery-item-large' : ''}" style="animation-delay: ${index * 0.1}s;" onclick="event.stopPropagation(); openGalleryLightbox(${index});" data-gallery-index="${index}">
-                        <img src="${img.src}" alt="${img.alt || project.title + ' Screenshot ' + (index + 1)}" loading="lazy">
+            <div class="gallery-slider-container">
+                <button class="gallery-slider-btn gallery-slider-prev" onclick="event.stopPropagation(); slideGallery(this, 'prev');" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="gallery-slider">
+                    <div class="gallery-slider-track">
+                        ${project.images.map((img, index) => `
+                            <div class="gallery-slide" data-slide-index="${index}">
+                                <div class="gallery-item" onclick="event.stopPropagation(); openGalleryLightbox(${index});" data-gallery-index="${index}">
+                                    <img src="${img.src}" alt="${img.alt || project.title + ' Screenshot ' + (index + 1)}" loading="lazy">
+                                </div>
+                            </div>
+                        `).join('')}
                     </div>
-                `).join('')}
+                </div>
+                <button class="gallery-slider-btn gallery-slider-next" onclick="event.stopPropagation(); slideGallery(this, 'next');" aria-label="Next image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+                <div class="gallery-slider-dots">
+                    ${project.images.map((img, index) => `
+                        <button class="gallery-dot ${index === 0 ? 'active' : ''}" onclick="event.stopPropagation(); goToSlide(this, ${index});" aria-label="Go to slide ${index + 1}"></button>
+                    `).join('')}
+                </div>
             </div>
         </div>
         ` : ''}
@@ -1742,8 +1855,6 @@ function handleContactSubmit(event) {
   if ((honeypotField && honeypotField.value.trim() !== '') || 
       (formspreeHoneypot && formspreeHoneypot.value.trim() !== '')) {
     // Spam detected - silently reject the submission
-    console.log('🛡️ Spam submission blocked by honeypot field')
-    
     // Show fake success message to confuse bots
     showFormMessage(window.t("thankYouMessage"), "success")
     form.reset()
@@ -1753,8 +1864,6 @@ function handleContactSubmit(event) {
   // Check if form was submitted too quickly (likely a bot)
   const timeSinceLoad = Date.now() - formLoadTime
   if (timeSinceLoad < 3000) { // Less than 3 seconds
-    console.log('🛡️ Spam submission blocked - too fast submission')
-    
     // Show fake success message to confuse bots
     showFormMessage(window.t("thankYouMessage"), "success")
     form.reset()
@@ -1765,7 +1874,6 @@ function handleContactSubmit(event) {
   const lastSubmissionTime = localStorage.getItem('lastFormSubmission')
   const currentTime = Date.now()
   if (lastSubmissionTime && (currentTime - parseInt(lastSubmissionTime)) < 60000) {
-    console.log('🛡️ Rate limit exceeded - too many submissions')
     showFormMessage(window.t("rateLimitMessage"), "error")
     return false
   }
@@ -1973,28 +2081,30 @@ function setupProjectTileVideos() {
     imageContainer.insertBefore(video, imageContainer.firstChild)
 
     imageContainer.addEventListener("mouseenter", () => {
-      if (video.style.display !== "none") {
-        // Load video only when needed
-        if (video.preload === "none") {
-          video.preload = "metadata"
-          video.load()
-        }
-        video.currentTime = 0
-        video.play().catch((e) => {
-          video.style.display = "none"
-        })
-        video.style.opacity = "1"
-        imageContainer.querySelector(".project-img").style.opacity = "0"
-      }
+      // Hover video effect disabled - cards stay static
+      // if (video.style.display !== "none") {
+      //   // Load video only when needed
+      //   if (video.preload === "none") {
+      //     video.preload = "metadata"
+      //     video.load()
+      //   }
+      //   video.currentTime = 0
+      //   video.play().catch((e) => {
+      //     video.style.display = "none"
+      //   })
+      //   video.style.opacity = "1"
+      //   imageContainer.querySelector(".project-img").style.opacity = "0"
+      // }
     })
 
     imageContainer.addEventListener("mouseleave", () => {
-      if (video.style.display !== "none") {
-        video.pause()
-        video.currentTime = 0
-        video.style.opacity = "0"
-        imageContainer.querySelector(".project-img").style.opacity = "1"
-      }
+      // Hover video effect disabled - cards stay static
+      // if (video.style.display !== "none") {
+      //   video.pause()
+      //   video.currentTime = 0
+      //   video.style.opacity = "0"
+      //   imageContainer.querySelector(".project-img").style.opacity = "1"
+      // }
     })
   })
 }
@@ -2514,6 +2624,8 @@ window.updateFAQBackgroundMask = updateFAQBackgroundMask
 window.openGalleryLightbox = openGalleryLightbox
 window.closeGalleryLightbox = closeGalleryLightbox
 window.navigateGalleryImage = navigateGalleryImage
+window.slideGallery = slideGallery
+window.goToSlide = goToSlide
 
 // Gallery Lightbox Functionality
 let currentGalleryImages = []
@@ -2521,18 +2633,17 @@ let currentGalleryIndex = 0
 let currentGalleryTitle = ''
 
 function openGalleryLightbox(index) {
-  console.log('openGalleryLightbox called with index:', index)
-  // Get all gallery images from the current project modal
+  // Get all gallery images from the current project modal or case page
   const modalBody = document.getElementById('modalBody')
-  if (!modalBody) {
-    console.log('No modalBody found')
+  const caseContent = document.querySelector('.case-content')
+  const container = modalBody || caseContent
+  
+  if (!container) {
     return
   }
   
-  const galleryItems = modalBody.querySelectorAll('.gallery-item')
-  console.log('Found gallery items:', galleryItems.length)
+  const galleryItems = container.querySelectorAll('.gallery-item')
   if (galleryItems.length === 0) {
-    console.log('No gallery items found')
     return
   }
   
@@ -2671,6 +2782,91 @@ function handleGalleryKeyboard(e) {
   } else if (e.key === 'ArrowRight') {
     navigateGalleryImage('next')
   }
+}
+
+// Gallery Slider Functionality
+function slideGallery(button, direction) {
+  const container = button.closest('.gallery-slider-container')
+  if (!container) return
+  
+  const track = container.querySelector('.gallery-slider-track')
+  const slides = container.querySelectorAll('.gallery-slide')
+  const dots = container.querySelectorAll('.gallery-dot')
+  
+  if (!track || slides.length === 0) return
+  
+  const currentSlide = container.dataset.currentSlide || 0
+  let newSlide = parseInt(currentSlide)
+  
+  if (direction === 'next') {
+    newSlide = (newSlide + 1) % slides.length
+  } else if (direction === 'prev') {
+    newSlide = (newSlide - 1 + slides.length) % slides.length
+  }
+  
+  // Update track position
+  track.style.transform = `translateX(-${newSlide * 100}%)`
+  container.dataset.currentSlide = newSlide
+  
+  // Update active dot
+  dots.forEach((dot, index) => {
+    if (index === newSlide) {
+      dot.classList.add('active')
+    } else {
+      dot.classList.remove('active')
+    }
+  })
+}
+
+function goToSlide(button, slideIndex) {
+  const container = button.closest('.gallery-slider-container')
+  if (!container) return
+  
+  const track = container.querySelector('.gallery-slider-track')
+  const slides = container.querySelectorAll('.gallery-slide')
+  const dots = container.querySelectorAll('.gallery-dot')
+  
+  if (!track || slides.length === 0 || slideIndex < 0 || slideIndex >= slides.length) return
+  
+  // Update track position
+  track.style.transform = `translateX(-${slideIndex * 100}%)`
+  container.dataset.currentSlide = slideIndex
+  
+  // Update active dot
+  dots.forEach((dot, index) => {
+    if (index === slideIndex) {
+      dot.classList.add('active')
+    } else {
+      dot.classList.remove('active')
+    }
+  })
+}
+
+// Initialize gallery sliders on page load
+function initializeGallerySliders() {
+  const sliders = document.querySelectorAll('.gallery-slider-container')
+  sliders.forEach(container => {
+    // Set initial slide to 0
+    const currentSlide = parseInt(container.dataset.currentSlide) || 0
+    container.dataset.currentSlide = currentSlide
+    const track = container.querySelector('.gallery-slider-track')
+    const slides = container.querySelectorAll('.gallery-slide')
+    const dots = container.querySelectorAll('.gallery-dot')
+    
+    if (track && slides.length > 0) {
+      // Ensure track is properly positioned
+      track.style.transform = `translateX(-${currentSlide * 100}%)`
+      
+      // Update active dot
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active')
+        } else {
+          dot.classList.remove('active')
+        }
+      })
+    }
+  })
 }
 
 // Modal Text Reveal Functionality - Aligned with about page
@@ -2829,4 +3025,155 @@ function handleModalScroll() {
     updateModalTextReveal()
   }, 10)
 }
+
+// Case Page Text Reveal Functionality - Similar to modal
+function convertToLetterSpansCasePage(element, text) {
+  const letterSpans = text.split('').map(char => {
+    if (char === ' ') {
+      return ' '
+    }
+    return `<span class="letter-tracking">${char}</span>`
+  }).join('')
+  
+  element.innerHTML = letterSpans
+  
+  const letters = element.querySelectorAll('.letter-tracking')
+  
+  // Set initial styles directly on each letter
+  letters.forEach(letter => {
+    letter.style.color = '#9ca3af'
+    letter.style.opacity = '1'
+  })
+  
+  // Store reference to element and its letters
+  element._letters = letters
+  element._totalLetters = letters.length
+  
+  return letters.length
+}
+
+function initializeCasePageTextReveal() {
+  const caseContent = document.querySelector('.case-content')
+  if (!caseContent) return
+  
+  // Get all text-tracking elements, then filter out those in the header/hero section
+  const allTextElements = caseContent.querySelectorAll('.text-tracking')
+  
+  // Filter to exclude any elements inside .case-header (hero section)
+  const textRevealElements = Array.from(allTextElements).filter(element => {
+    return !element.closest('.case-header')
+  })
+  
+  textRevealElements.forEach(element => {
+    // Check if already initialized
+    if (element.dataset.revealInitialized === 'true') {
+      return
+    }
+    
+    const text = element.textContent.trim()
+    if (text && text.length > 0) {
+      convertToLetterSpansCasePage(element, text)
+      element.dataset.revealInitialized = 'true'
+    }
+  })
+  
+  // Update reveal on scroll
+  updateCasePageTextReveal()
+}
+
+function updateCasePageTextReveal() {
+  const caseContent = document.querySelector('.case-content')
+  if (!caseContent) return
+  
+  // Get all text-tracking elements, then filter out those in the header/hero section
+  const allTextElements = caseContent.querySelectorAll('.text-tracking')
+  
+  // Filter to exclude any elements inside .case-header (hero section)
+  const textRevealElements = Array.from(allTextElements).filter(element => {
+    return !element.closest('.case-header')
+  })
+  
+  if (textRevealElements.length === 0) return
+  
+  // Calculate total letters across all elements
+  let totalLetters = 0
+  let allLetters = []
+  
+  textRevealElements.forEach((element) => {
+    if (element._letters) {
+      allLetters = allLetters.concat(Array.from(element._letters))
+      totalLetters += element._totalLetters
+    }
+  })
+  
+  if (totalLetters === 0) return
+  
+  // Use the first element to calculate scroll progress for the entire section
+  const firstElement = textRevealElements[0]
+  const firstElementRect = firstElement.getBoundingClientRect()
+  const windowHeight = window.innerHeight
+  
+  // Calculate overall progress through the text section
+  let overallProgress = 0
+  
+  // Check if first element top is less than viewport threshold (80% of viewport height)
+  const viewportThreshold = windowHeight * 0.8
+  
+  if (firstElementRect.top < viewportThreshold) {
+    // Calculate progress based on scroll through the entire text section
+    const lastElement = textRevealElements[textRevealElements.length - 1]
+    const lastElementRect = lastElement.getBoundingClientRect()
+    const sectionHeight = lastElementRect.bottom - firstElementRect.top
+    
+    // Calculate progress: (windowHeight * 0.8 - rect.top) / (sectionHeight + windowHeight * 0.4)
+    overallProgress = Math.min(1, (viewportThreshold - firstElementRect.top) / (sectionHeight + windowHeight * 0.4))
+  }
+  
+  // Calculate how many letters to show across all elements
+  const lettersToShow = Math.floor(overallProgress * totalLetters)
+  
+  // Apply the effect sequentially across all letters
+  allLetters.forEach((letter, globalIndex) => {
+    if (globalIndex < lettersToShow) {
+      // Letter is revealed - make it white for readability
+      letter.style.color = '#ffffff'
+      letter.style.opacity = '1'
+    } else {
+      // Letter is not revealed - keep it grey
+      letter.style.color = '#9ca3af'
+      letter.style.opacity = '1'
+    }
+  })
+}
+
+// Set up scroll listener for case page text reveal
+let casePageScrollTimeout
+function setupCasePageScrollListener() {
+  // Remove existing listener if any
+  window.removeEventListener('scroll', handleCasePageScroll)
+  // Add new listener
+  window.addEventListener('scroll', handleCasePageScroll)
+}
+
+function handleCasePageScroll() {
+  clearTimeout(casePageScrollTimeout)
+  casePageScrollTimeout = setTimeout(() => {
+    updateCasePageTextReveal()
+  }, 10)
+}
+
+// Initialize case page text reveal on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const caseContent = document.querySelector('.case-content')
+  if (caseContent) {
+    // Initialize text reveal
+    setTimeout(() => {
+      initializeCasePageTextReveal()
+      setupCasePageScrollListener()
+      initializeGallerySliders()
+    }, 100)
+  }
+  // Initialize gallery sliders for modal and case pages
+  initializeGallerySliders()
+})
 

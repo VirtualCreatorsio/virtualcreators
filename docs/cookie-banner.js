@@ -1,7 +1,6 @@
 // Cookie Banner JavaScript - Dynamic Implementation
 (function() {
     'use strict';
-    console.log('🍪 Cookie Banner Script Loading...');
     // Cookie utility functions
     const CookieManager = {
         cookiesEnabled: true, // Track if cookies work
@@ -55,10 +54,6 @@
     // Cookie consent manager
     const CookieConsent = {
         init: function() {
-            console.log('🚀 Initializing Cookie Banner...');
-            console.log('📄 Document ready state:', document.readyState);
-            console.log('🌐 Current URL:', window.location.href);
-            
             // Initialize GTM consent mode with default denied state
             this.initializeConsentMode();
             
@@ -74,8 +69,6 @@
             this.checkConsent();
         },
         initializeConsentMode: function() {
-            console.log('🔧 Initializing GTM Consent Mode...');
-            
             // Initialize dataLayer if it doesn't exist
             window.dataLayer = window.dataLayer || [];
             
@@ -87,8 +80,6 @@
                 'ad_user_data': 'denied',
                 'ad_personalization': 'denied'
             });
-            
-            console.log('✅ GTM Consent Mode initialized with default denied state');
         },
         testCookieSupport: function() {
             try {
@@ -102,7 +93,6 @@
             }
         },
         createBanner: function() {
-            console.log('🏗️ Creating banner HTML...');
             // Create banner HTML with translation attributes
             const bannerHTML = `
                 <div class="cookie-banner" id="cookieBanner" style="display: none;">
@@ -164,7 +154,6 @@
             // Insert banner into body
             try {
                 document.body.insertAdjacentHTML('afterbegin', bannerHTML);
-                console.log('✅ Banner HTML inserted into body');
             } catch (e) {
                 console.error('❌ Failed to insert banner HTML:', e);
                 return;
@@ -190,12 +179,8 @@
             if (typeof window.t === 'function') {
                 this.updateTranslations();
             }
-            console.log('✅ Cookie banner HTML created and inserted');
-            console.log('🎯 Banner element:', this.banner);
-            console.log('🎯 Modal element:', this.modal);
         },
         updateTranslations: function() {
-            console.log('🌐 Updating cookie banner translations...');
             // Update all elements with data-translate attributes in the cookie banner
             const cookieBanner = document.getElementById('cookieBanner');
             const cookieModal = document.getElementById('cookieModal');
@@ -231,16 +216,13 @@
                 return;
             }
             consent = CookieManager.get('cookie_consent');
-            console.log('🔍 Checking consent:', consent);
             // If no consent cookie exists, show the banner
             if (!consent) {
-                console.log('📣 No consent cookie found, showing banner');
                 this.showBanner();
                 return;
             }
             // If consent cookie exists but is empty or invalid, show the banner
             if (consent === 'null' || consent === '' || consent === 'undefined') {
-                console.log('⚠️ Invalid consent cookie found, showing banner');
                 CookieManager.delete('cookie_consent');
                 this.showBanner();
                 return;
@@ -248,11 +230,9 @@
             // Try to parse the consent cookie
             try {
                 const parsedConsent = JSON.parse(consent);
-                console.log('✅ Valid consent found:', parsedConsent);
                 this.applyConsent(parsedConsent);
             } catch (e) {
                 console.error('❌ Error parsing consent cookie:', e);
-                console.log('🔧 Clearing invalid consent cookie and showing banner');
                 CookieManager.delete('cookie_consent');
                 this.showBanner();
             }
@@ -262,7 +242,6 @@
                 console.error('❌ Cannot show banner - element not found');
                 return;
             }
-            console.log('🎉 Showing cookie banner');
             
             // Use requestAnimationFrame to batch DOM operations and prevent forced reflows
             requestAnimationFrame(() => {
@@ -274,7 +253,6 @@
                 // Small delay to ensure smooth animation
                 setTimeout(() => {
                     this.banner.classList.add('show');
-                    console.log('✨ Banner show class added');
                 }, 100);
             });
         },
@@ -283,11 +261,9 @@
                 console.error('❌ Cannot hide banner - element not found');
                 return;
             }
-            console.log('👋 Hiding cookie banner');
             this.banner.classList.remove('show');
             setTimeout(() => {
                 this.banner.style.display = 'none';
-                console.log('✅ Banner hidden');
             }, 400);
         },
         openModal: function() {
@@ -295,7 +271,6 @@
                 console.error('❌ Cannot open modal - element not found');
                 return;
             }
-            console.log('🔓 Opening cookie modal');
             this.modal.style.display = 'flex';
             setTimeout(() => {
                 this.modal.classList.add('show');
@@ -307,7 +282,6 @@
                 console.error('❌ Cannot close modal - element not found');
                 return;
             }
-            console.log('🔒 Closing cookie modal');
             this.modal.classList.remove('show');
             setTimeout(() => {
                 this.modal.style.display = 'none';
@@ -320,7 +294,6 @@
                 analytics: true,
                 timestamp: new Date().toISOString()
             };
-            console.log('✅ Accepting all cookies:', consent);
             if (this.saveConsent(consent)) {
                 this.applyConsent(consent);
                 this.hideBanner();
@@ -332,7 +305,6 @@
                 analytics: false,
                 timestamp: new Date().toISOString()
             };
-            console.log('❌ Rejecting non-essential cookies:', consent);
             if (this.saveConsent(consent)) {
                 this.applyConsent(consent);
                 this.closeModal();
@@ -346,7 +318,6 @@
                 analytics: analyticsCheckbox ? analyticsCheckbox.checked : false,
                 timestamp: new Date().toISOString()
             };
-            console.log('💾 Saving preferences:', consent);
             if (this.saveConsent(consent)) {
                 this.applyConsent(consent);
                 this.closeModal();
@@ -373,7 +344,6 @@
                     console.error('❌ Cookie consent verification failed');
                     return false;
                 }
-                console.log('✅ Cookie consent saved successfully');
                 return true;
             } catch (e) {
                 console.error('❌ Error saving consent:', e);
@@ -381,8 +351,6 @@
             }
         },
         applyConsent: function(consent) {
-            console.log('⚙️ Applying consent:', consent);
-            
             // Apply analytics cookies based on consent
             if (consent.analytics) {
                 this.loadAnalytics();
@@ -399,13 +367,9 @@
                     'ad_user_data': consent.analytics ? 'granted' : 'denied',
                     'ad_personalization': consent.analytics ? 'granted' : 'denied'
                 });
-                
-                console.log('✅ GTM consent mode updated:', consent.analytics ? 'granted' : 'denied');
             }
         },
         loadAnalytics: function() {
-            console.log('📊 Analytics cookies accepted - enabling GA4 via GTM');
-            
             // Enable Google Analytics 4 via GTM dataLayer
             if (typeof window.dataLayer !== 'undefined') {
                 // Set consent mode to granted for analytics
@@ -422,15 +386,11 @@
                     'event': 'gtm.js',
                     'gtm.start': new Date().getTime()
                 });
-                
-                console.log('✅ GA4 consent granted via GTM dataLayer');
             } else {
                 console.warn('⚠️ GTM dataLayer not found - GTM may not be loaded yet');
             }
         },
         removeAnalyticsCookies: function() {
-            console.log('🚫 Analytics cookies rejected - disabling GA4 via GTM');
-            
             // Disable Google Analytics 4 via GTM dataLayer
             if (typeof window.dataLayer !== 'undefined') {
                 // Set consent mode to denied for analytics
@@ -441,8 +401,6 @@
                     'ad_user_data': 'denied',
                     'ad_personalization': 'denied'
                 });
-                
-                console.log('❌ GA4 consent denied via GTM dataLayer');
             }
             
             // Remove existing GA4 cookies
@@ -453,7 +411,6 @@
                 CookieManager.delete(cookie, '.virtualcreators.io');
                 CookieManager.delete(cookie, '.www.virtualcreators.io');
             });
-            console.log('🧹 Analytics cookies removed');
         },
         // Debug function to clear all consent (for testing)
         clearConsent: function() {
@@ -462,7 +419,6 @@
             } else {
                 CookieManager.delete('cookie_consent');
             }
-            console.log('🗑️ Cookie consent cleared');
             this.checkConsent();
         }
     };
@@ -480,7 +436,6 @@
     };
     // Force show banner for testing
     window.testShowBanner = function() {
-        console.log('🧪 TEST: Force showing banner');
         if (CookieConsent.banner) {
             CookieConsent.showBanner();
         } else {
@@ -489,32 +444,24 @@
     };
     // Initialize when DOM is ready
     function initializeCookieBanner() {
-        console.log('🎬 Initializing Cookie Banner - DOM Ready');
         CookieConsent.init();
     }
     // Multiple initialization methods to ensure it works
     if (document.readyState === 'loading') {
-        console.log('📋 Document still loading, adding DOMContentLoaded listener');
         document.addEventListener('DOMContentLoaded', initializeCookieBanner);
     } else {
-        console.log('📋 Document already ready, initializing immediately');
         initializeCookieBanner();
     }
     // Fallback initialization
     window.addEventListener('load', function() {
         if (!window.CookieConsent.banner) {
-            console.log('🔄 Fallback initialization triggered');
             initializeCookieBanner();
-        } else {
-            console.log('✅ Cookie banner already initialized');
         }
     });
     // Final fallback with timeout
     setTimeout(function() {
         if (!window.CookieConsent.banner) {
-            console.log('⏰ Timeout fallback initialization triggered');
             initializeCookieBanner();
         }
     }, 2000);
-    console.log('🍪 Cookie Banner Script Loaded');
 })();

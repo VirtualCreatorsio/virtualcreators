@@ -32,6 +32,7 @@ const translations = {
     viewMyWork: "View My Work",
     seeProjects: "See Projects",
     viewCases: "View Cases",
+    viewAllProjects: "View All Projects",
     startProject: "Book Free Call",
 
     // Services Section
@@ -56,6 +57,7 @@ const translations = {
     userExperienceTitle: "Technical Excellence",
     exploreOurCases: "Explore our cases",
     previewService: "Preview service",
+    backToAllCases: "Back to all cases",
 
     // Portfolio Section
     selectedWork: "Selected Work",
@@ -105,6 +107,20 @@ const translations = {
     lifeSciGrowthReviewAuthor: "Thomas Evers & Maurits Verhoek",
     lifeSciGrowthReviewCompany: "RobustRise",
     clientReview: "Client Review",
+
+    // Case Page Sections
+    deliverables: "Deliverables",
+    projectGallery: "Project Gallery",
+    resultsImpact: "Results & Impact",
+    otherProjects: "Other Projects",
+
+    // Project Badges
+    webDevelopmentBadge: "Web Development",
+    uiUxDesignBadge: "UI/UX Design",
+    seoOptimizationBadge: "SEO Optimization",
+    brandIdentityBadge: "Brand Identity",
+    performanceOptimizationBadge: "Performance Optimization",
+    mobileFirstApproachBadge: "Mobile First Approach",
 
     // About Section
     aboutMe: "About Us",
@@ -242,6 +258,7 @@ const translations = {
     readTime3Min: "3 min read",
     readTime4Min: "4 min read", 
     readTime5Min: "5 min read",
+    readTime6Min: "6 min read",
 
     // Author Information
     authorName: "Kjell de Ruiter",
@@ -257,6 +274,8 @@ const translations = {
     firstPostExcerpt: "Starting a new journey in sharing insights, tips, and stories from my experience building digital solutions for forward-thinking companies.",
     readMore: "Read More",
     backToBlog: "Back to Blog",
+    relatedPosts: "Related Posts",
+    relatedPostsSubtitle: "Continue reading",
 
     // Blog Post Content
     firstPostPara1: "Hello! We're excited to launch this blog as a space to share insights, experiences, and lessons learned from our journey as <a href=\"../../index.html#services\">web developers and designers</a>. Since founding VirtualCreators in 2025, we've had the privilege of working with amazing clients and tackling exciting challenges that have shaped our approach to <a href=\"../../index.html#work\">digital solutions</a>.",
@@ -333,6 +352,61 @@ const translations = {
     aiImpactHeading7: "Looking Ahead",
     aiImpactPara8: "As we progress through 2025, we expect AI's role in design and development to become even more sophisticated. We're likely to see AI that can understand brand personality, cultural nuances, and complex user journeys. The challenge for our industry will be embracing these capabilities while preserving the uniquely human aspects of great design.",
     aiImpactPara9: "The future belongs to designers and developers who can thoughtfully integrate AI into their creative process—not as a crutch, but as a powerful tool that enables us to create more meaningful, accessible, and effective digital experiences. The question isn't whether AI will change our industry; it's how we'll evolve alongside it to create better solutions for the people we serve. Interested in leveraging AI for your next project? <a href=\"../../index.html#contact\">Book your free strategy call</a>.",
+
+    // WordPress WooCommerce Article
+    wordpressComboTitle: "WordPress WooCommerce Customer Account Enhancement: Latest Order Shortcode Tutorial",
+    wordpressComboExcerpt: "Learn how to create a custom WooCommerce shortcode to display customer's latest order on account pages. Includes free PHP code snippet for enhanced customer experience and account navigation.",
+    wordpressComboIntro: "Enhancing your WooCommerce customer account pages can significantly improve user experience and reduce support tickets. In this tutorial, I'll show you how to create a custom shortcode that displays your customer's latest order directly on their account page, making it easier for them to track their purchases and continue shopping.",
+    wordpressComboHeading1: "Why Enhance Customer Account Pages?",
+    wordpressComboPara1: "Customer account pages are often overlooked, but they're crucial for user experience. When customers can easily see their latest order and navigate to continue shopping, it reduces support tickets and increases customer satisfaction. This simple enhancement can make a big difference in your store's usability.",
+    wordpressComboHeading2: "1. Improved User Experience",
+    wordpressComboPara2: "Customers can quickly see their latest order status, total amount, and easily navigate to view order details or continue shopping. This reduces the time they spend searching for information and creates a smoother experience.",
+    wordpressComboHeading3: "2. Reduced Support Tickets",
+    wordpressComboPara3: "When customers can easily access their order information, they're less likely to contact support for basic inquiries. This saves your team time and improves customer satisfaction by providing instant access to their data.",
+    wordpressComboHeading4: "3. Increased Engagement",
+    wordpressComboPara4: "By making it easier for customers to see their recent purchases and continue shopping, you're encouraging repeat visits and purchases. The fallback \"Begin Shopping\" button also helps guide new customers to your products.",
+    wordpressComboHeading5: "How the Shortcode Works",
+    wordpressComboPara5: "The custom shortcode I'll show you creates a dynamic display that adapts based on the customer's order history:",
+    wordpressComboHeading6: "For Customers with Orders",
+    wordpressComboPara6: "When a customer has placed orders, the shortcode displays their most recent purchase with key details like order date, total amount, status, and a direct link to view the full order details.",
+    wordpressComboHeading7: "For New Customers",
+    wordpressComboPara7: "For customers who haven't placed any orders yet, the shortcode shows a friendly message encouraging them to start shopping, with a prominent call-to-action button that directs them to your product categories.",
+    wordpressComboHeading8: "Automatic Integration",
+    wordpressComboPara8: "The shortcode automatically integrates with WooCommerce's existing order system, pulling real data from your store's database. It respects user permissions and only shows information to logged-in customers.",
+    wordpressComboPara9: "Now that you understand how the shortcode works, let's dive into the actual implementation. The code is surprisingly simple but incredibly powerful, requiring just a few lines of PHP to create a professional customer account enhancement.",
+    wordpressComboHeading9: "Custom Code Snippet: Enhanced Customer Account Navigation",
+    wordpressComboPara10: "Here's the complete code snippet that you can implement to extend the functionality of your customer account pages. This creates a seamless experience where customers can easily navigate to your store or view their most recent order directly from their account dashboard.",
+    wordpressComboCodeTitle: "Customer Account Navigation",
+    wordpressComboEmailRequired: "Email Required",
+    wordpressComboPreview: "Preview",
+    wordpressComboCode: "Code",
+    wordpressComboNoOrders: "No Orders (Fallback State)",
+    wordpressComboWithOrders: "With Orders (Current State)",
+    wordpressComboCodeAccess: "Code Access Required",
+    wordpressComboEnterEmail: "Enter your email to unlock the complete PHP code",
+    wordpressComboEmailPlaceholder: "Enter your email address",
+    wordpressComboUnlockCode: "Unlock Code",
+    wordpressComboHeading10: "How to Use This Code",
+    wordpressComboList1: "Add to your theme: Place this code in your theme's functions.php file or put it inside a code snippets plugin to leave your functions.php files untouched",
+    wordpressComboList2: "Use the Shortcode: Use <code>[laatste_bestelling]</code> shortcode anywhere on your site to display the customer's latest order",
+    wordpressComboList3: "Customize Styling: Modify the inline CSS styles in the function to match your brand's design system",
+    wordpressComboList4: "Update Links: Change the fallback link from <code>/product-category/your-desired-category/</code> to your preferred product category or shop page",
+    wordpressComboShortcodeExamples: "Shortcode Examples",
+    wordpressComboHeading11: "Why This Shortcode Works",
+    wordpressComboPara11: "This simple shortcode provides immediate value to your customers and your business:",
+    wordpressComboList5: "Quick Order Access: Customers can instantly see their latest order details",
+    wordpressComboList6: "Reduced Support Load: Less \"where is my order?\" inquiries from customers",
+    wordpressComboList7: "Increased Engagement: Direct links to continue shopping encourage repeat purchases",
+    wordpressComboList8: "Professional Appearance: Clean, branded display that matches your store design",
+    wordpressComboHeading12: "Getting Started",
+    wordpressComboPara12: "Ready to add this shortcode to your WooCommerce store? Here's your simple implementation plan:",
+    wordpressComboList9: "Add the code: Place the PHP code in your functions.php or code snippets plugin",
+    wordpressComboList10: "Test the shortcode: Use <code>[laatste_bestelling]</code> on any page or post",
+    wordpressComboList11: "Customize the styling: Adjust the inline CSS to match your brand colors",
+    wordpressComboList12: "Update the fallback link: Change the product category link to your preferred page",
+    wordpressComboList13: "Deploy and monitor: Watch how it improves your customer experience",
+    wordpressComboConclusion: "This simple shortcode demonstrates the power of WordPress + WooCommerce customization. With just a few lines of code, you can create a professional order display that enhances your customer experience. Whether you're running a small online store or a large e-commerce operation, this shortcode provides immediate value with minimal effort. For more advanced <a href=\"../../about-virtualcreators.html\">WordPress development solutions</a>, consider our comprehensive development services.",
+    wordpressComboCTA: "Need help implementing this shortcode or want to explore more WooCommerce customizations? <a href=\"../../index.html#contact\">Get your free consultation</a> and let's discuss how we can enhance your e-commerce store.",
 
     // Blog Filter Labels
     filterAll: "All Posts",
@@ -566,6 +640,7 @@ const translations = {
     services: "Diensten",
     about: "Over Ons",
     contact: "Contact",
+    contactButton: "Neem contact op",
     letsalk: "Gratis Adviesgesprek",
     language: "Taal",
     english: "English",
@@ -580,6 +655,7 @@ const translations = {
     viewMyWork: "Bekijk Ons Werk",
     seeProjects: "Bekijk Projecten",
     viewCases: "Bekijk Cases",
+    viewAllProjects: "Bekijk Alle Projecten",
     startProject: "Gratis Adviesgesprek",
 
     // Services Section
@@ -590,20 +666,21 @@ const translations = {
       "Wij geloven in de kracht van eenvoud. Elk project begint met het begrijpen van jouw doelen en het creëren van oplossingen die zowel mooi als doelgericht zijn.",
 
     // Service Items
-    digitalStrategy: "Digitale Strategie",
-    digitalStrategyDescription: "Doordachte planning die visie omzet in meetbare resultaten",
+    digitalStrategy: "Merkidentiteit",
+    digitalStrategyDescription: "We creëren unieke, memorabele merkidentiteiten die resoneren met jouw publiek — van logo's tot visuele systemen — en zorgen dat elk contactpunt de essentie van jouw merk weerspiegelt.",
     digitalStrategyTitle: "Strategische Visie",
-    brandIdentity: "Merkidentiteit",
-    brandIdentityDescription: "Onderscheidende visuele systemen die jouw unieke verhaal communiceren",
+    brandIdentity: "Digitale Strategie",
+    brandIdentityDescription: "We bouwen samenhangende digitale strategieën die de stem van jouw merk afstemmen, jouw aanwezigheid begeleiden op alle kanalen, en betekenisvolle verbindingen creëren met de mensen die je wilt bereiken.",
     brandIdentityTitle: "Visuele Identiteit",
-    webDevelopment: "Webontwikkeling",
-    webDevelopmentDescription: "Schone, performante websites gebouwd met moderne technologieën",
+    webDevelopment: "Web-Design",
+    webDevelopmentDescription: "Jouw merk verdient een digitale aanwezigheid die opvalt. We creëren op maat gemaakte website-ontwerpen met doordachte UX/UI, duidelijke visuele hiërarchie, en een ervaring die onmiskenbaar van jou is.",
     webDevelopmentTitle: "Design Excellentie",
-    userExperience: "Gebruikerservaring",
-    userExperienceDescription: "Intuïtieve interfaces waar gebruikers van houden en bedrijven op vertrouwen",
+    userExperience: "Web-Development",
+    userExperienceDescription: "We bouwen op maat gemaakte websites met moderne, veerkrachtige code, die design transformeert in een soepele, responsieve en betrouwbare merkervaring bij elke interactie.",
     userExperienceTitle: "Technische Excellentie",
     exploreOurCases: "Bekijk onze cases",
     previewService: "Preview service",
+    backToAllCases: "Terug naar alle cases",
 
     // Portfolio Section
     selectedWork: "Geselecteerd Werk",
@@ -657,6 +734,20 @@ const translations = {
     lifeSciGrowthReviewCompany: "RobustRise",
     clientReview: "Klantbeoordeling",
 
+    // Case Page Sections
+    deliverables: "Opleveringen",
+    projectGallery: "Project Galerij",
+    resultsImpact: "Resultaten & Impact",
+    otherProjects: "Andere Projecten",
+
+    // Project Badges
+    webDevelopmentBadge: "Webontwikkeling",
+    uiUxDesignBadge: "UI/UX Design",
+    seoOptimizationBadge: "SEO Optimalisatie",
+    brandIdentityBadge: "Merkidentiteit",
+    performanceOptimizationBadge: "Prestatie Optimalisatie",
+    mobileFirstApproachBadge: "Mobile First Aanpak",
+
     // About Section
     aboutMe: "Over Ons",
     iBelieveIn: "Wij geloven in de kracht",
@@ -665,6 +756,31 @@ const translations = {
       "Opgericht in 2025, wij zijn een team van ontwerpers en webontwikkelaars die gepassioneerd zijn over het creëren van digitale ervaringen die ertoe doen.",
     aboutText2:
       "Wij werken samen met vooruitdenkende bedrijven die begrijpen dat geweldig ontwerp niet alleen gaat over hoe iets eruitziet, maar over hoe het werkt, hoe het voelt en hoe het verbinding maakt met mensen.",
+
+    // FAQ Section
+    faqLabel: "Veelgestelde vragen",
+    faqTitleGradient: "Ant",
+    faqTitleRest: "woorden",
+    faqDescription: "Vind antwoorden op veelgestelde vragen over ons ontwerpproces en diensten.",
+    faqCtaText: "Kun je niet vinden wat je zoekt? Boek een gratis consultatie en we beantwoorden alle verdere vragen die je mogelijk hebt.",
+    faqQ1: "Welke diensten bieden jullie aan?",
+    faqA1: "We zijn gespecialiseerd in webdesign en -ontwikkeling, waarbij we responsief front-end design combineren met praktische UI/UX principes. We bouwen functionele, visueel consistente digitale ervaringen die bruikbaarheid verbeteren, prestaties optimaliseren en de online aanwezigheid van een merk versterken.",
+    faqQ2: "Hoe begin ik met jullie samen te werken?",
+    faqA2: "Beginnen is eenvoudig! Boek gewoon een gratis consultatie via onze website, en we bespreken jouw projectdoelen, tijdlijn en budget. Van daaruit maken we een op maat gemaakte offerte die aansluit bij jouw behoeften.",
+    faqQ3: "Welke ontwerptools gebruiken jullie?",
+    faqA3: "We werken met industrieleidende tools zoals Figma, Framer en Adobe Suite om strakke, hoogwaardige ontwerpen te creëren.",
+    faqQ4: "Hoe lang duurt een project?",
+    faqA4: "Projecttijdlijnen variëren op basis van scope, maar de meeste ontwerpen nemen 2–4 weken in beslag. We geven een duidelijke tijdlijn na ons eerste consult, zodat je weet wat je kunt verwachten.",
+    faqQ5: "Bieden jullie revisies aan?",
+    faqA5: "Ja! We nemen revisierondes op in al onze projectpakketten. Meestal bieden we 2-3 rondes revisies tijdens de ontwerpfase om ervoor te zorgen dat het eindproduct perfect aansluit bij jouw visie. Extra revisies kunnen indien nodig worden geregeld.",
+    faqQ6: "Met welke branches werken jullie?",
+    faqA6: "We werken met bedrijven in verschillende branches, waaronder technologie, gezondheidszorg, e-commerce, creatieve bureaus en meer. Onze ontwerpaanpak past zich aan aan de unieke behoeften en doelgroep van elke branche.",
+    faqQ7: "Bieden jullie ontwikkeldiensten aan?",
+    faqA7: "Ja, we zijn gespecialiseerd in Framer, WordPress/Elementor & Shopify ontwikkeling, waardoor naadloze design-to-live website overgangen worden gegarandeerd met hoogwaardige interacties en animaties.",
+    faqQ8: "Wat is jullie prijsstructuur?",
+    faqA8: "Onze prijzen zijn aangepast op basis van projectscope, complexiteit en vereisten. We bieden transparante, vaste prijsoffertes na het begrijpen van jouw behoeften. Boek een gratis consultatie om jouw project te bespreken en een gedetailleerde offerte te ontvangen.",
+    faqQ9: "Kunnen jullie mijn bestaande website opnieuw ontwerpen?",
+    faqA9: "Ja! We zijn gespecialiseerd in website-redesigns en kunnen jouw bestaande site transformeren naar een moderne, gebruiksvriendelijke ervaring. We analyseren jouw huidige site, identificeren verbeterpunten en creëren een fris design dat beter aansluit bij jouw bedrijfsdoelen.",
 
     // Stats
     projectsCompleted: "Projecten Voltooid",
@@ -768,6 +884,7 @@ const translations = {
     readTime3Min: "3 min lezen",
     readTime4Min: "4 min lezen", 
     readTime5Min: "5 min lezen",
+    readTime6Min: "6 min lezen",
 
     // Author Information
     authorName: "Kjell de Ruiter",
@@ -783,6 +900,8 @@ const translations = {
     firstPostExcerpt: "Het begin van een nieuwe reis waarin ik inzichten, tips en verhalen deel uit mijn ervaring met het bouwen van digitale oplossingen voor vooruitdenkende bedrijven.",
     readMore: "Lees Meer",
     backToBlog: "Terug naar Blog",
+    relatedPosts: "Gerelateerde Posts",
+    relatedPostsSubtitle: "Blijf lezen",
 
     // Blog Post Content
     firstPostPara1: "Hallo! Wij zijn enthousiast om deze blog te lanceren als een ruimte om inzichten, ervaringen en geleerde lessen te delen uit onze reis als <a href=\"../../index.html#services\">webontwikkelaars en ontwerpers</a>. Sinds het oprichten van VirtualCreators in 2025, hebben wij het voorrecht gehad om te werken met geweldige klanten en uitdagende projecten aan te pakken die onze benadering van <a href=\"../../index.html#work\">digitale oplossingen</a> hebben gevormd.",
@@ -865,6 +984,61 @@ const translations = {
     aiImpactHeading7: "Vooruitkijken",
     aiImpactPara8: "Terwijl we door 2025 vorderen, verwacht ik dat AI's rol in ontwerp en ontwikkeling nog verfijnder wordt. We zullen waarschijnlijk AI zien die merkpersoonlijkheid, culturele nuances en complexe gebruikersreizen kan begrijpen. De uitdaging voor onze industrie zal zijn om deze mogelijkheden te omarmen terwijl we de uniek menselijke aspecten van geweldig ontwerp behouden.",
     aiImpactPara9: "De toekomst behoort toe aan ontwerpers en ontwikkelaars die AI doordacht kunnen integreren in hun creatieve proces—niet als steun, maar als krachtig gereedschap dat ons in staat stelt om meer betekenisvolle, toegankelijke en effectieve digitale ervaringen te creëren. De vraag is niet of AI onze industrie zal veranderen; het is hoe we mee zullen evolueren om betere oplossingen te creëren voor de mensen die we dienen.",
+
+    // WordPress WooCommerce Article
+    wordpressComboTitle: "WordPress WooCommerce Klantaccount Verbetering: Laatste Bestelling Shortcode Tutorial",
+    wordpressComboExcerpt: "Leer hoe je een aangepaste WooCommerce shortcode maakt om de laatste bestelling van de klant weer te geven op accountpagina's. Inclusief gratis PHP code snippet voor verbeterde klantervaring en accountnavigatie.",
+    wordpressComboIntro: "Het verbeteren van je WooCommerce klantaccountpagina's kan de gebruikerservaring aanzienlijk verbeteren en support tickets verminderen. In deze tutorial laat ik je zien hoe je een aangepaste shortcode maakt die de laatste bestelling van je klant direct op hun accountpagina weergeeft, waardoor het gemakkelijker wordt om hun aankopen te volgen en verder te winkelen.",
+    wordpressComboHeading1: "Waarom Klantaccountpagina's Verbeteren?",
+    wordpressComboPara1: "Klantaccountpagina's worden vaak over het hoofd gezien, maar ze zijn cruciaal voor de gebruikerservaring. Wanneer klanten gemakkelijk hun laatste bestelling kunnen zien en kunnen navigeren om verder te winkelen, vermindert dit support tickets en verhoogt het de klanttevredenheid. Deze eenvoudige verbetering kan een groot verschil maken in de bruikbaarheid van je winkel.",
+    wordpressComboHeading2: "1. Verbeterde Gebruikerservaring",
+    wordpressComboPara2: "Klanten kunnen snel hun laatste bestelstatus, totaalbedrag zien en gemakkelijk navigeren om bestelgegevens te bekijken of verder te winkelen. Dit vermindert de tijd die ze besteden aan het zoeken naar informatie en creëert een soepelere ervaring.",
+    wordpressComboHeading3: "2. Verminderde Support Tickets",
+    wordpressComboPara3: "Wanneer klanten gemakkelijk toegang hebben tot hun bestelinformatie, zijn ze minder geneigd om support te contacteren voor basisvragen. Dit bespaart je team tijd en verbetert de klanttevredenheid door directe toegang tot hun gegevens te bieden.",
+    wordpressComboHeading4: "3. Verhoogde Betrokkenheid",
+    wordpressComboPara4: "Door het gemakkelijker te maken voor klanten om hun recente aankopen te zien en verder te winkelen, moedig je herhaalde bezoeken en aankopen aan. De fallback \"Begin met Winkelen\" knop helpt ook nieuwe klanten naar je producten te leiden.",
+    wordpressComboHeading5: "Hoe de Shortcode Werkt",
+    wordpressComboPara5: "De aangepaste shortcode die ik je laat zien creëert een dynamische weergave die zich aanpast op basis van de bestelgeschiedenis van de klant:",
+    wordpressComboHeading6: "Voor Klanten met Bestellingen",
+    wordpressComboPara6: "Wanneer een klant bestellingen heeft geplaatst, toont de shortcode hun meest recente aankoop met belangrijke details zoals besteldatum, totaalbedrag, status en een directe link om de volledige bestelgegevens te bekijken.",
+    wordpressComboHeading7: "Voor Nieuwe Klanten",
+    wordpressComboPara7: "Voor klanten die nog geen bestellingen hebben geplaatst, toont de shortcode een vriendelijke boodschap die hen aanmoedigt om te beginnen met winkelen, met een prominente call-to-action knop die hen naar je productcategorieën leidt.",
+    wordpressComboHeading8: "Automatische Integratie",
+    wordpressComboPara8: "De shortcode integreert automatisch met het bestaande bestelsysteem van WooCommerce en haalt echte gegevens uit de database van je winkel. Het respecteert gebruikersmachtigingen en toont alleen informatie aan ingelogde klanten.",
+    wordpressComboPara9: "Nu je begrijpt hoe de shortcode werkt, laten we duiken in de daadwerkelijke implementatie. De code is verrassend eenvoudig maar ongelooflijk krachtig en vereist slechts een paar regels PHP om een professionele klantaccountverbetering te creëren.",
+    wordpressComboHeading9: "Aangepaste Code Snippet: Verbeterde Klantaccountnavigatie",
+    wordpressComboPara10: "Hier is het complete code snippet dat je kunt implementeren om de functionaliteit van je klantaccountpagina's uit te breiden. Dit creëert een naadloze ervaring waarbij klanten gemakkelijk kunnen navigeren naar je winkel of hun meest recente bestelling direct vanuit hun accountdashboard kunnen bekijken.",
+    wordpressComboCodeTitle: "Klantaccountnavigatie",
+    wordpressComboEmailRequired: "E-mail Vereist",
+    wordpressComboPreview: "Voorbeeld",
+    wordpressComboCode: "Code",
+    wordpressComboNoOrders: "Geen Bestellingen (Fallback Status)",
+    wordpressComboWithOrders: "Met Bestellingen (Huidige Status)",
+    wordpressComboCodeAccess: "Code Toegang Vereist",
+    wordpressComboEnterEmail: "Voer je e-mailadres in om de volledige PHP code te ontgrendelen",
+    wordpressComboEmailPlaceholder: "Voer je e-mailadres in",
+    wordpressComboUnlockCode: "Ontgrendel Code",
+    wordpressComboHeading10: "Hoe Deze Code Te Gebruiken",
+    wordpressComboList1: "Voeg toe aan je thema: Plaats deze code in het functions.php bestand van je thema of plaats het in een code snippets plugin om je functions.php bestanden onaangeroerd te laten",
+    wordpressComboList2: "Gebruik de Shortcode: Gebruik de <code>[laatste_bestelling]</code> shortcode overal op je site om de laatste bestelling van de klant weer te geven",
+    wordpressComboList3: "Pas Styling Aan: Wijzig de inline CSS-stijlen in de functie om overeen te komen met het ontwerpsysteem van je merk",
+    wordpressComboList4: "Update Links: Wijzig de fallback link van <code>/product-category/your-desired-category/</code> naar je voorkeur productcategorie of winkelpagina",
+    wordpressComboShortcodeExamples: "Shortcode Voorbeelden",
+    wordpressComboHeading11: "Waarom Deze Shortcode Werkt",
+    wordpressComboPara11: "Deze eenvoudige shortcode biedt onmiddellijke waarde aan je klanten en je bedrijf:",
+    wordpressComboList5: "Snelle Besteltoegang: Klanten kunnen direct hun laatste bestelgegevens zien",
+    wordpressComboList6: "Verminderde Support Belasting: Minder \"waar is mijn bestelling?\" vragen van klanten",
+    wordpressComboList7: "Verhoogde Betrokkenheid: Directe links om verder te winkelen moedigen herhaalde aankopen aan",
+    wordpressComboList8: "Professionele Uitstraling: Schone, gebrandmerkte weergave die overeenkomt met je winkelontwerp",
+    wordpressComboHeading12: "Aan de Slag",
+    wordpressComboPara12: "Klaar om deze shortcode toe te voegen aan je WooCommerce winkel? Hier is je eenvoudige implementatieplan:",
+    wordpressComboList9: "Voeg de code toe: Plaats de PHP code in je functions.php of code snippets plugin",
+    wordpressComboList10: "Test de shortcode: Gebruik <code>[laatste_bestelling]</code> op elke pagina of post",
+    wordpressComboList11: "Pas de styling aan: Pas de inline CSS aan om overeen te komen met je merkkleuren",
+    wordpressComboList12: "Update de fallback link: Wijzig de productcategorie link naar je voorkeurspagina",
+    wordpressComboList13: "Implementeer en monitor: Bekijk hoe het je klantervaring verbetert",
+    wordpressComboConclusion: "Deze eenvoudige shortcode toont de kracht van WordPress + WooCommerce aanpassing. Met slechts een paar regels code kun je een professionele bestellingweergave creëren die de klantervaring verbetert. Of je nu een kleine online winkel runt of een grote e-commerce operatie, deze shortcode biedt onmiddellijke waarde met minimale inspanning. Voor meer geavanceerde <a href=\"../../about-virtualcreators.html\">WordPress ontwikkelingsoplossingen</a>, overweeg onze uitgebreide ontwikkeldiensten.",
+    wordpressComboCTA: "Hulp nodig bij het implementeren van deze shortcode of wil je meer WooCommerce aanpassingen verkennen? <a href=\"../../index.html#contact\">Krijg je gratis consultatie</a> en laten we bespreken hoe we jouw e-commerce winkel kunnen verbeteren.",
 
     // Modal
     startYourProject: "Boek Gratis Gesprek",
@@ -1078,11 +1252,15 @@ const translations = {
 // Get current language from URL path first, then localStorage, then default to English
 let currentLanguage = "en" // Default fallback
 
-// Check URL path first to determine current language
+// Check URL path first to determine current language - this runs immediately on script load
+// This ensures we always detect the correct language from the URL path, not from localStorage
 const path = window.location.pathname
 if (path.includes('/nl/')) {
   currentLanguage = 'nl'
   localStorage.setItem("preferred-language", 'nl')
+} else if (path.includes('/en/')) {
+  currentLanguage = 'en'
+  localStorage.setItem("preferred-language", 'en')
 } else {
   // For root path or any other path, check localStorage or default to English
   currentLanguage = localStorage.getItem("preferred-language") || "en"
@@ -1093,8 +1271,6 @@ window.t = (key) => translations[currentLanguage]?.[key] || translations["en"]?.
 
 // Update all translatable elements
 function updateTranslations() {
-  console.log("Updating translations to:", currentLanguage)
-
   // Update all elements with data-translate attribute
   document.querySelectorAll("[data-translate]").forEach((element) => {
     const key = element.getAttribute("data-translate")
@@ -1113,6 +1289,16 @@ function updateTranslations() {
           element.textContent = translation
         }
       }
+    }
+  })
+
+  // Update all elements with data-translate-placeholder attribute
+  document.querySelectorAll("[data-translate-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-translate-placeholder")
+    const translation = window.t(key)
+
+    if (translation && translation !== key && (element.tagName === "INPUT" || element.tagName === "TEXTAREA")) {
+      element.placeholder = translation
     }
   })
 
@@ -1234,7 +1420,6 @@ function updateLanguageSwitcher() {
 
 // Switch language function
 function switchLanguage(lang) {
-  console.log("Switching language to:", lang)
   currentLanguage = lang
   localStorage.setItem("preferred-language", lang)
   
@@ -1324,8 +1509,6 @@ function switchLanguage(lang) {
       }
     }
   }
-  
-  console.log("Navigating to:", newUrl)
   
   // Hide Spline immediately before navigation to prevent flash
   const splineBackground = document.querySelector('.spline-background')
@@ -1449,12 +1632,8 @@ function checkLanguageFromURL() {
 
 // Initialize translations when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded, initializing translations...")
-  
   // Check language from URL first
   checkLanguageFromURL()
-  
-  console.log("Current language detected:", currentLanguage)
 
   // Set initial language
   document.documentElement.lang = currentLanguage
@@ -1504,7 +1683,6 @@ function getLocalizedUrl(page) {
 function updateInternalLinks() {
   // This function is disabled because the links are already correct in the HTML files
   // The subdirectory structure handles the routing correctly
-  console.log('updateInternalLinks: Function disabled - links are already correct')
   return
 }
 

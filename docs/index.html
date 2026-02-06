@@ -459,6 +459,8 @@
       justify-content: center;
       height: 4rem;
       transition: opacity 0.3s ease;
+      pointer-events: auto;
+      cursor: default;
     }
     .logo-ticker-item img {
       max-height: 4rem;
@@ -470,10 +472,7 @@
       transition: opacity 0.3s ease, filter 0.3s ease;
       opacity: 0.4;
     }
-    .logo-ticker-item:hover img,
-    .logo-ticker-link:hover img,
-    .logo-ticker-link:active img,
-    .logo-ticker-link:focus img {
+    .logo-ticker-item:hover img {
       filter: grayscale(0%);
       opacity: 1;
     }
@@ -987,7 +986,7 @@
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-ghost" onclick="openCalendlyPopup()" data-translate="letsalk">Let's Talk</button>
+                    <button class="btn btn-ghost" onclick="openCalendlyPopup()" data-translate="letsalk">Free Consultation</button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -1019,7 +1018,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="btn btn-primary mobile-cta" onclick="openCalendlyPopup(); closeMobileMenu()" data-translate="letsalk">Let's Talk</button>
+                <button class="btn btn-primary mobile-cta" onclick="openCalendlyPopup(); closeMobileMenu()" data-translate="letsalk">Free Consultation</button>
             </div>
         </div>
     </nav>
@@ -1061,75 +1060,47 @@
             <div class="logo-ticker-wrapper">
                 <div class="logo-ticker-track">
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
-                        </a>
+                        <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
-                        </a>
+                        <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
-                        </a>
+                        <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
-                        </a>
+                        <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
-                        </a>
+                        <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
-                        </a>
+                        <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
-                        </a>
+                        <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
                     </div>
                     <!-- Duplicate for seamless loop -->
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
-                        </a>
+                        <img src="assets/suitsupply-logo-white.webp" alt="Suitsupply" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
-                        </a>
+                        <img src="assets/Repositive.webp" alt="Repositive" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
-                        </a>
+                        <img src="assets/Delta Studios-logo.webp" alt="Delta Studios" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
-                        </a>
+                        <img src="assets/Overythm-logo.webp" alt="Overythm" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
-                        </a>
+                        <img src="assets/Lumenix-Logo.webp" alt="Lumenix" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
-                        </a>
+                        <img src="assets/Logo-LifeSciGrowth.webp" alt="LifeSciGrowth" loading="lazy">
                     </div>
                     <div class="logo-ticker-item">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="logo-ticker-link">
-                            <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
-                        </a>
+                        <img src="assets/RobustRise Logo New (2).png" alt="RobustRise" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1166,11 +1137,11 @@
                     <div class="service-card active" data-service="0" data-icon="zap">
                         <div class="service-card-number">01</div>
                         <div class="service-card-title-vertical">
-                            <span data-translate="digitalStrategy">Digital Strategy</span>
+                            <span data-translate="digitalStrategy">Brand Identity</span>
                         </div>
                         <div class="service-card-content">
                             <h3 class="service-card-title" data-translate="digitalStrategyTitle">Strategic Vision</h3>
-                            <p class="service-card-description" data-translate="digitalStrategyDescription">Thoughtful planning that transforms vision into measurable results</p>
+                            <p class="service-card-description" data-translate="digitalStrategyDescription">We craft unique, memorable brand identities that resonate with your audience — from logos to visual systems — ensuring every touchpoint reflects your brand's essence.</p>
                             <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
                         </div>
                         <div class="service-card-icon"></div>
@@ -1178,11 +1149,11 @@
                     <div class="service-card" data-service="1" data-icon="bar-chart">
                         <div class="service-card-number">02</div>
                         <div class="service-card-title-vertical">
-                            <span data-translate="brandIdentity">Brand Identity</span>
+                            <span data-translate="brandIdentity">Digital Strategy</span>
                         </div>
                         <div class="service-card-content">
                             <h3 class="service-card-title" data-translate="brandIdentityTitle">Visual Identity</h3>
-                            <p class="service-card-description" data-translate="brandIdentityDescription">Distinctive visual systems that communicate your unique story</p>
+                            <p class="service-card-description" data-translate="brandIdentityDescription">We build cohesive digital strategies that align your brand's voice, guide your presence across channels, and create meaningful connections with the people you want to reach.</p>
                             <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
                         </div>
                         <div class="service-card-icon"></div>
@@ -1190,11 +1161,11 @@
                     <div class="service-card" data-service="2" data-icon="palette">
                         <div class="service-card-number">03</div>
                         <div class="service-card-title-vertical">
-                            <span data-translate="webDevelopment">Web Development</span>
+                            <span data-translate="webDevelopment">Web-Design</span>
                         </div>
                         <div class="service-card-content">
                             <h3 class="service-card-title" data-translate="webDevelopmentTitle">Design Excellence</h3>
-                            <p class="service-card-description" data-translate="webDevelopmentDescription">Clean, performant websites built with modern technologies</p>
+                            <p class="service-card-description" data-translate="webDevelopmentDescription">Your brand deserves a digital presence that stands out. We craft custom website designs with intentional UX/UI, clear visual hierarchy, and an experience that feels unmistakably yours.</p>
                             <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
                         </div>
                         <div class="service-card-icon"></div>
@@ -1202,11 +1173,11 @@
                     <div class="service-card" data-service="3" data-icon="code">
                         <div class="service-card-number">04</div>
                         <div class="service-card-title-vertical">
-                            <span data-translate="userExperience">User Experience</span>
+                            <span data-translate="userExperience">Web-Development</span>
                         </div>
                         <div class="service-card-content">
                             <h3 class="service-card-title" data-translate="userExperienceTitle">Technical Excellence</h3>
-                            <p class="service-card-description" data-translate="userExperienceDescription">Intuitive interfaces that users love and businesses trust</p>
+                            <p class="service-card-description" data-translate="userExperienceDescription">We build custom websites with modern, resilient code, transforming design into a smooth, responsive, and trustworthy brand experience at every interaction.</p>
                             <a href="#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
                         </div>
                         <div class="service-card-icon"></div>
@@ -1352,6 +1323,16 @@
                         <div class="project-dot"></div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- View All Projects Button -->
+            <div class="portfolio-view-all">
+                <a href="projects/index.html" class="btn btn-primary btn-large border-gradient">
+                    <span data-translate="viewAllProjects">View All Projects</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>

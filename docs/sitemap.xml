@@ -139,6 +139,66 @@
     <priority>0.70</priority>
   </url>
   
+  <!-- Projects Index - English -->
+  <url>
+    <loc>https://www.virtualcreators.io/projects/</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Projects Index - Dutch -->
+  <url>
+    <loc>https://www.virtualcreators.io/nl/projects/</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Case Study Pages - English -->
+  <url>
+    <loc>https://www.virtualcreators.io/projects/lumenix.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.virtualcreators.io/projects/deltastudios.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.virtualcreators.io/projects/robustrise.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- Case Study Pages - Dutch -->
+  <url>
+    <loc>https://www.virtualcreators.io/nl/projects/lumenix.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.virtualcreators.io/nl/projects/deltastudios.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.virtualcreators.io/nl/projects/robustrise.html</loc>
+    <lastmod>2025-01-29T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
   <!-- 404 Pages -->
   <url>
     <loc>https://www.virtualcreators.io/404.html</loc>
