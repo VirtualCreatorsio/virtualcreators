@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenix Project - Virtualcreators Portfolio | virtualcreators.io</title>
+    <meta name="description" content="Discover how Virtualcreators transformed Lumenix's e-commerce platform with a complete WordPress, Elementor, and WooCommerce redesign. Achieved 300% increase in user engagement and 150% boost in conversion rates. Expert web development case study.">
+    <meta name="keywords" content="Lumenix, e-commerce, WordPress, WooCommerce, web design, web development, portfolio, Virtualcreators, case study, online shop, conversion optimization">
+    
+    <!-- Language and SEO Meta Tags -->
+    <link rel="alternate" hreflang="en" href="https://www.virtualcreators.io/projects/lumenix.html" />
+    <link rel="alternate" hreflang="nl" href="https://www.virtualcreators.io/nl/projects/lumenix.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.virtualcreators.io/projects/lumenix.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Lumenix Project - Virtualcreators Portfolio">
+    <meta property="og:description" content="Discover how Virtualcreators transformed Lumenix's e-commerce platform with a complete WordPress, Elementor, and WooCommerce redesign. Achieved 300% increase in user engagement and 150% boost in conversion rates.">
+    <meta property="og:url" content="https://www.virtualcreators.io/projects/lumenix.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.virtualcreators.io/assets/lumenix-project.webp">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lumenix Project - Virtualcreators Portfolio">
+    <meta name="twitter:description" content="Discover how Virtualcreators transformed Lumenix's e-commerce platform with a complete WordPress, Elementor, and WooCommerce redesign. Achieved 300% increase in user engagement and 150% boost in conversion rates.">
+    <meta name="twitter:image" content="https://www.virtualcreators.io/assets/lumenix-project.webp">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.virtualcreators.io/projects/lumenix.html">
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.virtualcreators.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://www.virtualcreators.io/projects/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Lumenix",
+          "item": "https://www.virtualcreators.io/projects/lumenix.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Lumenix Website Redesign",
+      "description": "Complete digital transformation for Lumenix e-commerce platform",
+      "creator": {
+        "@type": "Organization",
+        "name": "Virtualcreators",
+        "url": "https://www.virtualcreators.io"
+      },
+      "datePublished": "2025-01-01",
+      "category": "Web Development",
+      "keywords": "e-commerce, WordPress, WooCommerce, web design",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "review": {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Michael - SEO Specialist"
+        },
+        "reviewBody": "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Link to main stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Link to case pages specific stylesheet -->
+    <link rel="stylesheet" href="case-pages.css">
+    
+    <style>
+        /* Additional styles for standalone project pages */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="../index.html" class="logo">
+                    <span class="logo-text">Virtual<span class="logo-bold">Creators</span></span>
+                    <div class="brand-dot"></div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <div class="nav-links">
+                        <a href="../index.html#work" class="nav-link">Work</a>
+                        <a href="../index.html#services" class="nav-link">Services</a>
+                        <a href="../about-virtualcreators.html" class="nav-link">About</a>
+                        <a href="../index.html#contact" class="nav-link">Contact</a>
+                        <a href="../blog/index.html" class="nav-link">Blog</a>
+                    </div>
+                </div>
+
+                <!-- Right side elements -->
+                <div class="nav-right">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <button class="language-btn" onclick="toggleLanguageDropdown()" id="languageBtn" aria-label="Toggle language selection" aria-expanded="false" aria-haspopup="true">
+                            <span class="language-text" id="currentLang">EN</span>
+                            <svg class="language-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="6,9 12,15 18,9"/>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown" role="menu" aria-labelledby="languageBtn">
+                            <button class="language-option" onclick="switchLanguage('en')" role="menuitem">
+                                <span>EN</span>
+                            </button>
+                            <button class="language-option" onclick="switchLanguage('nl')" role="menuitem">
+                                <span>NL</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost" onclick="openCalendlyPopup()" data-translate="letsalk">Free Consultation</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="../index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
+                <a href="../index.html#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services</a>
+                <a href="../about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
+                <a href="../index.html#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+                <a href="../blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
+                <!-- Mobile Language Switcher -->
+                <div class="mobile-language-switcher">
+                    <div class="mobile-language-header">Language</div>
+                    <div class="mobile-language-options">
+                        <button class="mobile-language-option" onclick="switchLanguage('en'); closeMobileMenu()">
+                            <span>EN</span>
+                        </button>
+                        <button class="mobile-language-option" onclick="switchLanguage('nl'); closeMobileMenu()">
+                            <span>NL</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary mobile-cta" onclick="openCalendlyPopup(); closeMobileMenu()" data-translate="letsalk">Free Consultation</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="case-content" data-project-slug="lumenix">
+        <!-- Breadcrumb -->
+        <div class="case-breadcrumb">
+            <a href="index.html" data-translate="backToAllCases">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                <span data-translate="backToAllCases">Back to all cases</span>
+            </a>
+        </div>
+        <!-- Case Title Section -->
+        <div class="case-header">
+            <div class="case-meta">
+                <span>Online Shop</span>
+                <span>•</span>
+                <span>2025</span>
+            </div>
+            <h1 class="case-title">
+                Lumenix <span class="case-suffix">CASE</span>
+            </h1>
+            <p class="case-description">
+                Complete digital transformation for Lumenix e-commerce platform. We redesigned the entire website from the ground up, focusing on intuitive user experience and clear navigation.
+            </p>
+            
+            <!-- Deliverables Section -->
+            <div class="case-deliverables case-section-fade">
+                <h3 class="case-section-title">Deliverables</h3>
+                <div class="project-badges">
+                    <span class="project-badge">Web Development</span>
+                    <span class="project-badge">UI/UX Design</span>
+                    <span class="project-badge">SEO Optimization</span>
+                    <span class="project-badge">Brand Identity</span>
+                    <span class="project-badge">Performance Optimization</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project Overview / The Solution -->
+        <div class="case-solution case-section-fade">
+            <div class="solution-content">
+                <div class="project-description-content">
+                    <div class="case-inline-scroll-video" style="background-image: url('../assets/Lumenix-case-page-scroll-background.webp');">
+                        <div class="scroll-video-wrapper">
+                            <div class="scroll-video-container">
+                                <video 
+                                    class="scroll-video" 
+                                    autoplay 
+                                    muted 
+                                    loop 
+                                    playsinline
+                                    controls
+                                >
+                                    <source src="../assets/scroll-vid Lumenix.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-tracking">Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.</p>
+                    <p class="text-tracking">We redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.</p>
+                    <p class="text-tracking">The redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales. The website was built using WordPress, Elementor, and WooCommerce.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Image Gallery Section -->
+        <div class="case-gallery case-section-fade">
+            <h3 class="case-section-title">Project Gallery</h3>
+            <div class="gallery-slider-container">
+                <button class="gallery-slider-btn gallery-slider-prev" onclick="slideGallery(this, 'prev');" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <div class="gallery-slider">
+                    <div class="gallery-slider-track">
+                        <div class="gallery-slide" data-slide-index="0">
+                            <div class="gallery-item" onclick="openGalleryLightbox(0);" data-gallery-index="0">
+                                <img src="../assets/Lumenix-Hero-sectie.png" alt="Lumenix Hero Section" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="1">
+                            <div class="gallery-item" onclick="openGalleryLightbox(1);" data-gallery-index="1">
+                                <img src="../assets/Lumenix-Promo-sectie.png" alt="Lumenix Promo Section" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="2">
+                            <div class="gallery-item" onclick="openGalleryLightbox(2);" data-gallery-index="2">
+                                <img src="../assets/Lumenix-category-page.png" alt="Lumenix Category Page" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="3">
+                            <div class="gallery-item" onclick="openGalleryLightbox(3);" data-gallery-index="3">
+                                <img src="../assets/Lumenix-lifestyle carousel.png" alt="Lumenix Lifestyle Carousel" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="4">
+                            <div class="gallery-item" onclick="openGalleryLightbox(4);" data-gallery-index="4">
+                                <img src="../assets/Lumenix-checkout.png" alt="Lumenix Checkout" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="gallery-slider-btn gallery-slider-next" onclick="slideGallery(this, 'next');" aria-label="Next image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+                <div class="gallery-slider-dots">
+                    <button class="gallery-dot active" onclick="goToSlide(this, 0);" aria-label="Go to slide 1"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 1);" aria-label="Go to slide 2"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 2);" aria-label="Go to slide 3"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 3);" aria-label="Go to slide 4"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 4);" aria-label="Go to slide 5"></button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results & Impact Section -->
+        <div class="case-results case-section-fade">
+            <h3 class="case-section-title">Results & Impact</h3>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-dot"></div>
+                    <span class="result-text">300% increase in user engagement</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-dot"></div>
+                    <span class="result-text">150% boost in conversion rates</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-dot"></div>
+                    <span class="result-text">40% reduction in bounce rate</span>
+                </div>
+                <div class="result-item">
+                    <div class="result-dot"></div>
+                    <span class="result-text">95% improvement in page load speed</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Client Review Section -->
+        <div class="case-section-fade">
+            <div class="client-review-section">
+                <h4>Client Review</h4>
+                <div class="review-section">
+                    <div class="review-stars">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                    </div>
+                    <div class="review-text">"Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended."</div>
+                    <div class="review-author">
+                        <span class="review-author-name">Michael - SEO Specialist</span>, <span class="review-author-company"><a href="https://www.lumenix-beamers.nl" target="_blank" rel="noopener">Lumenix-Beamers</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Cases Section -->
+        <div class="related-cases">
+            <h3 class="case-section-title">Other Projects</h3>
+            <div class="projects-grid">
+                <!-- Deltastudios Case -->
+                <div class="project-item" onclick="window.location.href='deltastudios.html'">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Branding Agency</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title" onclick="window.location.href='deltastudios.html'">Deltastudios</h3>
+                        </div>
+                        <div class="project-badges">
+                            <span class="project-badge">Mobile First Approach</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">Performance Optimization</span>
+                        </div>
+                        <a href="deltastudios.html" class="project-link">View Project
+                            <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-image" onclick="window.location.href='deltastudios.html'">
+                        <img src="../assets/tractionmovies-project.webp" alt="Deltastudios Project" class="project-img" loading="lazy">
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+                
+                <!-- RobustRise Case -->
+                <div class="project-item" onclick="window.location.href='robustrise.html'">
+                    <div class="project-content">
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span>Online Shop</span>
+                                <div class="meta-dot"></div>
+                                <span>2025</span>
+                            </div>
+                            <h3 class="project-title" onclick="window.location.href='robustrise.html'">RobustRise</h3>
+                        </div>
+                        <div class="project-badges">
+                            <span class="project-badge">Web Development</span>
+                            <span class="project-badge">UI/UX Design</span>
+                            <span class="project-badge">SEO Optimization</span>
+                            <span class="project-badge">Brand Identity</span>
+                            <span class="project-badge">Performance Optimization</span>
+                        </div>
+                        <a href="robustrise.html" class="project-link">View Project
+                            <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="project-image" onclick="window.location.href='robustrise.html'">
+                        <img src="../assets/lifescigrowth-project.webp" alt="RobustRise Project" class="project-img" loading="lazy">
+                        <div class="project-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @media (max-width: 767px) {
+            .case-title {
+                font-size: 2rem !important;
+            }
+            .case-description {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
+    
+    <!-- Scripts for navigation and functionality -->
+    <script src="../translations.js" defer></script>
+    <script src="../script.js" defer></script>
+    
+    <!-- Script for service badge functionality -->
+    <script>
+        // Toggle service badge (accordion behavior for all screen sizes)
+        function toggleServiceBadge(index) {
+            const badges = document.querySelectorAll('.service-badge');
+            const clickedBadge = document.querySelector(`.service-badge[data-service-index="${index}"]`);
+            
+            if (!clickedBadge) return;
+            
+            // If clicking the same badge, toggle it
+            if (clickedBadge.classList.contains('active')) {
+                clickedBadge.classList.remove('active');
+            } else {
+                // Remove active from all badges
+                badges.forEach(badge => badge.classList.remove('active'));
+                // Add active to clicked badge
+                clickedBadge.classList.add('active');
+            }
+        }
+        
+        // Make function globally available
+        window.toggleServiceBadge = toggleServiceBadge;
+    </script>
+</body>
+</html>
+
