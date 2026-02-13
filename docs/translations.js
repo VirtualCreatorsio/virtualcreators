@@ -77,22 +77,22 @@ const translations = {
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nWe redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 300% increase in user engagement and a 150% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales. The website was built using WordPress, Elementor, and WooCommerce.",
+      "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nWe redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 70% increase in user engagement and a 35% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales. The website was built using WordPress, Elementor, and WooCommerce.",
     deltastudiosFullDescription:
       "Deltastudios, a branding agency, needed a portfolio website that stands out while remaining simple and elegant. They wanted a platform that effectively showcases their creative work and brand identity without overwhelming visitors with complexity.\n\nWe developed a clean, modern portfolio website built in Framer that balances visual impact with simplicity. The project focused on creating an intuitive user experience that allows their work to take center stage, with smooth animations and thoughtful design elements that reflect their branding expertise. Every aspect was carefully considered to ensure the site feels both distinctive and approachable.\n\nThe final website delivers a polished, professional look that effectively highlights Deltastudios' portfolio while maintaining the simplicity they desired. The site stands out through thoughtful design choices rather than complexity, creating a memorable experience that reflects their brand identity. Built in Framer, the platform is easy to update and maintain while providing a modern, engaging user experience.",
     lifeSciGrowthFullDescription: "RobustRise needed a complete rebranding to establish a strong online presence for their dog supply brand. Their existing website lacked a cohesive brand identity and didn't effectively showcase their products or connect with their target audience of dog owners.\n\nWe redesigned the entire website from the ground up, creating a complete brand identity—including colors, typography, and visual elements that reflect the quality and care of their products. Every aspect of the design and structure was carefully considered to make it easy for customers to explore products, understand their benefits, and complete purchases, while maintaining a clean, modern aesthetic that builds trust and encourages engagement.\n\nThe redesigned website delivered measurable results, with a significant increase in user engagement and conversion rates. The project successfully transformed RobustRise's online presence, providing a professional, user-friendly platform that drives both brand recognition and sales. The website was built using Shopify.",
 
     // Project Results
-    lumenixResult1: "300% increase in user engagement",
-    lumenixResult2: "150% boost in conversion rates",
+    lumenixResult1: "70% increase in user engagement",
+    lumenixResult2: "35% boost in conversion rates",
     lumenixResult3: "40% reduction in bounce rate",
-    lumenixResult4: "95% improvement in page load speed",
+    lumenixResult4: "45% improvement in page load speed",
     deltastudiosResult1: "120% increase in user engagement",
     deltastudiosResult2: "85% increase in form submissions",
     deltastudiosResult3: "60% increase in portfolio project views",
     deltastudiosResult4: "45% reduction in bounce rate",
-    lifeSciGrowthResult1: "250% increase in user engagement",
-    lifeSciGrowthResult2: "180% boost in conversion rates",
+    lifeSciGrowthResult1: "120% increase in user engagement",
+    lifeSciGrowthResult2: "45% boost in conversion rates",
     lifeSciGrowthResult3: "45% reduction in bounce rate",
     lifeSciGrowthResult4: "90% improvement in page load speed",
 
@@ -703,22 +703,22 @@ const translations = {
 
     // Project Full Descriptions
     lumenixFullDescription:
-      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 300% in gebruikersbetrokkenheid en een boost van 150% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert. De website is gebouwd met WordPress, Elementor en WooCommerce.",
+      "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 70% in gebruikersbetrokkenheid en een boost van 35% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert. De website is gebouwd met WordPress, Elementor en WooCommerce.",
     deltastudiosFullDescription:
       "Deltastudios, een branding agency, had een portfolio website nodig die opvalt maar tegelijkertijd eenvoudig blijft. Ze wilden een platform dat hun creatieve werk en merkidentiteit effectief toont zonder bezoekers te overweldigen met complexiteit.\n\nWij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creëren van een intuïtieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling die het portfolio van Deltastudios effectief toont terwijl de eenvoud behouden blijft. De site valt op door doordachte ontwerpkeuzes in plaats van complexiteit, waardoor een memorabele ervaring ontstaat die hun merkidentiteit weerspiegelt. Gebouwd in Framer, is het platform gemakkelijk bij te werken en te onderhouden terwijl het een moderne, boeiende gebruikerservaring biedt.",
     lifeSciGrowthFullDescription: "RobustRise had een complete rebranding nodig om een sterke online aanwezigheid te creëren voor hun hondensupply merk. Hun bestaande website miste een samenhangende merkidentiteit en toonde hun producten niet effectief of verbond niet met hun doelgroep van hondeneigenaren.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, waarbij wij een complete merkidentiteit creëerden—inclusief kleuren, typografie en visuele elementen die de kwaliteit en zorg van hun producten weerspiegelen. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het klanten gemakkelijk te maken om producten te verkennen, hun voordelen te begrijpen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat vertrouwen opwekt en betrokkenheid stimuleert.\n\nDe herontworpen website leverde meetbare resultaten op, met een significante toename in gebruikersbetrokkenheid en conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van RobustRise, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel merkherkenning als verkoop stimuleert. De website is gebouwd met Shopify.",
 
     // Project Results
-    lumenixResult1: "300% toename in gebruikersbetrokkenheid",
-    lumenixResult2: "150% boost in conversiepercentages",
+    lumenixResult1: "70% toename in gebruikersbetrokkenheid",
+    lumenixResult2: "35% boost in conversiepercentages",
     lumenixResult3: "40% vermindering van bounce rate",
-    lumenixResult4: "95% verbetering in pagina laadsnelheid",
+    lumenixResult4: "45% verbetering in pagina laadsnelheid",
     deltastudiosResult1: "120% toename in gebruikersbetrokkenheid",
     deltastudiosResult2: "85% toename in formulierinzendingen",
     deltastudiosResult3: "60% toename in portfolio projectweergaven",
     deltastudiosResult4: "45% vermindering van bounce rate",
-    lifeSciGrowthResult1: "250% toename in gebruikersbetrokkenheid",
-    lifeSciGrowthResult2: "180% boost in conversiepercentages",
+    lifeSciGrowthResult1: "120% toename in gebruikersbetrokkenheid",
+    lifeSciGrowthResult2: "45% boost in conversiepercentages",
     lifeSciGrowthResult3: "45% vermindering van bounce rate",
     lifeSciGrowthResult4: "90% verbetering in pagina laadsnelheid",
 
