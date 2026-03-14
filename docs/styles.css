@@ -2134,11 +2134,40 @@ html.modal-open {
     gap: 1rem;
   }
 }
+.footer-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  order: 1;
+  pointer-events: auto;
+}
+@media (min-width: 768px) {
+  .footer-brand-row {
+    justify-content: flex-start;
+    margin-bottom: 0;
+    order: 0;
+  }
+}
+.footer-brand-row .footer-brand {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  padding: 0;
+  pointer-events: auto;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
 .footer-brand {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   pointer-events: auto;
   text-decoration: none;
   color: inherit;
@@ -2184,6 +2213,17 @@ html.modal-open {
 }
 .footer-link:hover {
   color: #ffffff;
+}
+.footer-partner-badge {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+.footer-partner-badge .footer-partner-svg {
+  display: block;
+  height: 22px;
+  width: auto;
+  vertical-align: middle;
 }
 .footer-copyright {
   font-size: 0.75rem;
@@ -4555,7 +4595,7 @@ html.modal-open {
 .post-image-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   transition: transform 0.4s ease;
 }
 .post-card:hover .post-image-placeholder img {
