@@ -434,6 +434,26 @@
             color: #ffffff;
         }
         
+        /* Partner/platform icons under founder text */
+        .founder-partner-badge {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .founder-partner-badge .founder-platform-icon {
+            height: 28px;
+            width: 28px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+        .founder-partner-badge .shopify-partner-badge-svg {
+            height: 28px;
+            width: auto;
+        }
+        
         /* Profile Image Styling */
         .founder-right {
             display: flex;
@@ -1002,6 +1022,8 @@
                     </blockquote>
                     <div class="founder-partner-badge" aria-hidden="true">
                         <img src="../assets/shopify partner.svg" alt="Shopify Partner" class="shopify-partner-badge-svg" width="140" height="32" loading="lazy">
+                        <img src="../assets/wp-svg.svg" alt="WordPress" class="founder-platform-icon" width="32" height="32" loading="lazy">
+                        <img src="../assets/framer-svg.svg" alt="Framer" class="founder-platform-icon" width="32" height="32" loading="lazy">
                     </div>
                 </div>
                 
