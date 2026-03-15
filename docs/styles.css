@@ -4283,6 +4283,7 @@ html.modal-open {
   }
   .project-img {
     height: 20rem;
+    object-fit: fill !important;
   }
   .project-title {
     font-size: 1.75rem !important;
@@ -4447,6 +4448,9 @@ html.modal-open {
   .back-to-top-text {
     display: none;
   }
+  .project-img {
+    object-fit: fill !important;
+  }
 }
 .blog-header {
   padding: 10rem 0 6rem 0;
@@ -4600,6 +4604,34 @@ html.modal-open {
 }
 .post-card:hover .post-image-placeholder img {
   transform: scale(1.1);
+}
+.post-card-platform {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 48px;
+  height: 48px;
+  z-index: 2;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.post-card-platform-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.post-card-platform--shopify .post-card-platform-icon {
+  filter: none;
+}
+.post-card-platform--shopify .shopify-bag {
+  fill: #ffffff;
+}
+.post-card-platform--shopify .shopify-s {
+  fill: #d4d4d4;
+}
+.project-image .post-card-platform {
+  z-index: 2;
 }
 .post-badges {
   position: absolute;
