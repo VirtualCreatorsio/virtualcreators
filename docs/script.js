@@ -870,6 +870,74 @@ function openCalendlyInlineWidget() {
       }
       document.body.style.overflow = "unset"
     }, 300)
+
+  // Blog TOC: smooth scrolling and active state (only on blog posts with TOC)
+  const toc = document.querySelector('.blog-toc')
+  if (toc) {
+    const tocToggle = toc.querySelector('.blog-toc-toggle')
+    const tocList = toc.querySelector('.blog-toc-list')
+    const tocLinks = tocList ? Array.from(tocList.querySelectorAll('a')) : []
+
+    if (tocToggle && tocList) {
+      tocToggle.addEventListener('click', () => {
+        const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true'
+        if (isExpanded) {
+          // Currently expanded → collapse
+          tocToggle.setAttribute('aria-expanded', 'false')
+          tocList.classList.add('blog-toc-list-collapsed')
+        } else {
+          // Currently collapsed → expand
+          tocToggle.setAttribute('aria-expanded', 'true')
+          tocList.classList.remove('blog-toc-list-collapsed')
+        }
+      })
+    }
+
+    // Smooth scroll behavior
+    tocLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href')
+        if (!href || !href.startsWith('#')) return
+        e.preventDefault()
+        const target = document.querySelector(href)
+        if (!target) return
+        const offset = 100 // navbar height so the section title sits just below it
+        const rect = target.getBoundingClientRect()
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        const top = Math.max(0, rect.top + scrollTop - offset)
+        window.scrollTo({ top, behavior: 'smooth' })
+      })
+    })
+
+    // Active section highlighting
+    const sections = tocLinks
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean)
+
+    if (sections.length && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            const id = '#' + entry.target.id
+            tocLinks.forEach(link => {
+              link.classList.toggle(
+                'blog-toc-link-active',
+                link.getAttribute('href') === id
+              )
+            })
+          })
+        },
+        {
+          root: null,
+          rootMargin: '-40% 0px -50% 0px',
+          threshold: 0.1
+        }
+      )
+
+      sections.forEach(section => observer.observe(section))
+    }
+  }
   }
 
   closeButton.onclick = closeCalendly
