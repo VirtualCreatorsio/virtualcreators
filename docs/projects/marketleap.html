@@ -24,6 +24,10 @@
     <meta name="twitter:title" content="Marketleap Project - Virtualcreators Portfolio | Coming Soon">
     <meta name="twitter:description" content="Marketleap case study — Coming soon. Virtualcreators is working with Marketleap. Full case study will be published here soon.">
     <meta name="twitter:image" content="https://www.virtualcreators.io/assets/marketleap-logo.webp">
+
+    <!-- Favicon Support -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="alternate icon" href="../assets/favicon.svg">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.virtualcreators.io/projects/marketleap.html">
@@ -215,23 +219,71 @@
         <div class="case-solution case-section-fade">
             <div class="solution-content">
                 <div class="project-description-content">
+                    <div class="case-inline-scroll-video" style="background-image: url('../assets/Marketleap-case-page-scroll-background.webp');">
+                        <div class="scroll-video-wrapper">
+                            <div class="scroll-video-container">
+                                <video
+                                    class="scroll-video"
+                                    autoplay
+                                    muted
+                                    loop
+                                    playsinline
+                                    controls
+                                >
+                                    <source src="../assets/scroll-vid-marketleap.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
                     <p class="text-tracking">We are currently working with Marketleap on this project. The full case study—including project background, our approach, deliverables, and results—will be published on this page once the project is complete. Check back later for the full story.</p>
                 </div>
             </div>
         </div>
         
-        <!-- Image Gallery Section (placeholder) -->
+        <!-- Image Gallery Section -->
         <div class="case-gallery case-section-fade">
             <h3 class="case-section-title">Project Gallery</h3>
             <div class="gallery-slider-container">
+                <button class="gallery-slider-btn gallery-slider-prev" onclick="slideGallery(this, 'prev');" aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
                 <div class="gallery-slider">
                     <div class="gallery-slider-track">
                         <div class="gallery-slide" data-slide-index="0">
-                            <div class="gallery-item">
-                                <img src="../assets/marketleap-logo.webp" alt="Marketleap" loading="lazy">
+                            <div class="gallery-item" onclick="openGalleryLightbox(0);" data-gallery-index="0">
+                                <img src="../assets/marketleap-gallery-hero.webp" alt="Marketleap Hero Section" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="1">
+                            <div class="gallery-item" onclick="openGalleryLightbox(1);" data-gallery-index="1">
+                                <img src="../assets/marketleap-gallery-review.webp" alt="Marketleap Review" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="2">
+                            <div class="gallery-item" onclick="openGalleryLightbox(2);" data-gallery-index="2">
+                                <img src="../assets/marketleap-gallery-stappen-plan.webp" alt="Marketleap Stappenplan" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="gallery-slide" data-slide-index="3">
+                            <div class="gallery-item" onclick="openGalleryLightbox(3);" data-gallery-index="3">
+                                <img src="../assets/marketleap-gallery-casesindex.webp" alt="Marketleap Cases" loading="lazy">
                             </div>
                         </div>
                     </div>
+                </div>
+                <button class="gallery-slider-btn gallery-slider-next" onclick="slideGallery(this, 'next');" aria-label="Next image">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+                <div class="gallery-slider-dots">
+                    <button class="gallery-dot active" onclick="goToSlide(this, 0);" aria-label="Go to slide 1"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 1);" aria-label="Go to slide 2"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 2);" aria-label="Go to slide 3"></button>
+                    <button class="gallery-dot" onclick="goToSlide(this, 3);" aria-label="Go to slide 4"></button>
                 </div>
             </div>
         </div>
