@@ -1899,6 +1899,7 @@ html.modal-open {
   padding: 2rem;
   box-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  height: fit-content;
 }
 .contact-form {
   display: flex;
@@ -2080,32 +2081,6 @@ html.modal-open {
 
 .contact-value a:hover {
   color: #8b5cf6;
-}
-.social-links {
-  padding-top: 2rem;
-}
-.social-label {
-  font-size: 0.875rem;
-  color: #9ca3af;
-  font-weight: 300;
-  margin-bottom: 1rem;
-}
-.social-list {
-  display: flex;
-  gap: 1.5rem;
-}
-.social-link {
-  color: #9ca3af;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 300;
-  transition: all 0.3s ease;
-}
-.social-link:hover {
-  background: linear-gradient(to bottom, #ec4899, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 .footer {
   padding: 2rem 0 1.5rem;
@@ -2408,7 +2383,7 @@ html.modal-open {
 
 /* Modal CTA button - black text */
 .modal-cta .btn-primary {
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .modal-cta .btn-primary:hover {

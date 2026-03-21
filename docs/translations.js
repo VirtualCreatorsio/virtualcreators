@@ -40,11 +40,11 @@ const translations = {
     servicesTitle1: "Services that drive",
     servicesTitle2: "meaningful growth",
     servicesDescription:
-      "Your vision deserves more than just execution—it needs transformation. We craft digital experiences where strategy meets creativity, where every pixel serves a purpose, and where brands don't just exist, they resonate. From identity to code, we turn your ambition into undeniable presence.",
+      "Your site should tell one clear story. We handle brand, design, and development from the first conversation through launch as one team. Visitors see a single coherent offer. You skip the usual pain of passing work between vendors who never quite share the same plan.",
 
     // Service Items
     digitalStrategy: "Brand Identity",
-    digitalStrategyDescription: "We craft unique, memorable brand identities that resonate with your audience — from logos to visual systems — ensuring every touchpoint reflects your brand's essence.",
+    digitalStrategyDescription: "We build distinctive brand identities people remember, from the logo up to a full visual system, so every touchpoint reflects what your company stands for.",
     digitalStrategyTitle: "Strategic Vision",
     brandIdentity: "Digital Strategy",
     brandIdentityDescription: "We build cohesive digital strategies that align your brand's voice, guide your presence across channels, and create meaningful connections with the people you want to reach.",
@@ -80,7 +80,7 @@ const translations = {
       "Lumenix needed a complete digital transformation to stay competitive in the modern online landscape. Their existing website was outdated, difficult to navigate, and didn't provide a seamless experience for visitors, limiting engagement and conversions.\n\nWe redesigned the entire website from the ground up, focusing on intuitive user experience, clear navigation, and convenience. Every aspect of the design and structure was carefully considered to make it easy for users to explore products and complete purchases, while maintaining a clean, modern aesthetic that aligned with the brand.\n\nThe redesigned website delivered measurable results, with a 70% increase in user engagement and a 35% boost in conversion rates. The project successfully transformed Lumenix's online presence, providing a professional, user-friendly platform that drives both interaction and sales. The website was built using WordPress, Elementor, and WooCommerce.",
     deltastudiosFullDescription:
       "Deltastudios, a branding agency, needed a portfolio website that stands out while remaining simple and elegant. They wanted a platform that effectively showcases their creative work and brand identity without overwhelming visitors with complexity.\n\nWe developed a clean, modern portfolio website built in Framer that balances visual impact with simplicity. The project focused on creating an intuitive user experience that allows their work to take center stage, with smooth animations and thoughtful design elements that reflect their branding expertise. Every aspect was carefully considered to ensure the site feels both distinctive and approachable.\n\nThe final website delivers a polished, professional look that effectively highlights Deltastudios' portfolio while maintaining the simplicity they desired. The site stands out through thoughtful design choices rather than complexity, creating a memorable experience that reflects their brand identity. Built in Framer, the platform is easy to update and maintain while providing a modern, engaging user experience.",
-    lifeSciGrowthFullDescription: "RobustRise needed a complete rebranding to establish a strong online presence for their dog supply brand. Their existing website lacked a cohesive brand identity and didn't effectively showcase their products or connect with their target audience of dog owners.\n\nWe redesigned the entire website from the ground up, creating a complete brand identity—including colors, typography, and visual elements that reflect the quality and care of their products. Every aspect of the design and structure was carefully considered to make it easy for customers to explore products, understand their benefits, and complete purchases, while maintaining a clean, modern aesthetic that builds trust and encourages engagement.\n\nThe redesigned website delivered measurable results, with a significant increase in user engagement and conversion rates. The project successfully transformed RobustRise's online presence, providing a professional, user-friendly platform that drives both brand recognition and sales. The website was built using Shopify.",
+    lifeSciGrowthFullDescription: "RobustRise needed a complete rebranding to establish a strong online presence for their dog supply brand. Their existing website lacked a cohesive brand identity and didn't effectively showcase their products or connect with their target audience of dog owners.\n\nWe redesigned the entire website from the ground up, creating a complete brand identity, including colors, typography, and visual elements that reflect the quality and care of their products. Every aspect of the design and structure was carefully considered to make it easy for customers to explore products, understand their benefits, and complete purchases, while maintaining a clean, modern aesthetic that builds trust and encourages engagement.\n\nThe redesigned website delivered measurable results, with a significant increase in user engagement and conversion rates. The project successfully transformed RobustRise's online presence, providing a professional, user-friendly platform that drives both brand recognition and sales. The website was built using Shopify.",
 
     // Project Results
     lumenixResult1: "70% increase in user engagement",
@@ -186,9 +186,10 @@ const translations = {
 
     // Contact Info
     phone: "Phone",
+    kvk: "KVK",
+    vatNumber: "VAT Number",
     location: "Location",
     basedInNetherlands: "Based in the Netherlands",
-    followMe: "Follow us",
 
     // Footer
     privacyCookiePolicy: "Privacy & Cookie Policy",
@@ -239,7 +240,7 @@ const translations = {
     meetFounder: "Meet the Founder",
     founderTitle: "Kjell de Ruiter",
     founderText: "With a passion for design and development that spans over years of dedicated work, Kjell founded Virtualcreators to bridge the gap between beautiful design and functional technology. His mission is simple: create digital experiences that not only look exceptional but drive real business results.",
-    founderQuote: "Great design isn't just about making things look good—it's about making them work beautifully.",
+    founderQuote: "Great design isn't just about making things look good. It's about making them work beautifully.",
     founderContactTitle: "Get in Touch",
     founderEmail: "Email:",
     founderPhone: "Phone:",
@@ -288,7 +289,7 @@ const translations = {
     firstPostList3: "Design insights and user experience best practices",
     firstPostList4: "Business lessons learned from running a digital agency",
     firstPostList5: "Industry trends and emerging technologies",
-    firstPostQuote: "Great design isn't just about how something looks—it's about how it works, how it feels, and how it connects with people.",
+    firstPostQuote: "Great design isn't just about how something looks. It's about how it works, how it feels, and how it connects with people.",
     firstPostHeading3: "My Development Philosophy",
     firstPostPara4: "Every project we work on is guided by a simple principle: thoughtful <a href=\"../../index.html#services\">design and development</a> should serve both the user and the business. This means creating solutions that are not just visually appealing, but also performant, accessible, and aligned with strategic goals.",
     firstPostPara5: "We believe in the power of simplicity. The best solutions often come from understanding the core problem deeply and finding elegant ways to solve it. This approach has served us well in projects ranging from e-commerce platforms to community websites.",
@@ -663,11 +664,11 @@ const translations = {
     servicesTitle1: "Werk dat leidt tot",
     servicesTitle2: "impactvolle groei",
     servicesDescription:
-      "Wij geloven in de kracht van eenvoud. Elk project begint met het begrijpen van jouw doelen en het creëren van oplossingen die zowel mooi als doelgericht zijn.",
+      "Je site moet één helder verhaal vertellen. Wij doen merk, ontwerp en techniek van het eerste gesprek tot livegang als één team. Bezoekers zien één duidelijk aanbod. Jij vermijdt het gedoe van werk dat heen en weer gaat tussen partijen die hetzelfde plan nooit echt delen.",
 
     // Service Items
     digitalStrategy: "Merkidentiteit",
-    digitalStrategyDescription: "We creëren unieke, memorabele merkidentiteiten die resoneren met jouw publiek — van logo's tot visuele systemen — en zorgen dat elk contactpunt de essentie van jouw merk weerspiegelt.",
+    digitalStrategyDescription: "We bouwen herkenbare merkidentiteiten die blijven hangen, van logo tot volledig visueel systeem, zodat elk contactpunt laat zien waar je merk voor staat.",
     digitalStrategyTitle: "Strategische Visie",
     brandIdentity: "Digitale Strategie",
     brandIdentityDescription: "We bouwen samenhangende digitale strategieën die de stem van jouw merk afstemmen, jouw aanwezigheid begeleiden op alle kanalen, en betekenisvolle verbindingen creëren met de mensen die je wilt bereiken.",
@@ -706,7 +707,7 @@ const translations = {
       "Lumenix had een complete digitale transformatie nodig om concurrerend te blijven in het moderne online landschap. Hun bestaande website was verouderd, moeilijk te navigeren en bood geen naadloze ervaring voor bezoekers, wat de betrokkenheid en conversies beperkte.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, met focus op intuïtieve gebruikerservaring, duidelijke navigatie en gemak. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het gebruikers gemakkelijk te maken om producten te verkennen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat aansloot bij het merk.\n\nDe herontworpen website leverde meetbare resultaten op, met een toename van 70% in gebruikersbetrokkenheid en een boost van 35% in conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van Lumenix, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel interactie als verkoop stimuleert. De website is gebouwd met WordPress, Elementor en WooCommerce.",
     deltastudiosFullDescription:
       "Deltastudios, een branding agency, had een portfolio website nodig die opvalt maar tegelijkertijd eenvoudig blijft. Ze wilden een platform dat hun creatieve werk en merkidentiteit effectief toont zonder bezoekers te overweldigen met complexiteit.\n\nWij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creëren van een intuïtieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling die het portfolio van Deltastudios effectief toont terwijl de eenvoud behouden blijft. De site valt op door doordachte ontwerpkeuzes in plaats van complexiteit, waardoor een memorabele ervaring ontstaat die hun merkidentiteit weerspiegelt. Gebouwd in Framer, is het platform gemakkelijk bij te werken en te onderhouden terwijl het een moderne, boeiende gebruikerservaring biedt.",
-    lifeSciGrowthFullDescription: "RobustRise had een complete rebranding nodig om een sterke online aanwezigheid te creëren voor hun hondensupply merk. Hun bestaande website miste een samenhangende merkidentiteit en toonde hun producten niet effectief of verbond niet met hun doelgroep van hondeneigenaren.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, waarbij wij een complete merkidentiteit creëerden—inclusief kleuren, typografie en visuele elementen die de kwaliteit en zorg van hun producten weerspiegelen. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het klanten gemakkelijk te maken om producten te verkennen, hun voordelen te begrijpen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat vertrouwen opwekt en betrokkenheid stimuleert.\n\nDe herontworpen website leverde meetbare resultaten op, met een significante toename in gebruikersbetrokkenheid en conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van RobustRise, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel merkherkenning als verkoop stimuleert. De website is gebouwd met Shopify.",
+    lifeSciGrowthFullDescription: "RobustRise had een complete rebranding nodig om een sterke online aanwezigheid te creëren voor hun hondensupply merk. Hun bestaande website miste een samenhangende merkidentiteit en toonde hun producten niet effectief of verbond niet met hun doelgroep van hondeneigenaren.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, waarbij wij een complete merkidentiteit creëerden, inclusief kleuren, typografie en visuele elementen die de kwaliteit en zorg van hun producten weerspiegelen. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het klanten gemakkelijk te maken om producten te verkennen, hun voordelen te begrijpen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat vertrouwen opwekt en betrokkenheid stimuleert.\n\nDe herontworpen website leverde meetbare resultaten op, met een significante toename in gebruikersbetrokkenheid en conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van RobustRise, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel merkherkenning als verkoop stimuleert. De website is gebouwd met Shopify.",
 
     // Project Results
     lumenixResult1: "70% toename in gebruikersbetrokkenheid",
@@ -812,9 +813,10 @@ const translations = {
 
     // Contact Info
     phone: "Telefoon",
+    kvk: "KVK",
+    vatNumber: "BTW-nummer",
     location: "Locatie",
     basedInNetherlands: "Gevestigd in Nederland",
-    followMe: "Volg ons",
 
     // Footer
     privacyCookiePolicy: "Privacy & Cookie Beleid",
@@ -865,7 +867,7 @@ const translations = {
     meetFounder: "Ontmoet de Oprichter",
     founderTitle: "Kjell de Ruiter",
     founderText: "Met een passie voor ontwerp en ontwikkeling die zich uitstrekt over jaren van toegewijd werk, richtte Kjell Virtualcreators op om de kloof te overbruggen tussen mooi ontwerp en functionele technologie. Zijn missie is eenvoudig: digitale ervaringen creëren die niet alleen uitzonderlijk ogen maar ook echte bedrijfsresultaten opleveren.",
-    founderQuote: "Geweldig ontwerp gaat niet alleen over hoe iets eruitziet—het gaat over hoe het werkt en hoe het mensen raakt.",
+    founderQuote: "Geweldig ontwerp gaat niet alleen over hoe iets eruitziet. Het gaat over hoe het werkt en hoe het mensen raakt.",
     founderContactTitle: "Neem Contact Op",
     founderEmail: "E-mail:",
     founderPhone: "Telefoon:",
@@ -914,7 +916,7 @@ const translations = {
     firstPostList3: "Ontwerp inzichten en beste praktijken voor gebruikerservaring",
     firstPostList4: "Zakelijke lessen geleerd van het runnen van een digitaal bureau",
     firstPostList5: "Industrie trends en opkomende technologieën",
-    firstPostQuote: "Geweldig ontwerp gaat niet alleen over hoe iets eruitziet—het gaat over hoe het werkt, hoe het voelt, en hoe het verbinding maakt met mensen.",
+    firstPostQuote: "Geweldig ontwerp gaat niet alleen over hoe iets eruitziet. Het gaat over hoe het werkt, hoe het voelt, en hoe het verbinding maakt met mensen.",
     firstPostHeading3: "Onze Ontwikkelingsfilosofie",
     firstPostPara4: "Elk project waaraan wij werken wordt geleid door een eenvoudig principe: doordacht ontwerp en ontwikkeling moet zowel de gebruiker als het bedrijf dienen. Dit betekent oplossingen creëren die niet alleen visueel aantrekkelijk zijn, maar ook performant, toegankelijk en afgestemd op strategische doelen.",
     firstPostPara5: "Wij geloven in de kracht van eenvoud. De beste oplossingen komen vaak voort uit het diep begrijpen van het kernprobleem en het vinden van elegante manieren om het op te lossen. Deze benadering heeft ons goed gediend in projecten variërend van e-commerce platforms tot community websites.",
