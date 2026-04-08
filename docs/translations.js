@@ -73,7 +73,9 @@ const translations = {
     onlineshop: "Online Shop",
     creativeagency: "Creative Agency",
     brandingagency: "Branding Agency",
+    b2bgrowthagency: "B2B Growth Agency",
     coachingcommunity: "Coaching & Community",
+    marketleapDescription: "A full redesign of Marketleap's online presence with a modern, conversion-focused structure.",
 
     // Project Full Descriptions
     lumenixFullDescription:
@@ -81,6 +83,7 @@ const translations = {
     deltastudiosFullDescription:
       "Deltastudios, a branding agency, needed a portfolio website that stands out while remaining simple and elegant. They wanted a platform that effectively showcases their creative work and brand identity without overwhelming visitors with complexity.\n\nWe developed a clean, modern portfolio website built in Framer that balances visual impact with simplicity. The project focused on creating an intuitive user experience that allows their work to take center stage, with smooth animations and thoughtful design elements that reflect their branding expertise. Every aspect was carefully considered to ensure the site feels both distinctive and approachable.\n\nThe final website delivers a polished, professional look that effectively highlights Deltastudios' portfolio while maintaining the simplicity they desired. The site stands out through thoughtful design choices rather than complexity, creating a memorable experience that reflects their brand identity. Built in Framer, the platform is easy to update and maintain while providing a modern, engaging user experience.",
     lifeSciGrowthFullDescription: "RobustRise needed a complete rebranding to establish a strong online presence for their dog supply brand. Their existing website lacked a cohesive brand identity and didn't effectively showcase their products or connect with their target audience of dog owners.\n\nWe redesigned the entire website from the ground up, creating a complete brand identity, including colors, typography, and visual elements that reflect the quality and care of their products. Every aspect of the design and structure was carefully considered to make it easy for customers to explore products, understand their benefits, and complete purchases, while maintaining a clean, modern aesthetic that builds trust and encourages engagement.\n\nThe redesigned website delivered measurable results, with a significant increase in user engagement and conversion rates. The project successfully transformed RobustRise's online presence, providing a professional, user-friendly platform that drives both brand recognition and sales. The website was built using Shopify.",
+    marketleapFullDescription: "For Marketleap, we redesigned an outdated WordPress website and rebuilt it in Framer to create a more flexible and less plugin-heavy foundation. Instead of layering incremental fixes on top of an aging setup, we rebuilt the full experience with a custom design direction and a cleaner technical base.\n\nA key part of the scope was rebranding the online presence to feel more current and consistent. That included a refreshed visual language, updated structure, and clearer hierarchy across pages so visitors immediately understand what Marketleap offers and where to take action.\n\nAt the client's request, the Framer build runs behind a Cloudflare reverse proxy, allowing the legacy WordPress blog to remain active and preserve existing SEO value and indexed authority built over time.\n\nFrom a UX and conversion perspective, we focused the site around three outcomes: lead generation, booked calls, and portfolio credibility. The new structure helps potential clients quickly see which companies Marketleap has already helped, while keeping the journey toward contact and consultation straightforward.",
 
     // Project Results
     lumenixResult1: "70% increase in user engagement",
@@ -95,6 +98,8 @@ const translations = {
     lifeSciGrowthResult2: "45% boost in conversion rates",
     lifeSciGrowthResult3: "45% reduction in bounce rate",
     lifeSciGrowthResult4: "90% improvement in page load speed",
+    marketleapResult1: "Results to be published with the full case study",
+    marketleapReviewPlaceholder: "Client review will be published with the full case study.",
 
     // Project Reviews
     lumenixReviewText: "Kjell de Ruiter created a fantastic website for us with a clean, modern design, excellent performance, and great attention to detail. Throughout the entire process, communication was fast and clear, and Kjell consistently contributed valuable ideas while ensuring everything was delivered to the highest standard. From concept to final delivery, every step was handled with professionalism and care. If you're looking for someone who combines quality with a smooth collaboration, Kjell is highly recommended.",
@@ -695,7 +700,9 @@ const translations = {
     coachingCommunity: "Coaching & Community",
     onlineshop: "Online Winkel",
     creativeagency: "Creatief Bureau",
+    b2bgrowthagency: "B2B Growth Agency",
     coachingcommunity: "Coaching & Community",
+    marketleapDescription: "Een volledige redesign van de online aanwezigheid van Marketleap met een moderne, conversiegerichte structuur.",
     lumenixDescription: "Een complete rebranding van hun online aanwezigheid door middel van aangepaste weboplossingen",
     deltastudiosDescription:
       "Een portfolio website die opvalt maar tegelijkertijd eenvoudig blijft",
@@ -708,6 +715,7 @@ const translations = {
     deltastudiosFullDescription:
       "Deltastudios, een branding agency, had een portfolio website nodig die opvalt maar tegelijkertijd eenvoudig blijft. Ze wilden een platform dat hun creatieve werk en merkidentiteit effectief toont zonder bezoekers te overweldigen met complexiteit.\n\nWij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creëren van een intuïtieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.\n\nDe uiteindelijke website biedt een gepolijste, professionele uitstraling die het portfolio van Deltastudios effectief toont terwijl de eenvoud behouden blijft. De site valt op door doordachte ontwerpkeuzes in plaats van complexiteit, waardoor een memorabele ervaring ontstaat die hun merkidentiteit weerspiegelt. Gebouwd in Framer, is het platform gemakkelijk bij te werken en te onderhouden terwijl het een moderne, boeiende gebruikerservaring biedt.",
     lifeSciGrowthFullDescription: "RobustRise had een complete rebranding nodig om een sterke online aanwezigheid te creëren voor hun hondensupply merk. Hun bestaande website miste een samenhangende merkidentiteit en toonde hun producten niet effectief of verbond niet met hun doelgroep van hondeneigenaren.\n\nWij hebben de hele website vanaf de grond opnieuw ontworpen, waarbij wij een complete merkidentiteit creëerden, inclusief kleuren, typografie en visuele elementen die de kwaliteit en zorg van hun producten weerspiegelen. Elk aspect van het ontwerp en de structuur werd zorgvuldig overwogen om het klanten gemakkelijk te maken om producten te verkennen, hun voordelen te begrijpen en aankopen te voltooien, terwijl een schoon, modern esthetisch gevoel behouden bleef dat vertrouwen opwekt en betrokkenheid stimuleert.\n\nDe herontworpen website leverde meetbare resultaten op, met een significante toename in gebruikersbetrokkenheid en conversiepercentages. Het project transformeerde succesvol de online aanwezigheid van RobustRise, waardoor een professioneel, gebruiksvriendelijk platform ontstond dat zowel merkherkenning als verkoop stimuleert. De website is gebouwd met Shopify.",
+    marketleapFullDescription: "Voor Marketleap hebben we een verouderde WordPress-website volledig herontworpen en in Framer herbouwd om een flexibelere en minder plugin-zware basis te creëren. In plaats van kleine aanpassingen op een verouderde setup hebben we de complete ervaring opnieuw opgebouwd met een custom designrichting en een schonere technische fundering.\n\nEen belangrijk onderdeel van de scope was het vernieuwen van de online uitstraling zodat het merk actueler en consistenter aanvoelt. Dat omvatte een opgefriste visuele stijl, een verbeterde structuur en een duidelijkere hiërarchie, zodat bezoekers direct begrijpen wat Marketleap aanbiedt en welke stap ze kunnen zetten.\n\nOp verzoek van de klant draait de Framer-build achter een Cloudflare reverse proxy, waardoor de bestaande WordPress-blog actief kan blijven en de opgebouwde SEO-waarde en indexatie behouden blijven.\n\nVanuit UX- en conversieperspectief hebben we de site ingericht rond drie doelen: leadgeneratie, geboekte calls en portfolio-credibility. De nieuwe structuur helpt potentiële klanten snel te zien welke bedrijven Marketleap al heeft geholpen, terwijl de route naar contact en een intakegesprek helder blijft.",
 
     // Project Results
     lumenixResult1: "70% toename in gebruikersbetrokkenheid",
@@ -722,6 +730,8 @@ const translations = {
     lifeSciGrowthResult2: "45% boost in conversiepercentages",
     lifeSciGrowthResult3: "45% vermindering van bounce rate",
     lifeSciGrowthResult4: "90% verbetering in pagina laadsnelheid",
+    marketleapResult1: "Resultaten worden gepubliceerd bij de volledige case study",
+    marketleapReviewPlaceholder: "Klantreview wordt gepubliceerd bij de volledige case study.",
 
     // Project Reviews
     lumenixReviewText: "Een absolute topper! Kjell de Ruiter heeft voor ons een supermooie website gemaakt! Strak design, snel, en tot in de puntjes verzorgd. De service was geweldig: snel contact, denkt actief mee en alles wordt tot in detail uitgewerkt. Van het eerste idee tot de laatste pixel: Kjell regelt het gewoon. Als je op zoek bent naar iemand die kwaliteit levert én prettig samenwerkt, dan is Kjell dé aanrader.",

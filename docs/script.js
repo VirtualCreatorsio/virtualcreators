@@ -40,24 +40,53 @@ function throttle(func, limit) {
 // Project Data with enhanced video debugging
 const projects = [
   {
-    title: "Lumenix",
+    title: "Marketleap",
+    category: "B2B Growth Agency",
+    year: "2026",
+    image: `${assetPathPrefix}assets/coming-soon.jpg`,
+    video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`,
+    mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`,
+    scrollVideo: `${assetPathPrefix}assets/scroll-vid-marketleap.mp4`,
+    scrollVideoBackground: `${assetPathPrefix}assets/Marketleap-case-page-scroll-background.webp`,
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Marketleap-case-page-scroll-background.webp`,
+    images: [
+      { src: `${assetPathPrefix}assets/marketleap-gallery-hero.webp`, alt: "Marketleap Hero Section" },
+      { src: `${assetPathPrefix}assets/marketleap-gallery-review.webp`, alt: "Marketleap Review Section" },
+      { src: `${assetPathPrefix}assets/marketleap-gallery-stappen-plan.webp`, alt: "Marketleap Plan Section" },
+      { src: `${assetPathPrefix}assets/marketleap-gallery-casesindex.webp`, alt: "Marketleap Cases Overview" },
+    ],
+    description: "marketleapDescription",
+    fullDescription: "marketleapFullDescription",
+    services: [
+      { icon: "code", label: "Web Development" },
+      { icon: "palette", label: "UI/UX Design" },
+      { icon: "bar-chart", label: "Brand Identity" },
+      { icon: "zap", label: "Performance Optimization" },
+    ],
+    results: ["marketleapResult1"],
+    review: null,
+    showReviewPlaceholder: true,
+    reviewPlaceholderText: "marketleapReviewPlaceholder"
+  },
+  {
+    title: "RobustRise",
     category: "Online Shop",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
-    scrollVideo: `${assetPathPrefix}assets/scroll-vid Lumenix.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video (case pages)
-    modalScrollVideoBackground: `${assetPathPrefix}assets/Lumenix-scroll.webp`, // Background image for scroll video (modal)
+    scrollVideo: `${assetPathPrefix}assets/scroll-vid-RobustRise.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/RobustRise-case-page-scroll-background.webp`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/RobustRise-case-page-scroll-background.webp`, // Background image for scroll video (modal)
     images: [
-      { src: `${assetPathPrefix}assets/Lumenix-Hero-sectie.png`, alt: "Lumenix Hero Section" },
-      { src: `${assetPathPrefix}assets/Lumenix-Promo-sectie.png`, alt: "Lumenix Promo Section" },
-      { src: `${assetPathPrefix}assets/Lumenix-category-page.png`, alt: "Lumenix Category Page" },
-      { src: `${assetPathPrefix}assets/Lumenix-lifestyle carousel.png`, alt: "Lumenix Lifestyle Carousel" },
-      { src: `${assetPathPrefix}assets/Lumenix-checkout.png`, alt: "Lumenix Checkout" },
+      { src: `${assetPathPrefix}assets/RobustRise Hero-sectie.png`, alt: "RobustRise Hero Section" },
+      { src: `${assetPathPrefix}assets/RobustRise-carousel-switcher.png`, alt: "RobustRise Carousel Switcher" },
+      { src: `${assetPathPrefix}assets/RobustRise-over-ons.png`, alt: "RobustRise Over Ons" },
+      { src: `${assetPathPrefix}assets/RobustRise-Blog.png`, alt: "RobustRise Blog" },
+      { src: `${assetPathPrefix}assets/RobustRise-custom-cart.png`, alt: "RobustRise Custom Cart" },
     ],
-    description: "lumenixDescription",
-    fullDescription: "lumenixFullDescription",
+    description: "lifeSciGrowthDescription",
+    fullDescription: "lifeSciGrowthFullDescription",
     services: [
       { icon: "code", label: "Web Development" },
       { icon: "palette", label: "UI/UX Design" },
@@ -65,12 +94,12 @@ const projects = [
       { icon: "bar-chart", label: "Brand Identity" },
       { icon: "zap", label: "Performance Optimization" },
     ],
-    results: ["lumenixResult1", "lumenixResult2", "lumenixResult3", "lumenixResult4"],
+    results: ["lifeSciGrowthResult1", "lifeSciGrowthResult2", "lifeSciGrowthResult3", "lifeSciGrowthResult4"],
     review: {
       rating: 5,
-      text: "lumenixReviewText",
-      author: "lumenixReviewAuthor",
-      company: "lumenixReviewCompany"
+      text: "lifeSciGrowthReviewText",
+      author: "lifeSciGrowthReviewAuthor",
+      company: "lifeSciGrowthReviewCompany"
     }
   },
   {
@@ -80,8 +109,8 @@ const projects = [
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Make sure this matches your actual file
     scrollVideo: `${assetPathPrefix}assets/Delta-scroll-vid.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video (case pages)
-    modalScrollVideoBackground: `${assetPathPrefix}assets/Delta-scroll background.png`, // Background image for scroll video (modal)
+    scrollVideoBackground: `${assetPathPrefix}assets/Deltastudio-case-page-scroll-background.webp`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Deltastudio-case-page-scroll-background.webp`, // Background image for scroll video (modal)
     images: [
       { src: `${assetPathPrefix}assets/Deltastudios portfolio case.png`, alt: "Deltastudios Portfolio Case" },
       { src: `${assetPathPrefix}assets/Deltastudios-services.png`, alt: "Deltastudios Services" },
@@ -106,24 +135,24 @@ const projects = [
     }
   },
   {
-    title: "RobustRise",
+    title: "Lumenix",
     category: "Online Shop",
     year: "2025",
     image: `${assetPathPrefix}assets/coming-soon.jpg`, // Make sure this matches your actual file
     video: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Desktop video
     mobileVideo: `${assetPathPrefix}assets/Portfolio-coming-soon.mp4`, // Mobile video
-    scrollVideo: `${assetPathPrefix}assets/scroll-vid-RobustRise.mp4`, // Page scroll video
-    scrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video (case pages)
-    modalScrollVideoBackground: `${assetPathPrefix}assets/Robustrise-scroll.webp`, // Background image for scroll video (modal)
+    scrollVideo: `${assetPathPrefix}assets/scroll-vid Lumenix.mp4`, // Page scroll video
+    scrollVideoBackground: `${assetPathPrefix}assets/Lumenix-case-page-scroll-background.webp`, // Background image for scroll video (case pages)
+    modalScrollVideoBackground: `${assetPathPrefix}assets/Lumenix-case-page-scroll-background.webp`, // Background image for scroll video (modal)
     images: [
-      { src: `${assetPathPrefix}assets/RobustRise Hero-sectie.png`, alt: "RobustRise Hero Section" },
-      { src: `${assetPathPrefix}assets/RobustRise-carousel-switcher.png`, alt: "RobustRise Carousel Switcher" },
-      { src: `${assetPathPrefix}assets/RobustRise-over-ons.png`, alt: "RobustRise Over Ons" },
-      { src: `${assetPathPrefix}assets/RobustRise-Blog.png`, alt: "RobustRise Blog" },
-      { src: `${assetPathPrefix}assets/RobustRise-custom-cart.png`, alt: "RobustRise Custom Cart" },
+      { src: `${assetPathPrefix}assets/Lumenix-Hero-sectie.png`, alt: "Lumenix Hero Section" },
+      { src: `${assetPathPrefix}assets/Lumenix-Promo-sectie.png`, alt: "Lumenix Promo Section" },
+      { src: `${assetPathPrefix}assets/Lumenix-category-page.png`, alt: "Lumenix Category Page" },
+      { src: `${assetPathPrefix}assets/Lumenix-lifestyle carousel.png`, alt: "Lumenix Lifestyle Carousel" },
+      { src: `${assetPathPrefix}assets/Lumenix-checkout.png`, alt: "Lumenix Checkout" },
     ],
-    description: "lifeSciGrowthDescription",
-    fullDescription: "lifeSciGrowthFullDescription",
+    description: "lumenixDescription",
+    fullDescription: "lumenixFullDescription",
     services: [
       { icon: "code", label: "Web Development" },
       { icon: "palette", label: "UI/UX Design" },
@@ -131,12 +160,12 @@ const projects = [
       { icon: "bar-chart", label: "Brand Identity" },
       { icon: "zap", label: "Performance Optimization" },
     ],
-    results: ["lifeSciGrowthResult1", "lifeSciGrowthResult2", "lifeSciGrowthResult3", "lifeSciGrowthResult4"],
+    results: ["lumenixResult1", "lumenixResult2", "lumenixResult3", "lumenixResult4"],
     review: {
       rating: 5,
-      text: "lifeSciGrowthReviewText",
-      author: "lifeSciGrowthReviewAuthor",
-      company: "lifeSciGrowthReviewCompany"
+      text: "lumenixReviewText",
+      author: "lumenixReviewAuthor",
+      company: "lumenixReviewCompany"
     }
   },
 ]
@@ -1266,16 +1295,18 @@ function addSubtleCalendlyStyles() {
 
 // Project slug mapping for SEO-friendly URLs
 const projectSlugs = {
-  0: "lumenix",
-  1: "deltastudios",
-  2: "robustrise"
+  0: "marketleap",
+  1: "robustrise",
+  2: "deltastudios",
+  3: "lumenix"
 }
 
 // Project slug to index mapping (reverse lookup)
 const slugToIndex = {
-  "lumenix": 0,
-  "deltastudios": 1,
-  "robustrise": 2
+  "marketleap": 0,
+  "lumenix": 3,
+  "deltastudios": 2,
+  "robustrise": 1
 }
 
 // Cache for fetched project pages
@@ -1545,6 +1576,15 @@ function generateProjectModalContent(project) {
           <div class="review-author">
             <span class="review-author-name">${window.t(project.review.author)}</span>, <span class="review-author-company">${getCompanyLink(project)}</span>
           </div>
+        </div>
+      </div>
+    `
+  } else if (project.showReviewPlaceholder) {
+    reviewHTML = `
+      <div class="client-review-section">
+        <h4>${window.t("clientReview")}</h4>
+        <div class="review-section">
+          <p class="text-tracking" style="opacity: 0.8;">${window.t(project.reviewPlaceholderText) || project.reviewPlaceholderText}</p>
         </div>
       </div>
     `
@@ -2121,9 +2161,10 @@ window.toggleServiceBadge = toggleServiceBadge;
 // Helper function to get the company website link for each project
 function getCompanyLink(project) {
   let url = "#";
+  let isPlainText = false;
   switch (project.title) {
     case "Lumenix":
-      url = "https://www.lumenix-beamers.nl";
+      isPlainText = true;
       break;
     case "Deltastudios":
       url = "https://deltastudios.nl";
@@ -2133,6 +2174,9 @@ function getCompanyLink(project) {
       break;
     default:
       url = "#";
+  }
+  if (isPlainText) {
+    return window.t(project.review.company);
   }
   return `<a href="${url}" target="_blank" rel="noopener">${window.t(project.review.company)}</a>`;
 }
@@ -2202,6 +2246,22 @@ function setupProjectCardModalLinks() {
   if (!projectList) return;
   const items = Array.from(projectList.querySelectorAll('.project-item'));
   items.forEach((item, index) => {
+    // Prefer explicitly configured modal index in inline handlers.
+    // This keeps card order independent from modal data order.
+    const triggerWithInlineIndex = item.querySelector('[onclick*="openProjectModal("]');
+    let modalIndex = index;
+    if (triggerWithInlineIndex) {
+      const onclickValue = triggerWithInlineIndex.getAttribute('onclick') || '';
+      const match = onclickValue.match(/openProjectModal\((\d+)\)/);
+      if (match) {
+        modalIndex = Number(match[1]);
+      }
+    } else {
+      // No modal index configured (e.g. direct-link card like Marketleap):
+      // keep native click behavior and skip modal bindings.
+      return;
+    }
+
     // Make entire project card clickable
     item.addEventListener('click', (e) => {
       // Only open modal if click is not on a button or link that has its own action
@@ -2211,7 +2271,7 @@ function setupProjectCardModalLinks() {
       
       // If clicking on a button or link, let it handle its own click
       if (!isButton && !isLink) {
-        openProjectModal(index);
+        openProjectModal(modalIndex);
       }
     });
     
@@ -2221,7 +2281,7 @@ function setupProjectCardModalLinks() {
       title.style.cursor = 'pointer';
       title.addEventListener('click', (e) => {
         e.stopPropagation();
-        openProjectModal(index);
+        openProjectModal(modalIndex);
       });
     }
     // Project Image - keep for backwards compatibility
@@ -2229,7 +2289,7 @@ function setupProjectCardModalLinks() {
     if (image) {
       image.addEventListener('click', (e) => {
         e.stopPropagation();
-        openProjectModal(index);
+        openProjectModal(modalIndex);
       });
     }
     // View Project Button - keep for backwards compatibility
@@ -2237,7 +2297,7 @@ function setupProjectCardModalLinks() {
     if (btn) {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        openProjectModal(index);
+        openProjectModal(modalIndex);
       });
     }
   });
@@ -2987,7 +3047,9 @@ function initializeModalTextReveal() {
   const modalBody = document.getElementById('modalBody')
   if (!modalBody) return
   
-  const textRevealElements = modalBody.querySelectorAll('.text-tracking')
+  // Scope read-along to main solution copy only.
+  // Excludes review placeholder text and other blocks that distort progress.
+  const textRevealElements = modalBody.querySelectorAll('.modal-solution .text-tracking')
   
   textRevealElements.forEach(element => {
     // Check if already initialized
@@ -3010,7 +3072,8 @@ function updateModalTextReveal() {
   const modalBody = document.getElementById('modalBody')
   if (!modalBody) return
   
-  const textRevealElements = modalBody.querySelectorAll('.text-tracking')
+  // Keep update scope identical to initialization scope.
+  const textRevealElements = modalBody.querySelectorAll('.modal-solution .text-tracking')
   
   if (textRevealElements.length === 0) return
   
@@ -3144,13 +3207,12 @@ function initializeCasePageTextReveal() {
   const caseContent = document.querySelector('.case-content')
   if (!caseContent) return
   
-  // Get all text-tracking elements, then filter out those in the header/hero section
-  const allTextElements = caseContent.querySelectorAll('.text-tracking')
-  
-  // Filter to exclude any elements inside .case-header (hero section)
-  const textRevealElements = Array.from(allTextElements).filter(element => {
-    return !element.closest('.case-header')
-  })
+  // Only apply case-page reveal in the main solution body.
+  // This avoids stretching the reveal range with placeholders
+  // (e.g. client review blocks) lower on the page.
+  const textRevealElements = Array.from(
+    caseContent.querySelectorAll('.case-solution .text-tracking')
+  )
   
   textRevealElements.forEach(element => {
     // Check if already initialized
@@ -3173,13 +3235,10 @@ function updateCasePageTextReveal() {
   const caseContent = document.querySelector('.case-content')
   if (!caseContent) return
   
-  // Get all text-tracking elements, then filter out those in the header/hero section
-  const allTextElements = caseContent.querySelectorAll('.text-tracking')
-  
-  // Filter to exclude any elements inside .case-header (hero section)
-  const textRevealElements = Array.from(allTextElements).filter(element => {
-    return !element.closest('.case-header')
-  })
+  // Keep updates scoped to the same section used at initialization.
+  const textRevealElements = Array.from(
+    caseContent.querySelectorAll('.case-solution .text-tracking')
+  )
   
   if (textRevealElements.length === 0) return
   

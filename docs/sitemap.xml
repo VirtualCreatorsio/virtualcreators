@@ -83,6 +83,12 @@
   
   <!-- Blog Posts - English -->
   <url>
+    <loc>https://www.virtualcreators.io/blog/posts/shopify-ux-checklist-higher-conversions.html</loc>
+    <lastmod>2026-04-08T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://www.virtualcreators.io/blog/posts/my-first-post.html</loc>
     <lastmod>2026-03-17T12:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -126,6 +132,12 @@
   </url>
   
   <!-- Blog Posts - Dutch -->
+  <url>
+    <loc>https://www.virtualcreators.io/nl/blog/posts/shopify-ux-checklist-higher-conversions.html</loc>
+    <lastmod>2026-04-08T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
   <url>
     <loc>https://www.virtualcreators.io/nl/blog/posts/my-first-post.html</loc>
     <lastmod>2026-03-17T12:00:00+00:00</lastmod>
@@ -243,19 +255,4 @@
     <priority>0.80</priority>
   </url>
   
-  <!-- 404 Pages -->
-  <url>
-    <loc>https://www.virtualcreators.io/404.html</loc>
-    <lastmod>2025-03-13T12:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.10</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.virtualcreators.io/nl/404.html</loc>
-    <lastmod>2025-03-13T12:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.10</priority>
-  </url>
-
 </urlset> 
