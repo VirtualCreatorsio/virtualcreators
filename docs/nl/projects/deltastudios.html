@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deltastudios Project - Virtualcreators Portfolio | virtualcreators.io</title>
-    <meta name="description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creëerde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen. Professioneel webdesign case study.">
+    <meta name="description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creÃ«erde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen. Professioneel webdesign case study.">
     <meta name="keywords" content="Deltastudios, portfolio website, branding bureau, Framer, webdesign, webontwikkeling, Virtualcreators, case study, creatief bureau, portfolio ontwerp">
     
     <!-- Language and SEO Meta Tags -->
@@ -14,16 +14,16 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Deltastudios Project - Virtualcreators Portfolio">
-    <meta property="og:description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creëerde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen.">
+    <meta property="og:description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creÃ«erde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen.">
     <meta property="og:url" content="https://www.virtualcreators.io/nl/projects/deltastudios.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.virtualcreators.io/assets/tractionmovies-project.webp">
+    https://www.virtualcreators.io/assets/social-share-image.png>
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Deltastudios Project - Virtualcreators Portfolio">
-    <meta name="twitter:description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creëerde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen.">
-    <meta name="twitter:image" content="https://www.virtualcreators.io/assets/tractionmovies-project.webp">
+    <meta name="twitter:description" content="Ontdek hoe Virtualcreators een prachtige portfolio website creÃ«erde voor Deltastudios branding bureau met Framer. Behaalde 120% toename in gebruikersbetrokkenheid en 85% toename in formulierinzendingen.">
+    https://www.virtualcreators.io/assets/social-share-image.png>
 
     <!-- Favicon Support -->
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
@@ -147,7 +147,15 @@
                 <div class="desktop-nav">
                     <div class="nav-links">
                         <a href="index.html#work" class="nav-link">Werk</a>
-                        <a href="../../index.html#services" class="nav-link">Diensten</a>
+                        <div class="nav-item nav-item--has-dropdown">
+                            <a href="../../index.html#services" class="nav-link nav-link--dropdown">Diensten</a>
+                            <div class="nav-dropdown" role="menu">
+                                <a href="../../nl/services/brand-identity.html" class="nav-dropdown-link" data-translate="navServiceBrandIdentity">Brand identity</a>
+                                <a href="../../nl/services/digital-strategy.html" class="nav-dropdown-link" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                                <a href="../../nl/services/web-design-ux-ui.html" class="nav-dropdown-link" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                                <a href="../../nl/services/web-development.html" class="nav-dropdown-link" data-translate="navServiceWebDevelopment">Web development</a>
+                            </div>
+                        </div>
                         <a href="../../about-virtualcreators.html" class="nav-link">Over Ons</a>
                         <a href="../../index.html#contact" class="nav-link">Contact</a>
                         <a href="../../blog/index.html" class="nav-link">Blog</a>
@@ -189,7 +197,10 @@
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
                 <a href="index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()">Werk</a>
-                <a href="../../index.html#services" class="mobile-nav-link" onclick="closeMobileMenu()">Diensten</a>
+                <div class="mobile-nav-services"><button type="button" class="mobile-nav-link mobile-nav-services__toggle" aria-expanded="false" aria-controls="mobile-nav-services-sub" id="mobile-nav-services-trigger" data-mobile-nav-section="services">Diensten</button><div class="mobile-nav-sublinks" id="mobile-nav-services-sub" role="group" aria-labelledby="mobile-nav-services-trigger"><a href="../../nl/services/brand-identity.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceBrandIdentity">Brand identity</a>
+                    <a href="../../nl/services/digital-strategy.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                    <a href="../../nl/services/web-design-ux-ui.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                    <a href="../../nl/services/web-development.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDevelopment">Web development</a></div></div>
                 <a href="../../about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()">Over Ons</a>
                 <a href="../../index.html#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
                 <a href="../../blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
@@ -224,7 +235,7 @@
         <div class="case-header">
             <div class="case-meta">
                 <span>Branding Bureau</span>
-                <span>•</span>
+                <span>â€¢</span>
                 <span>2025</span>
             </div>
             <h1 class="case-title">
@@ -268,7 +279,7 @@
                         </div>
                     </div>
                     <p class="text-tracking">Deltastudios, een branding agency, had een portfolio website nodig die opvalt maar tegelijkertijd eenvoudig blijft. Ze wilden een platform dat hun creatieve werk en merkidentiteit effectief toont zonder bezoekers te overweldigen met complexiteit.</p>
-                    <p class="text-tracking">Wij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creëren van een intuïtieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.</p>
+                    <p class="text-tracking">Wij hebben een schone, moderne portfolio website ontwikkeld gebouwd in Framer die visuele impact balanceert met eenvoud. Het project richtte zich op het creÃ«ren van een intuÃ¯tieve gebruikerservaring die hun werk centraal stelt, met vloeiende animaties en doordachte ontwerpelementen die hun branding expertise weerspiegelen. Elk aspect werd zorgvuldig overwogen om ervoor te zorgen dat de site zowel onderscheidend als toegankelijk aanvoelt.</p>
                     <p class="text-tracking">De uiteindelijke website biedt een gepolijste, professionele uitstraling die het portfolio van Deltastudios effectief toont terwijl de eenvoud behouden blijft. De site valt op door doordachte ontwerpkeuzes in plaats van complexiteit, waardoor een memorabele ervaring ontstaat die hun merkidentiteit weerspiegelt. Gebouwd in Framer, is het platform gemakkelijk bij te werken en te onderhouden terwijl het een moderne, boeiende gebruikerservaring biedt.</p>
                 </div>
             </div>
@@ -356,11 +367,11 @@
                 <h4>Klantbeoordeling</h4>
                 <div class="review-section">
                     <div class="review-stars">
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
                     </div>
                     <div class="review-text" data-translate="deltastudiosReviewText">"Samenwerken met Kjell de Ruiter aan onze Deltastudios website was een fantastische ervaring. Hij nam echt de tijd om onze visie te begrijpen en bracht het tot leven met een schoon, dynamisch ontwerp dat ons werk perfect toont. Kjell behandelde alles professioneel, van het ontwerp tot de interactieve functies, en maakte het proces gemakkelijk voor ons om te volgen, ook al zijn we niet erg technisch. We zijn erg blij met het resultaat en zouden Kjell graag aanbevelen aan iedereen die op zoek is naar een professionele, goed gebouwde website."</div>
                     <div class="review-author">
@@ -427,7 +438,7 @@
                     </div>
                     <div class="project-image" onclick="window.location.href='marketleap.html'">
                         <div class="post-card-platform post-card-platform--framer" aria-hidden="true"><img src="../../assets/framer-svg.svg" alt="" class="post-card-platform-icon"></div>
-                        <img src="../../assets/Marketleap-project.webp" alt="Marketleap — Binnenkort" class="project-img" loading="lazy">
+                        <img src="../../assets/Marketleap-project.webp" alt="Marketleap â€” Binnenkort" class="project-img" loading="lazy">
                         <div class="project-dot"></div>
                     </div>
                 </div>
@@ -475,4 +486,5 @@
     </script>
 </body>
 </html>
+
 

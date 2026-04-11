@@ -227,7 +227,15 @@
                 <div class="desktop-nav">
                     <div class="nav-links">
                         <a href="index.html#work" class="nav-link">Work</a>
-                        <a href="../index.html#services" class="nav-link">Services</a>
+                        <div class="nav-item nav-item--has-dropdown">
+                            <a href="../index.html#services" class="nav-link nav-link--dropdown">Services</a>
+                            <div class="nav-dropdown" role="menu">
+                                <a href="../services/brand-identity.html" class="nav-dropdown-link" data-translate="navServiceBrandIdentity">Brand identity</a>
+                                <a href="../services/digital-strategy.html" class="nav-dropdown-link" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                                <a href="../services/web-design-ux-ui.html" class="nav-dropdown-link" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                                <a href="../services/web-development.html" class="nav-dropdown-link" data-translate="navServiceWebDevelopment">Web development</a>
+                            </div>
+                        </div>
                         <a href="../about-virtualcreators.html" class="nav-link">About</a>
                         <a href="../index.html#contact" class="nav-link">Contact</a>
                         <a href="../blog/index.html" class="nav-link">Blog</a>
@@ -269,7 +277,10 @@
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
                 <a href="index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
-                <a href="../index.html#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services</a>
+                <div class="mobile-nav-services"><button type="button" class="mobile-nav-link mobile-nav-services__toggle" aria-expanded="false" aria-controls="mobile-nav-services-sub" id="mobile-nav-services-trigger" data-mobile-nav-section="services">Services</button><div class="mobile-nav-sublinks" id="mobile-nav-services-sub" role="group" aria-labelledby="mobile-nav-services-trigger"><a href="../services/brand-identity.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceBrandIdentity">Brand identity</a>
+                    <a href="../services/digital-strategy.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                    <a href="../services/web-design-ux-ui.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                    <a href="../services/web-development.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDevelopment">Web development</a></div></div>
                 <a href="../about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
                 <a href="../index.html#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
                 <a href="../blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>

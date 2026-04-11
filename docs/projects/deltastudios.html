@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,13 +17,13 @@
     <meta property="og:description" content="Explore how Virtualcreators created a stunning portfolio website for Deltastudios branding agency using Framer. Achieved 120% increase in user engagement and 85% increase in form submissions.">
     <meta property="og:url" content="https://www.virtualcreators.io/projects/deltastudios.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.virtualcreators.io/assets/tractionmovies-project.webp">
+    https://www.virtualcreators.io/assets/social-share-image.png>
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Deltastudios Project - Virtualcreators Portfolio">
     <meta name="twitter:description" content="Explore how Virtualcreators created a stunning portfolio website for Deltastudios branding agency using Framer. Achieved 120% increase in user engagement and 85% increase in form submissions.">
-    <meta name="twitter:image" content="https://www.virtualcreators.io/assets/tractionmovies-project.webp">
+    https://www.virtualcreators.io/assets/social-share-image.png>
 
     <!-- Favicon Support -->
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -147,7 +147,15 @@
                 <div class="desktop-nav">
                     <div class="nav-links">
                         <a href="index.html#work" class="nav-link">Work</a>
-                        <a href="../index.html#services" class="nav-link">Services</a>
+                        <div class="nav-item nav-item--has-dropdown">
+                            <a href="../index.html#services" class="nav-link nav-link--dropdown">Services</a>
+                            <div class="nav-dropdown" role="menu">
+                                <a href="../services/brand-identity.html" class="nav-dropdown-link" data-translate="navServiceBrandIdentity">Brand identity</a>
+                                <a href="../services/digital-strategy.html" class="nav-dropdown-link" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                                <a href="../services/web-design-ux-ui.html" class="nav-dropdown-link" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                                <a href="../services/web-development.html" class="nav-dropdown-link" data-translate="navServiceWebDevelopment">Web development</a>
+                            </div>
+                        </div>
                         <a href="../about-virtualcreators.html" class="nav-link">About</a>
                         <a href="../index.html#contact" class="nav-link">Contact</a>
                         <a href="../blog/index.html" class="nav-link">Blog</a>
@@ -189,7 +197,10 @@
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
                 <a href="index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()">Work</a>
-                <a href="../index.html#services" class="mobile-nav-link" onclick="closeMobileMenu()">Services</a>
+                <div class="mobile-nav-services"><button type="button" class="mobile-nav-link mobile-nav-services__toggle" aria-expanded="false" aria-controls="mobile-nav-services-sub" id="mobile-nav-services-trigger" data-mobile-nav-section="services">Services</button><div class="mobile-nav-sublinks" id="mobile-nav-services-sub" role="group" aria-labelledby="mobile-nav-services-trigger"><a href="../services/brand-identity.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceBrandIdentity">Brand identity</a>
+                    <a href="../services/digital-strategy.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                    <a href="../services/web-design-ux-ui.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                    <a href="../services/web-development.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDevelopment">Web development</a></div></div>
                 <a href="../about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
                 <a href="../index.html#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
                 <a href="../blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
@@ -224,7 +235,7 @@
         <div class="case-header">
             <div class="case-meta">
                 <span>Branding Agency</span>
-                <span>•</span>
+                <span>â€¢</span>
                 <span>2025</span>
             </div>
             <h1 class="case-title">
@@ -356,11 +367,11 @@
                 <h4>Client Review</h4>
                 <div class="review-section">
                     <div class="review-stars">
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
+                        <span class="star filled">â˜…</span>
                     </div>
                     <div class="review-text">"Working with Kjell de Ruiter on our Deltastudios website was a fantastic experience. He really took the time to understand our vision and brought it to life with a clean, dynamic design that perfectly showcases our work. Kjell handled everything professionally, from the design to the interactive features, and made the process easy for us to follow even though we're not very technical. We're very happy with the result and would gladly recommend Kjell to anyone looking for a professional, well-built website."</div>
                     <div class="review-author">
@@ -427,7 +438,7 @@
                     </div>
                     <div class="project-image" onclick="window.location.href='marketleap.html'">
                         <div class="post-card-platform post-card-platform--framer" aria-hidden="true"><img src="../assets/framer-svg.svg" alt="" class="post-card-platform-icon"></div>
-                        <img src="../assets/Marketleap-project.webp" alt="Marketleap — Coming Soon" class="project-img" loading="lazy">
+                        <img src="../assets/Marketleap-project.webp" alt="Marketleap â€” Coming Soon" class="project-img" loading="lazy">
                         <div class="project-dot"></div>
                     </div>
                 </div>
@@ -475,4 +486,5 @@
     </script>
 </body>
 </html>
+
 
