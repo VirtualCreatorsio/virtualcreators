@@ -246,7 +246,7 @@
       transition: color 0.3s ease;
       border-bottom: 1px solid #f3f4f6;
     }
-    .mobile-nav-link:last-of-type {
+    .mobile-nav-content > a.mobile-nav-link:last-of-type {
       border-bottom: none;
     }
     .mobile-nav-link:hover,
@@ -256,6 +256,85 @@
     .mobile-nav-link.active {
       color: #8b5cf6;
       font-weight: 500;
+    }
+    .mobile-nav-sublinks {
+      padding: 0 0 0.75rem 1rem;
+      margin-top: -0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .mobile-nav-services .mobile-nav-sublinks {
+      margin-top: 0;
+      border-bottom: none;
+    }
+    .mobile-nav-sublink {
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 0.9375rem;
+      padding: 0.4rem 0;
+      display: block;
+      transition: color 0.2s ease;
+    }
+    .mobile-nav-sublink:hover {
+      color: #111827;
+    }
+    .mobile-nav-services {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    @media (max-width: 1023.98px) {
+      .mobile-nav-services .mobile-nav-sublinks {
+        display: none;
+      }
+      .mobile-nav-services.is-open .mobile-nav-sublinks {
+        display: flex;
+        padding-top: 0.25rem;
+      }
+    }
+    .mobile-nav-services .mobile-nav-services__toggle {
+      border-bottom: none;
+      line-height: 1.5;
+    }
+    .mobile-nav-services__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      color: inherit;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .mobile-nav-services__toggle:hover,
+    .mobile-nav-services__toggle:focus-visible {
+      color: #111827;
+    }
+    .mobile-nav-services__toggle:focus-visible {
+      outline: 2px solid rgba(139, 92, 246, 0.45);
+      outline-offset: 2px;
+    }
+    .mobile-nav-services__toggle::after {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      margin-left: 0.5rem;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      opacity: 0.65;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .mobile-nav-services.is-open .mobile-nav-services__toggle::after {
+      transform: rotate(225deg);
+      margin-top: 0.15rem;
     }
     .mobile-cta {
       width: fit-content;
@@ -953,7 +1032,15 @@
                 <div class="desktop-nav">
                     <div class="nav-links">
                         <a href="projects/index.html#work" class="nav-link" data-translate="work">Work</a>
-                        <a href="#services" class="nav-link" data-translate="services">Services</a>
+                        <div class="nav-item nav-item--has-dropdown">
+                            <a href="#services" class="nav-link nav-link--dropdown" data-translate="services">Services</a>
+                            <div class="nav-dropdown" role="menu">
+                                <a href="services/brand-identity.html" class="nav-dropdown-link" data-translate="navServiceBrandIdentity">Brand identity</a>
+                                <a href="services/digital-strategy.html" class="nav-dropdown-link" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                                <a href="services/web-design-ux-ui.html" class="nav-dropdown-link" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                                <a href="services/web-development.html" class="nav-dropdown-link" data-translate="navServiceWebDevelopment">Web development</a>
+                            </div>
+                        </div>
                         <a href="about-virtualcreators.html" class="nav-link" data-translate="about">About</a>
                         <a href="#contact" class="nav-link" data-translate="contact">Contact</a>
                         <a href="blog/index.html" class="nav-link">Blog</a>
@@ -995,7 +1082,10 @@
         <div class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-content">
                 <a href="projects/index.html#work" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="work">Work</a>
-                <a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="services">Services</a>
+                <div class="mobile-nav-services"><button type="button" class="mobile-nav-link mobile-nav-services__toggle" aria-expanded="false" aria-controls="mobile-nav-services-sub" id="mobile-nav-services-trigger" data-translate="services" data-mobile-nav-section="services">Services</button><div class="mobile-nav-sublinks" id="mobile-nav-services-sub" role="group" aria-labelledby="mobile-nav-services-trigger"><a href="services/brand-identity.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceBrandIdentity">Brand identity</a>
+                    <a href="services/digital-strategy.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceDigitalStrategy">Digital strategy</a>
+                    <a href="services/web-design-ux-ui.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDesign">Web design &amp; UX/UI</a>
+                    <a href="services/web-development.html" class="mobile-nav-sublink" onclick="closeMobileMenu()" data-translate="navServiceWebDevelopment">Web development</a></div></div>
                 <a href="about-virtualcreators.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="about">About</a>
                 <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-translate="contact">Contact</a>
                 <a href="blog/index.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
@@ -1133,9 +1223,9 @@
                             <span data-translate="digitalStrategy">Brand Identity</span>
                         </div>
                         <div class="service-card-content">
-                            <h3 class="service-card-title" data-translate="digitalStrategyTitle">Strategic Vision</h3>
+                            <h3 class="service-card-title" data-translate="digitalStrategyTitle">Brand Identity</h3>
                             <p class="service-card-description" data-translate="digitalStrategyDescription">We build distinctive brand identities people remember, from the logo up to a full visual system, so every touchpoint reflects what your company stands for.</p>
-                            <a href="projects/index.html#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                            <a href="services/brand-identity.html" class="service-card-link" data-translate="serviceCardLearnMore">Learn more</a>
                         </div>
                         <div class="service-card-icon"></div>
                     </div>
@@ -1145,9 +1235,9 @@
                             <span data-translate="brandIdentity">Digital Strategy</span>
                         </div>
                         <div class="service-card-content">
-                            <h3 class="service-card-title" data-translate="brandIdentityTitle">Visual Identity</h3>
+                            <h3 class="service-card-title" data-translate="brandIdentityTitle">Digital Strategy</h3>
                             <p class="service-card-description" data-translate="brandIdentityDescription">We build cohesive digital strategies that align your brand's voice, guide your presence across channels, and create meaningful connections with the people you want to reach.</p>
-                            <a href="projects/index.html#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                            <a href="services/digital-strategy.html" class="service-card-link" data-translate="serviceCardLearnMore">Learn more</a>
                         </div>
                         <div class="service-card-icon"></div>
                     </div>
@@ -1157,9 +1247,9 @@
                             <span data-translate="webDevelopment">Web-Design</span>
                         </div>
                         <div class="service-card-content">
-                            <h3 class="service-card-title" data-translate="webDevelopmentTitle">Design Excellence</h3>
+                            <h3 class="service-card-title" data-translate="webDevelopmentTitle">Web-Design</h3>
                             <p class="service-card-description" data-translate="webDevelopmentDescription">Your brand deserves a digital presence that stands out. We craft custom website designs with intentional UX/UI, clear visual hierarchy, and an experience that feels unmistakably yours.</p>
-                            <a href="projects/index.html#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                            <a href="services/web-design-ux-ui.html" class="service-card-link" data-translate="serviceCardLearnMore">Learn more</a>
                         </div>
                         <div class="service-card-icon"></div>
                     </div>
@@ -1169,9 +1259,9 @@
                             <span data-translate="userExperience">Web-Development</span>
                         </div>
                         <div class="service-card-content">
-                            <h3 class="service-card-title" data-translate="userExperienceTitle">Technical Excellence</h3>
+                            <h3 class="service-card-title" data-translate="userExperienceTitle">Web-Development</h3>
                             <p class="service-card-description" data-translate="userExperienceDescription">We build custom websites with modern, resilient code, transforming design into a smooth, responsive, and trustworthy brand experience at every interaction.</p>
-                            <a href="projects/index.html#work" class="service-card-link" data-translate="exploreOurCases">Explore our cases</a>
+                            <a href="services/web-development.html" class="service-card-link" data-translate="serviceCardLearnMore">Learn more</a>
                         </div>
                         <div class="service-card-icon"></div>
                     </div>

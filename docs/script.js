@@ -188,6 +188,7 @@ function initializeApp() {
   setupMouseEffect()
   setupMobileMenuClickOutside()
   setupMobileMenuResize()
+  setupMobileNavServicesToggle()
   setupProjectTileVideos()
   setupProjectCardModalLinks()
   setupScrollSpy()
@@ -253,11 +254,26 @@ function initializeRotatingGradients() {
   });
 }
 
+// Shared horizontal gradient for service card icons (referenced from CSS when .active)
+function ensureServiceCardIconGradient() {
+  if (document.getElementById("service-card-icon-gradient")) return
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+  svg.setAttribute("width", "0")
+  svg.setAttribute("height", "0")
+  svg.setAttribute("aria-hidden", "true")
+  svg.style.cssText = "position:absolute;overflow:hidden;pointer-events:none"
+  svg.innerHTML =
+    '<defs><linearGradient id="service-card-icon-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="0"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>'
+  document.body.prepend(svg)
+}
+
 // Initialize Services Cards Expand/Collapse
 function initializeServicesCards() {
   const serviceCards = document.querySelectorAll('.service-card')
   
   if (serviceCards.length === 0) return
+
+  ensureServiceCardIconGradient()
   
   // Set first card as active by default
   if (serviceCards.length > 0) {
@@ -569,6 +585,30 @@ function closeMobileMenu() {
     hamburger.setAttribute("aria-expanded", "false")
     document.body.style.overflow = "unset"
   }
+
+  document.querySelectorAll(".mobile-nav-services").forEach((wrap) => {
+    wrap.classList.remove("is-open")
+    const toggle = wrap.querySelector(".mobile-nav-services__toggle")
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false")
+    }
+  })
+}
+
+function setupMobileNavServicesToggle() {
+  document.querySelectorAll(".mobile-nav-services__toggle").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const wrap = btn.closest(".mobile-nav-services")
+      if (!wrap) {
+        return
+      }
+      const open = !wrap.classList.contains("is-open")
+      wrap.classList.toggle("is-open", open)
+      btn.setAttribute("aria-expanded", open ? "true" : "false")
+    })
+  })
 }
 
 // Close mobile menu when clicking outside
@@ -618,6 +658,25 @@ function setupScrollSpy() {
   const navLinks = document.querySelectorAll('.nav-link')
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link')
   const backToTopBtn = document.querySelector('.back-to-top-btn')
+  const isServicePage = document.body.classList.contains('service-page')
+
+  let cachedScrollHeight = 0
+  function refreshScrollHeightCache() {
+    cachedScrollHeight = document.documentElement.scrollHeight
+  }
+  let lastScrollHeightRefreshMs = 0
+  function maybeRefreshScrollHeightForBackToTop() {
+    if (!isMobileDevice || document.getElementById('hero')) return
+    const now = performance.now()
+    if (now - lastScrollHeightRefreshMs < 450) return
+    lastScrollHeightRefreshMs = now
+    refreshScrollHeightCache()
+  }
+
+  if (backToTopBtn && isMobileDevice) {
+    refreshScrollHeightCache()
+    window.addEventListener('resize', refreshScrollHeightCache, { passive: true })
+  }
   
   // Cache section positions to prevent forced reflows
   function updateSectionPositions() {
@@ -637,10 +696,11 @@ function setupScrollSpy() {
     })
   }
   
-  // Initial cache - defer to prevent forced reflows during initialization
-  requestAnimationFrame(() => {
-    updateSectionPositions()
-  })
+  if (!isServicePage) {
+    requestAnimationFrame(() => {
+      updateSectionPositions()
+    })
+  }
   
   // Function to update active navigation item
   function updateActiveNavItem(activeId) {
@@ -662,73 +722,70 @@ function setupScrollSpy() {
     if (activeId) {
       const activeNavLink = document.querySelector(`.nav-link[href="#${activeId}"]`)
       const activeMobileNavLink = document.querySelector(`.mobile-nav-link[href="#${activeId}"]`)
-      
+      const activeMobileSectionToggle = document.querySelector(`[data-mobile-nav-section="${activeId}"]`)
+
       if (activeNavLink) {
         activeNavLink.classList.add('active')
       }
       if (activeMobileNavLink) {
         activeMobileNavLink.classList.add('active')
       }
+      if (activeMobileSectionToggle) {
+        activeMobileSectionToggle.classList.add('active')
+      }
     }
   }
   
-  // Function to handle scroll events with RAF
+  // Function to handle scroll events (caller already schedules via requestAnimationFrame)
   function handleScroll() {
-    requestAnimationFrame(() => {
-      const scrollPosition = window.scrollY + 100 // Add offset for better UX
-      
+    const scrollY = window.scrollY
+
+    if (!isServicePage) {
+      const scrollPosition = scrollY + 100 // Add offset for better UX
+
       let currentSection = null
-      
-      // Update section positions if needed
+
       updateSectionPositions()
-      
-      // Find which section is currently in view using cached positions
+
       sections.forEach(section => {
         const sectionId = section.getAttribute('id')
         const position = sectionPositions.get(sectionId)
-        
+
         if (position && scrollPosition >= position.top && scrollPosition < position.top + position.height) {
           currentSection = sectionId
         }
       })
-    
-    // Special handling for hero section (when at top of page)
-    if (window.scrollY < 100) {
-      currentSection = null // No section highlighted when at top
+
+      if (scrollY < 100) {
+        currentSection = null
+      }
+
+      updateActiveNavItem(currentSection)
     }
-    
-    // Update active navigation item
-    updateActiveNavItem(currentSection)
-    
-    // Show/hide back to top button
+
     if (backToTopBtn) {
       if (isMobileDevice) {
-        // Check if we're on the homepage (has hero section)
         const heroSection = document.getElementById('hero')
         const isHomepage = !!heroSection
-        
+
         if (isHomepage) {
-          // On homepage mobile, only show when contact section is in view (original logic)
-        const contactSection = document.getElementById('contact')
-        if (contactSection) {
-          const contactTop = contactSection.offsetTop
-          const contactHeight = contactSection.offsetHeight
-          const viewportHeight = window.innerHeight
-          
-          // Show button when contact section starts to come into view
-          if (window.scrollY + viewportHeight >= contactTop) {
+          const contactSection = document.getElementById('contact')
+          if (contactSection) {
+            const contactTop = contactSection.offsetTop
+            const contactHeight = contactSection.offsetHeight
+            const viewportHeight = window.innerHeight
+
+            if (scrollY + viewportHeight >= contactTop) {
               backToTopBtn.classList.add('visible')
             } else {
               backToTopBtn.classList.remove('visible')
             }
           }
         } else {
-          // On non-homepage mobile, show after scrolling 80% of page height
-          const documentHeight = document.documentElement.scrollHeight
           const viewportHeight = window.innerHeight
-          const scrollableHeight = documentHeight - viewportHeight
-          const scrollPercentage = (window.scrollY / scrollableHeight) * 100
-          
+          const scrollableHeight = Math.max(1, cachedScrollHeight - viewportHeight)
+          const scrollPercentage = (scrollY / scrollableHeight) * 100
+
           if (scrollPercentage >= 80) {
             backToTopBtn.classList.add('visible')
           } else {
@@ -736,28 +793,30 @@ function setupScrollSpy() {
           }
         }
       } else {
-        // On desktop, show after scrolling 400px
-        if (window.scrollY > 400) {
+        if (scrollY > 400) {
           backToTopBtn.classList.add('visible')
         } else {
           backToTopBtn.classList.remove('visible')
         }
       }
     }
-    })
   }
   
-  // Add scroll event listener with throttling for performance
   let isScrolling = false
-  window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        handleScroll()
-        isScrolling = false
-      })
-      isScrolling = true
-    }
-  })
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!isScrolling) {
+        isScrolling = true
+        window.requestAnimationFrame(() => {
+          maybeRefreshScrollHeightForBackToTop()
+          handleScroll()
+          isScrolling = false
+        })
+      }
+    },
+    { passive: true }
+  )
   
   // Run once on page load
   handleScroll()
@@ -2524,10 +2583,8 @@ function setupHeroGradientGlow() {
   }
   
   function updateGradientGlow() {
-    const heroRect = heroSection.getBoundingClientRect()
-    const windowHeight = window.innerHeight
     const scrollY = window.scrollY
-    
+
     // Start fading immediately when user starts scrolling down
     // Fully fade when user has scrolled past a certain point (e.g., 200px)
     // This ensures the glow disappears before the next section appears
@@ -2550,15 +2607,19 @@ function setupHeroGradientGlow() {
   
   // Update on scroll with throttling
   let isScrolling = false
-  window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        updateGradientGlow()
-        isScrolling = false
-      })
-      isScrolling = true
-    }
-  }, { passive: true })
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!isScrolling) {
+        isScrolling = true
+        window.requestAnimationFrame(() => {
+          updateGradientGlow()
+          isScrolling = false
+        })
+      }
+    },
+    { passive: true }
+  )
   
   // Initial update
   updateGradientGlow()

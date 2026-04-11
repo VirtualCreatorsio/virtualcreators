@@ -137,6 +137,197 @@ body {
   color: #8b5cf6;
   font-weight: 500;
 }
+
+/* Services nav: desktop dropdown */
+.nav-item--has-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item--has-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.6rem;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.nav-link--dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link--dropdown::after {
+  content: "";
+  width: 0.28rem;
+  height: 0.28rem;
+  margin-top: 0.1rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.65;
+}
+
+.nav-dropdown {
+  display: none;
+}
+
+.mobile-nav-sublinks {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0.75rem 1rem;
+  margin-top: -0.35rem;
+  border-bottom: 1px solid #374151;
+}
+
+.mobile-nav-services .mobile-nav-sublinks {
+  margin-top: 0;
+  padding: 0 0 0.75rem 1rem;
+  border-bottom: none;
+}
+
+.mobile-nav-sublink {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-sublink:hover {
+  color: #ffffff;
+}
+
+/* Mobile menu: Services opens accordion (sub-links only); desktop dropdown unchanged */
+.mobile-nav-services {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  border-bottom: 1px solid #374151;
+}
+
+@media (max-width: 1023.98px) {
+  .mobile-nav-services .mobile-nav-sublinks {
+    display: none;
+  }
+
+  .mobile-nav-services.is-open .mobile-nav-sublinks {
+    display: flex;
+    padding-top: 0.25rem;
+  }
+}
+
+/* Button shares .mobile-nav-link styles; one divider line is on .mobile-nav-services (not :last-of-type — that wrongly matched the only <button> sibling). */
+.mobile-nav-services .mobile-nav-services__toggle {
+  border-bottom: none;
+  line-height: 1.5;
+}
+
+.mobile-nav-services__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.mobile-nav-services__toggle:hover,
+.mobile-nav-services__toggle:focus-visible {
+  color: #ffffff;
+}
+
+.mobile-nav-services__toggle:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.6);
+  outline-offset: 2px;
+}
+
+.mobile-nav-services__toggle::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.65;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mobile-nav-services.is-open .mobile-nav-services__toggle::after {
+  transform: rotate(225deg);
+  margin-top: 0.15rem;
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-sublinks {
+    display: none;
+  }
+
+  .nav-dropdown {
+    display: block;
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 50%;
+    transform: translateX(-50%) translateY(0.35rem);
+    min-width: 13rem;
+    padding: 0.35rem 0;
+    margin: 0;
+    background: rgba(17, 17, 17, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 1002;
+  }
+
+  .nav-item--has-dropdown:hover .nav-dropdown,
+  .nav-item--has-dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-dropdown-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown-link:hover,
+  .nav-dropdown-link:focus-visible {
+    color: #ffffff;
+    background: rgba(236, 72, 153, 0.12);
+    outline: none;
+  }
+}
+
 .mobile-menu-btn {
   display: flex;
   flex-direction: column;
@@ -213,7 +404,7 @@ body {
   transition: color 0.3s ease;
   border-bottom: 1px solid #374151;
 }
-.mobile-nav-link:last-of-type {
+.mobile-nav-content > a.mobile-nav-link:last-of-type {
   border-bottom: none;
 }
 .mobile-nav-link:hover,
@@ -904,10 +1095,8 @@ body {
 }
 
 .service-card.active .service-card-title-vertical {
-  background: linear-gradient(to bottom, #ec4899, #8b5cf6, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Card Content */
@@ -944,6 +1133,14 @@ body {
   line-height: 1.3;
   margin-bottom: 1rem;
   margin-top: 0;
+}
+
+.service-card.active .service-card-title {
+  background: linear-gradient(to right, #ec4899, #8b5cf6, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .service-card-description {
@@ -1055,8 +1252,17 @@ body {
   z-index: 2;
 }
 
-.service-card.active .service-card-icon {
-  color: #9ca3af;
+.service-card.active .service-card-icon svg :is(path, polyline, polygon, line) {
+  stroke: url(#service-card-icon-gradient);
+}
+
+.service-card.active .service-card-icon svg circle {
+  stroke: url(#service-card-icon-gradient);
+}
+
+.service-card.active .service-card-icon svg circle[r=".5"] {
+  fill: url(#service-card-icon-gradient);
+  stroke: none;
 }
 
 .service-card-icon svg {
@@ -1186,13 +1392,27 @@ body {
     white-space: normal;
     pointer-events: auto;
     transition: all 0.3s ease;
+    color: #ffffff;
+  }
+
+  /* Gradient on main label only when card is open; duplicate h3 hidden below */
+  .service-card.active .service-card-title-vertical span {
+    background: linear-gradient(to right, #ec4899, #8b5cf6, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   .service-card.active .service-card-title-vertical {
-    background: linear-gradient(to right, #ec4899, #8b5cf6, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .service-card.active .service-card-title {
+    display: none;
+    margin: 0;
   }
 
   .service-card-content {
