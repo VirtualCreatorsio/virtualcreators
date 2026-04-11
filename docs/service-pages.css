@@ -339,11 +339,18 @@
 
 /* Service landings – agency-style layout (breadcrumb, split hero, section anchors, trust strip) */
 .service-page .service-detail-hero {
-  /* Homepage `.hero` centers content vertically; tall service heroes overflow upward and tuck the breadcrumb under the fixed navbar. */
+  /* Mobile: top-align + extra top padding so breadcrumbs stay below the fixed nav (centering would clip them). */
   align-items: flex-start;
   justify-content: flex-start;
   padding-top: max(5.75rem, calc(4.5rem + env(safe-area-inset-top, 0px)));
   padding-bottom: clamp(9rem, 18vw, 12rem);
+}
+@media (min-width: 1024px) {
+  .service-page .service-detail-hero {
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+  }
 }
 .service-page .service-detail-hero > .container {
   position: relative;
