@@ -20,6 +20,32 @@
     <priority>0.90</priority>
   </url>
   
+  <!-- Service landing pages - English -->
+  <url>
+    <loc>https://www.virtualcreators.io/services/brand-identity.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/services/digital-strategy.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/services/web-design-ux-ui.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/services/web-development.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  
   <!-- Main Pages - Dutch -->
   <url>
     <loc>https://www.virtualcreators.io/nl/</loc>
@@ -33,6 +59,32 @@
     <lastmod>2025-03-13T12:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
+  </url>
+  
+  <!-- Service landing pages - Dutch -->
+  <url>
+    <loc>https://www.virtualcreators.io/nl/services/brand-identity.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/nl/services/digital-strategy.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/nl/services/web-design-ux-ui.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://www.virtualcreators.io/nl/services/web-development.html</loc>
+    <lastmod>2026-04-11T12:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
   </url>
   
   <!-- Legal Pages - English -->
